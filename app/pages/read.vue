@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { toc, currentChapter, currentChapterLabel, progress, isLoading, bookTitle, loadBook, goToChapter, next, prev, destroy } = useBook()
+const { toc, currentChapter, currentChapterLabel, progress, isLoading, bookTitle, loadBook, goToChapter, next, prev, destroy, onTap, onSwipeLeft, onSwipeRight } = useBook()
 
 const readerEl = ref<HTMLElement | null>(null)
 const tocOpen = ref(false)
@@ -18,6 +18,16 @@ function resetHideTimer() {
   }, 3000)
 }
 
+function toggleUI() {
+  showUI.value = !showUI.value
+  if (hideTimer) clearTimeout(hideTimer)
+  if (showUI.value) {
+    hideTimer = setTimeout(() => {
+      if (!tocOpen.value) showUI.value = false
+    }, 3000)
+  }
+}
+
 function handleKeydown(e: KeyboardEvent) {
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
     next()
@@ -29,6 +39,11 @@ function handleKeydown(e: KeyboardEvent) {
 }
 
 onMounted(async () => {
+  // Register gesture handlers before loading so they're ready for content hooks
+  onSwipeLeft(() => { next(); resetHideTimer() })
+  onSwipeRight(() => { prev(); resetHideTimer() })
+  onTap(() => toggleUI())
+
   if (readerEl.value) {
     await loadBook(readerEl.value)
   }

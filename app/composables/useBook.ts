@@ -7,6 +7,8 @@ interface TocItem {
   subitems: TocItem[]
 }
 
+type GestureHandler = () => void
+
 export function useBook() {
   const book = shallowRef<Book | null>(null)
   const rendition = shallowRef<Rendition | null>(null)
@@ -20,6 +22,49 @@ export function useBook() {
   const bookAuthor = ref('')
   const atStart = ref(true)
   const atEnd = ref(false)
+
+  let onTapHandler: GestureHandler | null = null
+  let onSwipeLeftHandler: GestureHandler | null = null
+  let onSwipeRightHandler: GestureHandler | null = null
+
+  function onTap(handler: GestureHandler) { onTapHandler = handler }
+  function onSwipeLeft(handler: GestureHandler) { onSwipeLeftHandler = handler }
+  function onSwipeRight(handler: GestureHandler) { onSwipeRightHandler = handler }
+
+  function attachTouchListeners(doc: Document) {
+    let startX = 0
+    let startY = 0
+    let startTime = 0
+
+    doc.addEventListener('touchstart', (e: TouchEvent) => {
+      const touch = e.touches[0]
+      startX = touch.clientX
+      startY = touch.clientY
+      startTime = Date.now()
+    }, { passive: true })
+
+    doc.addEventListener('touchend', (e: TouchEvent) => {
+      const touch = e.changedTouches[0]
+      const dx = touch.clientX - startX
+      const dy = touch.clientY - startY
+      const elapsed = Date.now() - startTime
+
+      const absDx = Math.abs(dx)
+      const absDy = Math.abs(dy)
+
+      // Swipe: horizontal movement > 50px, more horizontal than vertical, under 500ms
+      if (absDx > 50 && absDx > absDy * 1.5 && elapsed < 500) {
+        if (dx < 0) {
+          onSwipeLeftHandler?.()
+        } else {
+          onSwipeRightHandler?.()
+        }
+      } else if (absDx < 10 && absDy < 10 && elapsed < 300) {
+        // Tap: minimal movement, quick touch
+        onTapHandler?.()
+      }
+    }, { passive: true })
+  }
 
   function flattenToc(items: NavItem[]): TocItem[] {
     return items.map(item => ({
@@ -90,6 +135,12 @@ export function useBook() {
       'em, i': {
         'color': '#e5e5e5 !important',
       },
+    })
+
+    // Attach touch gesture listeners to each content document (inside iframe)
+    r.hooks.content.register((contents: any) => {
+      const doc = contents.document
+      if (doc) attachTouchListeners(doc)
     })
 
     await r.display()
@@ -185,5 +236,8 @@ export function useBook() {
     next,
     prev,
     destroy,
+    onTap,
+    onSwipeLeft,
+    onSwipeRight,
   }
 }
