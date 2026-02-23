@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "EB Garamond", "Garamond", "Georgia", serif;
+  --color-gold-50: #fdf8ef;
+  --color-gold-100: #f9efd8;
+  --color-gold-200: #f2ddb0;
+  --color-gold-300: #e9c67e;
+  --color-gold-400: #d4a54a;
+  --color-gold-500: #c9922e;
+  --color-gold-600: #b17a24;
+  --color-gold-700: #945e20;
+  --color-gold-800: #7a4b21;
+  --color-gold-900: #653e1f;
+  --color-gold-950: #3a1f0e;
+  --color-surface-50: #1a1a1f;
+  --color-surface-100: #151518;
+  --color-surface-200: #111114;
+  --color-surface-300: #0d0d10;
+  --color-surface-400: #09090c;
+  --color-surface-500: #050508;
+}
+
+@layer base {
+  * {
+    @apply border-neutral-800;
+  }
+
+  body {
+    @apply bg-surface-300 text-neutral-200 font-serif antialiased;
+  }
+
+  ::selection {
+    @apply bg-gold-500/30 text-gold-100;
+  }
+}
