@@ -1,10 +1,19 @@
 <script setup lang="ts">
 const { toc, currentChapter, currentChapterLabel, progress, isLoading, bookTitle, loadBook, goToChapter, next, prev, destroy, onTap, onSwipeLeft, onSwipeRight } = useBook()
+const { mode, theme, cycleMode } = useReaderTheme()
 
 const readerEl = ref<HTMLElement | null>(null)
 const tocOpen = ref(false)
 const showUI = ref(true)
 let hideTimer: ReturnType<typeof setTimeout> | null = null
+
+const themeIcon = computed(() => {
+  switch (mode.value) {
+    case 'dark': return 'lucide:moon'
+    case 'light': return 'lucide:sun'
+    case 'sepia': return 'lucide:coffee'
+  }
+})
 
 useHead({
   title: () => currentChapterLabel.value ? `${currentChapterLabel.value} — Chasing the Sun` : 'Read — Chasing the Sun',
@@ -66,50 +75,73 @@ function selectChapter(href: string) {
 </script>
 
 <template>
-  <div class="min-h-dvh flex flex-col bg-surface-300 relative" @mousemove="resetHideTimer">
+  <div
+    class="min-h-dvh flex flex-col relative transition-colors duration-300"
+    :style="{ background: theme.pageBg }"
+    @mousemove="resetHideTimer"
+  >
     <!-- Top Bar -->
     <header
       class="fixed top-0 left-0 right-0 z-40 transition-all duration-500"
       :class="showUI ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'"
     >
-      <div class="bg-surface-200/90 backdrop-blur-md border-b border-neutral-800/50">
+      <div
+        class="backdrop-blur-md border-b transition-colors duration-300"
+        :style="{ background: theme.headerBg, borderColor: theme.borderColor }"
+      >
         <div class="max-w-screen-xl mx-auto flex items-center justify-between px-4 h-14">
           <div class="flex items-center gap-3">
             <!-- TOC Toggle -->
             <Sheet v-model:open="tocOpen">
               <SheetTrigger as-child>
-                <Button variant="ghost" size="icon" class="text-neutral-400 hover:text-gold-400 cursor-pointer">
+                <Button variant="ghost" size="icon" class="cursor-pointer" :style="{ color: theme.mutedColor }">
                   <Icon name="lucide:list" class="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" class="bg-surface-200 border-neutral-800 w-80 sm:w-96 p-0">
+              <SheetContent
+                side="left"
+                class="w-80 sm:w-96 p-0 transition-colors duration-300"
+                :style="{ background: theme.pageBg, borderColor: theme.borderColor }"
+              >
                 <SheetHeader class="px-6 pt-6 pb-4">
-                  <SheetTitle class="text-gold-400 text-lg">Table of Contents</SheetTitle>
-                  <SheetDescription class="text-neutral-500 text-sm">{{ bookTitle }}</SheetDescription>
+                  <SheetTitle class="text-lg" :style="{ color: theme.headingColor }">Table of Contents</SheetTitle>
+                  <SheetDescription class="text-sm" :style="{ color: theme.mutedColor }">{{ bookTitle }}</SheetDescription>
                 </SheetHeader>
-                <Separator class="bg-neutral-800" />
+                <Separator :style="{ background: theme.borderColor }" />
                 <ScrollArea class="h-[calc(100dvh-8rem)] px-2">
                   <nav class="py-3">
-                    <button
-                      v-for="item in toc"
-                      :key="item.id"
-                      class="w-full text-left px-4 py-2.5 rounded-md text-sm transition-colors cursor-pointer"
-                      :class="currentChapter === item.href
-                        ? 'bg-gold-500/10 text-gold-400'
-                        : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/50'"
-                      @click="selectChapter(item.href)"
-                    >
-                      {{ item.label }}
-                    </button>
+                    <template v-for="item in toc" :key="item.id">
+                      <button
+                        class="w-full text-left px-4 py-2.5 rounded-md text-sm transition-colors cursor-pointer"
+                        :style="currentChapter === item.href
+                          ? { color: theme.headingColor }
+                          : { color: theme.mutedColor }"
+                        @click="selectChapter(item.href)"
+                      >
+                        {{ item.label }}
+                      </button>
+                      <button
+                        v-for="sub in item.subitems"
+                        :key="sub.id"
+                        class="w-full text-left pl-8 pr-4 py-2 rounded-md text-sm transition-colors cursor-pointer"
+                        :style="currentChapter === sub.href
+                          ? { color: theme.headingColor }
+                          : { color: theme.mutedColor }"
+                        @click="selectChapter(sub.href)"
+                      >
+                        {{ sub.label }}
+                      </button>
+                    </template>
                   </nav>
                 </ScrollArea>
-                <Separator class="bg-neutral-800" />
+                <Separator :style="{ background: theme.borderColor }" />
                 <div class="px-6 py-4">
                   <a
                     href="https://docs.google.com/forms/d/e/1FAIpQLSdv3WNVPPugyl8dUrfJJmgsLUPDwFjXrwfRNX6oO667J9WMog/viewform?usp=header"
                     target="_blank"
                     rel="noopener"
-                    class="flex items-center gap-2 text-sm text-neutral-500 hover:text-gold-400 transition-colors"
+                    class="flex items-center gap-2 text-sm transition-colors"
+                    :style="{ color: theme.mutedColor }"
                   >
                     <Icon name="lucide:message-square" class="h-4 w-4" />
                     Send Feedback
@@ -120,30 +152,40 @@ function selectChapter(href: string) {
 
             <!-- Back home -->
             <NuxtLink to="/">
-              <Button variant="ghost" size="icon" class="text-neutral-400 hover:text-gold-400 cursor-pointer">
+              <Button variant="ghost" size="icon" class="cursor-pointer" :style="{ color: theme.mutedColor }">
                 <Icon name="lucide:home" class="h-4 w-4" />
               </Button>
             </NuxtLink>
           </div>
 
           <!-- Current chapter label -->
-          <span class="text-sm text-neutral-500 truncate max-w-xs hidden sm:block">
+          <span class="text-sm truncate max-w-xs hidden sm:block" :style="{ color: theme.mutedColor }">
             {{ currentChapterLabel || bookTitle }}
           </span>
 
           <!-- Right side actions -->
           <div class="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              class="cursor-pointer transition-colors duration-300"
+              :style="{ color: theme.mutedColor }"
+              :title="`Theme: ${mode}`"
+              @click="cycleMode"
+            >
+              <Icon :name="themeIcon" class="h-4 w-4" />
+            </Button>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSdv3WNVPPugyl8dUrfJJmgsLUPDwFjXrwfRNX6oO667J9WMog/viewform?usp=header"
               target="_blank"
               rel="noopener"
             >
-              <Button variant="ghost" size="icon" class="text-neutral-400 hover:text-gold-400 cursor-pointer">
+              <Button variant="ghost" size="icon" class="cursor-pointer" :style="{ color: theme.mutedColor }">
                 <Icon name="lucide:message-square" class="h-4 w-4" />
               </Button>
             </a>
             <a href="/chasing-the-sun.epub" download>
-              <Button variant="ghost" size="icon" class="text-neutral-400 hover:text-gold-400 cursor-pointer">
+              <Button variant="ghost" size="icon" class="cursor-pointer" :style="{ color: theme.mutedColor }">
                 <Icon name="lucide:download" class="h-4 w-4" />
               </Button>
             </a>
@@ -152,10 +194,10 @@ function selectChapter(href: string) {
       </div>
 
       <!-- Progress bar -->
-      <div class="h-0.5 bg-surface-400">
+      <div class="h-0.5" :style="{ background: theme.borderColor }">
         <div
-          class="h-full bg-gradient-to-r from-gold-600 to-gold-400 transition-all duration-300"
-          :style="{ width: `${progress}%` }"
+          class="h-full transition-all duration-300"
+          :style="{ width: `${progress}%`, background: theme.headingColor }"
         />
       </div>
     </header>
@@ -163,10 +205,14 @@ function selectChapter(href: string) {
     <!-- Loading state -->
     <div
       v-if="isLoading"
-      class="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-surface-300"
+      class="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 transition-colors duration-300"
+      :style="{ background: theme.pageBg }"
     >
-      <div class="w-10 h-10 border-2 border-gold-500/30 border-t-gold-400 rounded-full animate-spin" />
-      <p class="text-neutral-500 text-sm">Loading book...</p>
+      <div
+        class="w-10 h-10 border-2 rounded-full animate-spin"
+        :style="{ borderColor: `${theme.headingColor}33`, borderTopColor: theme.headingColor }"
+      />
+      <p class="text-sm" :style="{ color: theme.mutedColor }">Loading book...</p>
     </div>
 
     <!-- Reader -->
@@ -179,26 +225,31 @@ function selectChapter(href: string) {
       class="fixed bottom-0 left-0 right-0 z-40 transition-all duration-500"
       :class="showUI ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'"
     >
-      <div class="bg-surface-200/90 backdrop-blur-md border-t border-neutral-800/50">
+      <div
+        class="backdrop-blur-md border-t transition-colors duration-300"
+        :style="{ background: theme.headerBg, borderColor: theme.borderColor }"
+      >
         <div class="max-w-screen-xl mx-auto flex items-center justify-between px-4 h-12">
           <Button
             variant="ghost"
             size="sm"
-            class="text-neutral-400 hover:text-gold-400 cursor-pointer"
+            class="cursor-pointer"
+            :style="{ color: theme.mutedColor }"
             @click="prev"
           >
             <Icon name="lucide:chevron-left" class="h-4 w-4 mr-1" />
             Previous
           </Button>
 
-          <span class="text-xs text-neutral-600">
+          <span class="text-xs" :style="{ color: theme.mutedColor }">
             {{ Math.round(progress) }}% complete
           </span>
 
           <Button
             variant="ghost"
             size="sm"
-            class="text-neutral-400 hover:text-gold-400 cursor-pointer"
+            class="cursor-pointer"
+            :style="{ color: theme.mutedColor }"
             @click="next"
           >
             Next

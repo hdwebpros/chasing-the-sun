@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "build:epub": "node scripts/build-epub.js"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.14.0",
@@ -28,6 +29,7 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.95",
     "@tailwindcss/vite": "^4.2.0",
     "tailwindcss": "^4.2.0",
     "typescript": "^5.9.3"

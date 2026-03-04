@@ -1,4 +1,5 @@
 import ePub, { type Book, type Rendition, type NavItem } from 'epubjs'
+import { THEMES } from './useReaderTheme'
 
 interface TocItem {
   id: string
@@ -22,6 +23,8 @@ export function useBook() {
   const bookAuthor = ref('')
   const atStart = ref(true)
   const atEnd = ref(false)
+
+  const { theme, mode } = useReaderTheme()
 
   let onTapHandler: GestureHandler | null = null
   let onSwipeLeftHandler: GestureHandler | null = null
@@ -89,58 +92,66 @@ export function useBook() {
 
     rendition.value = r
 
-    // Apply reading styles
-    r.themes.default({
-      'html': {
-        'font-family': '"EB Garamond", "Garamond", Georgia, serif !important',
-        'color': '#d4d4d4 !important',
-        'background': 'transparent !important',
-        'line-height': '1.8 !important',
-      },
-      'body': {
-        'font-family': '"EB Garamond", "Garamond", Georgia, serif !important',
-        'color': '#d4d4d4 !important',
-        'background': 'transparent !important',
-        'padding': '0 1rem !important',
-        'max-width': '65ch',
-        'margin': '0 auto !important',
-        'font-size': '1.2rem !important',
-        'line-height': '1.8 !important',
-      },
-      'p': {
-        'font-family': '"EB Garamond", "Garamond", Georgia, serif !important',
-        'color': '#d4d4d4 !important',
-        'line-height': '1.8 !important',
-        'margin-bottom': '0.75em !important',
-      },
-      'h1, h2, h3, h4, h5, h6': {
-        'font-family': '"EB Garamond", "Garamond", Georgia, serif !important',
-        'color': '#d4a54a !important',
-        'margin-top': '1.5em !important',
-        'margin-bottom': '0.5em !important',
-      },
-      'a': {
-        'color': '#d4a54a !important',
-      },
-      'img': {
-        'max-width': '100% !important',
-        'height': 'auto !important',
-      },
-      'blockquote': {
-        'border-left': '3px solid #d4a54a !important',
-        'padding-left': '1em !important',
-        'color': '#a8a29e !important',
-        'font-style': 'italic !important',
-      },
-      'em, i': {
-        'color': '#e5e5e5 !important',
-      },
-    })
+    // Apply theme styles directly via content hook (avoids epubjs theme layering issues)
+    function applyThemeToDoc(doc: Document) {
+      const cfg = THEMES[mode.value]
+      let styleEl = doc.getElementById('cts-theme')
+      if (!styleEl) {
+        styleEl = doc.createElement('style')
+        styleEl.id = 'cts-theme'
+        doc.head.appendChild(styleEl)
+      }
+      styleEl.textContent = `
+        html, body, p, div, span, li, td, th, em, i, strong, b {
+          color: ${cfg.textColor} !important;
+          background: transparent !important;
+        }
+        html, body, p {
+          font-family: "EB Garamond", "Garamond", Georgia, serif !important;
+          line-height: 1.8 !important;
+        }
+        body {
+          padding: 0 1rem !important;
+          max-width: 65ch;
+          margin: 0 auto !important;
+          font-size: 1.125rem !important;
+        }
+        p { margin-bottom: 0.75em !important; }
+        h1, h2, h3, h4, h5, h6 {
+          font-family: "EB Garamond", "Garamond", Georgia, serif !important;
+          color: ${cfg.headingColor} !important;
+        }
+        h1, h2, h3, h4, h5, h6,
+        h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
+          color: ${cfg.headingColor} !important;
+        }
+        h1 { font-size: 2rem !important; font-weight: 700 !important; text-align: center !important; margin-top: 2em !important; margin-bottom: 0.5em !important; }
+        h2 { font-size: 1.5rem !important; font-weight: 700 !important; text-align: center !important; margin-top: 1.5em !important; margin-bottom: 0.5em !important; }
+        h3, h4, h5, h6 { margin-top: 1.5em !important; margin-bottom: 0.5em !important; }
+        a { color: ${cfg.headingColor} !important; }
+        img { max-width: 100% !important; height: auto !important; }
+        blockquote { border-left: 3px solid ${cfg.headingColor} !important; padding-left: 1em !important; color: ${cfg.mutedColor} !important; font-style: italic !important; }
+      `
+    }
 
-    // Attach touch gesture listeners to each content document (inside iframe)
+    // Track content documents so we can re-theme them
+    const contentDocs: Document[] = []
+
+    // Attach touch gesture listeners and theme to each content document (inside iframe)
     r.hooks.content.register((contents: any) => {
       const doc = contents.document
-      if (doc) attachTouchListeners(doc)
+      if (doc) {
+        attachTouchListeners(doc)
+        applyThemeToDoc(doc)
+        contentDocs.push(doc)
+      }
+    })
+
+    // Watch for theme changes — update the single style element in each iframe
+    watch(mode, () => {
+      contentDocs.forEach((doc) => {
+        try { applyThemeToDoc(doc) } catch {}
+      })
     })
 
     await r.display()
@@ -182,7 +193,12 @@ export function useBook() {
     if (import.meta.client) {
       const savedCfi = localStorage.getItem('cts-position')
       if (savedCfi) {
-        await r.display(savedCfi)
+        try {
+          await r.display(savedCfi)
+        } catch {
+          localStorage.removeItem('cts-position')
+          await r.display()
+        }
       }
     }
 
