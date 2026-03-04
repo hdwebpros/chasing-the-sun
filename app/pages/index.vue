@@ -26,7 +26,7 @@ useHead({
         />
         <NuxtLink to="/read">
           <img
-            src="/cover.jpg"
+            src="/cover.png"
             alt="Chasing the Sun — Book Cover"
             class="relative rounded-lg shadow-2xl shadow-black/50 w-64 sm:w-72 md:w-80 transition-transform duration-500"
             :class="isHovered ? 'scale-[1.02]' : 'scale-100'"
