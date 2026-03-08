@@ -74,7 +74,7 @@ useHead({
         </a>
         <span class="text-neutral-700">|</span>
         <a
-          href="/chasing-the-sun.epub"
+          href="/chasing-the-sun-v2.epub"
           download
           class="hover:text-gold-400 transition-colors"
         >

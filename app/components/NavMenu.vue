@@ -3,6 +3,7 @@ const isOpen = ref(false)
 const route = useRoute()
 
 const navItems = [
+  { label: 'Home', to: '/', icon: 'lucide:home' },
   { label: 'Read the eBook', to: '/read', icon: 'lucide:book-open' },
   { label: 'About the Author', to: '/about', icon: 'lucide:feather' },
   { label: 'Easter Eggs', to: '/easter-eggs', icon: 'lucide:sparkles' },

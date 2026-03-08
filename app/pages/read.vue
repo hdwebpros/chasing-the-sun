@@ -184,7 +184,7 @@ function selectChapter(href: string) {
                 <Icon name="lucide:message-square" class="h-4 w-4" />
               </Button>
             </a>
-            <a href="/chasing-the-sun.epub" download>
+            <a href="/chasing-the-sun-v2.epub" download>
               <Button variant="ghost" size="icon" class="cursor-pointer" :style="{ color: theme.mutedColor }">
                 <Icon name="lucide:download" class="h-4 w-4" />
               </Button>
