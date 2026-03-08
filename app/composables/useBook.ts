@@ -80,7 +80,7 @@ export function useBook() {
 
   async function loadBook(el: HTMLElement) {
     isLoading.value = true
-    const b = ePub('/chasing-the-sun-v2.epub')
+    const b = ePub('/chasing-the-sun-draft.epub')
     book.value = b
 
     const r = b.renderTo(el, {
