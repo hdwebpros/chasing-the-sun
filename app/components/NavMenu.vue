@@ -6,6 +6,7 @@ const navItems = [
   { label: 'Home', to: '/', icon: 'lucide:home' },
   { label: 'Read the eBook', to: '/read', icon: 'lucide:book-open' },
   { label: 'About the Author', to: '/about', icon: 'lucide:feather' },
+  { label: 'Characters', to: '/characters', icon: 'lucide:users' },
   { label: 'Easter Eggs', to: '/easter-eggs', icon: 'lucide:sparkles' },
   { label: 'Research & Timeline', to: '/research', icon: 'lucide:scroll-text' },
   { label: 'Contact', to: '/contact', icon: 'lucide:send' },
