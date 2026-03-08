@@ -10,7 +10,7 @@ const navItems = [
   { label: 'Easter Eggs', to: '/easter-eggs', icon: 'lucide:sparkles' },
   { label: 'Research & Timeline', to: '/research', icon: 'lucide:scroll-text' },
   { label: 'Contact', to: '/contact', icon: 'lucide:send' },
-  { label: 'Email Signup', to: '/signup', icon: 'lucide:mail-plus' },
+  { label: 'Send Feedback', to: 'https://docs.google.com/forms/d/e/1FAIpQLSdv3WNVPPugyl8dUrfJJmgsLUPDwFjXrwfRNX6oO667J9WMog/viewform?usp=header', icon: 'lucide:message-square-plus', external: true },
 ]
 
 function close() {
