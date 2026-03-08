@@ -66,18 +66,31 @@ watch(() => route.path, () => {
       >
         <!-- Nav items -->
         <nav class="flex flex-col items-center gap-2 w-full max-w-sm px-6">
-          <NuxtLink
-            v-for="(item, i) in navItems"
-            :key="item.to"
-            :to="item.to"
-            class="group flex items-center gap-4 w-full px-6 py-4 rounded-2xl text-xl font-medium transition-all duration-300 hover:bg-gold-500/10"
-            :class="route.path === item.to ? 'text-gold-400' : 'text-neutral-300 hover:text-gold-400'"
-            :style="{ transitionDelay: `${i * 50}ms` }"
-            @click="close"
-          >
-            <Icon :name="item.icon" class="h-5 w-5 shrink-0 opacity-60 group-hover:opacity-100 transition-opacity" />
-            <span>{{ item.label }}</span>
-          </NuxtLink>
+          <template v-for="(item, i) in navItems" :key="item.to">
+            <a
+              v-if="item.external"
+              :href="item.to"
+              target="_blank"
+              rel="noopener"
+              class="group flex items-center gap-4 w-full px-6 py-4 rounded-2xl text-xl font-medium transition-all duration-300 hover:bg-gold-500/10 text-neutral-300 hover:text-gold-400"
+              :style="{ transitionDelay: `${i * 50}ms` }"
+              @click="close"
+            >
+              <Icon :name="item.icon" class="h-5 w-5 shrink-0 opacity-60 group-hover:opacity-100 transition-opacity" />
+              <span>{{ item.label }}</span>
+            </a>
+            <NuxtLink
+              v-else
+              :to="item.to"
+              class="group flex items-center gap-4 w-full px-6 py-4 rounded-2xl text-xl font-medium transition-all duration-300 hover:bg-gold-500/10"
+              :class="route.path === item.to ? 'text-gold-400' : 'text-neutral-300 hover:text-gold-400'"
+              :style="{ transitionDelay: `${i * 50}ms` }"
+              @click="close"
+            >
+              <Icon :name="item.icon" class="h-5 w-5 shrink-0 opacity-60 group-hover:opacity-100 transition-opacity" />
+              <span>{{ item.label }}</span>
+            </NuxtLink>
+          </template>
         </nav>
 
         <!-- Footer -->
