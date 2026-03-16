@@ -6,13 +6,14 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const EPUB_PATH = join(ROOT, 'public', 'chasing-the-sun-draft.epub');
+const V3_PATH = join(ROOT, 'public', 'chasing-the-sun-v3.epub');
 const V2_PATH = join(ROOT, 'public', 'chasing-the-sun-v2.epub');
 const WORK_DIR = join(ROOT, '.epub-build-draft');
 
-// Clean and extract draft
+// Clean and extract v3 source
 execSync(`rm -rf "${WORK_DIR}"`);
 mkdirSync(WORK_DIR, { recursive: true });
-execSync(`unzip -o "${EPUB_PATH}" -d "${WORK_DIR}"`, { stdio: 'pipe' });
+execSync(`unzip -o "${V3_PATH}" -d "${WORK_DIR}"`, { stdio: 'pipe' });
 
 // Extract v2 to get cover image
 const V2_WORK = join(ROOT, '.epub-build-v2-tmp');
@@ -21,9 +22,9 @@ mkdirSync(V2_WORK, { recursive: true });
 execSync(`unzip -o "${V2_PATH}" -d "${V2_WORK}"`, { stdio: 'pipe' });
 
 const CONTENT_DIR = join(WORK_DIR, 'GoogleDoc');
-const mainXhtml = readFileSync(join(CONTENT_DIR, 'CHASING_THE_SUN_v2__6_.docx.xhtml'), 'utf-8');
+const mainXhtml = readFileSync(join(CONTENT_DIR, 'CHASING_THE_SUN_v3_revised.docx.xhtml'), 'utf-8');
 
-// Copy cover.jpg from v2 (draft doesn't have one)
+// Copy cover.jpg from v2 (v3 doesn't have one)
 const v2ImagesDir = join(V2_WORK, 'GoogleDoc', 'images');
 const draftImagesDir = join(CONTENT_DIR, 'images');
 if (existsSync(join(v2ImagesDir, 'cover.jpg'))) {
@@ -60,11 +61,11 @@ function hasSubstantialContent(html) {
 }
 
 // Heading patterns that mark the start of a new section
-// Draft CSS class mappings:
-//   c22 = 16pt bold Garamond (INTERLUDE, some chapter headings)
-//   c32 = 14pt bold Garamond (chapter headings)
-//   c46 = 18pt bold Garamond (PART, PROLOGUE, EPILOGUE headings)
-const headingRe = /<(?:h[12]\s[^>]*>\s*<span[^>]*>(?:Chapter|PART|INTERLUDE|PROLOGUE|EPILOGUE)|p\s[^>]*>\s*<span[^>]*\b(?:c22|c32|c46)\b[^>]*>(?:Chapter|PART|INTERLUDE|PROLOGUE|EPILOGUE))/i;
+// v3 CSS class mappings:
+//   c45 = 10pt Garamond (broken chapter/interlude headings in <p> tags)
+//   c30 = 14pt bold Garamond (chapter headings in <p> tags)
+//   c54 = 18pt bold Garamond (PART, PROLOGUE, EPILOGUE heading spans)
+const headingRe = /<(?:h[12]\s[^>]*>\s*<span[^>]*>(?:Chapter|PART|INTERLUDE|PROLOGUE|EPILOGUE)|p\s[^>]*>\s*<span[^>]*\b(?:c45|c30|c54)\b[^>]*>(?:Chapter|PART|INTERLUDE|PROLOGUE|EPILOGUE))/i;
 
 function splitSection(html) {
   const results = [];
@@ -131,8 +132,8 @@ function extractTitle(html) {
   const h2 = html.match(/<h2[^>]*>\s*<span[^>]*>(.*?)<\/span>\s*<\/h2>/);
   if (h2) return h2[1].replace(/<[^>]*>/g, '').trim();
 
-  // Draft heading font classes in <p> tags
-  for (const cls of ['c46', 'c22', 'c32']) {
+  // v3 heading font classes in <p> tags
+  for (const cls of ['c54', 'c45', 'c30']) {
     const m = html.match(new RegExp(`<span[^>]*\\b${cls}\\b[^>]*>(.*?)<\\/span>`));
     if (m) {
       const text = m[1].replace(/<[^>]*>/g, '').trim();
@@ -140,36 +141,36 @@ function extractTitle(html) {
     }
   }
 
-  // Title page: c68 = 41pt Garamond
-  const big = html.match(/<span[^>]*\bc68\b[^>]*>(.*?)<\/span>/);
+  // Title page: c53 = 41pt Garamond (v3 title class)
+  const big = html.match(/<span[^>]*\bc53\b[^>]*>(.*?)<\/span>/);
   if (big) return big[1].replace(/<[^>]*>/g, '').trim();
 
   return null;
 }
 
 // Extract the italic subtitle that follows the heading
-// Draft italic indicators: c14 (16pt italic), c7 (14pt italic), c40 (font-style:italic)
+// v3 italic indicators: c8 (font-style:italic), c29 (15pt Garamond)
+// v3 italic span classes: c29+c8 (italic subtitle), c46+c8 or similar
 function extractSubtitle(html) {
-  // After h1/h2 heading
-  const afterHeading = html.match(/<\/h[12]>[\s\S]*?<p[^>]*>\s*<span[^>]*\b(?:c14|c7|c40)\b[^>]*>(.*?)<\/span>/);
+  // After h1/h2 heading — look for italic span
+  const afterHeading = html.match(/<\/h[12]>[\s\S]*?<p[^>]*>\s*<span[^>]*\b(?:c8|c29)\b[^>]*>(.*?)<\/span>/);
   if (afterHeading) {
     const text = afterHeading[1].replace(/<[^>]*>/g, '').trim();
-    if (text) return text;
+    if (text && text.length > 2) return text;
   }
 
   // After <p>-wrapped heading (before normalization)
-  // Look for heading span (c22/c32/c46) then italic span nearby
-  const afterPHeading = html.match(/<span[^>]*\b(?:c22|c32|c46)\b[^>]*>(?:Chapter|INTERLUDE|PART)[^<]*<\/span>[\s\S]*?<span[^>]*\b(?:c14|c7|c40)\b[^>]*>(.*?)<\/span>/i);
+  const afterPHeading = html.match(/<span[^>]*\b(?:c45|c30|c54)\b[^>]*>(?:Chapter|INTERLUDE|PART)[^<]*<\/span>[\s\S]*?<span[^>]*\b(?:c8|c29)\b[^>]*>(.*?)<\/span>/i);
   if (afterPHeading) {
     const text = afterPHeading[1].replace(/<[^>]*>/g, '').trim();
-    if (text) return text;
+    if (text && text.length > 2) return text;
   }
 
-  // Fallback: first italic span near the start (c14 or c7)
-  const italicSpan = html.match(/<span[^>]*\b(?:c14|c7)\b[^>]*>(.*?)<\/span>/);
+  // Fallback: first italic span with font-style:italic class near the start
+  const italicSpan = html.match(/<span[^>]*\b(?:c8)\b[^>]*>(.*?)<\/span>/);
   if (italicSpan) {
     const text = italicSpan[1].replace(/<[^>]*>/g, '').trim();
-    if (text) return text;
+    if (text && text.length > 2) return text;
   }
 
   return null;
@@ -198,29 +199,42 @@ function standardizeTitle(title) {
 }
 
 // Normalize headings: convert <p>-wrapped chapter/part/interlude titles to proper <h1>/<h2>
+// v3 CSS: c54 = 18pt bold (PART/PROLOGUE/EPILOGUE spans), c30 = 14pt bold, c45 = 10pt (broken headings)
 function normalizeHeadings(html) {
-  // PART headings in <p> with c46 span → <h1>
+  // PART headings in <p> with c54 span → <h1>
   html = html.replace(
-    /<p\s+class="[^"]*">\s*<span[^>]*\b(?:c46)\b[^>]*>(PART\s+\w+)<\/span>\s*<\/p>/gi,
-    '<h1 class="c52"><span class="c46">$1</span></h1>'
+    /<p\s+class="[^"]*">\s*<span[^>]*\b(?:c54)\b[^>]*>(PART\s+\w+)<\/span>\s*<\/p>/gi,
+    '<h1 class="c64"><span class="c54">$1</span></h1>'
   );
 
-  // INTERLUDE in <p> with c22 span → <h2>
+  // PROLOGUE/EPILOGUE in <p> → <h1>
   html = html.replace(
-    /<p\s+class="[^"]*">\s*<span[^>]*\b(?:c22)\b[^>]*>(INTERLUDE)<\/span>\s*<\/p>/gi,
-    '<h2 class="c48"><span class="c22">$1</span></h2>'
+    /<p\s+class="[^"]*">\s*<span[^>]*\b(?:c54)\b[^>]*>(PROLOGUE|EPILOGUE)<\/span>\s*<\/p>/gi,
+    '<h1 class="c47"><span class="c54">$1</span></h1>'
   );
 
-  // Chapter headings in <p> with c22 span → <h2>
+  // INTERLUDE in <p> with c45 span → <h2>
   html = html.replace(
-    /<p\s+class="[^"]*">\s*<span[^>]*\b(?:c22)\b[^>]*>(Chapter\s+[\w-]+)<\/span>\s*<\/p>/gi,
-    '<h2 class="c48"><span class="c22">$1</span></h2>'
+    /<p\s+class="[^"]*">\s*<span[^>]*\b(?:c45)\b[^>]*>(INTERLUDE)<\/span>\s*<\/p>/gi,
+    '<h2 class="c26"><span class="c45">$1</span></h2>'
   );
 
-  // Chapter headings in <p> with c32 span → <h2>
+  // Chapter headings in <p> with c45 span (10pt - broken) → <h2>
   html = html.replace(
-    /<p\s+class="[^"]*">\s*<span[^>]*\b(?:c32)\b[^>]*>(Chapter\s+[\w-]+)<\/span>\s*<\/p>/gi,
-    '<h2 class="c48"><span class="c32">$1</span></h2>'
+    /<p\s+class="[^"]*">\s*<span[^>]*\b(?:c45)\b[^>]*>(Chapter\s+[\w-]+)<\/span>\s*<\/p>/gi,
+    '<h2 class="c26"><span class="c45">$1</span></h2>'
+  );
+
+  // Chapter headings in <p> with c30 span (14pt bold) → <h2>
+  html = html.replace(
+    /<p\s+class="[^"]*">\s*<span[^>]*\b(?:c30)\b[^>]*>(Chapter\s+[\w-]+)<\/span>\s*<\/p>/gi,
+    '<h2 class="c26"><span class="c30">$1</span></h2>'
+  );
+
+  // Handle combined heading+subtitle in one <p> (e.g. Chapter + <br/> + subtitle)
+  html = html.replace(
+    /<p\s+class="[^"]*">\s*<span([^>]*\b(?:c30|c45)\b[^>]*)>(Chapter\s+[\w-]+)<\/span>\s*<span[^>]*>\s*<br\/>\s*<\/span>\s*<span([^>]*)>([^<]+)<\/span>\s*<\/p>/gi,
+    '<h2 class="c26"><span$1>$2</span></h2>\n    <p class="c19"><span$3>$4</span></p>'
   );
 
   return html;
@@ -381,7 +395,7 @@ writeFileSync(join(CONTENT_DIR, 'package.opf'), packageOpf);
 console.log('Rebuilt package.opf');
 
 // Remove original monolithic source file
-execSync(`rm -f "${join(CONTENT_DIR, 'CHASING_THE_SUN_v2__6_.docx.xhtml')}"`);
+execSync(`rm -f "${join(CONTENT_DIR, 'CHASING_THE_SUN_v3_revised.docx.xhtml')}"`);
 
 // Re-pack epub
 mkdirSync(dirname(EPUB_PATH), { recursive: true });
