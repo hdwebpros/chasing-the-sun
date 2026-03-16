@@ -240,12 +240,56 @@ function normalizeHeadings(html) {
   return html;
 }
 
+// Balance unclosed/orphaned HTML tags in a section fragment
+function balanceTags(html) {
+  // Track open tags with a stack
+  const tagRe = /<\/?([a-zA-Z][a-zA-Z0-9]*)\b[^>]*\/?>/g;
+  const selfClosingTags = new Set(['br', 'hr', 'img', 'meta', 'link', 'input']);
+  const stack = [];
+  let match;
+
+  // Remove orphan closing tags at the start (before any real content/opening tag)
+  html = html.replace(/^(\s*(<\/[a-zA-Z][a-zA-Z0-9]*\s*>\s*)+)/, (m) => {
+    // Keep whitespace but remove the orphan closing tags
+    return '';
+  });
+
+  while ((match = tagRe.exec(html)) !== null) {
+    const fullTag = match[0];
+    const tagName = match[1].toLowerCase();
+
+    // Skip self-closing tags
+    if (selfClosingTags.has(tagName) || fullTag.endsWith('/>')) continue;
+
+    if (fullTag.startsWith('</')) {
+      // Closing tag — pop matching open tag if exists
+      for (let i = stack.length - 1; i >= 0; i--) {
+        if (stack[i] === tagName) {
+          stack.splice(i, 1);
+          break;
+        }
+      }
+    } else {
+      // Opening tag
+      stack.push(tagName);
+    }
+  }
+
+  // Close any remaining open tags in reverse order
+  for (let i = stack.length - 1; i >= 0; i--) {
+    html += `</${stack[i]}>`;
+  }
+
+  return html;
+}
+
 function makeXhtml(section) {
   const normalized = normalizeHeadings(section);
+  const balanced = balanceTags(normalized);
   return `<?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml">
   ${headContent}
   <body${bodyAttrs}>
-    ${normalized}
+    ${balanced}
   </body>
 </html>`;
 }
