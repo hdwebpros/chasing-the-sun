@@ -58,13 +58,19 @@ const characters: Character[] = [
     name: 'Letitia Boog',
     role: 'Daughter of William & Mary — Sister Berissima',
     summary:
-      "The quietest and most deeply empathetic of William and Mary's children, Letitia tends gardens at every home the family occupies and is always the first to comfort a crying sibling. She enters the convent at St. Catherine's, taking the name Sister Berissima, returning the deed to her house because she has chosen a life beyond property.",
+      "The quietest and most deeply empathetic of William and Mary's children, Letitia tends gardens at every home the family occupies and is always the first to comfort a crying sibling. She enters the convent at St. Catherine's, taking the name Sister Berissima, where she teaches art. She returns the deed to her house because she has chosen a life beyond property.",
   },
   {
     name: 'William Boog Jr.',
     role: 'Son of William & Mary',
     summary:
-      'Born at 13 Aston\'s Quay in Dublin and carried to America as an infant, William Jr. grows into the steady, rooted version of his father — running his own painting crew in St. Paul and building a stable life. He dies of the Spanish flu in February 1919, the seventh X on his father\'s folded paper.',
+      'Born at 13 Aston\'s Quay in Dublin, William Jr. lived only eleven months before dying in Dublin — a loss that shattered William and Mary and became one of the earliest marks on his father\'s folded paper.',
+  },
+  {
+    name: 'George Boog',
+    role: 'Son of William & Mary',
+    summary:
+      'Like his brother William Jr., George lived only eleven months — another devastating loss for William and Mary, and another mark on his father\'s folded paper.',
   },
   {
     name: 'Rose Boog',
