@@ -32,7 +32,7 @@ useHead({ title: 'About the Author — Chasing the Sun' })
         <p>
           When Ryan's aunt Judy passed away, he received a box of old photographs and a folder of
           genealogy notes. Sifting through faded images and handwritten records, he realized he had
-          no idea where his last name came from — or the story behind it.
+          no idea where his last name came from, or the story behind it.
         </p>
 
         <p>
