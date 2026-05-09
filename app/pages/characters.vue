@@ -59,6 +59,9 @@ const characters: Character[] = [
     role: 'Daughter of William & Mary — Sister Berissima',
     summary:
       "The quietest and most deeply empathetic of William and Mary's children, Letitia tends gardens at every home the family occupies and is always the first to comfort a crying sibling. She enters the convent at St. Catherine's, taking the name Sister Berissima, where she teaches art. She returns the deed to her house because she has chosen a life beyond property.",
+    images: [
+      { src: '/images/characters/Letitia.jpg', alt: 'Letitia Boog' },
+    ],
   },
   {
     name: 'William Boog Jr.',
