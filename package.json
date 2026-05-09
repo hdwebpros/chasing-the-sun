@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "build:epub": "node scripts/build-epub.js"
+    "build:epub": "node scripts/build-epub.js",
+    "build:epub:final": "node scripts/build-epub-final.js"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.14.0",
