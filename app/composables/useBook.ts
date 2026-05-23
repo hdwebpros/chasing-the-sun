@@ -17,6 +17,7 @@ export function useBook() {
   const currentChapter = ref('')
   const currentChapterLabel = ref('')
   const progress = ref(0)
+  const chapterProgress = ref(0)
   const totalLocations = ref(0)
   const isLoading = ref(true)
   const bookTitle = ref('')
@@ -170,6 +171,7 @@ export function useBook() {
       if (b.locations.length()) {
         progress.value = b.locations.percentageFromCfi(location.start.cfi) * 100
       }
+      chapterProgress.value = (location.start?.percentage ?? 0) * 100
       atStart.value = location.atStart ?? false
       atEnd.value = location.atEnd ?? false
 
@@ -241,6 +243,7 @@ export function useBook() {
     currentChapter,
     currentChapterLabel,
     progress,
+    chapterProgress,
     totalLocations,
     isLoading,
     bookTitle,
