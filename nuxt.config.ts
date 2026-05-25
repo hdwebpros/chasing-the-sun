@@ -5,6 +5,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   future: { compatibilityVersion: 4 },
 
+  runtimeConfig: {
+    pusherAppId: '',
+    pusherSecret: '',
+    public: {
+      pusherKey: '',
+      pusherCluster: '',
+    },
+  },
+
   modules: [
     '@nuxt/fonts',
     '@nuxt/icon',
