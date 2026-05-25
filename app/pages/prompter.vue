@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { TWITCH_CHAPTERS, type TwitchChapter, type Pulse, type PulseStyle } from '~/data/twitch'
+import epubImageManifest from '~/data/epub-images.json'
+
+type EpubImage = { src: string; alt: string }
+const manifest = epubImageManifest as Record<string, EpubImage[]>
 
 definePageMeta({ layout: false })
 
@@ -34,24 +38,40 @@ const pulses = ref<Pulse[]>([])
 const currentPulse = computed(() => pulses.value[pulseIdx.value] ?? null)
 const nextPulse = computed(() => pulses.value[pulseIdx.value + 1] ?? null)
 
-function clonePulses(c: TwitchChapter | null): Pulse[] {
-  return c ? c.pulses.map((p) => ({ ...p })) : []
+// Fetched fresh from /api each chapter change so deletes/edits survive refresh
+// (static `c.pulses` is module-cached by Vite and goes stale after PUT).
+async function loadPulsesForChapter(c: TwitchChapter): Promise<Pulse[]> {
+  try {
+    const res = await $fetch<{ pulses: Pulse[] }>(`/api/twitch/pulses/${c.id}`)
+    return res.pulses ?? []
+  } catch (e) {
+    console.warn('Falling back to static pulses for', c.id, e)
+    return c.pulses.map((p) => ({ ...p }))
+  }
 }
 
 // When chapter changes, sync the twitch view + reset pulse pointer + reload editable pulses
-watch(activeChapter, (c, prev) => {
+watch(activeChapter, async (c, prev) => {
   if (!c) {
     pulses.value = []
     return
   }
   if (c.id !== prev?.id) {
-    pulses.value = clonePulses(c)
+    pulses.value = await loadPulsesForChapter(c)
     pulseIdx.value = 0
     firedIds.value = new Set()
     clearSelection()
     send({ type: 'chapter', id: c.id })
+    refreshHighlights()
   }
 }, { immediate: true })
+
+// Auto-derived list of images embedded in the current chapter's xhtml
+const chapterImages = computed<EpubImage[]>(() => {
+  const c = activeChapter.value
+  if (!c) return []
+  return manifest[c.epubHref] ?? []
+})
 
 // Selection composer state
 const selectedText = ref('')
@@ -112,13 +132,167 @@ function removePulse(i: number) {
   persistPulses()
 }
 
+// Reading-order insertion: look up each pulse's phrase in the chapter text
+// and slot the new entry at the right position. Falls back to append if the
+// phrase can't be found (e.g. user-edited beyond the original selection).
+function chapterText(): string {
+  const r = rendition.value as any
+  const contents = r?.getContents?.() ?? []
+  return contents[0]?.document?.body?.textContent ?? ''
+}
+
+function norm(s: string): string {
+  return s
+    .replace(/[‘’‛`]/g, "'")
+    .replace(/[“”„]/g, '"')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase()
+}
+
+function findInsertionIndex(searchText: string): number {
+  const text = norm(chapterText())
+  if (!text) return pulses.value.length
+  const newPos = text.indexOf(norm(searchText))
+  if (newPos < 0) return pulses.value.length
+
+  for (let i = 0; i < pulses.value.length; i++) {
+    const pos = text.indexOf(norm(pulses.value[i].phrase))
+    if (pos < 0) continue
+    if (pos > newPos) return i
+  }
+  return pulses.value.length
+}
+
+// Highlight queued phrases inside the epub iframe so they're easy to spot while reading.
+// Wraps each pulse phrase in <mark class="pulse-highlight"> and tags current/fired state.
+function escapeRegex(s: string) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function getDocs(): Document[] {
+  const r = rendition.value as any
+  const contents = r?.getContents?.() ?? []
+  return contents.map((c: any) => c?.document).filter(Boolean)
+}
+
+function injectHighlightStyles(doc: Document) {
+  if (doc.getElementById('pulse-highlight-style')) return
+  const style = doc.createElement('style')
+  style.id = 'pulse-highlight-style'
+  style.textContent = `
+    mark.pulse-highlight {
+      background: rgba(212, 165, 116, 0.28);
+      color: inherit;
+      font-size: 1.1em;
+      font-weight: 600;
+      padding: 0.05em 0.2em;
+      border-radius: 0.2em;
+      transition: background 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+    }
+    mark.pulse-highlight.pulse-current {
+      background: rgba(212, 165, 116, 0.6);
+      box-shadow: 0 0 0 2px rgba(212, 165, 116, 0.55);
+    }
+    mark.pulse-highlight.pulse-fired {
+      opacity: 0.4;
+    }
+  `
+  doc.head.appendChild(style)
+}
+
+function clearHighlights(doc: Document) {
+  doc.querySelectorAll('mark.pulse-highlight').forEach((el) => {
+    const parent = el.parentNode
+    if (!parent) return
+    while (el.firstChild) parent.insertBefore(el.firstChild, el)
+    parent.removeChild(el)
+  })
+  doc.body?.normalize?.()
+}
+
+function wrapPhrase(doc: Document, phrase: string, index: number) {
+  const target = norm(phrase)
+  if (!target) return
+  const escaped = target.split(' ').map(escapeRegex).join('\\s+')
+  const re = new RegExp(escaped, 'i')
+
+  const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, {
+    acceptNode: (node) => {
+      const el = (node as Text).parentElement
+      if (!el) return NodeFilter.FILTER_REJECT
+      if (el.closest('mark.pulse-highlight, script, style')) return NodeFilter.FILTER_REJECT
+      return NodeFilter.FILTER_ACCEPT
+    },
+  } as any)
+
+  const nodes: Text[] = []
+  let n: Node | null
+  while ((n = walker.nextNode())) nodes.push(n as Text)
+
+  for (const textNode of nodes) {
+    const m = textNode.data.match(re)
+    if (!m || m.index === undefined) continue
+
+    const before = textNode.data.slice(0, m.index)
+    const match = textNode.data.slice(m.index, m.index + m[0].length)
+    const after = textNode.data.slice(m.index + m[0].length)
+
+    const mark = doc.createElement('mark')
+    mark.className = 'pulse-highlight'
+    mark.dataset.pulseIdx = String(index)
+    mark.textContent = match
+
+    const parent = textNode.parentNode
+    if (!parent) continue
+    if (before) parent.insertBefore(doc.createTextNode(before), textNode)
+    parent.insertBefore(mark, textNode)
+    if (after) parent.insertBefore(doc.createTextNode(after), textNode)
+    parent.removeChild(textNode)
+    return
+  }
+}
+
+function applyPulseStates(doc: Document) {
+  doc.querySelectorAll('mark.pulse-highlight').forEach((el) => {
+    const idx = parseInt((el as HTMLElement).dataset.pulseIdx ?? '-1', 10)
+    el.classList.toggle('pulse-current', idx === pulseIdx.value)
+    el.classList.toggle('pulse-fired', firedIds.value.has(idx))
+  })
+}
+
+function refreshHighlights() {
+  for (const doc of getDocs()) {
+    injectHighlightStyles(doc)
+    clearHighlights(doc)
+    pulses.value.forEach((p, i) => wrapPhrase(doc, p.phrase, i))
+    applyPulseStates(doc)
+  }
+}
+
+function refreshPulseStates() {
+  getDocs().forEach(applyPulseStates)
+}
+
+watch(pulses, () => refreshHighlights(), { deep: true })
+watch([pulseIdx, firedIds], () => refreshPulseStates(), { deep: true })
+
 function addPulseFromComposer() {
   const phrase = composerPhrase.value.trim()
   const pulse = composerPulse.value.trim()
   if (!phrase || !pulse) return
   const entry: Pulse = { phrase, pulse }
   if (composerStyle.value !== 'flash') entry.style = composerStyle.value
-  pulses.value.push(entry)
+
+  const insertIdx = findInsertionIndex(selectedText.value || phrase)
+  pulses.value.splice(insertIdx, 0, entry)
+
+  // Shift pulseIdx + firedIds so they keep pointing at the same logical pulses
+  if (pulseIdx.value >= insertIdx) pulseIdx.value++
+  const newFired = new Set<number>()
+  firedIds.value.forEach((idx) => newFired.add(idx >= insertIdx ? idx + 1 : idx))
+  firedIds.value = newFired
+
   clearSelection()
   persistPulses()
 }
@@ -127,6 +301,12 @@ function openComposer(text: string) {
   selectedText.value = text
   composerPhrase.value = text.trim().replace(/\s+/g, ' ')
   composerPulse.value = suggestPulseText(text, composerStyle.value)
+}
+
+let pulseCounterImg = 0
+function fireImage(img: EpubImage) {
+  pulseCounterImg++
+  send({ type: 'image', src: `/images/epub/${img.src}`, id: pulseCounterImg + 100000 })
 }
 
 // Stream reading progress to /twitch
@@ -189,13 +369,18 @@ onMounted(async () => {
   }
   window.addEventListener('keydown', handleKeydown)
 
-  // Listen for text selection in the epub iframe; open composer with the text
+  // Listen for text selection in the epub iframe; open composer with the text.
+  // Also re-apply highlights every time a new section/page renders.
   watch(rendition, (r) => {
     if (!r) return
     r.on('selected', (_cfiRange: string, contents: any) => {
       const sel = contents?.window?.getSelection?.()
       const text = sel?.toString?.() ?? ''
       if (text.trim().length >= 3) openComposer(text)
+    })
+    r.on('rendered', () => {
+      // Tiny delay so epub.js finishes its own DOM work first
+      setTimeout(refreshHighlights, 50)
     })
   }, { immediate: true })
 })
@@ -431,6 +616,33 @@ const themeIcon = computed(() => {
           </button>
         </div>
 
+        <!-- Chapter images: auto-discovered from the epub, click a thumb to spotlight it on /twitch -->
+        <div
+          v-if="chapterImages.length"
+          class="px-4 py-3 border-b"
+          :style="{ borderColor: theme.borderColor }"
+        >
+          <div class="text-xs uppercase tracking-wider mb-2" :style="{ color: theme.mutedColor }">
+            Images in this chapter
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <button
+              v-for="img in chapterImages"
+              :key="img.src"
+              class="w-16 h-16 rounded overflow-hidden border cursor-pointer hover:ring-2 hover:ring-gold-500 transition-all"
+              :style="{ borderColor: theme.borderColor }"
+              :title="`Fire image: ${img.src}`"
+              @click="fireImage(img)"
+            >
+              <img
+                :src="`/images/epub/${img.src}`"
+                class="w-full h-full object-cover"
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
+
         <!-- Big fire button -->
         <div v-if="currentPulse" class="px-4 py-4 border-b" :style="{ borderColor: theme.borderColor }">
           <button
@@ -473,8 +685,8 @@ const themeIcon = computed(() => {
                   "{{ p.phrase }}"
                 </div>
               </div>
-              <span v-if="p.style" class="text-[10px] uppercase tracking-wider opacity-60 shrink-0 mt-1">
-                {{ p.style }}
+              <span class="text-[10px] uppercase tracking-wider opacity-60 shrink-0 mt-1">
+                {{ p.style ?? 'flash' }}
               </span>
               <button
                 class="ml-1 shrink-0 w-6 h-6 flex items-center justify-center rounded text-xs opacity-0 group-hover:opacity-70 hover:!opacity-100 hover:bg-red-500/20 hover:text-red-400 transition-opacity cursor-pointer"

@@ -31,6 +31,13 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include: ['epubjs'],
     },
+    server: {
+      watch: {
+        // The /prompter UI rewrites this file via PUT; ignoring it prevents HMR
+        // from full-reloading the page (which would re-mount epub.js) on every edit.
+        ignored: ['**/app/data/twitch.ts'],
+      },
+    },
   },
   
   shadcn: {

@@ -2,6 +2,7 @@ import type { PulseStyle } from '~/data/twitch'
 
 export type PulseMessage =
   | { type: 'pulse'; text: string; style: PulseStyle; id: number }
+  | { type: 'image'; src: string; id: number }
   | { type: 'chapter'; id: string }
   | { type: 'progress'; book: number; chapter: number; chapterLabel: string }
   | { type: 'reset' }

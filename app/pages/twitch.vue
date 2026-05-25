@@ -12,6 +12,7 @@ const route = useRoute()
 const { onMessage } = usePulseChannel()
 
 const SLIDE_MS = 20000
+const SPOTLIGHT_MS = 8000
 const chapterId = ref<string>((route.query.chapter as string) || 'interlude')
 const chapter = computed<TwitchChapter | null>(() => TWITCH_CHAPTERS[chapterId.value] ?? null)
 
@@ -87,6 +88,20 @@ function showPulse(text: string, style: PulseStyle, id: number) {
   }, PULSE_MS[style])
 }
 
+// Spotlight image — temporary takeover above the slideshow
+interface ActiveSpotlight { id: number; src: string; key: number }
+const spotlight = ref<ActiveSpotlight | null>(null)
+let spotlightCounter = 0
+let spotlightTimer: ReturnType<typeof setTimeout> | null = null
+
+function showSpotlight(src: string, id: number) {
+  if (spotlightTimer) clearTimeout(spotlightTimer)
+  spotlight.value = { id, src, key: ++spotlightCounter }
+  spotlightTimer = setTimeout(() => {
+    if (spotlight.value?.id === id) spotlight.value = null
+  }, SPOTLIGHT_MS)
+}
+
 onMounted(async () => {
   if (chapter.value) {
     await loadImages(chapter.value.slideshow)
@@ -98,12 +113,16 @@ onMounted(async () => {
       chapterId.value = msg.id
     } else if (msg.type === 'pulse') {
       showPulse(msg.text, msg.style, msg.id)
+    } else if (msg.type === 'image') {
+      showSpotlight(msg.src, msg.id)
     } else if (msg.type === 'progress') {
       bookProgress.value = msg.book
       chapterProgress.value = msg.chapter
       chapterLabel.value = msg.chapterLabel
     } else if (msg.type === 'reset') {
       activePulse.value = null
+      spotlight.value = null
+      if (spotlightTimer) { clearTimeout(spotlightTimer); spotlightTimer = null }
       startSlideshow()
     }
   })
@@ -112,6 +131,7 @@ onMounted(async () => {
 onBeforeUnmount(() => {
   stopSlideshow()
   if (pulseTimer) clearTimeout(pulseTimer)
+  if (spotlightTimer) clearTimeout(spotlightTimer)
 })
 
 </script>
@@ -153,6 +173,21 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
+
+    <!-- Spotlight image overlay: confined to left 2/3 so the streamer's right column stays clear -->
+    <Transition name="spotlight">
+      <div
+        v-if="spotlight"
+        :key="spotlight.key"
+        class="absolute inset-y-0 left-0 w-2/3 z-[25] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+      >
+        <img
+          :src="spotlight.src"
+          class="max-w-[90%] max-h-[90%] object-contain shadow-2xl spotlight-img"
+          alt=""
+        />
+      </div>
+    </Transition>
 
     <!-- Pulse overlay: middle-left third -->
     <div class="absolute inset-y-0 left-0 w-2/3 flex items-center justify-start pl-16 pointer-events-none z-30">
@@ -286,5 +321,17 @@ onBeforeUnmount(() => {
 }
 @keyframes whisperOut {
   to { opacity: 0; filter: blur(4px); }
+}
+
+/* Spotlight image overlay */
+.spotlight-enter-active { transition: opacity 0.5s ease-out; }
+.spotlight-leave-active { transition: opacity 0.6s ease-in; }
+.spotlight-enter-from, .spotlight-leave-to { opacity: 0; }
+.spotlight-img {
+  animation: spotlightKenBurns 8s ease-out forwards;
+}
+@keyframes spotlightKenBurns {
+  0%   { transform: scale(0.96); }
+  100% { transform: scale(1.04); }
 }
 </style>
