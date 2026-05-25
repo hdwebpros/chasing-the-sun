@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TWITCH_CHAPTERS, type TwitchChapter } from '~/data/twitch'
+import { TWITCH_CHAPTERS, type TwitchChapter, type Pulse, type PulseStyle } from '~/data/twitch'
 
 definePageMeta({ layout: false })
 
@@ -7,7 +7,7 @@ useHead({
   title: 'Prompter — Chasing the Sun',
 })
 
-const { toc, currentChapter, currentChapterLabel, progress, chapterProgress, isLoading, loadBook, goToChapter, next, prev, destroy } = useBook()
+const { rendition, toc, currentChapter, currentChapterLabel, progress, chapterProgress, isLoading, loadBook, goToChapter, next, prev, destroy } = useBook()
 const { mode, theme, cycleMode } = useReaderTheme()
 const { send } = usePulseChannel()
 
@@ -29,19 +29,105 @@ const activeChapter = computed<TwitchChapter | null>(() => {
   return null
 })
 
-const pulses = computed(() => activeChapter.value?.pulses ?? [])
+// Editable local copy of pulses; persisted to twitch.ts via PUT when changed
+const pulses = ref<Pulse[]>([])
 const currentPulse = computed(() => pulses.value[pulseIdx.value] ?? null)
 const nextPulse = computed(() => pulses.value[pulseIdx.value + 1] ?? null)
 
-// When chapter changes, sync the twitch view + reset pulse pointer
+function clonePulses(c: TwitchChapter | null): Pulse[] {
+  return c ? c.pulses.map((p) => ({ ...p })) : []
+}
+
+// When chapter changes, sync the twitch view + reset pulse pointer + reload editable pulses
 watch(activeChapter, (c, prev) => {
-  if (!c) return
+  if (!c) {
+    pulses.value = []
+    return
+  }
   if (c.id !== prev?.id) {
+    pulses.value = clonePulses(c)
     pulseIdx.value = 0
     firedIds.value = new Set()
+    clearSelection()
     send({ type: 'chapter', id: c.id })
   }
+}, { immediate: true })
+
+// Selection composer state
+const selectedText = ref('')
+const composerPhrase = ref('')
+const composerPulse = ref('')
+const composerStyle = ref<PulseStyle>('flash')
+const savingPulses = ref(false)
+const saveError = ref('')
+
+function clearSelection() {
+  selectedText.value = ''
+  composerPhrase.value = ''
+  composerPulse.value = ''
+  composerStyle.value = 'flash'
+}
+
+// Convert selection → suggested pulse text (uppercase for stamp, plain otherwise)
+function suggestPulseText(text: string, style: PulseStyle): string {
+  const trimmed = text.trim().replace(/\s+/g, ' ')
+  return style === 'stamp' ? trimmed.toUpperCase() : trimmed
+}
+
+watch(composerStyle, (style) => {
+  // Re-suggest pulse text when style changes, but only if user hasn't customized
+  if (!composerPulse.value || composerPulse.value === suggestPulseText(selectedText.value, style === 'stamp' ? 'flash' : 'stamp')) {
+    composerPulse.value = suggestPulseText(selectedText.value, style)
+  }
 })
+
+async function persistPulses() {
+  const c = activeChapter.value
+  if (!c) return
+  savingPulses.value = true
+  saveError.value = ''
+  try {
+    await $fetch(`/api/twitch/pulses/${c.id}`, {
+      method: 'PUT',
+      body: { pulses: pulses.value },
+    })
+  } catch (e: any) {
+    saveError.value = e?.statusMessage || e?.message || 'save failed'
+    console.error('Failed to persist pulses', e)
+  } finally {
+    savingPulses.value = false
+  }
+}
+
+function removePulse(i: number) {
+  pulses.value.splice(i, 1)
+  // Adjust pulseIdx / firedIds to keep them sensible
+  if (pulseIdx.value > i) pulseIdx.value--
+  const newFired = new Set<number>()
+  firedIds.value.forEach((idx) => {
+    if (idx < i) newFired.add(idx)
+    else if (idx > i) newFired.add(idx - 1)
+  })
+  firedIds.value = newFired
+  persistPulses()
+}
+
+function addPulseFromComposer() {
+  const phrase = composerPhrase.value.trim()
+  const pulse = composerPulse.value.trim()
+  if (!phrase || !pulse) return
+  const entry: Pulse = { phrase, pulse }
+  if (composerStyle.value !== 'flash') entry.style = composerStyle.value
+  pulses.value.push(entry)
+  clearSelection()
+  persistPulses()
+}
+
+function openComposer(text: string) {
+  selectedText.value = text
+  composerPhrase.value = text.trim().replace(/\s+/g, ' ')
+  composerPulse.value = suggestPulseText(text, composerStyle.value)
+}
 
 // Stream reading progress to /twitch
 watch([progress, chapterProgress, currentChapterLabel], ([book, chapter, label]) => {
@@ -102,6 +188,16 @@ onMounted(async () => {
     await loadBook(readerEl.value)
   }
   window.addEventListener('keydown', handleKeydown)
+
+  // Listen for text selection in the epub iframe; open composer with the text
+  watch(rendition, (r) => {
+    if (!r) return
+    r.on('selected', (_cfiRange: string, contents: any) => {
+      const sel = contents?.window?.getSelection?.()
+      const text = sel?.toString?.() ?? ''
+      if (text.trim().length >= 3) openComposer(text)
+    })
+  }, { immediate: true })
 })
 
 onUnmounted(() => {
@@ -232,7 +328,7 @@ const themeIcon = computed(() => {
           <Button variant="ghost" size="sm" class="cursor-pointer" :style="{ color: theme.mutedColor }" @click="prev">
             <Icon name="lucide:chevron-left" class="h-4 w-4 mr-1" /> Previous
           </Button>
-          <span class="text-xs" :style="{ color: theme.mutedColor }">← / → page · Space / Tab to fire pulse</span>
+          <span class="text-xs" :style="{ color: theme.mutedColor }">← / → page · Space / Tab fire pulse · select text to add</span>
           <Button variant="ghost" size="sm" class="cursor-pointer" :style="{ color: theme.mutedColor }" @click="next">
             Next <Icon name="lucide:chevron-right" class="h-4 w-4 ml-1" />
           </Button>
@@ -246,8 +342,10 @@ const themeIcon = computed(() => {
       >
         <div class="px-4 py-3 border-b" :style="{ borderColor: theme.borderColor }">
           <div class="flex items-center justify-between mb-1">
-            <div class="text-xs uppercase tracking-wider" :style="{ color: theme.mutedColor }">
+            <div class="text-xs uppercase tracking-wider flex items-center gap-2" :style="{ color: theme.mutedColor }">
               Pulses
+              <span v-if="savingPulses" class="text-[10px] italic opacity-70">saving…</span>
+              <span v-if="saveError" class="text-[10px] text-red-400">save failed: {{ saveError }}</span>
             </div>
             <button
               v-if="activeChapter"
@@ -264,6 +362,73 @@ const themeIcon = computed(() => {
           <div v-else class="text-sm italic" :style="{ color: theme.mutedColor }">
             No pulses configured for this chapter
           </div>
+        </div>
+
+        <!-- Selection composer: appears when user selects text in the epub -->
+        <div
+          v-if="selectedText && activeChapter"
+          class="px-4 py-3 border-b space-y-2"
+          :style="{ borderColor: theme.borderColor, background: `${theme.headingColor}08` }"
+        >
+          <div class="flex items-center justify-between">
+            <div class="text-xs uppercase tracking-wider" :style="{ color: theme.headingColor }">
+              New pulse from selection
+            </div>
+            <button
+              class="text-xs opacity-70 hover:opacity-100 cursor-pointer"
+              :style="{ color: theme.mutedColor }"
+              @click="clearSelection"
+            >
+              ✕ cancel
+            </button>
+          </div>
+          <div>
+            <label class="block text-[10px] uppercase tracking-wider mb-1" :style="{ color: theme.mutedColor }">
+              Phrase (matched in chapter)
+            </label>
+            <textarea
+              v-model="composerPhrase"
+              rows="2"
+              class="w-full px-2 py-1.5 text-xs rounded border bg-transparent resize-none focus:outline-none focus:ring-1"
+              :style="{ borderColor: theme.borderColor, color: theme.headingColor }"
+            />
+          </div>
+          <div>
+            <label class="block text-[10px] uppercase tracking-wider mb-1" :style="{ color: theme.mutedColor }">
+              Pulse text (shown on /twitch)
+            </label>
+            <textarea
+              v-model="composerPulse"
+              rows="2"
+              class="w-full px-2 py-1.5 text-sm rounded border bg-transparent resize-none focus:outline-none focus:ring-1 font-semibold"
+              :style="{ borderColor: theme.borderColor, color: theme.headingColor }"
+            />
+          </div>
+          <div>
+            <label class="block text-[10px] uppercase tracking-wider mb-1" :style="{ color: theme.mutedColor }">
+              Style
+            </label>
+            <div class="flex gap-1">
+              <button
+                v-for="s in (['flash', 'stamp', 'whisper'] as PulseStyle[])"
+                :key="s"
+                class="flex-1 px-2 py-1.5 text-xs rounded border cursor-pointer transition-colors"
+                :style="composerStyle === s
+                  ? { borderColor: theme.headingColor, background: theme.headingColor, color: theme.pageBg }
+                  : { borderColor: theme.borderColor, color: theme.mutedColor }"
+                @click="composerStyle = s"
+              >
+                {{ s }}
+              </button>
+            </div>
+          </div>
+          <button
+            class="w-full px-3 py-2 rounded-md bg-gold-500 hover:bg-gold-400 text-surface-300 font-semibold text-sm transition-colors cursor-pointer disabled:opacity-50"
+            :disabled="!composerPhrase.trim() || !composerPulse.trim()"
+            @click="addPulseFromComposer"
+          >
+            + Add pulse
+          </button>
         </div>
 
         <!-- Big fire button -->
@@ -285,10 +450,10 @@ const themeIcon = computed(() => {
         <!-- Pulse list -->
         <ScrollArea class="flex-1">
           <div class="p-2 space-y-1">
-            <button
+            <div
               v-for="(p, i) in pulses"
               :key="i"
-              class="w-full text-left px-3 py-2 rounded-md text-sm transition-colors cursor-pointer flex items-start gap-2 group"
+              class="px-3 py-2 rounded-md text-sm transition-colors flex items-start gap-2 group cursor-pointer"
               :class="{
                 'ring-2 ring-gold-500': i === pulseIdx,
                 'opacity-50': firedIds.has(i),
@@ -301,7 +466,7 @@ const themeIcon = computed(() => {
             >
               <span class="text-xs opacity-60 mt-0.5 shrink-0 w-5 tabular-nums">{{ i + 1 }}</span>
               <div class="min-w-0 flex-1">
-                <div class="font-semibold truncate" :style="{ color: i === pulseIdx ? theme.headingColor : theme.headingColor }">
+                <div class="font-semibold truncate" :style="{ color: theme.headingColor }">
                   {{ p.pulse }}
                 </div>
                 <div class="text-xs opacity-70 truncate italic mt-0.5">
@@ -311,7 +476,15 @@ const themeIcon = computed(() => {
               <span v-if="p.style" class="text-[10px] uppercase tracking-wider opacity-60 shrink-0 mt-1">
                 {{ p.style }}
               </span>
-            </button>
+              <button
+                class="ml-1 shrink-0 w-6 h-6 flex items-center justify-center rounded text-xs opacity-0 group-hover:opacity-70 hover:!opacity-100 hover:bg-red-500/20 hover:text-red-400 transition-opacity cursor-pointer"
+                :style="{ color: theme.mutedColor }"
+                title="Remove pulse"
+                @click.stop="removePulse(i)"
+              >
+                ✕
+              </button>
+            </div>
           </div>
         </ScrollArea>
       </aside>
