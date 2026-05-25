@@ -19,6 +19,16 @@ export function imagePath(slideshow: string, filename: string) {
   return `/images/twitch/${slideshow}/${filename}`
 }
 
+// Reused for every interlude + part-divider page in the epub. Each entry shares
+// the same slideshow folder + title/subtitle; only epubHref differs so the
+// prompter's chapter-detector matches the right section.
+const INTERLUDE_DEFAULTS = {
+  title: 'Interlude',
+  subtitle: 'Grants Pass, Oregon · 1925',
+  slideshow: 'interlude',
+  pulses: [] as Pulse[],
+}
+
 export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
   interlude: {
     id: 'interlude',
@@ -178,19 +188,25 @@ export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
     slideshow: 'ch7',
     epubHref: 'section-10.xhtml',
     pulses: [
-      { phrase: "Number thirteen Aston's Quay", pulse: "13 ASTON'S QUAY", style: 'stamp' },
-      { phrase: '1870', pulse: '1870', style: 'stamp' },
+      { phrase: 'The corner unit. 1870.', pulse: 'The corner unit. 1870.' },
       { phrase: 'W. BOOG — BOOTMAKER', pulse: 'W. BOOG — BOOTMAKER', style: 'stamp' },
+      { phrase: "I think he's finally found it.", pulse: "I think he's finally found it.", style: 'whisper' },
       { phrase: 'the confidence of a man who had bet correctly', pulse: 'HE BET CORRECTLY' },
       { phrase: 'The Irish Times', pulse: 'THE IRISH TIMES', style: 'stamp' },
       { phrase: "we don't Encourage Northampton Trash", pulse: 'NORTHAMPTON TRASH', style: 'stamp' },
       { phrase: 'William Jr. arrived in 1871', pulse: 'WILLIAM JR. — 1871', style: 'stamp' },
-      { phrase: 'Diphtheria is ruthless', pulse: 'DIPHTHERIA', style: 'stamp' },
+      { phrase: 'It was a sign of life.', pulse: 'It was a sign of life.', style: 'whisper' },
+      { phrase: 'Diphtheria is ruthless.', pulse: 'DIPHTHERIA IS RUTHLESS.', style: 'stamp' },
+      { phrase: 'William did not try to remember them.', pulse: 'William did not try to remember them.', style: 'whisper' },
       { phrase: 'Two sons. Eleven months each', pulse: 'TWO SONS. ELEVEN MONTHS EACH.', style: 'stamp' },
       { phrase: 'He drew the X', pulse: 'HE DREW THE X', style: 'stamp' },
-      { phrase: 'A man can do whatever he sets his mind upon', pulse: 'WHATEVER HE SETS HIS MIND UPON' },
+      { phrase: "After a hard day's work, it went down a little too smoothly.", pulse: "After a hard day's work, it went down a little too smoothly.", style: 'whisper' },
+      { phrase: 'How much for passage?', pulse: 'How much for passage?' },
+      { phrase: 'Aye, do the Irish earn more money there?”', pulse: 'Aye, do the Irish earn more money there?”' },
       { phrase: 'George is buried here, William', pulse: 'GEORGE IS BURIED HERE' },
       { phrase: '"America."', pulse: 'AMERICA.', style: 'stamp' },
+      { phrase: 'You keep asking me to change. It scares me, William.', pulse: 'You keep asking me to change. It scares me, William.', style: 'whisper' },
+      { phrase: 'I’ll take the children and I’ll get on whatever ship you find and I’ll go.', pulse: 'I’ll take the children and I’ll get on whatever ship you find and I’ll go.', style: 'whisper' },
       { phrase: 'I’m not going because you’re chasing the sun', pulse: 'CHASING THE SUN', style: 'stamp' },
       { phrase: 'Fix the trunk', pulse: 'FIX THE TRUNK.', style: 'stamp' },
     ],
@@ -869,4 +885,18 @@ export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
       { phrase: 'that started with nothing', pulse: 'A NAME THAT STARTED WITH NOTHING', style: 'stamp' },
     ],
   },
+
+  // Interlude pages in the epub (Grants Pass, 1925 — William telling his story to Hollis)
+  interlude_2: { id: 'interlude_2', ...INTERLUDE_DEFAULTS, epubHref: 'section-09.xhtml' },
+  interlude_3: { id: 'interlude_3', ...INTERLUDE_DEFAULTS, epubHref: 'section-20.xhtml' },
+  interlude_4: { id: 'interlude_4', ...INTERLUDE_DEFAULTS, epubHref: 'section-23.xhtml' },
+  interlude_5: { id: 'interlude_5', ...INTERLUDE_DEFAULTS, epubHref: 'section-31.xhtml' },
+  interlude_6: { id: 'interlude_6', ...INTERLUDE_DEFAULTS, epubHref: 'section-42.xhtml' },
+
+  // Part dividers (also reuse interlude visuals so /twitch doesn't stick on stale content)
+  part_1: { id: 'part_1', ...INTERLUDE_DEFAULTS, epubHref: 'section-02.xhtml' },
+  part_2: { id: 'part_2', ...INTERLUDE_DEFAULTS, epubHref: 'section-12.xhtml' },
+  part_3: { id: 'part_3', ...INTERLUDE_DEFAULTS, epubHref: 'section-24.xhtml' },
+  part_4: { id: 'part_4', ...INTERLUDE_DEFAULTS, epubHref: 'section-32.xhtml' },
+  part_5: { id: 'part_5', ...INTERLUDE_DEFAULTS, epubHref: 'section-41.xhtml' },
 }
