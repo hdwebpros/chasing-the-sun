@@ -1,5 +1,5 @@
 import ePub, { type Book, type Rendition, type NavItem } from 'epubjs'
-import { THEMES } from './useReaderTheme'
+import { THEMES, useReaderTheme } from './useReaderTheme'
 
 interface TocItem {
   id: string
@@ -171,7 +171,12 @@ export function useBook() {
       if (b.locations.length()) {
         progress.value = b.locations.percentageFromCfi(location.start.cfi) * 100
       }
-      chapterProgress.value = (location.start?.percentage ?? 0) * 100
+      const displayed = location.start?.displayed
+      if (displayed && displayed.total > 0) {
+        chapterProgress.value = (displayed.page / displayed.total) * 100
+      } else {
+        chapterProgress.value = 0
+      }
       atStart.value = location.atStart ?? false
       atEnd.value = location.atEnd ?? false
 
