@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { TWITCH_CHAPTERS, imagePath, type TwitchChapter, type PulseStyle } from '~/data/twitch'
+import slideshowManifest from '~/data/twitch-slideshows.json'
+
+const SLIDESHOWS = slideshowManifest as Record<string, string[]>
 
 definePageMeta({ layout: false })
 
@@ -19,13 +22,8 @@ const chapter = computed<TwitchChapter | null>(() => TWITCH_CHAPTERS[chapterId.v
 // Image list fetched from server route — auto-discovers files in the folder
 const images = ref<string[]>([])
 
-async function loadImages(slideshow: string) {
-  try {
-    const list = await $fetch<string[]>(`/api/twitch/slideshow/${slideshow}`)
-    images.value = list ?? []
-  } catch {
-    images.value = []
-  }
+function loadImages(slideshow: string) {
+  images.value = SLIDESHOWS[slideshow] ?? []
 }
 
 // Slideshow state — two layers crossfade
@@ -58,9 +56,9 @@ const bookProgress = ref(0)
 const chapterProgress = ref(0)
 const chapterLabel = ref('')
 
-watch(chapter, async (c) => {
+watch(chapter, (c) => {
   if (c) {
-    await loadImages(c.slideshow)
+    loadImages(c.slideshow)
     startSlideshow()
   } else {
     stopSlideshow()
@@ -102,9 +100,9 @@ function showSpotlight(src: string, id: number) {
   }, SPOTLIGHT_MS)
 }
 
-onMounted(async () => {
+onMounted(() => {
   if (chapter.value) {
-    await loadImages(chapter.value.slideshow)
+    loadImages(chapter.value.slideshow)
     startSlideshow()
   }
 

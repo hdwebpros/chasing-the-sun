@@ -38,9 +38,12 @@ const pulses = ref<Pulse[]>([])
 const currentPulse = computed(() => pulses.value[pulseIdx.value] ?? null)
 const nextPulse = computed(() => pulses.value[pulseIdx.value + 1] ?? null)
 
-// Fetched fresh from /api each chapter change so deletes/edits survive refresh
-// (static `c.pulses` is module-cached by Vite and goes stale after PUT).
+// In dev, fetch fresh from /api so deletes/edits survive page refresh (the
+// static `c.pulses` import is module-cached by Vite and goes stale after PUT).
+// In prod, the source file isn't on disk for the API to read — just use the
+// static import, which IS the deployed source of truth.
 async function loadPulsesForChapter(c: TwitchChapter): Promise<Pulse[]> {
+  if (!import.meta.dev) return c.pulses.map((p) => ({ ...p }))
   try {
     const res = await $fetch<{ pulses: Pulse[] }>(`/api/twitch/pulses/${c.id}`)
     return res.pulses ?? []

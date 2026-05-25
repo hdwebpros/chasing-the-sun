@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
+    "prebuild": "node scripts/extract-twitch-slideshows.mjs",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "build:epub": "node scripts/build-epub.js",
     "build:epub:final": "node scripts/build-epub-final.js",
-    "extract:epub-images": "node scripts/extract-epub-images.mjs"
+    "extract:epub-images": "node scripts/extract-epub-images.mjs",
+    "extract:slideshows": "node scripts/extract-twitch-slideshows.mjs"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.14.0",
