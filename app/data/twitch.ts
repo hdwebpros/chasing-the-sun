@@ -32,7 +32,7 @@ const INTERLUDE_DEFAULTS = {
 export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
   interlude: {
     id: 'interlude',
-    title: 'Prologue',
+    title: 'Interlude',
     subtitle: 'The Afternoon — Grants Pass, Oregon, 1925',
     slideshow: 'interlude',
     epubHref: 'section-01.xhtml',
@@ -242,11 +242,9 @@ export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
     pulses: [
       { phrase: 'Darkness. Then the sound', pulse: 'DARKNESS. THEN SOUND.' },
       { phrase: 'The smell of human cargo', pulse: 'HUMAN CARGO', style: 'stamp' },
-      { phrase: 'Steerage', pulse: 'STEERAGE', style: 'stamp' },
-      { phrase: 'A storm came on the fourth night', pulse: 'THE FOURTH NIGHT — STORM', style: 'stamp' },
+      { phrase: 'A storm came on the fourth night.', pulse: 'A storm came on the fourth night.', style: 'whisper' },
       { phrase: 'A human wall between his children and the pitching dark', pulse: 'A HUMAN WALL' },
       { phrase: 'new life insisted on itself', pulse: 'NEW LIFE INSISTED' },
-      { phrase: 'reading names to the stars', pulse: 'NAMES TO THE STARS', style: 'whisper' },
       { phrase: 'blinking like creatures emerging from underground', pulse: 'BLINKING CREATURES' },
       { phrase: 'New York', pulse: 'NEW YORK', style: 'stamp' },
       { phrase: 'This is the door. Not the house', pulse: 'THE DOOR. NOT THE HOUSE.', style: 'stamp' },
@@ -302,9 +300,8 @@ export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
     slideshow: 'ch12',
     epubHref: 'section-16.xhtml',
     pulses: [
-      { phrase: 'Long Wharf', pulse: 'LONG WHARF', style: 'stamp' },
-      { phrase: 'a foreman named Kennedy', pulse: 'KENNEDY THE FOREMAN' },
-      { phrase: 'Bootmaker’s hands. Not dock hands', pulse: "BOOTMAKER'S HANDS" },
+      { phrase: 'Fish guts and brine and the black tang of coal smoke', pulse: 'Fish guts and brine and the black tang of coal smoke', style: 'whisper' },
+      { phrase: 'Bootmaker’s hands. Not dock hands.', pulse: 'Bootmaker’s hands. Not dock hands.' },
       { phrase: 'He entered the painting trade', pulse: 'THE PAINTING TRADE', style: 'stamp' },
       { phrase: 'His hands learned a new language', pulse: 'A NEW LANGUAGE FOR HIS HANDS' },
       { phrase: 'The day’s work dissolved in the water between them', pulse: 'HIS HANDS IN HERS' },
@@ -312,6 +309,7 @@ export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
       { phrase: 'Beacon Hill', pulse: 'BEACON HILL', style: 'stamp' },
       { phrase: 'Mary had made a proper meal', pulse: 'A REAL DINNER' },
       { phrase: 'Don’t tempt fate', pulse: "DON'T TEMPT FATE", style: 'stamp' },
+      { phrase: 'William, I’m…', pulse: 'WILLIAM, I’M…', style: 'stamp' },
     ],
   },
 

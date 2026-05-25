@@ -214,7 +214,17 @@ function clearHighlights(doc: Document) {
 function wrapPhrase(doc: Document, phrase: string, index: number) {
   const target = norm(phrase)
   if (!target) return
-  const escaped = target.split(' ').map(escapeRegex).join('\\s+')
+  // Quote-tolerant: straight ' / " in the target match either straight or
+  // curly variants in the source text. Whitespace is already \s+ between words.
+  const escaped = target
+    .split(' ')
+    .map((w) =>
+      escapeRegex(w)
+        .replace(/'/g, "['‘’′ʼ]")
+        .replace(/"/g, '["“”„″]')
+        .replace(/-/g, '[-‐‑‒–—−]'),
+    )
+    .join('\\s+')
   const re = new RegExp(escaped, 'i')
 
   const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, {
