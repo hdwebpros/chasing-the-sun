@@ -8,25 +8,49 @@ export type PulseMessage =
   | { type: 'reset' }
 
 const CHANNEL_NAME = 'cts-twitch'
+// Public MQTT broker — no signup. Anyone subscribed to the same topic gets the messages,
+// so the topic includes a salt to keep randos out. If you ever need real privacy, swap for
+// a hosted broker with auth.
+const MQTT_URL = 'wss://broker.emqx.io:8084/mqtt'
+const TOPIC = 'cts-twitch/2026-chasing-the-sun-9f3a'
 
-// Module-level Pusher singleton so multiple component mounts share one socket.
-let pusherClient: any = null
-let pusherChannel: any = null
-const pusherHandlers = new Set<(msg: PulseMessage) => void>()
+let mqttClient: any = null
+const mqttHandlers = new Set<(msg: PulseMessage) => void>()
+let mqttReady: Promise<any> | null = null
 
-async function ensurePusher() {
-  if (pusherClient) return pusherClient
-  const cfg = useRuntimeConfig()
-  const key = cfg.public.pusherKey
-  const cluster = cfg.public.pusherCluster
-  if (!key || !cluster) return null
-  const { default: Pusher } = await import('pusher-js')
-  pusherClient = new Pusher(key, { cluster })
-  pusherChannel = pusherClient.subscribe(CHANNEL_NAME)
-  pusherChannel.bind('msg', (data: PulseMessage) => {
-    pusherHandlers.forEach((h) => h(data))
+async function ensureMqtt() {
+  if (mqttClient) return mqttClient
+  if (mqttReady) return mqttReady
+  mqttReady = (async () => {
+    const mqtt = await import('mqtt')
+    const client = mqtt.default.connect(MQTT_URL, {
+      clientId: `cts-${Math.random().toString(36).slice(2, 10)}`,
+      reconnectPeriod: 2000,
+    })
+    client.on('connect', () => client.subscribe(TOPIC))
+    client.on('message', (_topic: string, payload: Uint8Array) => {
+      try {
+        const msg = JSON.parse(new TextDecoder().decode(payload)) as PulseMessage
+        mqttHandlers.forEach((h) => h(msg))
+      } catch (e) {
+        console.warn('bad mqtt payload', e)
+      }
+    })
+    client.on('error', (e: unknown) => console.warn('mqtt error', e))
+    mqttClient = client
+    return client
+  })()
+  return mqttReady
+}
+
+function mqttPublish(msg: PulseMessage) {
+  ensureMqtt().then((client) => {
+    try {
+      client.publish(TOPIC, JSON.stringify(msg))
+    } catch (e) {
+      console.warn('mqtt publish failed', e)
+    }
   })
-  return pusherClient
 }
 
 export function usePulseChannel() {
@@ -34,20 +58,16 @@ export function usePulseChannel() {
   const handlers = new Set<(msg: PulseMessage) => void>()
 
   function send(msg: PulseMessage) {
-    // Local same-browser viewers (zero latency)
     channel.value?.postMessage(msg)
-    // Cross-device viewers via Pusher — fire-and-forget
-    $fetch('/api/pulse', { method: 'POST', body: msg }).catch((e) => {
-      console.warn('pulse publish failed', e)
-    })
+    mqttPublish(msg)
   }
 
   function onMessage(handler: (msg: PulseMessage) => void) {
     handlers.add(handler)
-    pusherHandlers.add(handler)
+    mqttHandlers.add(handler)
     return () => {
       handlers.delete(handler)
-      pusherHandlers.delete(handler)
+      mqttHandlers.delete(handler)
     }
   }
 
@@ -60,14 +80,14 @@ export function usePulseChannel() {
       }
       channel.value = ch
     }
-    ensurePusher()
+    ensureMqtt()
   })
 
   onBeforeUnmount(() => {
     channel.value?.close()
     channel.value = null
     handlers.clear()
-    // Don't tear down the module-level Pusher socket; other components may still need it.
+    // Leave the module-level MQTT socket open; other components may still use it.
   })
 
   return { send, onMessage }
