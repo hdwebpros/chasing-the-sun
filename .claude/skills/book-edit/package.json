@@ -1,0 +1,10 @@
+{
+  "name": "book-edit-skill",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Drive-as-source-of-truth editing pipeline for the Chasing the Sun manuscript",
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  }
+}
