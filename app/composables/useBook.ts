@@ -79,9 +79,9 @@ export function useBook() {
     }))
   }
 
-  async function loadBook(el: HTMLElement) {
+  async function loadBook(el: HTMLElement, epubUrl = '/chasing-the-sun-draft.epub') {
     isLoading.value = true
-    const b = ePub('/chasing-the-sun-draft.epub')
+    const b = ePub(epubUrl)
     book.value = b
 
     const r = b.renderTo(el, {
@@ -164,8 +164,19 @@ export function useBook() {
     bookTitle.value = metadata.title || 'Chasing the Sun'
     bookAuthor.value = metadata.creator || ''
 
-    await b.locations.generate(1024)
-    totalLocations.value = b.locations.length()
+    try {
+      await b.locations.generate(1024)
+      totalLocations.value = b.locations.length()
+    } catch {
+      totalLocations.value = 0
+    }
+
+    // Position is saved per-epub and tagged with the spine length, so a different
+    // build (or the ?epub=from-drive preview) never tries to restore a stale CFI —
+    // that mismatch is what throws epubjs IndexSizeErrors.
+    await b.loaded.spine.catch(() => {})
+    const posKey = `cts-position:${epubUrl}`
+    const spineCount = (b.spine as any)?.spineItems?.length ?? 0
 
     r.on('relocated', (location: any) => {
       if (b.locations.length()) {
@@ -192,20 +203,24 @@ export function useBook() {
 
       // Save position
       if (import.meta.client) {
-        localStorage.setItem('cts-position', location.start.cfi)
+        localStorage.setItem(posKey, JSON.stringify({ cfi: location.start.cfi, n: spineCount }))
       }
     })
 
-    // Restore position
+    // Restore position — only if it was saved for this same build (matching spine
+    // length). Otherwise the structure changed and the CFI is stale; clear it.
     if (import.meta.client) {
-      const savedCfi = localStorage.getItem('cts-position')
-      if (savedCfi) {
+      let saved: { cfi?: string, n?: number } | null = null
+      try { saved = JSON.parse(localStorage.getItem(posKey) || 'null') } catch {}
+      if (saved?.cfi && saved.n === spineCount) {
         try {
-          await r.display(savedCfi)
+          await r.display(saved.cfi)
         } catch {
-          localStorage.removeItem('cts-position')
-          await r.display()
+          localStorage.removeItem(posKey)
+          await r.display().catch(() => {})
         }
+      } else if (saved) {
+        localStorage.removeItem(posKey)
       }
     }
 

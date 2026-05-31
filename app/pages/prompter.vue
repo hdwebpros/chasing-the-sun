@@ -378,7 +378,11 @@ function handleKeydown(e: KeyboardEvent) {
 
 onMounted(async () => {
   if (readerEl.value) {
-    await loadBook(readerEl.value)
+    // ?epub=from-drive loads the Drive-regenerated build for local comparison.
+    const epubUrl = useRoute().query.epub === 'from-drive'
+      ? '/chasing-the-sun-from-drive.epub'
+      : undefined
+    await loadBook(readerEl.value, epubUrl)
   }
   window.addEventListener('keydown', handleKeydown)
 

@@ -1,6 +1,6 @@
 ---
 name: book-edit
-description: Edit the Chasing the Sun manuscript. Google Drive is the source of truth. Use for any prose change to the book — read current Drive state, apply find/replace edits to Drive, or sync the served epub to match Drive. Never edit `.epub-build-draft/` xhtml files directly; Drive edits flow to the epub via `sync-epub.mjs`.
+description: Edit the Chasing the Sun manuscript. Google Drive is the source of truth. Use for any prose or structural change to the book — read current Drive state, apply edits to Drive, then regenerate the served epub directly from Drive with build-epub-from-drive.mjs. Never edit `.epub-build-draft/` xhtml files directly.
 ---
 
 # book-edit
@@ -10,72 +10,90 @@ The Chasing the Sun manuscript lives in Google Docs:
 - **Doc ID:** `1CVVIvLWLivG-4pCiJ4gI6Cf27d9vEHiQ0kmYOiu8JXo`
 - **URL:** https://docs.google.com/document/d/1CVVIvLWLivG-4pCiJ4gI6Cf27d9vEHiQ0kmYOiu8JXo/edit
 
-**Drive is the single source of truth.** The served epub at `public/chasing-the-sun-draft.epub` (and its unzipped form at `.epub-build-draft/`) is downstream of Drive.
+**Drive is the single source of truth.** The served epub at
+`public/chasing-the-sun-draft.epub` is regenerated *fresh from Drive* on every
+build — it is never hand-patched. If the book is wrong, fix the Doc and rebuild.
+See [[fix-drive-source-not-build-workarounds]].
+
+## The model
+
+```
+edit the Google Doc  ──►  node scripts/build-epub-from-drive.mjs --promote  ──►  served epub
+```
+
+The build exports the Doc as a native EPUB, splits it into one `section-NN.xhtml`
+per chapter/part/interlude (driven by Google's nav, which only lists real
+Heading-1/2 paragraphs), regenerates `nav.xhtml` + `package.opf`, injects the
+cover, and optimizes images. No diff, no snapshot, nothing to drift.
 
 ## The rules
 
-1. **All prose edits go to Drive first**, via `bin/edit-doc.mjs`. Then run `bin/sync-epub.mjs` to bring the epub in line.
-2. **Do not edit `.epub-build-draft/GoogleDoc/section-*.xhtml` directly** for prose changes. That folder is downstream; it gets regenerated from Drive diffs.
-3. Structural edits (new sections, image swaps, formatting overhauls) are out of scope for this skill — handle those manually.
+1. **All edits go to the Doc first**, then regenerate. Never edit
+   `.epub-build-draft/GoogleDoc/section-*.xhtml` — that path is dead.
+2. **Headings must be real Heading 1/2 paragraph styles** in the Doc, or Google's
+   TOC (and the build) won't see them. PART → Heading 1; Chapter/Interlude →
+   Heading 2. If a chapter goes missing from the TOC, its heading is a manually
+   formatted normal paragraph — fix the *style* in Drive.
+3. **Manuscript edits require an explicit instruction** — see
+   [[manuscript-edits-require-explicit-command]].
 
 ## Commands
 
-All scripts assume `cwd` is the project root (`/home/ryan/projects/chasing-the-sun`). Run via `node`.
+Run from the project root (`/home/ryan/projects/chasing-the-sun`).
 
 ### Read current Drive doc state
 ```bash
 node .claude/skills/book-edit/bin/read-doc.mjs
 ```
-Prints the doc as plain text (one paragraph per line). Useful for spot-checking before editing.
 
-### Apply find/replace edits to Drive
+### Apply prose find/replace edits to Drive
 ```bash
-echo '[{"find": "fantasy money", "replace": "Irish money somewhere else"}]' \
+echo '[{"find": "old text", "replace": "new text"}]' \
   | node .claude/skills/book-edit/bin/edit-doc.mjs
 ```
-Takes a JSON array of `{find, replace}` pairs on stdin. Each pair becomes a `replaceAllText` request in a single `batchUpdate` call. Prints per-edit match counts.
+JSON array of `{find, replace}` on stdin → one `replaceAllText` each. Curly
+quotes matter; a find that appears more than once replaces every occurrence.
 
-**Caution:** find strings must match exactly (curly quotes matter). If a find appears more than once in the doc, all occurrences get replaced.
-
-### Sync the served epub to match Drive
+### Fix heading paragraph styles in Drive
 ```bash
-node .claude/skills/book-edit/bin/sync-epub.mjs
+echo '[{"find":"Chapter Forty","style":"HEADING_2"}]' \
+  | node .claude/skills/book-edit/bin/set-heading-styles.mjs
 ```
+Sets the named style of the paragraph that starts with `find`. Use when a
+chapter/part/interlude isn't showing up in the TOC. `bin/fix-chapter-consistency.mjs`
+is a one-off that normalized interludes→H2, chapter title sizes→16pt, and split
+merged titles — kept as a record / re-runnable template.
 
-### Bulk reconcile (one-off, when xhtml has drifted significantly from Drive)
+### Insert new paragraphs into the Doc
 ```bash
-python3 .claude/skills/book-edit/bin/reconcile-from-drive.py
+echo '{"anchor":"...exact paragraph text...","before":["new para"]}' \
+  | node .claude/skills/book-edit/bin/insert-paragraphs.mjs
 ```
-Fuzzy-matches every xhtml prose `<span>` against the current `.cache/snapshot.txt` and rewrites in place. Anchored on chapter headings, then per-paragraph similarity. Reports paragraphs that have no close Drive match (real content drift) and chapters present in one side but not the other (structural changes). Does not handle paragraph insertions/deletions automatically — those need manual handling.
+Inserts paragraphs immediately `before` (or `after`) an anchor paragraph.
 
-Use this after large rewrites in Drive, or when `sync-epub.mjs` reports recurring false-fail skips due to xhtml/Drive divergence on metadata (spelling, punctuation, etc.).
-Workflow:
-1. Fetch current Drive doc text via Docs API.
-2. Diff against `.cache/snapshot.txt` (the last-synced state).
-3. For each changed paragraph, find the matching `.epub-build-draft/GoogleDoc/section-*.xhtml` file and apply the replacement.
-4. Re-zip `.epub-build-draft/` into `public/chasing-the-sun-draft.epub` (mimetype stored, rest deflated).
-5. Update `.cache/snapshot.txt` to current state.
+### Regenerate the served epub from Drive  ← the build
+```bash
+node scripts/build-epub-from-drive.mjs            # → scratch: public/chasing-the-sun-from-drive.epub
+node scripts/build-epub-from-drive.mjs --promote  # → served: public/chasing-the-sun-draft.epub
+npm run build:epub                                # same as --promote
+```
+Preview the scratch build in the dev app at `/read?epub=from-drive` before
+promoting. The export step is `bin/export-epub.mjs` (read-only Drive export).
 
-If `.cache/snapshot.txt` does not exist, the first run initializes it without making any epub changes — use this for the first-time bootstrap.
-
-## When invoked
-
-If the user asks for a prose tweak to the book:
-1. Confirm the exact find/replace pair (quote-aware, full sentence usually safest).
-2. Call `edit-doc.mjs` to apply to Drive.
-3. Call `sync-epub.mjs` to propagate to the epub.
-4. Confirm with the user that Drive now reads correctly.
-
-If the user has been editing in Drive directly and wants the epub updated:
-1. Call `sync-epub.mjs`. Done.
+### Refresh the prompter's per-section image manifest
+```bash
+node scripts/extract-epub-images.mjs
+```
+**Run this after every `--promote`.** The prompter (and `app/data/twitch.ts`)
+key off `section-NN.xhtml` filenames; regenerating the epub can renumber
+sections, so `app/data/epub-images.json` must be rebuilt to match. If section
+numbering shifts, verify `twitch.ts` `epubHref` values still line up.
 
 ## Auth setup (one-time)
 
-Uses a Google Cloud **service account** (no interactive consent needed):
-
+Google Cloud **service account** (no interactive consent):
 - Key file: `~/.config/book-edit/service-account.json` (mode `600`)
-- Service account email: `chasing-the-sun@chasing-the-sun-497514.iam.gserviceaccount.com`
-- The Drive doc MUST be shared with that service account email (Editor access).
-- Override key path with `BOOK_EDIT_KEY` env var if needed.
-
-See `bin/auth.mjs` for details.
+- Service account: `chasing-the-sun@chasing-the-sun-497514.iam.gserviceaccount.com`
+- The Doc must be shared with that email (Editor). `export-epub.mjs` requests the
+  `drive.readonly` scope; the edit helpers use `documents`.
+- Override the key path with `BOOK_EDIT_KEY`. See `bin/auth.mjs`.

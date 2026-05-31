@@ -13,6 +13,9 @@ node_modules
 logs
 *.log
 
+# Scratch Drive-regenerated epub (preview only; promote with --promote)
+public/chasing-the-sun-from-drive.epub
+
 # Misc
 .DS_Store
 .fleet
