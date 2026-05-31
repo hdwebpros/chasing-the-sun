@@ -41,6 +41,14 @@ Takes a JSON array of `{find, replace}` pairs on stdin. Each pair becomes a `rep
 ```bash
 node .claude/skills/book-edit/bin/sync-epub.mjs
 ```
+
+### Bulk reconcile (one-off, when xhtml has drifted significantly from Drive)
+```bash
+python3 .claude/skills/book-edit/bin/reconcile-from-drive.py
+```
+Fuzzy-matches every xhtml prose `<span>` against the current `.cache/snapshot.txt` and rewrites in place. Anchored on chapter headings, then per-paragraph similarity. Reports paragraphs that have no close Drive match (real content drift) and chapters present in one side but not the other (structural changes). Does not handle paragraph insertions/deletions automatically — those need manual handling.
+
+Use this after large rewrites in Drive, or when `sync-epub.mjs` reports recurring false-fail skips due to xhtml/Drive divergence on metadata (spelling, punctuation, etc.).
 Workflow:
 1. Fetch current Drive doc text via Docs API.
 2. Diff against `.cache/snapshot.txt` (the last-synced state).
