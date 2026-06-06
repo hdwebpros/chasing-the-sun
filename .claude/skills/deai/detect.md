@@ -97,27 +97,25 @@ context; only the small JSON returns. One page per subagent.
 >
 > If the page is clean, return an empty `flags` array — that is a valid, good result.
 >
-> ADDITIVE ENRICHMENT (the `under-felt` tell — de-AI is not only subtractive): if the page
-> SKIMS PAST a genuine emotional moment flatly or clinically (a death, a parting, a first
-> sight of something longed-for, a small private triumph) and the reader is left merely
-> informed instead of *there*, you MAY propose ADDING an in-voice beat. Set tell="under-felt",
-> additive:true, span = the flat line verbatim, fix = that same line reworked or extended with
-> a PHYSICAL/SENSORY/WITHHOLDING beat in his 19thC register (a stilled hand, a held breath, a
-> smell, a gesture refused) — so fix is LONGER than span. NEVER add an abstract emotion-label
-> ("he felt sad" is the opposite of the goal); never contradict the scene's facts. Keep it
-> RARE and high-confidence — at most one per page, only on a moment that clearly deserves to
-> land. `voice` here = how under-felt the moment reads (how much the add would help); `detect`
-> usually low. Most pages will have zero of these — that's expected.
-> ECONOMY — the add must be TIGHT and in his clipped register, NOT a long ornate compound: no
-> padding clauses ("and would not let go"), at MOST ONE "and"-coordination (two is a rare ceiling,
-> never more). And NEVER propose an add on a passage that already carries an UNCAUGHT tell (a
-> repeated-opener run, a triad) — flag and fix the tell FIRST; do not pile emotion onto scaffolding.
-> If the surrounding lines are already off-voice, the correct move is a removal flag, not an enrichment.
-> SIMPLE GESTURE, NEVER THEATER: the beat is a small PLAIN human action anyone does — a long sigh, a
-> slow smile, a glance around the room then back at her, a quick hug, a hand left flat on the bench,
-> a held breath. ABSOLUTELY NO simile and NO figurative comparison in an add — not "the way X did Y",
-> not "like a [role]", not "his face opened the way leather opens under a blade" (pure theater, conveys
-> NOTHING). If the feeling can't land in ONE quiet concrete gesture, do not propose the add at all.
+> ADDITIVE ENRICHMENT (the `under-felt` tell — de-AI is NOT only subtractive). THE AUTHOR'S
+> EXPLICIT COMPLAINT on the p1-100 review: the system STOPPED proposing these (1 in 100 pages) —
+> "you are not attempting to inject any emotion anymore." BE BRAVER. Emotion should come NATURALLY
+> at SCENE ENDS and POWERFUL MOMENTS (his words). If the page skims past a genuine emotional moment
+> flatly or clinically (a death, a parting, a first sight of something longed-for, a small private
+> triumph) and the reader is left merely informed instead of *there*, PROPOSE an in-voice add. Set
+> tell="under-felt", additive:true, span = the flat line verbatim, fix = that line reworked/extended
+> (LONGER than span) using his FULL toolkit — read VOICE.md "How this author MAKES emotion": sensory
+> detail, a withholding gesture, BROKEN/CLIPPED DIALOGUE ("Don't," she whispered. "Please." — voice
+> cracking), TENSION, a relatable FLAW, and PACING — LINGER / slow down at the peak. NEVER add an
+> abstract emotion-label ("he felt sad" is the opposite of the goal); never contradict scene facts.
+> `voice` = how under-felt the moment reads (how much the add helps); `detect` usually low.
+> PACING NOTE: the old "TIGHT, at-most-one-`and`, simple-gesture-only" ceiling is RELAXED at a genuine
+> peak — lingering on a thought/sensation/memory IS the technique there; a longer reflective beat is
+> CORRECT, not padding. HARD GUARD (unchanged): ABSOLUTELY NO ornamental simile and NO figurative
+> comparison in an add — not "the way X did Y", not "like a [role]", not "his face opened the way
+> leather opens under a blade" (pure theater, conveys NOTHING). And NEVER stack an add on a passage
+> that already carries an UNCAUGHT tell (repeated-opener run, triad) — flag and fix that tell FIRST.
+> A flat scene-end is a MISSED CHANCE, not a safe default — don't default to "zero adds, that's expected."
 >
 > NEVER set a `decision` or `editText` field, and NEVER write "(accepted)", "(rejected)",
 > "(resolved)", "(author edited…)" in your table. Decisions belong to the AUTHOR alone and

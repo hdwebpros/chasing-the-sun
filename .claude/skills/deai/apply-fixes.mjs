@@ -23,12 +23,19 @@ const args = process.argv.slice(2)
 const APPLY = args.includes('--apply')
 const COMMIT = args.includes('--commit')
 const ALL = args.includes('--all')
+const rangeArg = args.find(a => /^\d+-\d+$/.test(a))   // e.g. 71-100
 const pageArg = args.find(a => /^\d+$/.test(a))
 
 function pagesToProcess() {
   if (ALL) return readdirSync(deai).filter(f => /^page-\d+\.json$/.test(f)).map(f => join(deai, f))
+  if (rangeArg) {
+    const [lo, hi] = rangeArg.split('-').map(Number)
+    const out = []
+    for (let n = lo; n <= hi; n++) out.push(join(deai, `page-${String(n).padStart(2, '0')}.json`))
+    return out
+  }
   if (pageArg) return [join(deai, `page-${String(pageArg).padStart(2, '0')}.json`)]
-  console.error('Specify a page number or --all.'); process.exit(2)
+  console.error('Specify a page number, a range (NN-MM), or --all.'); process.exit(2)
 }
 
 // Chicago typography: straight quotes -> curly, runs of spaces -> one. Applied to
@@ -39,7 +46,11 @@ const OPENERS = /[\s([{—–\-“‘]/
 const curlify = (s) => (s ?? '')
   .replace(/"/g, (m, off, str) => (off === 0 || OPENERS.test(str[off - 1])) ? '“' : '”')
   .replace(/'/g, (m, off, str) => (off === 0 || OPENERS.test(str[off - 1])) ? '‘' : '’')
-const normalize = (s) => curlify(s).replace(/[ \t]{2,}/g, ' ')
+// Strip stray leading/trailing newlines from the replacement (a review-UI artifact):
+// an embedded \n in replaceAllText injects a paragraph break, which mid-paragraph
+// fixes never want. Leading/trailing SPACES are preserved (often intentional, e.g.
+// a span that begins with " " to keep word spacing).
+const normalize = (s) => curlify(s).replace(/[ \t]{2,}/g, ' ').replace(/^\n+|\n+$/g, '')
 
 const pairs = []
 for (const file of pagesToProcess()) {
