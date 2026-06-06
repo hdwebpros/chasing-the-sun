@@ -51,6 +51,12 @@ See `README.md` for the file map and `detect.md` for the subagent contract.
 2. **Detect page N:** spawn a subagent with `detect.md`'s prompt. It reads `VOICE.md`,
    `taxonomy.json`, `rules.md`, fetches the page itself (`pages.sh` + `stats.mjs`), and
    writes `.deai/page-NN.json`. The main thread shows only the terse table.
+2a. **Verify spans (always, after a batch):** `node verify-spans.mjs N` (or a range / `--all`).
+   Every flag `span` must be a VERBATIM substring of the page or the review UI silently
+   won't highlight it (and apply-fixes would zero-match). Exits non-zero on any pending
+   flag that won't highlight — NOT-FOUND = a paraphrase/hallucination (drop or rewrite the
+   flag), NEAR-MISS = quotes/whitespace (repair the span). Already-applied decided spans
+   are reported as expected-gone, not errors.
 3. **Review:** `http://localhost:3000/deai?p=N` — accept/reject/edit, save (persists to
    `.deai/page-NN.json`; does NOT touch Drive).
 4. **Learn:** after decisions save, fold durable patterns into `rules.md` (keep it small,

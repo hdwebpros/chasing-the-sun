@@ -20,6 +20,16 @@ const here = dirname(fileURLToPath(import.meta.url))
 const root = join(here, '..', '..', '..')
 const deai = join(root, '.deai')
 const args = process.argv.slice(2)
+
+// Pre-flight discriminator: only apply a fix whose `span` is still present in the
+// freshly-synced manuscript (= still in Drive). A decided fix whose span is GONE was
+// already applied in an earlier push — re-sending it zero-matches in Drive and reads as
+// a false failure. Skipping it makes apply-fixes idempotent across re-runs. (Run sync.sh
+// first so manuscript.txt reflects current Drive.) Compares normalized (curly/whitespace)
+// but still sends the verbatim span to Drive.
+const normPresence = s => (s || '').replace(/[“”]/g, '"').replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim()
+let manuscriptNorm = null
+try { manuscriptNorm = normPresence(readFileSync(join(deai, 'manuscript.txt'), 'utf8')) } catch {}
 const APPLY = args.includes('--apply')
 const COMMIT = args.includes('--commit')
 const ALL = args.includes('--all')
@@ -53,6 +63,7 @@ const curlify = (s) => (s ?? '')
 const normalize = (s) => curlify(s).replace(/[ \t]{2,}/g, ' ').replace(/^\n+|\n+$/g, '')
 
 const pairs = []
+let alreadyApplied = 0
 for (const file of pagesToProcess()) {
   let doc
   try { doc = JSON.parse(readFileSync(file, 'utf8')) } catch { console.error(`skip ${file}: unreadable`); continue }
@@ -61,9 +72,12 @@ for (const file of pagesToProcess()) {
     if (d !== 'accept' && d !== 'edit') continue
     const replace = normalize(d === 'edit' ? (f.editText ?? '') : f.fix)
     if (replace === f.span) continue
+    // skip fixes whose target text is no longer in Drive (already applied in a prior push)
+    if (manuscriptNorm !== null && !manuscriptNorm.includes(normPresence(f.span))) { alreadyApplied++; continue }
     pairs.push({ find: f.span, replace, page: doc.page, tell: f.tell, decision: d })
   }
 }
+if (alreadyApplied) console.log(`(${alreadyApplied} decided fix(es) skipped — span already gone from Drive, applied in a prior push)\n`)
 
 if (!pairs.length) { console.log('No approved fixes to apply.'); process.exit(0) }
 

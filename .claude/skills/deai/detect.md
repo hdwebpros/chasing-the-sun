@@ -48,7 +48,14 @@ context; only the small JSON returns. One page per subagent.
 >   low-burstiness, AI-phrase-dense stretch scores higher.
 >
 > `span` MUST be the exact verbatim substring from the page (char-for-char) so it can
-> be located and find/replaced. `fix` is the SMALLEST change that removes the tell,
+> be located and find/replaced. COPY-PASTE it from the page text — never retype, never
+> paraphrase, never "tidy" it, and PRESERVE curly quotes/punctuation exactly. A non-verbatim
+> span silently fails to highlight in the review UI and zero-matches on apply. CRITICAL for
+> `same-opener`: never INVENT or DUPLICATE a sentence to manufacture a repetition. If the page
+> says "She had believed with a deep down faith. She prayed…" there is only ONE "She had" — do
+> NOT write a span like "She had believed in this. She had believed…" that doesn't exist. Flag a
+> same-opener ONLY when the repeated opener is literally present, consecutively, in the prose.
+> `fix` is the SMALLEST change that removes the tell,
 > in the author's voice — never refactor surrounding prose, never touch an unflagged span.
 >
 > FIX FORMAT (the author applies fixes by find/replacing `span` → `fix`, so the fix

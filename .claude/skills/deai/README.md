@@ -41,6 +41,7 @@ Google Doc ──sync.sh──► .deai/manuscript.txt ──pages.sh──► p
 | `schema.json` | the page+flags JSON contract |
 | `detect.md` | the subagent contract (one page in → small JSON out) |
 | `rules.md` | self-pruning learned decisions (keep small) |
+| `verify-spans.mjs` | guard: every flag `span` is verbatim in its page (else the UI can't highlight it). Run after each detect batch |
 | `apply-fixes.mjs` | apply approved fixes to Drive (dry-run default, gated) |
 | `tally.mjs` | whole-manuscript tally vs book budgets (second altitude) |
 | `.deai/` | gitignored cache: `manuscript.txt`, `page-NN.json` |
