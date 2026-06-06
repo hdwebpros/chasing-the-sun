@@ -64,6 +64,16 @@ chapter/part/interlude isn't showing up in the TOC. `bin/fix-chapter-consistency
 is a one-off that normalized interludes→H2, chapter title sizes→16pt, and split
 merged titles — kept as a record / re-runnable template.
 
+### Normalize the whole Doc to Chicago typography
+```bash
+node .claude/skills/book-edit/bin/chicago-normalize.mjs            # dry-run + sample
+node .claude/skills/book-edit/bin/chicago-normalize.mjs --apply    # write
+```
+Converts every straight `'`/`"` to contextual curly quotes and collapses
+double-spaces, manuscript-wide. Edits are single-character index swaps applied in
+descending order, so inline bold/italic survive. Guards `'tis`/`'73` elisions.
+Dry-run by default — review the sample before `--apply`.
+
 ### Insert new paragraphs into the Doc
 ```bash
 echo '{"anchor":"...exact paragraph text...","before":["new para"]}' \

@@ -31,6 +31,16 @@ function pagesToProcess() {
   console.error('Specify a page number or --all.'); process.exit(2)
 }
 
+// Chicago typography: straight quotes -> curly, runs of spaces -> one. Applied to
+// the REPLACEMENT text so fixes never inject a straight quote / double space into
+// the Doc. (find/span is left verbatim so it still matches the Doc; if the Doc
+// itself holds straight quotes, run book-edit/bin/chicago-normalize.mjs first.)
+const OPENERS = /[\s([{—–\-“‘]/
+const curlify = (s) => (s ?? '')
+  .replace(/"/g, (m, off, str) => (off === 0 || OPENERS.test(str[off - 1])) ? '“' : '”')
+  .replace(/'/g, (m, off, str) => (off === 0 || OPENERS.test(str[off - 1])) ? '‘' : '’')
+const normalize = (s) => curlify(s).replace(/[ \t]{2,}/g, ' ')
+
 const pairs = []
 for (const file of pagesToProcess()) {
   let doc
@@ -38,7 +48,7 @@ for (const file of pagesToProcess()) {
   for (const f of doc.flags || []) {
     const d = f.decision
     if (d !== 'accept' && d !== 'edit') continue
-    const replace = d === 'edit' ? (f.editText ?? '') : f.fix
+    const replace = normalize(d === 'edit' ? (f.editText ?? '') : f.fix)
     if (replace === f.span) continue
     pairs.push({ find: f.span, replace, page: doc.page, tell: f.tell, decision: d })
   }

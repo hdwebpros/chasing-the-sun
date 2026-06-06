@@ -56,9 +56,17 @@ See `README.md` for the file map and `detect.md` for the subagent contract.
 4. **Learn:** after decisions save, fold durable patterns into `rules.md` (keep it small,
    self-pruning) so later pages flag more accurately.
 5. **Apply (explicit):** `node apply-fixes.mjs N` (dry-run) → `--apply` writes accepted
-   fixes to Drive → `--commit` rebuilds the epub and commits. Manuscript writes require
-   an explicit command — never auto-apply on save.
-6. **Second altitude:** `node tally.mjs` — whole-book counts vs `taxonomy.json` book
+   fixes to Drive → `--commit` rebuilds the epub and commits. `--all` does every decided
+   page. Replacement text is auto-normalized to Chicago curly quotes + single spaces, so
+   a fix never injects a straight quote. Manuscript writes require an explicit command —
+   never auto-apply on save. (Surgical = one `replaceAllText` per pair via
+   `book-edit/bin/edit-doc.mjs`; it warns on any zero-match so misses are caught.)
+6. **Chicago pass (whole Doc, explicit):** `node ../book-edit/bin/chicago-normalize.mjs`
+   (dry-run, shows a sample) → `--apply`. Converts every straight `'`/`"` to contextual
+   curly and collapses double-spaces across the entire manuscript, character-surgically
+   so inline italics/bold survive. Guards `'tis`/`'73` elisions. Run it when the Doc
+   itself holds straight quotes (apply-fixes only normalizes the spans it touches).
+7. **Second altitude:** `node tally.mjs` — whole-book counts vs `taxonomy.json` book
    budgets, so the author fixes what's actually excessive, not every local instance.
 
 Two scores always ride together, never merged: **Voice** (off-this-author, Claude's
