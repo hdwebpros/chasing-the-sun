@@ -1,0 +1,46 @@
+{
+  "_doc": "The contract between the detect subagent, the page cache (.deai/page-NN.json), the review endpoint, and the review UI. The subagent RETURNS an object of this shape. The UI reads it and POSTs back the same object with each flag's `decision` filled in.",
+  "$id": "deai-page",
+  "type": "object",
+  "required": ["page", "pageDetect", "flags"],
+  "properties": {
+    "page": { "type": "integer", "description": "1-based page number from pages.sh" },
+    "chapter": { "type": "string", "description": "e.g. 'Chapter Seven' — for display" },
+    "words": { "type": "integer" },
+    "pageDetect": {
+      "type": "object",
+      "description": "Page-level deterministic stats from stats.mjs (the detect AXIS, model-free).",
+      "required": ["detect", "burstiness"],
+      "properties": {
+        "detect": { "type": "number", "description": "0-10 composite, higher = more statistically AI-like" },
+        "burstiness": { "type": "number" },
+        "aiPhraseHits": { "type": "integer" },
+        "raw": { "type": "object", "description": "full stats.mjs JSON, optional" }
+      }
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "tell", "span", "voice", "detect", "fix"],
+        "properties": {
+          "id": { "type": "string", "description": "stable id, e.g. 'p7-f3'" },
+          "tell": { "type": "string", "description": "taxonomy id (triad, period-flat, …)" },
+          "span": { "type": "string", "description": "the EXACT verbatim text flagged — must match the page char-for-char so the UI can locate + the fixer can find/replace" },
+          "context": { "type": "string", "description": "short surrounding text for display, optional" },
+          "voice": { "type": "integer", "minimum": 0, "maximum": 10, "description": "how OFF-the-author's-voice this span reads (Claude's judgment vs VOICE.md)" },
+          "detect": { "type": "integer", "minimum": 0, "maximum": 10, "description": "this span's contribution to statistical AI-likelihood" },
+          "why": { "type": "string", "description": "one sentence, only the reason" },
+          "fix": { "type": "string", "description": "suggested replacement in the author's voice — smallest change that removes the tell; for an additive 'under-felt' flag, the original line reworked/extended with an in-voice emotional beat (fix LONGER than span)" },
+          "additive": { "type": "boolean", "description": "true only for 'under-felt' enrichment suggestions where the fix ADDS an in-voice emotional beat rather than removing a tell. The UI labels these as enrich, not fix." },
+          "decision": {
+            "type": "string",
+            "enum": ["pending", "accept", "reject", "edit"],
+            "default": "pending"
+          },
+          "editText": { "type": "string", "description": "present only when decision='edit' — the author's own replacement, used instead of `fix`" }
+        }
+      }
+    }
+  }
+}

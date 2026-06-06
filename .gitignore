@@ -16,6 +16,9 @@ logs
 # Scratch Drive-regenerated epub (preview only; promote with --promote)
 public/chasing-the-sun-from-drive.epub
 
+# de-AI local cache (Drive export + per-page flags/decisions)
+.deai/
+
 # Misc
 .DS_Store
 .fleet

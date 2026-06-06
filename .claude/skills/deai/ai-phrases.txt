@@ -1,0 +1,62 @@
+# Growable AI-phrase lexicon. One phrase per line, lowercase, '#' comments ignored.
+# stats.mjs counts case-insensitive whole-word/phrase hits per page and feeds the
+# detect score. Add phrases you keep catching; keep it tight (high-signal only).
+# Period-flat / modern-abstract words that read wrong in 19thC prose count double-weight
+# when tagged [period].
+
+# --- signposting / connective scaffolding ---
+moreover
+furthermore
+in addition
+additionally
+however
+indeed
+ultimately
+notably
+importantly
+it is important to note
+it's worth noting
+that said
+in conclusion
+overall
+crucially
+
+# --- AI register tells ---
+a testament to
+a stark reminder
+served as a reminder
+in the grand scheme
+navigate the complexities
+a sense of
+a wave of
+a mixture of
+palpable
+myriad
+tapestry
+delve
+underscore
+resonate
+testament
+boast
+unwavering
+steadfast
+newfound
+
+# --- emotion-naming abstractions [period] ---
+overwhelming sadness
+filled with pride
+a deep sense of
+sense of unease
+sense of belonging
+mixture of fear
+
+# --- modern/therapy abstractions [period] ---
+boundaries
+processing
+trauma
+validation
+journey
+connection
+self-care
+mindful
+overwhelmed

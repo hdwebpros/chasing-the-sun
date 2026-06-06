@@ -1,0 +1,93 @@
+{
+  "_doc": "Tell taxonomy with TWO-ALTITUDE budgets. perPage = how many clear instances are natural on a ~400w page before overuse; book = natural budget across all 202 pages. Thresholds, not elimination: flag overuse and clear off-voice cases, never every instance. Budgets are tunable as rules.md learns.",
+  "tells": [
+    {
+      "id": "triad",
+      "label": "Rule-of-three",
+      "desc": "Tidy three-part list/cadence ('the cold, the dark, and the silence'). Author's parallelism is uneven/additive — a SMOOTH balanced triad is the tell.",
+      "perPage": 1,
+      "book": 70,
+      "severityHint": "low unless clipped action context"
+    },
+    {
+      "id": "reframe",
+      "label": "Concessive reframe",
+      "desc": "Negative softened/explained by a positive ('it was hard, but worth it'). Natural in reflection; flag the formulaic 'hard but worth it' shape.",
+      "perPage": 1,
+      "book": 50
+    },
+    {
+      "id": "not-just-but",
+      "label": "Not just X but Y",
+      "desc": "'Not only X but Y' escalation scaffold. Flag the scaffold, not every contrast.",
+      "perPage": 1,
+      "book": 40
+    },
+    {
+      "id": "part-ending",
+      "label": "Participle ending",
+      "desc": "Sentence ending on a tidy participle phrase ('…, his heart pounding'). Author DOES end on physical buttons — flag the soft emotive participle, not the concrete action beat.",
+      "perPage": 2,
+      "book": 120
+    },
+    {
+      "id": "emotion-tell",
+      "label": "Emotion-named",
+      "desc": "Naming the feeling as a bare ABSTRACT LABEL instead of routing it through body/object/sensory/withholding ('a wave of grief', 'filled with pride', 'exhausted wonder', 'their faces showed despair'). OFF-VOICE. BUT emotion EVOKED physically — even when it names a state ('He was in disbelief.', 'the quiet had a weight to it') — is the author's greatest strength: KEEP. The author's most-rejected tell — bias toward keep, and when flagged the fix must re-route feeling through the body, never delete it.",
+      "perPage": 1,
+      "book": 30
+    },
+    {
+      "id": "under-felt",
+      "label": "Under-felt moment (ADD emotion)",
+      "desc": "ADDITIVE, not a removal. A genuine emotional beat the prose skims past flatly or clinically, where an in-voice PHYSICAL or SENSORY beat would let the reader feel they are there. span = the flat line as written; fix = that line reworked or extended with a body/object/sensory/withholding beat in his 19thC register — NEVER an abstract emotion-label, never contradicting the scene's facts. This is the one tell where fix is LONGER than span. RARE and high-confidence only: the moment must clearly deserve to land and currently doesn't. Set additive:true on the flag. The author adds the feeling his way — propose, don't impose.",
+      "perPage": 1,
+      "book": 25,
+      "severityHint": "additive — propose sparingly, only on real emotional moments"
+    },
+    {
+      "id": "signpost",
+      "label": "Signposting",
+      "desc": "Restating a beat the scene already showed, or connective scaffolding ('Moreover', 'and in that moment he realized'). OFF-VOICE — author uses asterisk breaks + hard slugs, not connectors.",
+      "perPage": 1,
+      "book": 25
+    },
+    {
+      "id": "period-flat",
+      "label": "Period-flat diction",
+      "desc": "Modern-neutral or therapy/abstract diction where the 19thC setting wants texture ('boundaries', 'processing', 'connection'). HIGH VALUE — loudest AI tell in this book.",
+      "perPage": 1,
+      "book": 40,
+      "severityHint": "high"
+    },
+    {
+      "id": "same-opener",
+      "label": "Repeated opener",
+      "desc": "3+ consecutive sentences starting with the same word. Author's clipped 'He swept. He carried.' parallel is intentional — flag only mechanical runs that aren't doing rhythmic work.",
+      "perPage": 1,
+      "book": 60
+    },
+    {
+      "id": "adverb-tag",
+      "label": "Adverb speech-tag",
+      "desc": "'he said thoughtfully', 'she replied softly', a tag on every line. OFF-VOICE — author uses bare quotes or action beats.",
+      "perPage": 1,
+      "book": 25
+    },
+    {
+      "id": "the-way-simile",
+      "label": "\"the way a…\" simile",
+      "desc": "Explanatory comparison that tells the reader how to read a gesture by likening it to a generic archetype — 'held them the way a craftsman held his tools', 'looked at it the way he looked at a plat map', 'the way a man does when he…', 'like a [role] would'. A FEW originals are genuinely his (VOICE.md cites craft-metaphor as a signature move), but the construction is now LITTERED across the whole book as AI scaffolding and the author calls it a pure tell. FLAG aggressively and cut HARD: delete the simile and keep the concrete gesture, or replace with one direct beat. Default to flagging — only the rare, truly load-bearing original survives. The `fix` removes the 'the way a X…' clause, not the underlying action.",
+      "perPage": 1,
+      "book": 15,
+      "severityHint": "high — overused AI scaffolding, cut by default"
+    },
+    {
+      "id": "summary-line",
+      "label": "Summary/lesson line",
+      "desc": "A thematic takeaway sentence closing a scene ('and that was when everything changed'). OFF-VOICE — author exits on a small physical action, never a moral.",
+      "perPage": 0,
+      "book": 15
+    }
+  ]
+}
