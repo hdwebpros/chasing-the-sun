@@ -67,7 +67,12 @@ const curlify = (s) => (s ?? '')
 // an embedded \n in replaceAllText injects a paragraph break, which mid-paragraph
 // fixes never want. Leading/trailing SPACES are preserved (often intentional, e.g.
 // a span that begins with " " to keep word spacing).
-const normalize = (s) => curlify(s).replace(/[ \t]{2,}/g, ' ').replace(/^\n+|\n+$/g, '')
+// Also repair a missing space after sentence-ending punctuation (a hand-edit artifact:
+// "wide.Deep" -> "wide. Deep"). Conservative: only when a LOWERCASE letter precedes the
+// period and an UPPERCASE letter or opening curly quote follows — so abbreviations
+// (U.S., a.m., e.g.) and decimals are never touched.
+const spaceAfterPeriod = (s) => s.replace(/([a-z])([.!?])(?=[A-Z“‘])/g, '$1$2 ')
+const normalize = (s) => spaceAfterPeriod(curlify(s)).replace(/[ \t]{2,}/g, ' ').replace(/^\n+|\n+$/g, '')
 
 const pairs = []
 let alreadyApplied = 0
