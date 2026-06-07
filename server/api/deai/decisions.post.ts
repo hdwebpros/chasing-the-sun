@@ -1,19 +1,21 @@
 import { readFile, writeFile } from 'node:fs/promises'
-import { pageJsonPath, readPageDoc, type Flag } from '../../utils/deai'
+import { pageJsonPath, readPageDoc, asMode, type Flag } from '../../utils/deai'
 
-// Persist the author's accept/reject/edit decisions for a page back into
-// .deai/page-NN.json. Dev-only; does NOT touch Drive — applying accepted fixes to
-// the manuscript is a separate, explicitly-gated step (see apply-fixes).
+// Persist the author's accept/reject/edit decisions for a page back into its cache
+// (page-NN.json for de-AI, brogue-page-NN.json for the dialogue pass — selected by
+// `mode`). Dev-only; does NOT touch Drive — applying accepted fixes to the
+// manuscript is a separate, explicitly-gated step (see apply-fixes).
 export default defineEventHandler(async (event) => {
   if (process.env.NODE_ENV === 'production') {
     throw createError({ statusCode: 403, statusMessage: 'editing disabled in production' })
   }
-  const body = await readBody<{ page?: number; decisions?: Record<string, { decision: Flag['decision']; editText?: string }> }>(event)
+  const body = await readBody<{ page?: number; mode?: string; decisions?: Record<string, { decision: Flag['decision']; editText?: string }> }>(event)
   const page = Number(body?.page)
   if (!Number.isInteger(page) || page < 1) {
     throw createError({ statusCode: 400, statusMessage: 'page required' })
   }
-  const doc = await readPageDoc(page)
+  const mode = asMode(body?.mode)
+  const doc = await readPageDoc(page, mode)
   if (!doc) {
     throw createError({ statusCode: 404, statusMessage: `no detection cached for page ${page}` })
   }
@@ -30,7 +32,7 @@ export default defineEventHandler(async (event) => {
     else delete f.editText
     changed++
   }
-  await writeFile(pageJsonPath(page), JSON.stringify(doc, null, 2) + '\n', 'utf8')
+  await writeFile(pageJsonPath(page, mode), JSON.stringify(doc, null, 2) + '\n', 'utf8')
   const counts = doc.flags.reduce<Record<string, number>>((a, f) => {
     const k = f.decision ?? 'pending'
     a[k] = (a[k] || 0) + 1

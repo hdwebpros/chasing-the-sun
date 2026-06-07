@@ -17,6 +17,10 @@ interface PageResp {
 const route = useRoute()
 const router = useRouter()
 const page = ref(Number(route.query.p) || 1)
+// Review mode: 'deai' (AI-tell removal) or 'brogue' (Hiberno-English dialogue pass).
+// Each reads/writes its own cache; switching modes never crosses decisions.
+const mode = ref(route.query.mode === 'brogue' ? 'brogue' : 'deai')
+const isBrogue = computed(() => mode.value === 'brogue')
 const data = ref<PageResp | null>(null)
 const loading = ref(false)
 const saving = ref(false)
@@ -26,9 +30,9 @@ async function load() {
   loading.value = true
   savedMsg.value = ''
   try {
-    data.value = await $fetch<PageResp>(`/api/deai/page/${page.value}`)
+    data.value = await $fetch<PageResp>(`/api/deai/page/${page.value}`, { query: { mode: mode.value } })
     for (const f of data.value.flags) f.decision ??= 'pending'
-    router.replace({ query: { p: String(page.value) } })
+    router.replace({ query: { p: String(page.value), mode: mode.value } })
   } finally {
     loading.value = false
   }
@@ -38,6 +42,13 @@ onMounted(load)
 function go(n: number) {
   if (!data.value) return
   page.value = Math.min(Math.max(1, n), data.value.total)
+  load()
+}
+
+function switchMode(m: 'deai' | 'brogue') {
+  if (mode.value === m) return
+  mode.value = m
+  active.value = null
   load()
 }
 
@@ -103,7 +114,7 @@ async function save() {
     const decisions: Record<string, { decision: Flag['decision']; editText?: string }> = {}
     for (const f of data.value.flags) decisions[f.id] = { decision: f.decision, editText: f.editText }
     const r = await $fetch<{ changed: number }>('/api/deai/decisions', {
-      method: 'POST', body: { page: page.value, decisions },
+      method: 'POST', body: { page: page.value, mode: mode.value, decisions },
     })
     savedMsg.value = 'saved'
   } finally {
@@ -145,7 +156,13 @@ function autosave() {
   <div class="mx-auto max-w-6xl px-4 py-6 font-serif">
     <!-- header / nav -->
     <div class="flex items-center gap-3 mb-4 text-sm">
-      <h1 class="font-semibold">de-AI review</h1>
+      <h1 class="font-semibold">{{ isBrogue ? 'brogue review' : 'de-AI review' }}</h1>
+      <div class="inline-flex rounded border overflow-hidden text-xs">
+        <button class="px-2 py-1" :class="!isBrogue ? 'bg-foreground text-background' : 'text-muted-foreground'"
+                @click="switchMode('deai')">de-AI</button>
+        <button class="px-2 py-1" :class="isBrogue ? 'bg-foreground text-background' : 'text-muted-foreground'"
+                @click="switchMode('brogue')">brogue</button>
+      </div>
       <span v-if="data" class="text-muted-foreground">
         {{ data.chapter || '—' }} · page {{ data.page }}/{{ data.total }}
       </span>
@@ -166,7 +183,7 @@ function autosave() {
     <div v-else-if="data && !data.detected"
          class="rounded border border-dashed p-6 text-sm text-muted-foreground">
       No detection cached for page {{ data.page }}.
-      Run the <code>deai</code> detect step for this page first, then reload.
+      Run the <code>{{ mode }}</code> detect step for this page first, then reload.
     </div>
 
     <div v-else-if="data" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -209,8 +226,10 @@ function autosave() {
             <span class="font-medium">{{ f.tell }}</span>
             <span v-if="isAdd(f)" class="rounded bg-violet-500/20 text-violet-300 px-1.5 py-0.5 text-[10px] uppercase tracking-wide">＋ add emotion</span>
             <span class="ml-auto flex items-center gap-2 text-xs">
-              <span class="rounded bg-muted px-1.5 py-0.5" title="off-voice (Claude judgment)">V {{ f.voice }}</span>
-              <span class="rounded bg-muted px-1.5 py-0.5" title="statistical AI-likelihood (stats)">D {{ f.detect }}</span>
+              <span class="rounded bg-muted px-1.5 py-0.5"
+                    :title="isBrogue ? 'lift — how much more authentic/alive the line reads' : 'off-voice (Claude judgment)'">{{ isBrogue ? 'L' : 'V' }} {{ f.voice }}</span>
+              <span class="rounded bg-muted px-1.5 py-0.5"
+                    :title="isBrogue ? 'parody risk — higher = scrutinize, may read as overcooked stage-Irish' : 'statistical AI-likelihood (stats)'">{{ isBrogue ? 'P' : 'D' }} {{ f.detect }}</span>
             </span>
           </div>
           <p v-if="f.why" class="text-muted-foreground mb-2">{{ f.why }}</p>

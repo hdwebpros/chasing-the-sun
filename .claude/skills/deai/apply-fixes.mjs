@@ -33,18 +33,23 @@ try { manuscriptNorm = normPresence(readFileSync(join(deai, 'manuscript.txt'), '
 const APPLY = args.includes('--apply')
 const COMMIT = args.includes('--commit')
 const ALL = args.includes('--all')
+// --brogue applies the Hiberno-English dialogue pass from brogue-page-NN.json instead
+// of the de-AI page-NN.json. Same find/replace + idempotency machinery, separate cache.
+const BROGUE = args.includes('--brogue')
+const PFX = BROGUE ? 'brogue-page-' : 'page-'
+const PFX_RE = BROGUE ? /^brogue-page-\d+\.json$/ : /^page-\d+\.json$/
 const rangeArg = args.find(a => /^\d+-\d+$/.test(a))   // e.g. 71-100
 const pageArg = args.find(a => /^\d+$/.test(a))
 
 function pagesToProcess() {
-  if (ALL) return readdirSync(deai).filter(f => /^page-\d+\.json$/.test(f)).map(f => join(deai, f))
+  if (ALL) return readdirSync(deai).filter(f => PFX_RE.test(f)).map(f => join(deai, f))
   if (rangeArg) {
     const [lo, hi] = rangeArg.split('-').map(Number)
     const out = []
-    for (let n = lo; n <= hi; n++) out.push(join(deai, `page-${String(n).padStart(2, '0')}.json`))
+    for (let n = lo; n <= hi; n++) out.push(join(deai, `${PFX}${String(n).padStart(2, '0')}.json`))
     return out
   }
-  if (pageArg) return [join(deai, `page-${String(pageArg).padStart(2, '0')}.json`)]
+  if (pageArg) return [join(deai, `${PFX}${String(pageArg).padStart(2, '0')}.json`)]
   console.error('Specify a page number, a range (NN-MM), or --all.'); process.exit(2)
 }
 
@@ -109,6 +114,7 @@ if (COMMIT) {
   const build = spawnSync('node', ['scripts/build-epub-from-drive.mjs', '--promote'], { cwd: root, stdio: 'inherit' })
   if (build.status !== 0) { console.error('epub rebuild failed; not committing.'); process.exit(1) }
   spawnSync('git', ['add', 'public/chasing-the-sun-draft.epub'], { cwd: root, stdio: 'inherit' })
-  const msg = `deai: apply ${pairs.length} approved fix(es)${pageArg ? ` (page ${pageArg})` : ''}\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
+  const tag = BROGUE ? 'brogue' : 'deai'
+  const msg = `${tag}: apply ${pairs.length} approved fix(es)${pageArg ? ` (page ${pageArg})` : ''}\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
   spawnSync('git', ['commit', '-m', msg], { cwd: root, stdio: 'inherit' })
 }

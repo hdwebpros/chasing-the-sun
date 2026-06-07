@@ -8,8 +8,14 @@ import { join } from 'node:path'
 export const PAGE_SIZE = 400
 export const deaiDir = () => join(process.cwd(), '.deai')
 export const manuscriptPath = () => join(deaiDir(), 'manuscript.txt')
-export const pageJsonPath = (n: number) =>
-  join(deaiDir(), `page-${String(n).padStart(2, '0')}.json`)
+
+// Review mode. 'deai' = AI-tell removal (page-NN.json). 'brogue' = Hiberno-English
+// dialogue pass (brogue-page-NN.json) — a SEPARATE cache so a brogue decision can
+// never overwrite a decided de-AI page, and vice versa.
+export type Mode = 'deai' | 'brogue'
+export const asMode = (m: unknown): Mode => (m === 'brogue' ? 'brogue' : 'deai')
+export const pageJsonPath = (n: number, mode: Mode = 'deai') =>
+  join(deaiDir(), `${mode === 'brogue' ? 'brogue-' : ''}page-${String(n).padStart(2, '0')}.json`)
 
 export interface Flag {
   id: string
@@ -52,9 +58,9 @@ export async function getPage(n: number): Promise<{ total: number; text: string 
   return { total: pages.length, text: pages[n - 1] ?? '' }
 }
 
-export async function readPageDoc(n: number): Promise<PageDoc | null> {
+export async function readPageDoc(n: number, mode: Mode = 'deai'): Promise<PageDoc | null> {
   try {
-    return JSON.parse(await readFile(pageJsonPath(n), 'utf8'))
+    return JSON.parse(await readFile(pageJsonPath(n, mode), 'utf8'))
   } catch {
     return null
   }
