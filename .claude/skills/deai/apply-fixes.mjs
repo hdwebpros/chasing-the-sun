@@ -33,11 +33,13 @@ try { manuscriptNorm = normPresence(readFileSync(join(deai, 'manuscript.txt'), '
 const APPLY = args.includes('--apply')
 const COMMIT = args.includes('--commit')
 const ALL = args.includes('--all')
-// --brogue applies the Hiberno-English dialogue pass from brogue-page-NN.json instead
-// of the de-AI page-NN.json. Same find/replace + idempotency machinery, separate cache.
+// --brogue applies the Hiberno-English dialogue pass from brogue-page-NN.json; --tic
+// applies the stylistic-tic thinning from tic-page-NN.json. Same find/replace +
+// idempotency machinery, separate cache. (Default: the de-AI page-NN.json.)
 const BROGUE = args.includes('--brogue')
-const PFX = BROGUE ? 'brogue-page-' : 'page-'
-const PFX_RE = BROGUE ? /^brogue-page-\d+\.json$/ : /^page-\d+\.json$/
+const TIC = args.includes('--tic')
+const PFX = TIC ? 'tic-page-' : BROGUE ? 'brogue-page-' : 'page-'
+const PFX_RE = TIC ? /^tic-page-\d+\.json$/ : BROGUE ? /^brogue-page-\d+\.json$/ : /^page-\d+\.json$/
 const rangeArg = args.find(a => /^\d+-\d+$/.test(a))   // e.g. 71-100
 const pageArg = args.find(a => /^\d+$/.test(a))
 
@@ -76,17 +78,25 @@ for (const file of pagesToProcess()) {
     const d = f.decision
     if (d !== 'accept' && d !== 'edit') continue
     const replace = normalize(d === 'edit' ? (f.editText ?? '') : f.fix)
-    if (replace === f.span) continue
+    // tic free-edit (editFull) reshapes the whole unit, landing included, so the find
+    // target is span + the trailing landing — not span alone. Everything else (de-AI,
+    // brogue, tic cut/vary/merge) targets span. (after is set only on tic flags.)
+    const find = (TIC && f.editFull && f.after) ? `${f.span} ${f.after}` : f.span
+    if (replace === find) continue
     // Skip fixes already in Drive (idempotent re-runs). Two signals:
     //  (a) the full REPLACEMENT is already present — covers ADDITIVE fixes, whose
     //      replacement starts with the span, so the span stays present even after
     //      applying; re-sending would DOUBLE the addition. Check this first.
     //  (b) the span is GONE — a plain substitution already happened.
-    if (manuscriptNorm !== null &&
-        (manuscriptNorm.includes(normPresence(replace)) || !manuscriptNorm.includes(normPresence(f.span)))) {
+    // TIC fixes (cut/merge/vary) replace the whole unit with a REWRITE that is often a
+    // substring of the original (a cut = the prior sentence alone), so signal (a) would
+    // false-positive and skip a legitimate change. For tic, idempotency is span-gone only.
+    const spanGone = manuscriptNorm !== null && !manuscriptNorm.includes(normPresence(find))
+    const dupAdditive = !TIC && manuscriptNorm !== null && manuscriptNorm.includes(normPresence(replace))
+    if (spanGone || dupAdditive) {
       alreadyApplied++; continue
     }
-    pairs.push({ find: f.span, replace, page: doc.page, tell: f.tell, decision: d })
+    pairs.push({ find, replace, page: doc.page, tell: f.tell, decision: d })
   }
 }
 if (alreadyApplied) console.log(`(${alreadyApplied} decided fix(es) skipped — span already gone from Drive, applied in a prior push)\n`)
@@ -114,7 +124,7 @@ if (COMMIT) {
   const build = spawnSync('node', ['scripts/build-epub-from-drive.mjs', '--promote'], { cwd: root, stdio: 'inherit' })
   if (build.status !== 0) { console.error('epub rebuild failed; not committing.'); process.exit(1) }
   spawnSync('git', ['add', 'public/chasing-the-sun-draft.epub'], { cwd: root, stdio: 'inherit' })
-  const tag = BROGUE ? 'brogue' : 'deai'
+  const tag = TIC ? 'tic' : BROGUE ? 'brogue' : 'deai'
   const msg = `${tag}: apply ${pairs.length} approved fix(es)${pageArg ? ` (page ${pageArg})` : ''}\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
   spawnSync('git', ['commit', '-m', msg], { cwd: root, stdio: 'inherit' })
 }

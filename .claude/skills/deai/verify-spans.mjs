@@ -27,11 +27,16 @@ const manuscript = join(deai, 'manuscript.txt')
 const pages = join(here, 'pages.sh')
 const args = process.argv.slice(2)
 const ALL = args.includes('--all')
+// --brogue / --tic check the sibling caches (brogue-page-NN.json / tic-page-NN.json).
+const BROGUE = args.includes('--brogue')
+const TIC = args.includes('--tic')
+const PFX = TIC ? 'tic-page-' : BROGUE ? 'brogue-page-' : 'page-'
+const PFX_RE = TIC ? /^tic-page-\d+\.json$/ : BROGUE ? /^brogue-page-\d+\.json$/ : /^page-\d+\.json$/
 const rangeArg = args.find(a => /^\d+-\d+$/.test(a))
 const pageArg = args.find(a => /^\d+$/.test(a))
 
 function pageNums() {
-  if (ALL) return readdirSync(deai).filter(f => /^page-\d+\.json$/.test(f)).map(f => +f.match(/\d+/)[0]).sort((a, b) => a - b)
+  if (ALL) return readdirSync(deai).filter(f => PFX_RE.test(f)).map(f => +f.match(/\d+/)[0]).sort((a, b) => a - b)
   if (rangeArg) { const [lo, hi] = rangeArg.split('-').map(Number); return Array.from({ length: hi - lo + 1 }, (_, i) => lo + i) }
   if (pageArg) return [+pageArg]
   console.error('Specify a page number, a range (NN-MM), or --all.'); process.exit(2)
@@ -44,7 +49,7 @@ let ok = 0
 const nearMiss = [], notFound = [], appliedGone = []
 for (const n of pageNums()) {
   let doc, txt
-  try { doc = JSON.parse(readFileSync(join(deai, `page-${String(n).padStart(2, '0')}.json`), 'utf8')) } catch { continue }
+  try { doc = JSON.parse(readFileSync(join(deai, `${PFX}${String(n).padStart(2, '0')}.json`), 'utf8')) } catch { continue }
   txt = pageText(n); const nt = norm(txt)
   for (const f of doc.flags || []) {
     if (txt.includes(f.span)) { ok++; continue }

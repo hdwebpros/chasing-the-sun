@@ -10,12 +10,14 @@ export const deaiDir = () => join(process.cwd(), '.deai')
 export const manuscriptPath = () => join(deaiDir(), 'manuscript.txt')
 
 // Review mode. 'deai' = AI-tell removal (page-NN.json). 'brogue' = Hiberno-English
-// dialogue pass (brogue-page-NN.json) — a SEPARATE cache so a brogue decision can
-// never overwrite a decided de-AI page, and vice versa.
-export type Mode = 'deai' | 'brogue'
-export const asMode = (m: unknown): Mode => (m === 'brogue' ? 'brogue' : 'deai')
+// dialogue pass (brogue-page-NN.json). 'tic' = stylistic-tic thinning
+// (tic-page-NN.json). Each is a SEPARATE cache so a decision in one pass can never
+// overwrite a decided page in another.
+export type Mode = 'deai' | 'brogue' | 'tic'
+const MODE_PFX: Record<Mode, string> = { deai: '', brogue: 'brogue-', tic: 'tic-' }
+export const asMode = (m: unknown): Mode => (m === 'brogue' || m === 'tic' ? m : 'deai')
 export const pageJsonPath = (n: number, mode: Mode = 'deai') =>
-  join(deaiDir(), `${mode === 'brogue' ? 'brogue-' : ''}page-${String(n).padStart(2, '0')}.json`)
+  join(deaiDir(), `${MODE_PFX[mode]}page-${String(n).padStart(2, '0')}.json`)
 
 export interface Flag {
   id: string
@@ -28,6 +30,18 @@ export interface Flag {
   fix: string
   decision?: 'pending' | 'accept' | 'reject' | 'edit'
   editText?: string
+  // tic free-edit only: when true, editText replaces the WHOLE unit (span + the trailing
+  // landing `after`), so apply-fixes finds `span + ' ' + after` instead of span alone.
+  // Lets a custom edit reshape the locked landing; cut/vary/merge leave it false.
+  editFull?: boolean
+  // tic pass extras (ignored by deai/brogue): grammar-safe rewrite candidates, the
+  // dialogue tag (defaults to keep), ±4-page cluster density, the concrete LANDING
+  // sentence (display context), and the voice-aware class set by judge.mjs.
+  alts?: { cut?: string | null; merge?: string | null; vary?: string | null }
+  inDialogue?: boolean
+  cluster?: number
+  after?: string
+  voiceClass?: 'concrete' | 'abstract' | null
 }
 export interface PageDoc {
   page: number

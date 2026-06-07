@@ -22,9 +22,10 @@ const here = dirname(fileURLToPath(import.meta.url))
 const deai = join(here, '..', '..', '..', '.deai')
 const args = process.argv.slice(2)
 const BROGUE = args.includes('--brogue')
-const PFX = BROGUE ? 'brogue-page-' : 'page-'
-const RPFX = BROGUE ? 'brogue-rescan-' : 'rescan-'
-const RTAG = BROGUE ? 'b' : 'r'   // fresh-flag id suffix: p21-b3 / p21-r3
+const TIC = args.includes('--tic')
+const PFX = TIC ? 'tic-page-' : BROGUE ? 'brogue-page-' : 'page-'
+const RPFX = TIC ? 'tic-rescan-' : BROGUE ? 'brogue-rescan-' : 'rescan-'
+const RTAG = TIC ? 't' : BROGUE ? 'b' : 'r'   // fresh-flag id suffix: p21-t3 / p21-b3 / p21-r3
 const N = args.find(a => /^\d+$/.test(a))
 if (!N) { console.error('usage: merge-rescan.mjs [--brogue] <pageNumber>'); process.exit(1) }
 const pad = String(N).padStart(2, '0')

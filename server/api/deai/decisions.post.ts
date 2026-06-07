@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
   if (process.env.NODE_ENV === 'production') {
     throw createError({ statusCode: 403, statusMessage: 'editing disabled in production' })
   }
-  const body = await readBody<{ page?: number; mode?: string; decisions?: Record<string, { decision: Flag['decision']; editText?: string }> }>(event)
+  const body = await readBody<{ page?: number; mode?: string; decisions?: Record<string, { decision: Flag['decision']; editText?: string; editFull?: boolean }> }>(event)
   const page = Number(body?.page)
   if (!Number.isInteger(page) || page < 1) {
     throw createError({ statusCode: 400, statusMessage: 'page required' })
@@ -28,8 +28,14 @@ export default defineEventHandler(async (event) => {
       throw createError({ statusCode: 400, statusMessage: `bad decision for ${f.id}` })
     }
     f.decision = d.decision
-    if (d.decision === 'edit') f.editText = d.editText ?? ''
-    else delete f.editText
+    if (d.decision === 'edit') {
+      f.editText = d.editText ?? ''
+      if (d.editFull) f.editFull = true
+      else delete f.editFull
+    } else {
+      delete f.editText
+      delete f.editFull
+    }
     changed++
   }
   await writeFile(pageJsonPath(page, mode), JSON.stringify(doc, null, 2) + '\n', 'utf8')

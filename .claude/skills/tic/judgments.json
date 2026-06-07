@@ -1,0 +1,263 @@
+{
+  "p1-t1": {
+    "voiceClass": "concrete"
+  },
+  "p3-t1": {
+    "voiceClass": "abstract",
+    "severity": 5,
+    "vary": "He stops there. He is deciding how far back to go.",
+    "merge": "He stops there, deciding how far back to go."
+  },
+  "p8-t1": {
+    "voiceClass": "concrete"
+  },
+  "p101-t1": {
+    "voiceClass": "concrete"
+  },
+  "p105-t1": {
+    "voiceClass": "concrete"
+  },
+  "p108-t1": {
+    "voiceClass": "concrete"
+  },
+  "p113-t1": {
+    "voiceClass": "concrete"
+  },
+  "p113-t2": {
+    "voiceClass": "concrete"
+  },
+  "p116-t1": {
+    "voiceClass": "concrete"
+  },
+  "p117-t1": {
+    "voiceClass": "concrete"
+  },
+  "p118-t1": {
+    "voiceClass": "abstract",
+    "severity": 4,
+    "vary": "By the time the carriage stopped outside her house, something between them had changed. Warmer, if not yet romantic.",
+    "merge": "By the time the carriage stopped outside her house, the air between them had warmed."
+  },
+  "p118-t2": {
+    "voiceClass": "concrete"
+  },
+  "p118-t3": {
+    "voiceClass": "concrete"
+  },
+  "p119-t1": {
+    "voiceClass": "concrete"
+  },
+  "p12-t1": {
+    "voiceClass": "concrete"
+  },
+  "p128-t1": {
+    "voiceClass": "concrete"
+  },
+  "p129-t1": {
+    "voiceClass": "concrete"
+  },
+  "p130-t1": {
+    "voiceClass": "concrete"
+  },
+  "p130-t2": {
+    "voiceClass": "concrete"
+  },
+  "p133-t1": {
+    "voiceClass": "concrete"
+  },
+  "p136-t1": {
+    "voiceClass": "concrete"
+  },
+  "p137-t1": {
+    "voiceClass": "concrete"
+  },
+  "p142-t1": {
+    "voiceClass": "concrete"
+  },
+  "p142-t2": {
+    "voiceClass": "concrete"
+  },
+  "p148-t1": {
+    "voiceClass": "concrete"
+  },
+  "p150-t1": {
+    "voiceClass": "concrete"
+  },
+  "p153-t1": {
+    "voiceClass": "concrete"
+  },
+  "p154-t1": {
+    "voiceClass": "concrete"
+  },
+  "p154-t2": {
+    "voiceClass": "concrete"
+  },
+  "p156-t1": {
+    "voiceClass": "concrete"
+  },
+  "p157-t1": {
+    "voiceClass": "concrete"
+  },
+  "p157-t2": {
+    "voiceClass": "concrete"
+  },
+  "p160-t1": {
+    "voiceClass": "concrete"
+  },
+  "p166-t1": {
+    "voiceClass": "concrete"
+  },
+  "p167-t1": {
+    "voiceClass": "concrete"
+  },
+  "p17-t1": {
+    "voiceClass": "concrete"
+  },
+  "p17-t2": {
+    "voiceClass": "concrete"
+  },
+  "p171-t1": {
+    "voiceClass": "concrete"
+  },
+  "p172-t1": {
+    "voiceClass": "concrete"
+  },
+  "p172-t2": {
+    "voiceClass": "concrete"
+  },
+  "p176-t1": {
+    "voiceClass": "concrete"
+  },
+  "p178-t1": {
+    "voiceClass": "concrete"
+  },
+  "p180-t1": {
+    "voiceClass": "abstract",
+    "severity": 7,
+    "vary": "She did not look back. She knew what she would see.",
+    "merge": "She did not look back, knowing what she would see."
+  },
+  "p181-t1": {
+    "voiceClass": "concrete"
+  },
+  "p182-t1": {
+    "voiceClass": "abstract",
+    "severity": 8,
+    "vary": "She had looked at this man and seen something worth being beside. She was not lonely; she was curious.",
+    "merge": "She had looked at this man, curious, and seen something worth being beside."
+  },
+  "p184-t1": {
+    "voiceClass": "abstract",
+    "severity": 5,
+    "vary": "Somewhere in the middle of those years, something shifted, quiet and gradual.",
+    "merge": "Somewhere in the middle of those years, something shifted, slow and unmarked."
+  },
+  "p184-t2": {
+    "voiceClass": "abstract",
+    "severity": 7,
+    "vary": "He stopped fighting the memories. He had not conquered them; he was just too tired.",
+    "merge": "He stopped fighting the memories, too tired to keep them out."
+  },
+  "p185-t1": {
+    "voiceClass": "concrete"
+  },
+  "p185-t2": {
+    "voiceClass": "concrete"
+  },
+  "p186-t1": {
+    "voiceClass": "concrete"
+  },
+  "p187-t1": {
+    "voiceClass": "concrete"
+  },
+  "p22-t1": {
+    "voiceClass": "concrete"
+  },
+  "p23-t1": {
+    "voiceClass": "concrete"
+  },
+  "p25-t1": {
+    "voiceClass": "concrete"
+  },
+  "p26-t1": {
+    "voiceClass": "concrete"
+  },
+  "p28-t1": {
+    "voiceClass": "concrete"
+  },
+  "p38-t1": {
+    "voiceClass": "concrete"
+  },
+  "p41-t1": {
+    "voiceClass": "concrete"
+  },
+  "p49-t1": {
+    "voiceClass": "concrete"
+  },
+  "p52-t1": {
+    "voiceClass": "concrete"
+  },
+  "p54-t1": {
+    "voiceClass": "concrete"
+  },
+  "p56-t1": {
+    "voiceClass": "concrete"
+  },
+  "p58-t1": {
+    "voiceClass": "concrete"
+  },
+  "p61-t1": {
+    "voiceClass": "concrete"
+  },
+  "p64-t2": {
+    "voiceClass": "concrete"
+  },
+  "p66-t2": {
+    "voiceClass": "concrete"
+  },
+  "p70-t1": {
+    "voiceClass": "concrete"
+  },
+  "p71-t1": {
+    "voiceClass": "concrete"
+  },
+  "p71-t2": {
+    "voiceClass": "concrete"
+  },
+  "p73-t1": {
+    "voiceClass": "abstract",
+    "severity": 6,
+    "vary": "William listened to the sounds and imagined the cost of passage back to Ireland. He did not want to go; he wanted distance to have a price.",
+    "merge": "William listened to the sounds and priced the passage back to Ireland, the distance he would never cross."
+  },
+  "p77-t1": {
+    "voiceClass": "concrete"
+  },
+  "p77-t2": {
+    "voiceClass": "concrete"
+  },
+  "p78-t2": {
+    "voiceClass": "concrete"
+  },
+  "p82-t1": {
+    "voiceClass": "concrete"
+  },
+  "p86-t1": {
+    "voiceClass": "concrete"
+  },
+  "p87-t1": {
+    "voiceClass": "concrete"
+  },
+  "p88-t1": {
+    "voiceClass": "concrete"
+  },
+  "p91-t1": {
+    "voiceClass": "concrete"
+  },
+  "p95-t1": {
+    "voiceClass": "concrete"
+  },
+  "p99-t1": {
+    "voiceClass": "concrete"
+  }
+}
