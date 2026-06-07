@@ -72,8 +72,15 @@ for (const file of pagesToProcess()) {
     if (d !== 'accept' && d !== 'edit') continue
     const replace = normalize(d === 'edit' ? (f.editText ?? '') : f.fix)
     if (replace === f.span) continue
-    // skip fixes whose target text is no longer in Drive (already applied in a prior push)
-    if (manuscriptNorm !== null && !manuscriptNorm.includes(normPresence(f.span))) { alreadyApplied++; continue }
+    // Skip fixes already in Drive (idempotent re-runs). Two signals:
+    //  (a) the full REPLACEMENT is already present — covers ADDITIVE fixes, whose
+    //      replacement starts with the span, so the span stays present even after
+    //      applying; re-sending would DOUBLE the addition. Check this first.
+    //  (b) the span is GONE — a plain substitution already happened.
+    if (manuscriptNorm !== null &&
+        (manuscriptNorm.includes(normPresence(replace)) || !manuscriptNorm.includes(normPresence(f.span)))) {
+      alreadyApplied++; continue
+    }
     pairs.push({ find: f.span, replace, page: doc.page, tell: f.tell, decision: d })
   }
 }
