@@ -35,7 +35,7 @@ so long as it stays instantly readable. When torn between flavor and clarity, pi
 
 - **The safest tells need no exotic words** — lean on these, they read instantly:
   light word-order (would ye, c'mere to me, "only after" sparingly), `ye/yer`, dropped-g
-  (`-in'`), `me` for `my`, and recognizable vocab only (grand, deadly [William], eejit,
+  (`-in'`), `me` for `my`, and recognizable vocab only (grand, eejit,
   sure [sanctioned], aul', wee, fierce [X], givin' out, knackered, sound, whisht).
 
 - **Still don't leave the obvious flat line bare** — but fix it READABLY: a flat
@@ -48,42 +48,32 @@ so long as it stays instantly readable. When torn between flavor and clarity, pi
 
 ## Character voice (speaker-specific)
 
-- **William Boog — "Deadly." as a standalone grunt of approval.** William's signature
-  tic is the single word **"Deadly."** (Dublin for "excellent/brilliant"), used almost
-  by itself as a one-word/one-sentence beat of approval or satisfaction — the positive
-  twin of his "Hrmm" grunt. Use it where the page gives a genuine approval moment for
-  William: a small win, something that pleases him, a deal landing (e.g. the newspaper
-  agreeing to run his ad). Reach for it by REPLACING or PUNCTUATING a flat approving
-  beat ("Good." / "That'll do." / a satisfied nod) with a standalone "Deadly." — never
-  buried mid-sentence, never stacked.
-  - SPARINGLY: it's a recurring grace note across the whole book, not a per-page move.
-    At MOST once on a page, and only when the approval beat is really there. If the page
-    has no such moment for William, do NOT insert it — a forced "Deadly" is worse than
-    none. Treat a missing opportunity as fine; this is a light seasoning, not a quota.
-  - PER-PAGE BLIND SPOT: a subagent sees only one page and can't know William's arc, so
-    judge purely on THIS page — is there a beat where William is plainly pleased/approving?
-    Only then.
-  - PERIOD EXCEPTION: "deadly" as slang is otherwise on the anachronism-caution list, but
-    it is EXPLICITLY sanctioned as William's established catchphrase — allow it for him.
-  - CONFLATION GUARD (author-flagged): "deadly" means EXCELLENT here, so NEVER place it
-    where a reader could read its literal "lethal/fatal" sense — i.e. anywhere near
-    killing, violence, a wound, hunting, a death, a fight, an injury. Rejected example:
-    after "I smacked it with a board!" (a killed goose) → "Deadly! I got us a proper
-    dinner!" reads as the goose being deadly. Only use "Deadly." on an approval beat where
-    the SURROUNDING lines carry NO violent/lethal context. When in doubt, don't.
+- **William Boog — signature approval word is "Prime.", NEVER "Deadly" (FINAL, 2026-06-12).**
+  The author researched "deadly" (= excellent): the slang sense isn't attested until the
+  1900s — anachronistic for a man formed in 1840s–70s Dublin. The earlier rule sanctioning
+  it as his catchphrase is REVOKED; never suggest "deadly" in this sense for any character
+  (the `lexicon.txt` "Deadly." entry is void). His standalone approval beat is **"Prime."**
+  — the spoken twin of his "Hrmm" grunt.
+  - SPEC: at most THREE instances in the entire book (an establishing use, the defiant
+    "Grand. Let them come." moment in Ch 7, and one quiet final callback). It is NOT a
+    per-page move — a detect subagent should essentially never insert it; a forced one is
+    worse than none.
+  - GUARD (carried over): never place it near killing, violence, a wound, a death, a
+    fight, an injury — and keep it out of the Oregon/1925 frame, where its absence is
+    the point.
 
 - **William's AMERICANIZATION (later chapters, ~p120 onward) — CODE-SWITCHING.** By the
   back third William has lived in America for decades and has largely Americanized. His
   Hiberno is now SITUATIONAL — judge each scene by who he's with and where:
   - **In public / with Lottie / business or formal settings:** he speaks mostly STANDARD
     AMERICAN. Only the most common, instantly-readable tells slip through, and rarely —
-    an occasional "grand", a stray "ye", and his "Deadly" tic. Keep flags here SPARSE and
+    an occasional "grand" and a stray "ye". Keep flags here SPARSE and
     very light; heavily broguing him in these scenes CONTRADICTS the arc. Often the right
     answer is 0–1 flags.
   - **At home / relaxed / with family or old Irish friends / when emotional or off-guard:**
     more Hiberno slips back out — still recognizable tier, still readable, light touch, but
     a bit more of it is natural here.
-  - "Deadly" and the common readable phrases (grand, sure[sanctioned], aul', wee, ye/yer,
+  - The common readable phrases (grand, sure[sanctioned], aul', wee, ye/yer,
     dropped-g) persist across BOTH registers as what survives his Americanization; the
     heavier word-order/idiom should mostly appear only in the relaxed/home register.
   - This applies to WILLIAM specifically. **Lottie is from KANSAS — American, NOT Irish.
@@ -140,7 +130,7 @@ so long as it stays instantly readable. When torn between flavor and clarity, pi
 Irish speech, ESPECIALLY in the pub / banter / teasing, carried wit and clever turns
 that still read well today. Where the scene is light or sparring (NOT grief, death,
 tension — match the mood), reach past the plain tells into the recognizable WITTY lexicon
-and let a line be funny: `gas` (funny), `deadly`/`savage` (excellent), `eejit`, `acting
+and let a line be funny: `gas` (funny), `savage` (excellent), `eejit`, `acting
 the maggot` (messing about), `away with the fairies` (daydreaming), `not the full
 shilling` (foolish), `God love ye` (affectionate/sarcastic), `fair play to ye`, `the
 craic`, `chancin' me arm` (taking a risk), `givin' out` (scolding), `cute hoor` (sly

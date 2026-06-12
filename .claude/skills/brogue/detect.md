@@ -61,7 +61,8 @@ No stats.mjs — there is no statistical axis here. `pageDetect` is omitted/null
 >   plural you, “me” for “my” (“me mot”, “me aul’ fella”), leveling (“I seen it”, “I
 >   done it”). These carry more authenticity than spelling tricks.
 > - Vocabulary from the lexicon: grand, eejit, knackered, banjaxed, givin’ out,
->   gobsmacked, deadly, gas, sound, fierce [X], whisht, fair play, the craic, etc. —
+>   gobsmacked, gas, sound, fierce [X], whisht, fair play, the craic, etc. (NEVER
+>   “deadly” — author ruled it anachronistic, 1900s+ slang; see rules.md) —
 >   used where a character would actually reach for them, not sprinkled.
 >
 > ## PARODY GUARD (this is itself a flagged signal)
