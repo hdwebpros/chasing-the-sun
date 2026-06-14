@@ -49,6 +49,7 @@ const onlyArg = args[args.indexOf('--only') + 1]
 const only = args.includes('--only') && onlyArg
   ? new Set(onlyArg.split(',').map((n) => parseInt(n, 10)))
   : null
+const noPeople = args.includes('--no-people')
 
 if (!chapter) {
   console.error('Usage: node scripts/generate-twitch-images.mjs <chapter> [--force] [--only 3,7] [--model <id>]')
@@ -80,7 +81,7 @@ async function generateImagen(ai, prompt) {
       numberOfImages: 1,
       aspectRatio: ASPECT,
       sampleImageSize: SIZE,        // '1K' | '2K'
-      personGeneration: 'allow_all',
+      personGeneration: noPeople ? 'dont_allow' : 'allow_all',
     },
   })
   const data = res?.generatedImages?.[0]?.image?.imageBytes
