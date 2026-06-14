@@ -1,6 +1,38 @@
 <script setup lang="ts">
-const { toc, currentChapter, currentChapterLabel, progress, isLoading, bookTitle, loadBook, goToChapter, next, prev, destroy, onTap, onSwipeLeft, onSwipeRight } = useBook()
+import { TWITCH_CHAPTERS, type TwitchChapter } from '~/data/twitch'
+
+const { toc, currentChapter, currentChapterLabel, progress, chapterProgress, isLoading, bookTitle, loadBook, goToChapter, next, prev, destroy, onTap, onSwipeLeft, onSwipeRight } = useBook()
 const { mode, theme, cycleMode } = useReaderTheme()
+
+// Solo-stream mode: when the reader opens /read?twitch=1, this page broadcasts the
+// chapter + reading progress over the shared pulse channel so a /twitch overlay (in OBS)
+// follows along as they read — no operator at /prompter needed. Background slideshow on the
+// overlay self-advances on its own timer; we deliberately fire NO pulses/images here.
+// Gated behind the flag so ordinary readers don't all publish into the shared MQTT topic.
+const route = useRoute()
+const streamMode = computed(() => route.query.twitch === '1' || route.query.twitch === 'true')
+const { send } = usePulseChannel()
+
+// Map the epubjs href (which may include a #fragment) onto a twitch chapter entry
+const activeChapter = computed<TwitchChapter | null>(() => {
+  const href = currentChapter.value
+  if (!href) return null
+  const base = href.split('#')[0]
+  for (const c of Object.values(TWITCH_CHAPTERS)) {
+    if (base?.includes(c.epubHref)) return c
+  }
+  return null
+})
+
+watch(activeChapter, (c, prev) => {
+  if (!streamMode.value || !c || c.id === prev?.id) return
+  send({ type: 'chapter', id: c.id })
+}, { immediate: true })
+
+watch([progress, chapterProgress, currentChapterLabel], ([book, chapter, label]) => {
+  if (!streamMode.value) return
+  send({ type: 'progress', book, chapter, chapterLabel: label })
+})
 
 const readerEl = ref<HTMLElement | null>(null)
 const tocOpen = ref(false)
