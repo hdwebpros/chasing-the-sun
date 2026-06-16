@@ -84,6 +84,46 @@ session that produced this skill:
    if it appears in other scenes, it is spine: preserve it, restructure around it.** "Full
    cut" is almost always the wrong instinct here; the author's content is rarely the
    problem, the *rhythm* is. Tighten the rhythm, keep the thing.
+11. **Don't stop hunting triads the moment you've decided a sentence is "signature."** Real
+   miss, this session: I praised `hands that knew every angle of the chisel tip, how the
+   grain worked, every trick the wood might try back` as "top-tier trade-grounded writing,
+   keep" — and it was a same-opener triad (angle / grain / trick, two beats opening
+   `every`) sitting in the sentence I'd waved through. The instant you label a line
+   signature/keep, you stop reading it critically — that is exactly when the triad hides.
+   **Run the acoustic triad test (item 9) on EVERY sentence in the paragraph: the keeps,
+   the ones you're not touching, AND the new ones you just wrote. "I like this sentence" is
+   not a triad exemption.** "Trade-grounded nouns" / "concrete craft detail" does NOT buy a
+   three-beat list a pass — concrete *and* triadic is still a triad.
+12. **Don't relabel a matched-three of `He`/`She` sentences as a "concrete-reversal that
+   lands on a turn."** `He did not rush. He did not hesitate. He simply worked.` is a triad
+   AND staccato AND a same-opener run — three matched sentences, all opening `He`. I
+   defended it TWICE as signature because it "lands on a turn." It does not: the
+   concrete-reversal keep lands on a **concrete CHOSEN thing** (`the scrappy, stubborn kind
+   that grows between the cobblestones`). `He simply worked` is a generic activity, not a
+   chosen object — so the run is a tell, not the keep. **Test for the concrete-reversal
+   exemption: is the final beat a specific physical NOUN the author picked over the expected
+   one? If the landing is an abstract activity/state (`simply worked`, `just sat there`,
+   `kept going`), it is NOT concrete-reversal — it is a triad. Dissolve it.**
+13. **Don't let a comma-list of three phrases off because the third is "a different
+   grammatical type."** My own rewrite shipped a fresh triad: `He moved without hurry,
+   without hesitation, the chisel sure in his hand` — I told myself it was "two negations
+   plus an appositive tail," so not parallel. The reader's EAR doesn't parse grammar; it
+   hears `A, B, C` — three comma-separated beats between the verb and the period. An
+   absolute phrase / appositive / prepositional tail as the third slot is the same trench
+   coat as item 9. **Count comma-separated beats acoustically, not by part of speech. Two
+   beats then a tail can still land as three — if in doubt, split it into separate
+   sentences.** And after writing ANY rewrite, re-read it adversarially as if someone else
+   wrote it and you're hunting their triads — do not present until your own sentences pass
+   the same test you'd apply to the original. (Author, this session, three rounds running:
+   *"that is a triad why why just why"* — each time it was. I kept building new ones while
+   fixing old ones.)
+14. **When you keep producing triads, stop comma-piling — go to separate short sentences and
+   an adverb opener.** The author's own escape hatch when a fix loops on triads: *"use an
+   adverb, make a new sentence."* A one-clause sentence can't be a triad. The clean fix to
+   #12/#13 above was `Gray-bearded and old, the man bent over his bench. Patiently, he set
+   each cut. His hands never hesitated.` — discrete short sentences, one adverb-comma opener
+   (`Patiently,`), zero three-beat lists. When the comma-list keeps betraying you, the
+   answer is fewer commas, not cleverer nesting.
 
 ## You are REWRITING, not re-gluing (the core mandate)
 
