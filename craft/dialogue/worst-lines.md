@@ -120,7 +120,7 @@ Do not infer new VOICE.md rules from this file.
 - **Tommy Wiseau, *The Room*** ("I did not hit her... Oh hi, Mark") — VERIFIED. ✅
 - **Paul Auster, *Sunset Park*** (forced baseball backstory) — book/author VERIFIED; the specific exchange is Fox's paraphrase. ⚠️
 - **Ayn Rand, *Atlas Shrugged*** John Galt speech — VERIFIED as the archetypal over-long monologue (~70–90 pp, commonly cited; Fox said "75 pages"). ✅ length-claim approximate.
-- **Nathan Englander draft-then-condense method** — author real (*For the Relief of Unbearable Urges*); method per Fox's own interview, not separately published — treat as Fox's report. ❓
+- **Nathan Englander draft-then-condense method** — author real (*For the Relief of Unbearable Urges*). **Phase 3:** Englander is well-documented as a heavy *cutter/compressor* (e.g. cutting ~40 pages down to a single line; "a constant state of rewriting and redrafting") — so the **condense** half is ✅ supported. The specific "draft fast/loose first, *then* compress the dialogue" *method framing* is not a named documented method — ⚠️ treat as Fox's report of one interview, supportable in spirit. URL: https://thejohnfox.com/2023/05/interview-with-nathan-englander/
 - **James Redfield, *The Celestine Prophecy*** robotic dialogue — book/criticism VERIFIED (Publishers Weekly: "banal and clichéd"); quoted exchange is Fox's illustration. ✅/⚠️
 - **Mr. Freeze puns, *Batman & Robin*** ("break the ice," "kick some ice") — VERIFIED. ✅
 - **Terry Pratchett *Discworld*** pun examples — broomstick/"sexual metaphor" line VERIFIED to *Wyrd Sisters*; footnote wording paraphrased from the video. ✅/⚠️

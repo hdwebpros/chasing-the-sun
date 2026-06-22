@@ -54,7 +54,7 @@ house_gate: VOICE.md   # where this conflicts with the manuscript voiceprint, VO
 **Mistake.** Intending an erotic, sensual scene and *accidentally* producing something ridiculous, off-putting, or blind to what sensuality even is.
 **Why it fails.** When a scene has "complete and utter disregard for anything like reality" and ignores the essence of sensuality, the reader recoils rather than warms — the scene becomes a poster child for how *not* to do it.
 **Important distinction.** This applies only when you're *aiming* for sexy and missing. If the scene depicts coercion, assault, or anything that should *not* read as sexy, then being unsexy is correct, not a mistake.
-**Example.** Jade West, *Artless* (title unverified — see Provenance): a couple coupling right next to a dead body, plus painful-to-read mechanics with zero preparation. The mismatch between the staging and any plausible eroticism is the failure.
+**Example.** Jade West (title likely *Heartless* — see Provenance): a couple coupling right next to a dead body, plus painful-to-read mechanics with zero preparation. The mismatch between the staging and any plausible eroticism is the failure.
 **Better approach.** Write toward sensuality with some grounding in reality; the litmus test is simply "no scene of yours should be able to win a Bad Sex award."
 
 ### 6. Believing it has to be erotic
@@ -112,4 +112,4 @@ These are avoid-rules, not license. Where any "better approach" above brushes ag
 - **Peter Høeg, *Smilla's Sense of Snow*; A.A. Gill, *Starcross*** — **❓** novels exist; the specific "impossible/improbable" passages are paraphrased by Fox, not quoted, so not verifiable here.
 - **Sean Thomas, *Kissing England* (Sony Walkman line)** — **❓ unverified** specific line.
 - **Sebastian Faulks, *Charlotte Gray* ("break into a million fragments")** — **❓ unverified** specific line.
-- **Jade West, *Artless*** — **❓ title unverified:** no novel by that exact title found in her catalog (which includes *Heartless*, *Soulless*, etc.); possibly a mis-titling in the auto-caption.
+- **Jade West — title likely *Heartless*** — **❌ "Artless" is not a real title.** Phase 3: no novel "Artless" exists in Jade West's catalog; her titles follow a "-less" pattern (*Heartless*, *Soulless*, *Relentless*), so "Artless" is almost certainly an auto-caption mishearing — most likely **Heartless** (Starcrossed Lovers Trilogy), possibly *Soulless*. Use "Jade West (likely *Heartless*)"; do not cite *Artless*. URL: https://www.amazon.co.uk/stores/author/B00TPSDKG4

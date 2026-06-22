@@ -23,17 +23,17 @@ All 11 distilled in Phase 1.
 | SPICYSCENES | intimacy/spicy-scenes |
 | WORSTLINES | dialogue/worst-lines |
 
-## ⚠️❓ FLAGGED — needs the author's eye before being cited as fact
-| Claim | Attributed to | Status | Note |
+## ⚠️❓ FLAGGED — RESOLVED in Phase 3 (web-verified 2026-06-22)
+| Claim | Attributed to | Status after Phase 3 | Resolution |
 |---|---|---|---|
-| "Furnish the world on a budget" / salient detail | "Robin Wilson" | ⚠️ HIGH name-risk | Almost certainly **Robie Macauley**, *Technique in Fiction*. Caption mangled the name. |
-| "weak blonde prose" (don't cage prose in a child's vocabulary) | Nabokov | ⚠️ | Idea is Nabokov-adjacent; exact phrase unverified — may be Fox's coinage. |
-| "one power word per sentence" | Janet Fitch | ⚠️ | Fox cites private USC mentorship; not in her published 10 Tips. |
-| Epistrophe "…silence." example | (unnamed; "the was beater") | ❓ | Likely **Iain Banks, *The Wasp Factory*** — audio garbled; unconfirmed. |
-| *Artless* (romance example) | Jade West | ❓ | No such title in her catalog — likely caption error. |
-| Draft-then-condense dialogue method | Nathan Englander | ❓ | Real author; method from Fox's own interview, not published elsewhere. |
-| *Half the Kingdom* roof-suicide scene | Lore Segal (via Spark) | ❓ | Book verified; exact scene not independently confirmed. |
-| Dan Brown *Inferno* dialect line; Auster *Sunset Park* exchange | (as quoted) | ⚠️ | Books verified; specific lines paraphrased from video, not re-quoted. |
+| "Furnish the world on a budget" / salient detail | "Robin Wilson" | ⚠️ attribution unresolved — **do NOT rename to Macauley** | Earlier guess withdrawn. Could not confirm the line in Macauley & Lanning's *Technique in Fiction*; a real craft figure **Robin Scott Wilson** (Clarion founder) exists, so the name may be genuine. The *idea* is canonically **John Gardner's "telling/selective detail"** (*The Art of Fiction*). Record: principle = Gardner ✅; video's named source = unresolved. |
+| "weak blonde prose" (child-vocabulary trap) | Nabokov | ❌ **drop Nabokov** | No evidence Nabokov used "blonde prose" anywhere (Strong Opinions, Lectures, criticism). Treat the phrase as the video creator's coinage; the principle stands but is not Nabokov's words. |
+| "one power word per sentence" | Janet Fitch | ❌ not in her published list | Verified her actual "10 Writing Tips" — not among them (her tip #2 is "pick a better verb"). Possibly private USC teaching, unverifiable. Don't cite as one of her 10 tips. |
+| Epistrophe "…silence." example | (unnamed; "the was beater") | ❓ unresolvable | Could not locate the passage in *The Wasp Factory* or anywhere. Keep epistrophe as a valid device; drop/flag the Banks attribution until the passage is found. |
+| Romance "how-not-to" example | Jade West | ❌ "Artless" not real → likely ***Heartless*** | No "Artless" in her catalog; her titles run *Heartless/Soulless/Relentless*. Almost certainly an auto-caption mishearing of **Heartless** (poss. *Soulless*). Use "Jade West (likely *Heartless*)." |
+| Draft-then-condense dialogue method | Nathan Englander | ⚠️ compression ✅, method framing unverified | Englander is well-documented as a heavy cutter/compressor (cut ~40pp to a line). The specific "draft fast then compress dialogue" *method* framing is not separately documented — treat as Fox's report. |
+| *Half the Kingdom* suicide-by-jump | Lore Segal | ✅ book + jump · ⚠️ "roof" | Book (Melville House, 2013) and a fatal suicide-by-jump are real and plot-catalysing; whether the launch point is a *roof* specifically is unconfirmed. Say "jumps to her death from the building." |
+| Dan Brown *Inferno* / Auster *Sunset Park* | (as quoted) | ✅ books · ⚠️ lines | Both books/authors confirmed; the specific lines remain paraphrased from video, not re-quoted. |
 
 ## ✏️ CORRECTIONS made to the source videos (errors fixed in-file)
 - **Houellebecq, *Serotonin*** did **not win** the 2019 Bad Sex Award (Fox said it won) — it was *shortlisted*; the 2019 winner was **James Frey, *Katerina***. [Literary Review](https://literaryreview.co.uk/bad-sex-in-fiction-award)
@@ -76,19 +76,19 @@ All 11 distilled in Phase 1.
 **dialogue/worst-lines**
 - Ted Tally subtext rule (via Yorke, *Into the Woods*) ✅ · Meyer *New Moon* ✅ · *Attack of the Clones* ✅ · *Riverdale* (Jughead) ✅ · *The Room* (Wiseau) ✅ · *Atlas Shrugged* Galt speech ✅ · *Batman & Robin* (Mr. Freeze) ✅ · Pratchett *Wyrd Sisters* ✅ · *Fifty Shades* diction tallies ✅ (counts approximate)
 
-## Canon to verify in Phase 2/3 (cited inside the structured files)
-Re-confirm primary wording before canonizing:
-- Helen Sword — be-verb / "zombie nouns" bands · *The Writer's Diet*, NYT 2012 — 🔲
-- Roy Peter Clark — end-emphasis · *Writing Tools* — 🔲
-- Francis Christensen — cumulative sentence · CCC 1963 — 🔲
-- George Orwell — cliché/plainness · "Politics and the English Language" 1946 — 🔲
-- Strunk & White — expletive subjects, Rule 11 — 🔲
-- Janet Burroway — "filter words" · *Writing Fiction* — 🔲
-- Stephen King — adverbs · *On Writing* — 🔲
-- Alyssa Matesic — pet phrases, stock gestures, "passed by uneventfully" — ⚠️ re-confirm
-- Hilary Mantel — restraint · Reith Lectures 2017 — 🔲
-- Donald Maass — micro-tension · *The Emotional Craft of Fiction* — 🔲
-- Lisa Cron — "misbelief" origin scene · *Story Genius* — 🔲
+## Canon — VERIFIED in Phase 3 (web-verified 2026-06-22)
+Primary wording confirmed against originals; lens files updated to match.
+- **Helen Sword** — be-verbs / "zombie nouns" · *The Writer's Diet* / NYT 2012 — ✅ **bands are HER real numbers** (be-verb scale <3 Lean / 3 Fit / 4 Needs toning / 5 Flabby / 6+ Heart attack). Distinction logged: the "Zombie Nouns" essay flags *nominalizations* (≥5%), be-verb bands come from the WritersDiet test — separate categories.
+- **Roy Peter Clark** — end-emphasis · *Writing Tools* — ✅ **Tool #4 "Period As a Stop Sign"** ("strong words at the beginning… and at the end"). Clark traces it to Strunk Rule 18.
+- **Francis Christensen** — cumulative sentence · CCC vol. 14 no. 3, Oct 1963, pp. 155–161 — ✅ term + concept + citation confirmed (full article paywalled; defining sentence not pulled verbatim).
+- **George Orwell** — cliché / plainness · "Politics and the English Language" 1946 — ✅ six rules verbatim (Orwell Foundation); rule (i) is the anti-cliché rule, bans *stale* figures, not all figurative language.
+- **Strunk & White** — expletives / "the fact that" — ✅ **rule numbers corrected & confirmed:** original Strunk Rule 11 = *Use the Active Voice* (the "there is"→transitive fix); Rule 13 = *Omit Needless Words* (the "fact that" deletion). S&W combined editions renumber Omit Needless Words to **Rule 17**. (Old ledger's bare "Rule 11" for expletives was right under original numbering.) Don't overclaim a numbered ban on bare "there is."
+- **Janet Burroway** — "filter words" · *Writing Fiction* — ✅ idea · ⚠️ **not sole coiner**: popularized by Burroway, concept shared with **John Gardner** (*The Art of Fiction*). Record "popularized by," not "coined by."
+- **Stephen King** — adverbs · *On Writing* — ✅ "the road to hell is paved with adverbs" + the dialogue-tag stance, verbatim.
+- **Alyssa Matesic** — ✅ **"pet phrases" + the "three on a page" number are HERS** (example: "gold-flecked eyes three times on one page"). ⚠️ "stock gestures" — principle hers, but trim the attributed list to her real examples (*let out a breath* / *padding down a hall* / *smile that didn't reach their eyes*); "nodded/shrugged/raised an eyebrow" is our extension. ❓ **"passed by uneventfully"** — that exact phrase is NOT hers; only the "uneventful chapter" concept is. De-attribute the phrase.
+- **Hilary Mantel** — restraint · Reith Lectures 2017 — ✅ "ignorant of their fates" verbatim (Lecture 1); no-foreknowledge / historical-humility in Lecture 4 ("penny whistles, not the great drumroll of fate"; "know ten times as much as you tell"). "Restraint" is our label for her verified principle.
+- **Donald Maass** — micro-tension — ✅ his term, **origin = _The Fire in Fiction_ (2009)** (corrected from *The Emotional Craft of Fiction*): "tension that… keeps your reader wondering what will happen — not in the story, but in the next few seconds."
+- **Lisa Cron** — "misbelief" / "origin scene" · *Story Genius* — ✅ both are her terms (CreativeLive lesson titled "The Protagonist Will Enter with a Defining Misbelief"). Refinement: the wound is "a specific painful past experience," *typically* but not strictly childhood.
 
 > Note (per project memory): the Bookfox claim "three He/She openers in a row = amateur" could **not** be
 > sourced and is flagged ❓ in SENTENCE-VARIETY-LESSON. Keep that flag on migration.
@@ -131,5 +131,10 @@ for migration to `../reviews/` (Phase 2b) and was kept OUT of the craft files.
 
 **pacing/pacing (merged)** — Bookfox "4 Ways to Write Summary" = primary ✅ · Matesic (pacing 5 steps; how to end a chapter; 7 plot mistakes) ⚠️ (wording re-confirm flag carried over) · "no magic ratio" / "valley" / "reprise shorter" / "name the meaning" = recommendations-doc generalization (labeled as such).
 
-> The canon queue above (Sword, Clark, Christensen, Orwell, Strunk & White, Burroway, King, Matesic, Mantel,
-> Maass, Cron) is now **load-bearing** in the new lens files — Phase 3 verification matters more than before.
+> **Phase 3 status (2026-06-22): COMPLETE.** The 11-item canon and the 8 flagged attributions were web-verified
+> against originals; see the "Canon — VERIFIED in Phase 3" and "FLAGGED — RESOLVED in Phase 3" sections above,
+> which **supersede** any 🔲/⚠️ in the per-lens-file summary lines in this Phase 2 block (those were pre-verification).
+> Lens files were edited to match (Sword bands ✅, Clark Tool #4 ✅, Strunk numbering clarified, Burroway "popularized"
+> not "coined", Mantel ✅, Cron ✅, Maass micro-tension = *The Fire in Fiction* ✅; Nabokov "blonde prose" dropped,
+> "Robin Wilson"→Gardner principle, Jade West *Artless*→likely *Heartless*). Remaining genuine unknowns: the
+> epistrophe "silence" source (❓), the "3 He/She openers" number (❓), and Fitch's "one power word" (not in her 10 tips).

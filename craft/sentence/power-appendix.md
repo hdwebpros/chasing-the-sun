@@ -18,7 +18,7 @@ verified: 2026-06-22
 
 | Feature | Definition | Source threshold |
 |---|---|---|
-| `beVerbRate` | `is, am, are, was, were, be, being, been` ÷ words ×100 | Sword: <3 Lean · 5 Flabby · 6+ "Heart Attack" |
+| `beVerbRate` | `is, am, are, was, were, be, being, been` ÷ words ×100 | Sword (✅ verified Phase 3): <3 Lean · 3 Fit & trim · 4 Needs toning · 5 Flabby · 6+ "Heart Attack" |
 | `beIsMainVerb` | true if the main predicate is a be-verb | Sword's worst case: zombie-noun/pronoun subject + uninspiring verb |
 | `nominalizationRate` | nouns ending `-tion,-sion,-ment,-ity,-ness,-ance,-ence,-ism,-ization` ÷ words ×100 | Sword: 5%+ = flabby; 6 Flabby / 7+ Heart Attack |
 | `prepRate` | prepositions (incl. infinitive *to*) ÷ words ×100 | Sword: <14 Lean · 18 Flabby · 20+ Heart Attack |
@@ -29,6 +29,7 @@ verified: 2026-06-22
 
 > Sword verbatim: "I call them 'zombie nouns' because they cannibalize active verbs, suck the lifeblood from adjectives and substitute abstract entities for human beings." Cure: "vigorous, verb-driven sentences that are concrete, clearly structured and blissfully zombie-free."
 > Flag: Sword's full prep/adjective wordlists are unpublished; only the suffix heuristics and the be-verb/waste-word closed lists are public. `-ly` adverbs are **not** in her ad-word list — counted separately under King.
+> Phase 3: the per-100-word bands above are Sword's **real published** WritersDiet numbers, not this instrument's invention. Distinction to keep: be-verbs (`beVerbRate`) and nominalizations (`nominalizationRate`) are **separate** WritersDiet categories — the NYT "Zombie Nouns" essay flags nominalizations (≥5% = flabby), while the be-verb bands come from the WritersDiet test/user guide.
 
 ### A2. Diction & concreteness (Orwell 1946; Strunk & White; Hayakawa)
 
@@ -317,7 +318,7 @@ Fire as `(I|he|she|they|<name>) + VERB` and as `could + VERB`. Word boundaries; 
 [CTX]  in order not to → so as not to / to avoid
 ```
 
-> Strunk Rule 11: "Many a tame sentence… can be made lively and emphatic by substituting a transitive in the active voice for some such perfunctory expression as *there is*." ("There were a great number of dead leaves lying on the ground" → "Dead leaves covered the ground.") Rule 13: "the fact that" "should be revised out of every sentence in which it occurs." The "insert *by zombies*" passive test is Dr. Rebecca Johnson's, not Grammar Girl's.
+> Strunk Rule 11 (*Use the Active Voice*, orig. 1918): "Many a tame sentence… can be made lively and emphatic by substituting a transitive in the active voice for some such perfunctory expression as *there is*." ("There were a great number of dead leaves lying on the ground" → "Dead leaves covered the ground.") Rule 13 (*Omit Needless Words*; = Rule 17 in Strunk & White combined editions): "the fact that" "should be revised out of every sentence in which it occurs." The "insert *by zombies*" passive test is Dr. Rebecca Johnson's, not Grammar Girl's.
 
 ---
 

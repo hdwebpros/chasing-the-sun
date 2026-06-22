@@ -63,13 +63,13 @@ These are the generalizable principles distilled from a hist-fic character revie
 **Rule.** Put mixed motive *inside* a character so that even a friendly scene carries line-by-line uncertainty: resentment inside gratitude, ambition inside duty, doubt inside love.
 **Why it works.** Tension does not require plot conflict. Two allies can hold a tense scene if each line is shaded by a private cross-current. This generates page-turning friction without altering the true story.
 **Failure mode / when.** Scenes between allies that go slack because everyone agrees and means exactly what they say. See [[tension/tension]] for the scene-level toolkit.
-> Attributed to Donald Maass, *The Emotional Craft of Fiction* (micro-tension). Status 🔲 — micro-tension is Maass's documented concept; verify which title and phrasing.
+> Donald Maass — "micro-tension." **✅ verified (Phase 3).** The term is genuinely his and originates in **_The Fire in Fiction_ (2009)**, not *The Emotional Craft* — Maass's own definition: "the tension that constantly keeps your reader wondering what will happen — not in the story, but in the next few seconds." (He develops it further in *Writing 21st Century Fiction* and *The Emotional Craft of Fiction*.)
 
 ### R8 — Three likenesses, one opposition
 **Rule.** For each significant secondary, design three ways they *mirror* the protagonist and one way they are *exactly opposite*. The single opposition is their lever of conflict; the point of the character is how they *change* the protagonist.
 **Why it works.** Pure opposites are cartoon antagonists; pure mirrors are redundant. Three likenesses make the relationship intimate and the one opposition load-bearing — the friction lands harder because it comes from someone otherwise like him.
 **Failure mode / when.** Secondaries who are all-contrast (a generic foil) or all-overlap (a redundant echo). This is the advanced calibration of the foil work in [[character/vivify-flat-characters]] step 2 (contrast).
-> Attributed to Donald Maass, *The Fire in Fiction*. Status 🔲.
+> Attributed to Donald Maass, *The Fire in Fiction*. The "three likenesses, one opposition" phrasing is the review-doc's formulation; Maass's book is the home of the micro-tension/relationship-friction material. Status ⚠️ phrasing.
 
 ### R9 — The "juggler fact"
 **Rule.** Give each secondary one concrete surplus detail that *exceeds their plot function* — a skill, a past, an obsession unrelated to why they are in the scene. Surface it twice; never explain it.
@@ -171,11 +171,11 @@ These are construction and diagnostic principles, mostly about *who a character 
 - The R-numbers and the two cross-cutting diagnostics (C-1 missing past wound; C-2 antagonist verdict) are the review docs' own framing, kept here as reusable principles.
 
 ### Third-party attributions (status honest; most not yet primary-verified)
-- ⚠️ **Hilary Mantel, Reith Lectures (2017)** — R1 (invent inward), R2 (period flaws), R3 (ignorant of fate). Concepts well-aligned with the lectures and broadly established; exact wording is the review-doc's. Status 🔲 in `SOURCES.md` verify queue. Verify quotes before re-quoting.
+- ✅ **Hilary Mantel, Reith Lectures (2017)** — R1 (invent inward), R2 (period flaws), R3 (ignorant of fate). **Verified (Phase 3):** "ignorant of their fates" is verbatim from Lecture 1 ("The Day Is for the Living"); the anti-hindsight / historical-humility material ("you don't hear the great drumroll of fate, but penny whistles"; "know ten times as much as you tell"; tension survives *because* the reader knows what happens) is in Lecture 4 ("Can These Bones Live?"). "Restraint" is our label for her verified principle. Source: BBC Reith Lectures 2017 transcripts.
 - 🔲 **Min Jin Lee, *Pachinko* interviews** — R4 ("community narrative" / love minor characters). Consistent with her stated approach; phrasing unverified.
-- ⚠️ **Lisa Cron, *Story Genius*** — R5 (misbelief + origin scene). "Misbelief" is Cron's documented term ✅ as a term; the origin-scene rule aligns with the book; specific framing 🔲.
+- ✅ **Lisa Cron, *Story Genius*** — R5 (misbelief + origin scene). **Verified (Phase 3):** both "misbelief" and "origin scene" are genuinely Cron's terms from *Story Genius* (her CreativeLive lesson is literally titled "The Protagonist Will Enter with a Defining Misbelief"). One refinement: the wound forms from "a specific painful past experience" — *typically* but not strictly childhood. *Wired for Story* lays the groundwork; the terminology proper is *Story Genius*.
 - 🔲 **Anna Mazzola** (agented novelist summarizing editor feedback) — R6 (agency as rejection reason). Secondhand editor consensus; treat as heuristic, not a single citable source.
-- ⚠️ **Donald Maass, *The Emotional Craft of Fiction*** — R7 (micro-tension); **Maass, *The Fire in Fiction*** — R8 (three likenesses / one opposition). Micro-tension is Maass's well-documented concept ✅; the specific titles and "three likenesses, one opposition" phrasing 🔲.
+- ✅ **Donald Maass** — R7 (micro-tension). **Verified (Phase 3):** "micro-tension" is genuinely his term and originates in **_The Fire in Fiction_ (2009)** (corrected from *The Emotional Craft*). R8's "three likenesses, one opposition" is the review-doc's own formulation over Maass's relationship-friction material — ⚠️ phrasing.
 - 🔲 **Amor Towles** — R9 (the juggler fact), R14 (time-accordion). Consistent with his stated craft; unverified.
 - ⚠️ **Frame-narrative craft consensus** — R10. No single named source; synthesized convention; treat as heuristic.
 - 🔲 **K.M. Weiland** — R11 (large-cast discipline / goal-chart). Aligns with her large-cast material; unverified phrasing.
