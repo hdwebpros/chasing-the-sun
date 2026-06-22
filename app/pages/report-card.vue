@@ -6,7 +6,8 @@
 // Ordered by how much leverage the technique offers HERE. Inline data, no API.
 // Reflects the author's design: William slides hero -> antagonist (a #7 perception-gap
 // move, the Walter White case); Lottie rises to hero; the antagonist FORCE is the
-// many deaths (not a foil). Companion write-up: BOOKFOX-CHARACTER-GRADES.md.
+// many deaths (not a foil). Reusable craft: craft/character/techniques.md.
+// Book-specific write-up (BOOKFOX-CHARACTER-GRADES.md) archived in git history.
 useHead({ title: 'Bookfox Character Levers — Chasing the Sun' })
 
 interface Lever { who: string; move: string; cost: string; protect?: boolean }
@@ -253,7 +254,7 @@ const cellColor = (g: string) => {
 
       <!-- Footer -->
       <div class="text-center mt-12 space-y-2">
-        <p class="text-xs text-neutral-600">Diagnostic only. Line numbers reference the current manuscript cache &mdash; re-verify against Drive before any edit. Full write-up: <span class="text-neutral-500">BOOKFOX-CHARACTER-GRADES.md</span></p>
+        <p class="text-xs text-neutral-600">Diagnostic only. Line numbers reference the current manuscript cache &mdash; re-verify against Drive before any edit. Reusable craft: <span class="text-neutral-500">craft/character/techniques.md</span> (full write-up archived in git history).</p>
         <NuxtLink to="/" class="inline-block text-sm text-gold-500/60 hover:text-gold-400 transition-colors">&larr; Back home</NuxtLink>
       </div>
     </div>
