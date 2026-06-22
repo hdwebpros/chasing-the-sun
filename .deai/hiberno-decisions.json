@@ -1,0 +1,2522 @@
+{
+  "Act1-ch01-48": {
+    "decision": "pending"
+  },
+  "Act1-ch01-48-2": {
+    "decision": "pending"
+  },
+  "Act1-ch01-50": {
+    "decision": "pending"
+  },
+  "Act1-ch01-50#1": {
+    "decision": "accept"
+  },
+  "Act1-ch01-52": {
+    "decision": "pending"
+  },
+  "Act1-ch01-58": {
+    "decision": "pending"
+  },
+  "Act1-ch01-60": {
+    "decision": "pending"
+  },
+  "Act1-ch02-69": {
+    "decision": "pending"
+  },
+  "Act1-ch03-98": {
+    "decision": "pending"
+  },
+  "Act1-ch03-99": {
+    "decision": "pending"
+  },
+  "Act1-ch03-100": {
+    "decision": "pending"
+  },
+  "Act1-ch03-103": {
+    "decision": "pending"
+  },
+  "Act1-ch03-105": {
+    "decision": "pending"
+  },
+  "Act1-ch03-106": {
+    "decision": "pending"
+  },
+  "Act1-ch03-108": {
+    "decision": "pending"
+  },
+  "Act1-ch03-108#1": {
+    "decision": "accept"
+  },
+  "Act1-ch03-108#2": {
+    "decision": "accept"
+  },
+  "Act1-ch03-109": {
+    "decision": "pending"
+  },
+  "Act1-ch03-111": {
+    "decision": "pending"
+  },
+  "Act1-ch03-113": {
+    "decision": "pending"
+  },
+  "Act1-ch03-113-2": {
+    "decision": "pending"
+  },
+  "Act1-ch03-113-3": {
+    "decision": "pending"
+  },
+  "Act1-ch03-116": {
+    "decision": "pending"
+  },
+  "Act1-ch03-117": {
+    "decision": "pending"
+  },
+  "Act1-ch03-117#1": {
+    "decision": "accept"
+  },
+  "Act1-ch03-127": {
+    "decision": "pending"
+  },
+  "Act1-ch03-129": {
+    "decision": "pending"
+  },
+  "Act1-ch03-130": {
+    "decision": "pending"
+  },
+  "Act1-ch03-132": {
+    "decision": "pending"
+  },
+  "Act1-ch03-132-2": {
+    "decision": "pending"
+  },
+  "Act1-ch03-132-2#1": {
+    "decision": "accept"
+  },
+  "Act1-ch03-133": {
+    "decision": "pending"
+  },
+  "Act1-ch03-134": {
+    "decision": "pending"
+  },
+  "Act1-ch03-135": {
+    "decision": "pending"
+  },
+  "Act1-ch03-136": {
+    "decision": "pending"
+  },
+  "Act1-ch03-142": {
+    "decision": "pending"
+  },
+  "Act1-ch04-160": {
+    "decision": "pending"
+  },
+  "Act1-ch04-162": {
+    "decision": "pending"
+  },
+  "Act1-ch04-163": {
+    "decision": "pending"
+  },
+  "Act1-ch04-163-2": {
+    "decision": "pending"
+  },
+  "Act1-ch04-168": {
+    "decision": "pending"
+  },
+  "Act1-ch04-169": {
+    "decision": "pending"
+  },
+  "Act1-ch04-170": {
+    "decision": "pending"
+  },
+  "Act1-ch04-171": {
+    "decision": "pending"
+  },
+  "Act1-ch04-172": {
+    "decision": "pending"
+  },
+  "Act1-ch04-173": {
+    "decision": "pending"
+  },
+  "Act1-ch04-174": {
+    "decision": "pending"
+  },
+  "Act1-ch04-175": {
+    "decision": "pending"
+  },
+  "Act1-ch04-176": {
+    "decision": "pending"
+  },
+  "Act1-ch04-177": {
+    "decision": "pending"
+  },
+  "Act1-ch04-177-2": {
+    "decision": "pending"
+  },
+  "Act1-ch04-179": {
+    "decision": "pending"
+  },
+  "Act1-ch04-179-2": {
+    "decision": "pending"
+  },
+  "Act1-ch04-181": {
+    "decision": "pending"
+  },
+  "Act1-ch04-183": {
+    "decision": "pending"
+  },
+  "Act1-ch04-184": {
+    "decision": "pending"
+  },
+  "Act1-ch04-184-2": {
+    "decision": "pending"
+  },
+  "Act1-ch04-185": {
+    "decision": "pending"
+  },
+  "Act1-ch04-187": {
+    "decision": "pending"
+  },
+  "Act1-ch04-188": {
+    "decision": "pending"
+  },
+  "Act1-ch04-200": {
+    "decision": "pending"
+  },
+  "Act1-ch04-201": {
+    "decision": "pending"
+  },
+  "Act1-ch04-202": {
+    "decision": "pending"
+  },
+  "Act1-ch04-204": {
+    "decision": "pending"
+  },
+  "Act1-ch05-215": {
+    "decision": "pending"
+  },
+  "Act1-ch05-216": {
+    "decision": "pending"
+  },
+  "Act1-ch05-217": {
+    "decision": "pending"
+  },
+  "Act1-ch05-218": {
+    "decision": "pending"
+  },
+  "Act1-ch05-219": {
+    "decision": "pending"
+  },
+  "Act1-ch05-220": {
+    "decision": "pending"
+  },
+  "Act1-ch05-222": {
+    "decision": "pending"
+  },
+  "Act1-ch05-223": {
+    "decision": "pending"
+  },
+  "Act1-ch05-223-2": {
+    "decision": "pending"
+  },
+  "Act1-ch05-224": {
+    "decision": "queued"
+  },
+  "Act1-ch05-225": {
+    "decision": "pending"
+  },
+  "Act1-ch05-226": {
+    "decision": "pending"
+  },
+  "Act1-ch05-227": {
+    "decision": "queued"
+  },
+  "Act1-ch05-229": {
+    "decision": "pending"
+  },
+  "Act1-ch05-230": {
+    "decision": "pending"
+  },
+  "Act1-ch05-230-2": {
+    "decision": "pending"
+  },
+  "Act1-ch05-241": {
+    "decision": "pending"
+  },
+  "Act1-ch05-242": {
+    "decision": "pending"
+  },
+  "Act1-ch05-250": {
+    "decision": "pending"
+  },
+  "Act1-ch05-251": {
+    "decision": "pending"
+  },
+  "Act1-ch05-252": {
+    "decision": "pending"
+  },
+  "Act1-ch06-269": {
+    "decision": "pending"
+  },
+  "Act1-ch06-271": {
+    "decision": "pending"
+  },
+  "Act1-ch06-272": {
+    "decision": "pending"
+  },
+  "Act1-ch06-273": {
+    "decision": "pending"
+  },
+  "Act1-ch06-276": {
+    "decision": "pending"
+  },
+  "Act1-ch06-277": {
+    "decision": "pending"
+  },
+  "Act1-ch06-278": {
+    "decision": "pending"
+  },
+  "Act1-ch06-279": {
+    "decision": "pending"
+  },
+  "Act1-ch06-288": {
+    "decision": "queued"
+  },
+  "Act1-ch06-290": {
+    "decision": "pending"
+  },
+  "Act1-ch06-292": {
+    "decision": "queued"
+  },
+  "Act1-ch06-293": {
+    "decision": "pending"
+  },
+  "Act1-ch06-294": {
+    "decision": "pending"
+  },
+  "Act1-ch06-299": {
+    "decision": "pending"
+  },
+  "Act1-ch06-300": {
+    "decision": "queued"
+  },
+  "Act1-ch06-301": {
+    "decision": "pending"
+  },
+  "Act1-ch06-302": {
+    "decision": "pending"
+  },
+  "Act1-ch06-306": {
+    "decision": "pending"
+  },
+  "Act1-ch06-307": {
+    "decision": "pending"
+  },
+  "Act1-ch06-315": {
+    "decision": "pending"
+  },
+  "Act1-ch06-316": {
+    "decision": "pending"
+  },
+  "Act1-ch06-319": {
+    "decision": "pending"
+  },
+  "Act1-ch06-332": {
+    "decision": "pending"
+  },
+  "Act1-ch06-338": {
+    "decision": "pending"
+  },
+  "Act1-ch06-339": {
+    "decision": "pending"
+  },
+  "Act1-ch06-340": {
+    "decision": "pending"
+  },
+  "Act1-ch06-341": {
+    "decision": "queued"
+  },
+  "Act1-ch06-342": {
+    "decision": "pending"
+  },
+  "Act1-ch06-344": {
+    "decision": "pending"
+  },
+  "Act1-ch06-345": {
+    "decision": "queued"
+  },
+  "Act1-ch06-346": {
+    "decision": "pending"
+  },
+  "Act1-ch06-347": {
+    "decision": "pending"
+  },
+  "Act1-ch06-349": {
+    "decision": "pending"
+  },
+  "Act1-ch06-351": {
+    "decision": "pending"
+  },
+  "Act1-ch06-365": {
+    "decision": "pending"
+  },
+  "Act1-ch06-366": {
+    "decision": "pending"
+  },
+  "Act1-ch06-367": {
+    "decision": "pending"
+  },
+  "Act1-ch06-368": {
+    "decision": "pending"
+  },
+  "Act1-ch06-369": {
+    "decision": "pending"
+  },
+  "Act1-ch06-370": {
+    "decision": "pending"
+  },
+  "Act1-ch06-371": {
+    "decision": "pending"
+  },
+  "Act1-ch06-373": {
+    "decision": "pending"
+  },
+  "Act1-ch06-375": {
+    "decision": "pending"
+  },
+  "Act1-ch06-376": {
+    "decision": "pending"
+  },
+  "Act1-ch06-377": {
+    "decision": "pending"
+  },
+  "Act1-ch06-378": {
+    "decision": "queued"
+  },
+  "Act1-ch06-379": {
+    "decision": "pending"
+  },
+  "Act1-ch06-380": {
+    "decision": "pending"
+  },
+  "Act1-ch06-381": {
+    "decision": "pending"
+  },
+  "Act1-ch06-382": {
+    "decision": "pending"
+  },
+  "Act1-ch06-384": {
+    "decision": "pending"
+  },
+  "Act1-ch06-385": {
+    "decision": "pending"
+  },
+  "Act1-ch06-386": {
+    "decision": "pending"
+  },
+  "Act1-ch06-387": {
+    "decision": "pending"
+  },
+  "Act1-ch06-389": {
+    "decision": "pending"
+  },
+  "Act1-ch06-391": {
+    "decision": "pending"
+  },
+  "Act1-ch06-392": {
+    "decision": "pending"
+  },
+  "Act1-ch07-410": {
+    "decision": "pending"
+  },
+  "Act1-ch07-410-2": {
+    "decision": "queued"
+  },
+  "Act1-ch07-415": {
+    "decision": "pending"
+  },
+  "Act1-ch07-416": {
+    "decision": "pending"
+  },
+  "Act1-ch07-417": {
+    "decision": "pending"
+  },
+  "Act1-ch07-421": {
+    "decision": "pending"
+  },
+  "Act1-ch07-422": {
+    "decision": "pending"
+  },
+  "Act1-ch07-424": {
+    "decision": "queued"
+  },
+  "Act1-ch07-425": {
+    "decision": "pending"
+  },
+  "Act1-ch07-426": {
+    "decision": "queued"
+  },
+  "Act1-ch07-427": {
+    "decision": "pending"
+  },
+  "Act1-ch07-428": {
+    "decision": "pending"
+  },
+  "Act1-ch07-429": {
+    "decision": "pending"
+  },
+  "Act1-ch07-431": {
+    "decision": "pending"
+  },
+  "Act1-ch07-433": {
+    "decision": "pending"
+  },
+  "Act1-ch07-434": {
+    "decision": "pending"
+  },
+  "Act1-ch07-435": {
+    "decision": "pending"
+  },
+  "Act1-ch07-436": {
+    "decision": "pending"
+  },
+  "Act1-ch07-437": {
+    "decision": "pending"
+  },
+  "Act1-ch07-438": {
+    "decision": "pending"
+  },
+  "Act1-ch07-439": {
+    "decision": "pending"
+  },
+  "Act1-ch07-445": {
+    "decision": "pending"
+  },
+  "Act1-ch07-445-2": {
+    "decision": "pending"
+  },
+  "Act1-ch07-446": {
+    "decision": "queued"
+  },
+  "Act1-ch07-458": {
+    "decision": "pending"
+  },
+  "Act1-ch07-459": {
+    "decision": "pending"
+  },
+  "Act1-ch07-463": {
+    "decision": "pending"
+  },
+  "Act1-ch07-465": {
+    "decision": "pending"
+  },
+  "Act1-ch07-484": {
+    "decision": "queued"
+  },
+  "Act1-ch07-485": {
+    "decision": "pending"
+  },
+  "Act1-ch07-486": {
+    "decision": "pending"
+  },
+  "Act1-ch07-487": {
+    "decision": "pending"
+  },
+  "Act1-ch07-488": {
+    "decision": "pending"
+  },
+  "Act1-ch07-489": {
+    "decision": "pending"
+  },
+  "Act1-ch07-489-2": {
+    "decision": "queued"
+  },
+  "Act1-ch07-491": {
+    "decision": "pending"
+  },
+  "Act1-ch07-491-2": {
+    "decision": "pending"
+  },
+  "Act1-ch07-492": {
+    "decision": "pending"
+  },
+  "Act1-ch07-493": {
+    "decision": "pending"
+  },
+  "Act1-ch07-493-2": {
+    "decision": "pending"
+  },
+  "Act1-ch07-494": {
+    "decision": "pending"
+  },
+  "Act1-ch07-496": {
+    "decision": "pending"
+  },
+  "Act1-ch07-498": {
+    "decision": "pending"
+  },
+  "Act1-ch07-500": {
+    "decision": "pending"
+  },
+  "Act1-ch07-502": {
+    "decision": "queued"
+  },
+  "Act1-ch07-503": {
+    "decision": "pending"
+  },
+  "Act1-ch07-505": {
+    "decision": "pending"
+  },
+  "Act1-ch07-507": {
+    "decision": "pending"
+  },
+  "Act1-ch07-509": {
+    "decision": "pending"
+  },
+  "Act1-ch07-510": {
+    "decision": "pending"
+  },
+  "Act1-ch07-511": {
+    "decision": "pending"
+  },
+  "Act1-ch07-512": {
+    "decision": "pending"
+  },
+  "Act1-ch07-512-2": {
+    "decision": "pending"
+  },
+  "Act1-ch07-514": {
+    "decision": "pending"
+  },
+  "Act1-ch07-520": {
+    "decision": "pending"
+  },
+  "Act1-ch07-521": {
+    "decision": "pending"
+  },
+  "Act1-ch07-523": {
+    "decision": "pending"
+  },
+  "Act1-ch07-524": {
+    "decision": "pending"
+  },
+  "Act1-ch07-525": {
+    "decision": "pending"
+  },
+  "Act1-ch07-526": {
+    "decision": "queued"
+  },
+  "Act1-ch07-528": {
+    "decision": "pending"
+  },
+  "Act1-ch07-529": {
+    "decision": "pending"
+  },
+  "Act1-ch07-530": {
+    "decision": "pending"
+  },
+  "Act1-ch07-531": {
+    "decision": "queued"
+  },
+  "Act1-ch07-533": {
+    "decision": "pending"
+  },
+  "Act1-ch07-535": {
+    "decision": "pending"
+  },
+  "Act1-ch07-537": {
+    "decision": "pending"
+  },
+  "Act1-ch07-539": {
+    "decision": "queued"
+  },
+  "Act1-ch07-541": {
+    "decision": "pending"
+  },
+  "Act1-ch07-543": {
+    "decision": "pending"
+  },
+  "Act1-ch07-543-2": {
+    "decision": "pending"
+  },
+  "Act1-ch07-557": {
+    "decision": "pending"
+  },
+  "Act1-ch07-559": {
+    "decision": "queued"
+  },
+  "Act1-ch07-559-2": {
+    "decision": "pending"
+  },
+  "Act1-ch07-561": {
+    "decision": "queued"
+  },
+  "Act1-ch08-575": {
+    "decision": "pending"
+  },
+  "Act1-ch08-576": {
+    "decision": "queued"
+  },
+  "Act1-ch08-577": {
+    "decision": "pending"
+  },
+  "Act1-ch08-577-2": {
+    "decision": "queued"
+  },
+  "Act1-ch08-579": {
+    "decision": "queued"
+  },
+  "Act1-ch08-580": {
+    "decision": "pending"
+  },
+  "Act1-ch08-581": {
+    "decision": "pending"
+  },
+  "Act1-ch08-593": {
+    "decision": "pending"
+  },
+  "Act1-ch08-594": {
+    "decision": "pending"
+  },
+  "Act1-ch08-604": {
+    "decision": "pending"
+  },
+  "Act1-ch08-606": {
+    "decision": "queued"
+  },
+  "Act2a-ch09-639": {
+    "decision": "pending"
+  },
+  "Act2a-ch09-640": {
+    "decision": "pending"
+  },
+  "Act2a-ch09-640-2": {
+    "decision": "queued"
+  },
+  "Act2a-ch10-648": {
+    "decision": "dismiss"
+  },
+  "Act2a-ch10-650": {
+    "decision": "queued"
+  },
+  "Act2a-ch10-652": {
+    "decision": "pending"
+  },
+  "Act2a-ch10-661": {
+    "decision": "pending"
+  },
+  "Act2a-ch10-661-2": {
+    "decision": "pending"
+  },
+  "Act2a-ch10-663": {
+    "decision": "pending"
+  },
+  "Act2a-ch10-664": {
+    "decision": "pending"
+  },
+  "Act2a-ch10-665": {
+    "decision": "pending"
+  },
+  "Act2a-ch10-667": {
+    "decision": "pending"
+  },
+  "Act2a-ch10-667-2": {
+    "decision": "queued"
+  },
+  "Act2a-ch10-668": {
+    "decision": "pending"
+  },
+  "Act2a-ch10-669": {
+    "decision": "pending"
+  },
+  "Act2a-ch10-669-2": {
+    "decision": "queued"
+  },
+  "Act2a-ch10-671": {
+    "decision": "queued"
+  },
+  "Act2a-ch10-672": {
+    "decision": "queued"
+  },
+  "Act2a-ch10-674": {
+    "decision": "dismiss"
+  },
+  "Act2a-ch10-675": {
+    "decision": "queued"
+  },
+  "Act2a-ch10-675-2": {
+    "decision": "pending"
+  },
+  "Act2a-ch10-677": {
+    "decision": "pending"
+  },
+  "Act2a-ch11-686": {
+    "decision": "dismiss"
+  },
+  "Act2a-ch11-687": {
+    "decision": "pending"
+  },
+  "Act2a-ch11-709": {
+    "decision": "pending"
+  },
+  "Act2a-ch11-710": {
+    "decision": "pending"
+  },
+  "Act2a-ch11-711": {
+    "decision": "queued"
+  },
+  "Act2a-ch11-715": {
+    "decision": "queued"
+  },
+  "Act2a-ch11-721": {
+    "decision": "pending"
+  },
+  "Act2a-ch11-723": {
+    "decision": "dismiss"
+  },
+  "Act2a-ch11-729": {
+    "decision": "pending"
+  },
+  "Act2a-ch11-730": {
+    "decision": "pending"
+  },
+  "Act2a-ch11-730-2": {
+    "decision": "queued"
+  },
+  "Act2a-ch12-746": {
+    "decision": "dismiss"
+  },
+  "Act2a-ch12-760": {
+    "decision": "dismiss"
+  },
+  "Act2a-ch12-761": {
+    "decision": "queued"
+  },
+  "Act2a-ch12-762": {
+    "decision": "queued"
+  },
+  "Act2a-ch12-763": {
+    "decision": "pending"
+  },
+  "Act2a-ch12-764": {
+    "decision": "pending"
+  },
+  "Act2a-ch12-783": {
+    "decision": "pending"
+  },
+  "Act2a-ch13-790": {
+    "decision": "pending"
+  },
+  "Act2a-ch13-792": {
+    "decision": "pending"
+  },
+  "Act2a-ch13-801": {
+    "decision": "queued"
+  },
+  "Act2a-ch13-803": {
+    "decision": "queued"
+  },
+  "Act2a-ch13-805": {
+    "decision": "pending"
+  },
+  "Act2a-ch13-808": {
+    "decision": "pending"
+  },
+  "Act2a-ch13-809": {
+    "decision": "queued"
+  },
+  "Act2a-ch13-809-2": {
+    "decision": "pending"
+  },
+  "Act2a-ch13-810": {
+    "decision": "queued"
+  },
+  "Act2a-ch13-810-2": {
+    "decision": "dismiss"
+  },
+  "Act2a-ch13-810-3": {
+    "decision": "pending"
+  },
+  "Act2a-ch13-812": {
+    "decision": "pending"
+  },
+  "Act2a-ch13-813": {
+    "decision": "queued"
+  },
+  "Act2a-ch13-813-2": {
+    "decision": "dismiss"
+  },
+  "Act2a-ch13-813-3": {
+    "decision": "pending"
+  },
+  "Act2a-ch13-818": {
+    "decision": "dismiss"
+  },
+  "Act2b-ch13-827": {
+    "decision": "pending"
+  },
+  "Act2b-ch13-827-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch13-828": {
+    "decision": "pending"
+  },
+  "Act2b-ch13-830": {
+    "decision": "pending"
+  },
+  "Act2b-ch13-840": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-855": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-856": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-866": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-868": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-868-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-870": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-871": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-872": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-873": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-875": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-877": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-880": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-883": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-887": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-893": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-894": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-895": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-904": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-904-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-909": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-911": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-913": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-931": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-934": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-938": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-940": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-942": {
+    "decision": "pending"
+  },
+  "Act2b-ch14-949": {
+    "decision": "pending"
+  },
+  "Act2b-ch15-974": {
+    "decision": "pending"
+  },
+  "Act2b-ch15-976": {
+    "decision": "pending"
+  },
+  "Act2b-ch15-978": {
+    "decision": "pending"
+  },
+  "Act2b-ch15-980": {
+    "decision": "pending"
+  },
+  "Act2b-ch15-982": {
+    "decision": "pending"
+  },
+  "Act2b-ch15-983": {
+    "decision": "dismiss"
+  },
+  "Act2b-ch15-984": {
+    "decision": "pending"
+  },
+  "Act2b-ch15-985": {
+    "decision": "pending"
+  },
+  "Act2b-ch15-994": {
+    "decision": "pending"
+  },
+  "Act2b-ch15-994-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1026": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1028": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1031": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1032": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1038": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1051": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1051-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1052": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1053": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1054": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1055": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1055-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1056": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1057": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1057-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1058": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1059": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1060": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1060-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1061": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1061-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1063": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1063-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1063-3": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1064": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1064-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1065": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1065-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1065-3": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1067": {
+    "decision": "pending"
+  },
+  "Act2b-ch16-1067-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1072": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1074": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1074-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1075": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1076": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1077": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1077-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1079": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1080": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1081": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1082": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1083": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1086": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1086-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1087": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1088": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1088-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1090": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1092": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1092-2": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1100": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1101": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1102": {
+    "decision": "pending"
+  },
+  "Act2b-ch17-1104": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1132": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1144": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1146": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1148": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1151": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1154": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1161": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1161-2": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1162": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1163": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1171": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1173": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1175": {
+    "decision": "pending"
+  },
+  "Act3-ch18-1177": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1193": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1199": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1200": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1203": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1207": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1209": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1210": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1212": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1213": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1220": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1226": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1233": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1234": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1235": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1237": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1238": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1253": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1254": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1264": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1269": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1269-2": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1270": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1271": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1273": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1274": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1282": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1285": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1286": {
+    "decision": "pending"
+  },
+  "Act3-ch19-1287": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1300": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1302": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1308": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1310": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1310-2": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1319": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1321": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1323": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1330": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1337": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1342": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1343": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1344": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1346": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1347": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1348": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1349": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1352": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1358": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1360": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1360-2": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1363": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1365": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1367": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1369": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1371": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1371-2": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1373": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1373-2": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1373-3": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1378": {
+    "decision": "pending"
+  },
+  "Act3-ch20-1378-2": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1394": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1396": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1396-2": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1398": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1398-2": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1403": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1403-2": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1409": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1412": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1415": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1418": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1421": {
+    "decision": "pending"
+  },
+  "Act3-ch21-1424": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1432": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1432-2": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1433": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1435": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1435-2": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1436": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1437": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1438": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1441": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1441-2": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1443": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1444": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1444-2": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1459": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1460": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1461": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1462": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1464": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1466": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1474": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1475": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1476": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1477": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1479": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1481": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1484": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1484-2": {
+    "decision": "pending"
+  },
+  "Act3-ch22-1505": {
+    "decision": "pending"
+  },
+  "Act3-ch23-1535": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1598": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1604": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1608": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1612": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1612-2": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1615": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1615-2": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1625": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1629": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1631": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1631-2": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1635": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1640": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1640-2": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1643": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1646": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1649": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1651": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1654": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1657": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1659": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1661": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1678": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1682": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1684": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1688": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1696": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1698": {
+    "decision": "pending"
+  },
+  "Act4-ch24-1698-2": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1721": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1733": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1752": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1753": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1759": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1761": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1776": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1778": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1785": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1788": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1790": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1793": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1793-2": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1795": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1797": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1804": {
+    "decision": "pending"
+  },
+  "Act4-ch25-1807": {
+    "decision": "pending"
+  },
+  "Act4-ch26-1839": {
+    "decision": "pending"
+  },
+  "Act4-ch26-1842": {
+    "decision": "pending"
+  },
+  "Act4-ch26-1842-2": {
+    "decision": "pending"
+  },
+  "Act4-ch26-1861": {
+    "decision": "pending"
+  },
+  "Act4-ch26-1863": {
+    "decision": "pending"
+  },
+  "Act4-ch26-1871": {
+    "decision": "pending"
+  },
+  "Act4-ch27-1901": {
+    "decision": "pending"
+  },
+  "Act4-ch27-1904": {
+    "decision": "pending"
+  },
+  "Act4-ch27-1908": {
+    "decision": "pending"
+  },
+  "Act4-ch27-1908-2": {
+    "decision": "pending"
+  },
+  "Act4-ch27-1911": {
+    "decision": "pending"
+  },
+  "Act4-ch27-1913": {
+    "decision": "pending"
+  },
+  "Act4-ch27-1918": {
+    "decision": "pending"
+  },
+  "Act4-ch27-1938": {
+    "decision": "pending"
+  },
+  "Act4-ch27-1940": {
+    "decision": "pending"
+  },
+  "Act4-ch27-1943": {
+    "decision": "pending"
+  },
+  "Act4-ch27-1945": {
+    "decision": "pending"
+  },
+  "Act4-ch28-1982": {
+    "decision": "pending"
+  },
+  "Act4-ch28-1982-2": {
+    "decision": "pending"
+  },
+  "Act4-ch28-1985": {
+    "decision": "pending"
+  },
+  "Act4-ch29-2003": {
+    "decision": "pending"
+  },
+  "Act4-ch29-2021": {
+    "decision": "pending"
+  },
+  "Act4-ch29-2023": {
+    "decision": "pending"
+  },
+  "Act4-ch29-2026": {
+    "decision": "pending"
+  },
+  "Act4-ch29-2026-2": {
+    "decision": "pending"
+  },
+  "Act4-ch29-2028": {
+    "decision": "pending"
+  },
+  "Act4-ch29-2028-2": {
+    "decision": "pending"
+  },
+  "Act4-ch29-2033": {
+    "decision": "pending"
+  },
+  "Act4-ch29-2036": {
+    "decision": "pending"
+  },
+  "Act4-ch29-2038": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2047": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2050": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2052": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2064": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2067": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2073": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2079": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2082": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2084": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2087": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2106": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2108": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2110": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2113": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2118": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2120": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2121": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2126": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2131": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2135": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2139": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2141": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2146": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2146-2": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2148": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2151": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2153": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2157": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2157-2": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2161": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2163": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2166": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2166-2": {
+    "decision": "pending"
+  },
+  "Act4-ch30-2168": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2185": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2190": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2193": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2193-2": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2195": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2202": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2205": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2205-2": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2211": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2211-2": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2213": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2216": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2219": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2221": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2223": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2227": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2232": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2232-2": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2234": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2244": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2246": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2248": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2250": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2252": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2254": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2257": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2259": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2262": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2272": {
+    "decision": "pending"
+  },
+  "Act4-ch31-2274": {
+    "decision": "pending"
+  },
+  "Act5-ch32-2309": {
+    "decision": "pending"
+  },
+  "Act5-ch32-2325": {
+    "decision": "pending"
+  },
+  "Act5-ch32-2328": {
+    "decision": "pending"
+  },
+  "Act5-ch32-2331": {
+    "decision": "pending"
+  },
+  "Act5-ch32-2333": {
+    "decision": "pending"
+  },
+  "Act5-ch32-2336": {
+    "decision": "pending"
+  },
+  "Act5-ch32-2343": {
+    "decision": "pending"
+  },
+  "Act5-ch32-2345": {
+    "decision": "pending"
+  },
+  "Act5-ch32-2347": {
+    "decision": "pending"
+  },
+  "Act5-ch32-2349": {
+    "decision": "pending"
+  },
+  "Act5-ch33-2375": {
+    "decision": "pending"
+  },
+  "Act5-ch33-2380": {
+    "decision": "pending"
+  },
+  "Act5-ch35-2418": {
+    "decision": "pending"
+  },
+  "Act5-ch35-2424": {
+    "decision": "pending"
+  },
+  "Act5-ch35-2434": {
+    "decision": "pending"
+  },
+  "Act5-ch36-2463": {
+    "decision": "pending"
+  },
+  "Act5-ch36-2475": {
+    "decision": "pending"
+  },
+  "Act5-ch36-2477": {
+    "decision": "pending"
+  },
+  "Act5-ch36-2481": {
+    "decision": "pending"
+  },
+  "Act5-ch36-2481-2": {
+    "decision": "pending"
+  },
+  "Act5-ch36-2481-3": {
+    "decision": "pending"
+  },
+  "Act5-ch36-2481-4": {
+    "decision": "pending"
+  },
+  "Act5-ch36-2484": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2497": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2499": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2499-2": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2518": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2520": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2526": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2529": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2529-2": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2532": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2532-2": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2543": {
+    "decision": "pending"
+  },
+  "Act5-ch37-2545": {
+    "decision": "pending"
+  },
+  "Act5-ch38-2591": {
+    "decision": "pending"
+  },
+  "Act5-ch38-2593": {
+    "decision": "pending"
+  },
+  "Act5-ch38-2595": {
+    "decision": "pending"
+  },
+  "Act5-ch38-2597": {
+    "decision": "pending"
+  },
+  "Act5-ch38-2599": {
+    "decision": "pending"
+  },
+  "Act5-ch38-2602": {
+    "decision": "pending"
+  },
+  "Act5-ch38-2602-2": {
+    "decision": "pending"
+  },
+  "Act5-ch38-2615": {
+    "decision": "pending"
+  },
+  "Act5-ch38-2615-2": {
+    "decision": "pending"
+  },
+  "Act5-ch38-2618": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2634": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2634-2": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2637": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2639": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2641": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2641-2": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2643": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2645": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2645-2": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2660": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2660-2": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2662": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2662-2": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2668": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2677": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2687": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2687-2": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2689": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2693": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2695": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2695-2": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2698": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2699": {
+    "decision": "pending"
+  },
+  "Act5-epilogue-2705": {
+    "decision": "pending"
+  },
+  "Frame-prologue-17": {
+    "decision": "pending"
+  },
+  "Frame-prologue-21": {
+    "decision": "pending"
+  },
+  "Frame-prologue-21#1": {
+    "decision": "pending"
+  },
+  "Frame-prologue-26": {
+    "decision": "pending"
+  },
+  "Frame-prologue-26-2": {
+    "decision": "pending"
+  },
+  "Frame-prologue-26-2#1": {
+    "decision": "pending"
+  },
+  "Frame-prologue-28": {
+    "decision": "pending"
+  },
+  "Frame-prologue-28#1": {
+    "decision": "pending"
+  },
+  "Frame-prologue-31": {
+    "decision": "pending"
+  },
+  "Frame-prologue-31-2": {
+    "decision": "pending"
+  },
+  "Frame-interlude-395-403": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1004-1010": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1004-1014": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1004-1014-2": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1004-1016": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1004-1018": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1004-1018-2": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1004-1020": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1109-1114": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1109-1116": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1109-1118": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1109-1122": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1552": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1554": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1558": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1561": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1567": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1569": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1571": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1573": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1573-2": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1573-3": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1575": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1580": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1582": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1582-2": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1584": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1586": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1586-2": {
+    "decision": "pending"
+  },
+  "Frame-interlude-1545-1588": {
+    "decision": "pending"
+  },
+  "Frame-interlude-2281-2287": {
+    "decision": "pending"
+  },
+  "Frame-interlude-2281-2289": {
+    "decision": "pending"
+  },
+  "Frame-interlude-2281-2290": {
+    "decision": "pending"
+  },
+  "Frame-interlude-2281-2294": {
+    "decision": "pending"
+  },
+  "Frame-interlude-2281-2297": {
+    "decision": "pending"
+  },
+  "Act1-ch05-224#1": {
+    "decision": "accept"
+  },
+  "Act1-ch05-227#1": {
+    "decision": "accept"
+  },
+  "Act1-ch06-288#1": {
+    "decision": "accept"
+  },
+  "Act1-ch06-292#1": {
+    "decision": "accept"
+  },
+  "Act1-ch06-300#1": {
+    "decision": "accept"
+  },
+  "Act1-ch06-341#1": {
+    "decision": "accept"
+  },
+  "Act1-ch06-345#1": {
+    "decision": "accept"
+  },
+  "Act1-ch06-378#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-410-2#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-424#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-426#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-446#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-484#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-489-2#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-502#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-526#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-531#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-539#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-559#1": {
+    "decision": "accept"
+  },
+  "Act1-ch07-561#1": {
+    "decision": "accept"
+  },
+  "Act1-ch08-576#1": {
+    "decision": "accept"
+  },
+  "Act1-ch08-577-2#1": {
+    "decision": "accept"
+  },
+  "Act1-ch08-579#1": {
+    "decision": "accept"
+  },
+  "Act1-ch08-606#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch10-650#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch10-667-2#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch10-669-2#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch10-671#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch10-672#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch10-674#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch10-675#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch11-711#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch11-730-2#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch12-746#1": {
+    "decision": "reject"
+  },
+  "Act2a-ch12-760#1": {
+    "decision": "reject"
+  },
+  "Act2a-ch12-761#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch12-762#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch13-801#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch13-803#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch13-809#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch13-810-2#1": {
+    "decision": "reject"
+  },
+  "Act2a-ch13-813#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch13-827-2#1": {
+    "decision": "reject"
+  },
+  "Act2b-ch13-830#1": {
+    "decision": "reject"
+  },
+  "Act2b-ch13-840#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch14-872#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch14-894#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch14-909#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch14-938#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch14-940#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch14-942#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch15-978#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch15-982#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch17-1086#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch17-1086-2#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch17-1088-2#1": {
+    "decision": "reject"
+  },
+  "Act2b-ch17-1090#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch09-640-2#1": {
+    "decision": "reject"
+  },
+  "Act2a-ch09-640-2#2": {
+    "decision": "accept"
+  },
+  "Act2a-ch10-648#1": {
+    "decision": "reject"
+  },
+  "Act2a-ch11-715#1": {
+    "decision": "reject"
+  },
+  "Act2a-ch11-723#1": {
+    "decision": "reject"
+  },
+  "Act2a-ch13-810#1": {
+    "decision": "accept"
+  },
+  "Act2a-ch13-810#2": {
+    "decision": "reject"
+  },
+  "Act2b-ch13-827#1": {
+    "decision": "accept"
+  },
+  "Act2b-ch15-980#1": {
+    "decision": "reject"
+  },
+  "Act3-ch18-1144#1": {
+    "decision": "accept"
+  },
+  "Act3-ch18-1161#1": {
+    "decision": "accept"
+  },
+  "Act3-ch18-1162#1": {
+    "decision": "reject"
+  },
+  "Act3-ch19-1199#1": {
+    "decision": "accept"
+  },
+  "Act3-ch19-1209#1": {
+    "decision": "reject"
+  },
+  "Act3-ch19-1235#1": {
+    "decision": "reject"
+  },
+  "Act3-ch19-1269#1": {
+    "decision": "accept"
+  },
+  "Act3-ch19-1270#1": {
+    "decision": "accept"
+  },
+  "Act3-ch20-1342#1": {
+    "decision": "reject"
+  },
+  "Act4-ch24-1654#1": {
+    "decision": "reject"
+  },
+  "Act4-ch25-1790#1": {
+    "decision": "reject"
+  },
+  "Act4-ch27-1904#1": {
+    "decision": "accept"
+  },
+  "Act4-ch27-1911#1": {
+    "decision": "accept"
+  },
+  "Act4-ch28-1982#1": {
+    "decision": "accept"
+  },
+  "Act4-ch29-2021#1": {
+    "decision": "accept"
+  },
+  "Act4-ch30-2168#1": {
+    "decision": "reject"
+  },
+  "Act4-ch31-2193-2#1": {
+    "decision": "accept"
+  },
+  "Act4-ch31-2195#1": {
+    "decision": "reject"
+  },
+  "Act4-ch31-2213#1": {
+    "decision": "reject"
+  },
+  "Act4-ch31-2223#1": {
+    "decision": "reject"
+  },
+  "Act4-ch31-2262#1": {
+    "decision": "accept"
+  }
+}
