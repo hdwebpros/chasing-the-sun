@@ -140,7 +140,9 @@ const lensName = (id: string) => LENS_TITLE[id] ?? id
 
 // ---- triage (queue / dismiss / pick an option / leave a note) -------------
 function setDecision(c: Card, d: string) {
-  if (d === 'queued' && isMulti(c) && !c.chosen) return // must pick an option first
+  // chosen == null means "no option picked"; an empty-string chosen is a real pick
+  // (a full-cut option whose `edited` is '') — don't treat it as unpicked.
+  if (d === 'queued' && isMulti(c) && c.chosen == null) return // must pick an option first
   c.decision = c.decision === d ? 'pending' : d
   queueSave()
 }
@@ -296,7 +298,7 @@ async function save() {
               {{ c.reviewNote ? '✎ note·' : '✎ note' }}
             </button>
             <Button size="sm" :variant="c.decision === 'queued' ? 'default' : 'outline'"
-                    :disabled="isMulti(c) && !c.chosen" :title="isMulti(c) && !c.chosen ? 'pick an option first' : ''"
+                    :disabled="isMulti(c) && c.chosen == null" :title="isMulti(c) && c.chosen == null ? 'pick an option first' : ''"
                     @click="setDecision(c, 'queued')">queue</Button>
             <Button size="sm" :variant="c.decision === 'dismiss' ? 'default' : 'outline'" @click="setDecision(c, 'dismiss')">dismiss</Button>
           </div>
