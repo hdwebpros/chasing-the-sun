@@ -1,0 +1,42 @@
+{
+  "_doc": "The contract between a lens scanner subagent and the review cache. Each scanner RETURNS one object of this shape and it is written to .deai/review/<unit>__<lensId>.json. collate.mjs merges every such file into .deai/review.json. The /review page reads that and POSTs each finding's triage `decision` to .deai/review-decisions.json (keyed by finding id). NO field here ever causes a Drive write — the review engine is diagnostic; queued findings flow to the apply passes named by `route`. READABILITY IS THE CONTRACT: `why` is one punch. A finding is shown as a TRACK-CHANGES REDLINE: the diff between `original` (verbatim before) and `edited` (after). The op (cut/replace/add) is DERIVED from that diff, never stored — so a cut always reads as a cut. A structural finding with no single-sentence edit stores `action` (a short instruction) instead of original/edited.",
+  "$id": "review-lens-output",
+  "type": "object",
+  "required": ["lens", "lensId", "unit", "findings"],
+  "properties": {
+    "lens": { "type": "string", "description": "lens family, e.g. 'pacing' (from lenses.json)" },
+    "lensId": { "type": "string", "description": "registry id, e.g. 'pacing' or 'ai-fingerprints'" },
+    "lensFile": { "type": "string", "description": "the craft KB file the scanner loaded, e.g. 'craft/pacing/pacing.md'" },
+    "unit": { "type": "string", "description": "the review unit scanned, e.g. 'ch07' or 'p41-48'" },
+    "findings": {
+      "type": "array",
+      "description": "Weaknesses/opportunities found. Empty array is a valid, good result — a clean unit.",
+      "items": {
+        "type": "object",
+        "required": ["id", "lens", "lensId", "scope", "principle", "severity", "why", "route"],
+        "description": "Each finding MUST carry EITHER (original AND edited) for a concrete sentence-level edit, OR (action) for a structural change with no single-sentence diff. Never both, never neither.",
+        "properties": {
+          "id": { "type": "string", "description": "stable unique id: '<lensId>-<unit>-<k>', e.g. 'pacing-ch07-2'" },
+          "lens": { "type": "string" },
+          "lensId": { "type": "string" },
+          "scope": { "type": "string", "enum": ["line", "structural"], "description": "line = a sentence-level edit on a specific page (original/edited); structural = chapter/book-level (action)" },
+          "intent": { "type": "string", "enum": ["fix", "enhance"], "default": "fix", "description": "fix = corrects a genuine weakness/defect. enhance = an ENHANCEMENT OPPORTUNITY: the passage is already fine but a specific named technique from the craft file would make it land harder (constructive-mode lenses only). Reductive lenses always emit 'fix'. The /review page badges 'enhance' findings so the author can see where the research ELEVATES the work, not just where it corrects." },
+          "principle": { "type": "string", "description": "the NAMED technique/rule from the lens file this finding is judged against. A short LABEL, not a sentence." },
+          "source": { "type": "string", "description": "provenance of the principle — cite the research, not training. One short tag." },
+          "page": { "type": ["integer", "null"], "description": "1-based page (pages.sh numbering); null for book-level structural findings." },
+          "chapter": { "type": ["string", "null"], "description": "e.g. 'Chapter Seven' — for display/filtering" },
+          "severity": { "type": "string", "enum": ["high", "mid", "low"], "description": "how much this hurts the book." },
+          "confidence": { "type": "integer", "minimum": 0, "maximum": 3, "description": "0 hunch · 1 plausible · 2 solid · 3 certain. Bias low when leaning on taste." },
+          "why": { "type": "string", "description": "ONE punch. The reason it's a problem, ≤ ~20 words, no preamble, no second sentence." },
+          "original": { "type": "string", "description": "LINE EDIT ONLY: the EXACT verbatim sentence(s) from the manuscript that the edit changes — char-for-char, curly quotes intact, from the start of the first affected sentence to the end of the last. This is the 'before'. Must be findable verbatim in manuscript.txt. Omit for structural." },
+          "edited": { "type": "string", "description": "LINE EDIT ONLY: those SAME sentence(s) after the edit — the 'after'. Identical to `original` except for the intended change, so the redline diff is minimal and clean. The move is whatever is the BEST WRITING here per the research, not the shortest: reductive-mode lenses usually cut (de-AI tells, tics), constructive-mode lenses (scene/vivify/setting/tension/character/pacing/resonance…) prefer the additive or strengthening move the craft file names, including ENHANCEMENT additions (a telling object/gesture/sensory beat/withheld answer/interiority line woven into the surrounding sentences). ALWAYS: no em dash, never introduce a triad (land on two or four beats, never the matched three), never invent plot facts. Omit for structural." },
+          "action": { "type": "string", "description": "STRUCTURAL ONLY: a ≤12-word concrete instruction for a change with no single-sentence diff ('lift the storm out of the montage into its own scene'). Omit for line edits." },
+          "illustration": { "type": "string", "description": "STRUCTURAL ONLY, REQUIRED with `action`: a concrete 1-3 sentence example of what the action looks like, quoting the real manuscript spans it moves/cuts ('Pull “A storm came on the fourth night … It passed.” out of the montage and give it its own * * * scene'). The author must be able to picture the change without decoding the instruction. No em dash; if it invents plot, frame it as a possibility ('say William rations…'), never as the required fix." },
+          "anchor": { "type": "string", "description": "a short locator quote (used to jump to the spot). For line edits this is usually the same as `original` or a slice of it." },
+          "route": { "type": "string", "enum": ["deai", "variety", "manual"], "description": "where a QUEUED finding flows for the actual edit." },
+          "decision": { "type": "string", "enum": ["pending", "queued", "dismiss"], "default": "pending", "description": "AUTHOR-ONLY, set later on the /review page. Scanners NEVER set this." }
+        }
+      }
+    }
+  }
+}

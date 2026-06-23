@@ -1,0 +1,24 @@
+{
+  "_doc": "The lens registry for the review engine. One row per craft lens a review run can apply. `file` is the craft KB lens file a scanner subagent loads (and ONLY that file). `scope`: 'line' = span-anchored findings tied to a page (queueable to a fix pass); 'structural' = chapter/book-level findings (manual). `route` = which apply pass a QUEUED finding flows to (deai|variety|manual) — the review engine itself never writes Drive. Authority order: the `file` research is the sole ruler, then model training — there is NO voiceprint file (a prior one was retired for canonizing AI patterns as the author's voice); the author is the veto, applied by hand at triage. RYAN-HOUSE-STYLE.md governs only fix mechanics, not what gets flagged. dialect-gradient is intentionally ABSENT: that lens is the /arc pass and would duplicate it.",
+  "version": 1,
+  "lenses": [
+    { "id": "ai-fingerprints", "lens": "voice", "file": "craft/voice/ai-fingerprints.md", "scope": "line", "route": "deai", "mode": "reductive", "title": "AI fingerprints (tells + over-correction guardrails)" },
+    { "id": "voice", "lens": "voice", "file": "craft/voice/sound-like-yourself.md", "scope": "structural", "route": "deai", "mode": "reductive", "title": "Voice on the page (mechanical/AI cure)" },
+    { "id": "pro-level", "lens": "voice", "file": "craft/voice/pro-level.md", "scope": "line", "route": "manual", "mode": "constructive", "title": "Pro-level author tips (burnt tongue, defamiliarization, filter words…)" },
+    { "id": "sentence-craft", "lens": "sentence", "file": "craft/sentence/sentence-craft.md", "scope": "line", "route": "manual", "mode": "constructive", "title": "Sentence build (verb, power word, internal arc, cut the fat)" },
+    { "id": "sentence-power", "lens": "sentence", "file": "craft/sentence/power.md", "scope": "line", "route": "variety", "mode": "constructive", "title": "POWER / SOPHOMORIC scored sentence rubric" },
+    { "id": "sentence-variety", "lens": "sentence", "file": "craft/sentence/variety.md", "scope": "line", "route": "variety", "mode": "reductive", "title": "Monotony, opener runs, pet phrases, triad/tic" },
+    { "id": "vivify", "lens": "character", "file": "craft/character/vivify-flat-characters.md", "scope": "structural", "route": "manual", "mode": "constructive", "title": "Vivify flat characters (7-step)" },
+    { "id": "character-techniques", "lens": "character", "file": "craft/character/techniques.md", "scope": "structural", "route": "manual", "mode": "constructive", "title": "Hist-fic character R1–R15 + Bookfox-9 rubric" },
+    { "id": "scene-techniques", "lens": "scene", "file": "craft/scene/eight-techniques.md", "scope": "structural", "route": "manual", "mode": "constructive", "title": "Eight scene techniques" },
+    { "id": "chapter-hooks", "lens": "scene", "file": "craft/scene/chapter-hooks.md", "scope": "structural", "route": "manual", "mode": "constructive", "title": "Open-door vs closed-door chapter endings" },
+    { "id": "pacing", "lens": "pacing", "file": "craft/pacing/pacing.md", "scope": "structural", "route": "manual", "mode": "constructive", "title": "Pacing levers + scene-vs-summary + sag/reprise/denouement" },
+    { "id": "tension", "lens": "tension", "file": "craft/tension/tension.md", "scope": "structural", "route": "manual", "mode": "constructive", "title": "Seven tension techniques beyond cliffhangers" },
+    { "id": "setting", "lens": "setting", "file": "craft/setting/setting.md", "scope": "structural", "route": "manual", "mode": "constructive", "title": "Place & setting amateur→pro (7 rungs)" },
+    { "id": "worldbuilding", "lens": "setting", "file": "craft/setting/worldbuilding.md", "scope": "structural", "route": "manual", "mode": "constructive", "title": "World breaking over world building (no infodump)" },
+    { "id": "worst-lines", "lens": "dialogue", "file": "craft/dialogue/worst-lines.md", "scope": "line", "route": "manual", "mode": "reductive", "title": "Ten worst dialogue failure modes + subtext rule" },
+    { "id": "resonance", "lens": "emotion", "file": "craft/emotion/resonance.md", "scope": "structural", "route": "deai", "mode": "constructive", "title": "Resonance (banked-joy, lacrimal staircase, restraint-at-peak)" },
+    { "id": "recurring-device", "lens": "device", "file": "craft/device/recurring-device.md", "scope": "structural", "route": "manual", "mode": "constructive", "title": "Chekhov's-armory + motif variation" },
+    { "id": "spicy", "lens": "intimacy", "file": "craft/intimacy/spicy-scenes.md", "scope": "line", "route": "manual", "mode": "constructive", "title": "Nine mistakes in intimate scenes" }
+  ]
+}

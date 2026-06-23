@@ -125,6 +125,61 @@ session that produced this skill:
    (`Patiently,`), zero three-beat lists. When the comma-list keeps betraying you, the
    answer is fewer commas, not cleverer nesting.
 
+## STOP. Mandatory output checks before you present (the author keeps catching these)
+
+These four failures shipped over and over in this pass and each one drew a sharp author
+rebuke. Run this checklist on EVERY rewrite, out loud, before presenting. If any check
+fails, REDO — do not present it.
+
+1. **NO TWO ADJACENT SENTENCES MAY OPEN WITH THE SAME WORD in errand/action prose.** Three
+   in a row anywhere is an automatic fail (the whole pass exists to kill it). *Two* in a row
+   is allowed ONLY when it is deliberate anaphora doing real emotional work — paired refusal
+   beats (`She did not shrug it off. She did not lean into it either.`), a grief-peak build,
+   dialogue cadence. In plain narration two `He.`/`She.` openers back to back is laziness, not
+   voice. Author, repeatedly: *"you STILL have two 'he' sentences after each other,"* *"there
+   is soo much context there to start so many sentences without he."* **There is ALWAYS
+   material in the surrounding paragraph to vary an opener — you are never forced into a
+   repeat.** Tools, in order: (a) prepositional / time-place opener (`In her palm she counted
+   the coins`, `Across the ocean…`, `Upstairs, her children slept…`); (b) object-fronting
+   (`The joints he fit with the same patience…`); (c) change the grammatical subject (`Hers
+   had been the first name…`, `The men on his payroll would have…`); (d) Bookfox adverb-comma
+   (`Matter-of-factly, he recommended…`); (e) just COMBINE the two sentences into one
+   (`He did not know that yet, only that the water was very blue.`). After writing, list the
+   first word of every sentence in a column and look at it. Two the same touching? Redo.
+   **And more broadly: actively AVOID `He`/`She`/`They`/`It` as sentence openers whenever
+   the scene gives you anything else to lead with — place, time, the object, a named subject,
+   a participial or adverbial phrase.** Pronoun openers are the default lazy choice; a
+   paragraph that reads as a column of `He… She… He…` is a tell even when no two are
+   adjacent. Author: *"your instructions should be clear to try and avoid he, she, they,
+   sentence openers when possible."* Lead with a pronoun only when it is genuinely the
+   strongest option (a deliberate refusal-beat or grief anaphora); otherwise vary it.
+2. **A double-`and` sentence (`A and B and C`) IS a triad** — the ear hears three beats
+   regardless of the conjunctions. Banned in your own rewrites, exactly like `A, B, and C`
+   and three matched fragments. (The author's OWN original polysyndeton is his voice; leave
+   it. The ban is on triads YOU create while fixing.) Author: *"a double 'and' sentence isn't
+   very high level writing and also signifies a triad lol."*
+3. **Every sentence must be a complete, clear thought you can read aloud without stumbling.**
+   No garden-path opener (`With the same patience Doyle taught him he fit the joints` — reads
+   as broken). No stranded verbless fragment where a real sentence belongs. The author wants
+   full sentences with words and a finite verb — you have full flexibility to add/restructure
+   to get there. Author: *"your second sentence is an incomplete thought lol."*
+4. **CUT, don't re-punctuate.** Before reformatting a list, ask *is most of this even needed?*
+   Kill redundant beats (an echo of the sentence beside it) and duplicate items (two beats that
+   name the same thing). Land on the one beat that earns its place. Reformatting `X. Y. Z.`
+   into `X, nor Y, nor Z` keeps the rule-of-three and reads junior — the author calls it
+   "third-grade writing." See `feedback_triad_fix_cut_dont_repunctuate` in memory.
+
+**Restraint (literary-historical standard).** Cut intensifiers and editorializers — `even`,
+`just`, `simply`, `really`, `very`. The starker line is stronger and trusts the reader
+(`They could not afford rings.` beats `They could not even afford rings.`). This is the
+Mantel/Hemingway/Strunk-White discipline the genre's best practice rewards: state the hard
+fact plainly and let it land; don't nudge the reader's feeling.
+
+**Get creative — write like a bestselling historical novel, not a patched draft.** The goal
+is prose a top editor passes, in HIS voice. Sweep the scene spatially or in time, re-body the
+abstraction, find the sharper concrete noun. A two-`He` "fix" that merely deletes a tic is not
+done; an opener that genuinely *varies* and a sentence that genuinely *reads better* is.
+
 ## You are REWRITING, not re-gluing (the core mandate)
 
 The job is not to preserve every original noun and re-punctuate it. That is "semantic
