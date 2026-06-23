@@ -29,6 +29,21 @@ await mkdir(reviewDir, { recursive: true })
 let files = []
 try { files = (await readdir(reviewDir)).filter(f => f.endsWith('.json')) } catch { /* empty */ }
 
+// Applied/archived units: once a chapter's queued fixes have been written to Drive it's
+// DONE, but its per-lens scanner files stay on disk — so without this they'd keep getting
+// re-collated into review.json and clutter the active triage list forever. List finished
+// units in .deai/review-applied.json (e.g. ["ch09","ch10"]) and collate skips them. The
+// files are left in place (re-add a unit to the list to bring it back); this just controls
+// what reaches review.json, which the page/API/CLI all read.
+let applied = new Set()
+try {
+  const a = JSON.parse(await readFile(join(root, '.deai', 'review-applied.json'), 'utf8'))
+  if (Array.isArray(a)) applied = new Set(a)
+} catch { /* none */ }
+const unitOfFile = (f) => f.split('__')[0] // filenames are <unit>__<lensId>.json
+const appliedFiles = files.filter(f => applied.has(unitOfFile(f)))
+files = files.filter(f => !applied.has(unitOfFile(f)))
+
 const raw = []
 const units = new Set()
 const unitText = new Map() // unit -> staged text (authority for span math)
@@ -317,6 +332,7 @@ console.log(
   `  kinds: ${Object.entries(out.kindCounts).map(([k, v]) => `${k} ${v}`).join(' · ')}\n` +
   `  routes: ${Object.entries(out.routeCounts).map(([k, v]) => `${k} ${v}`).join(' · ') || 'none'}`,
 )
+if (applied.size) console.log(`  applied/archived units skipped: ${[...applied].sort().join(', ')} (${appliedFiles.length} lens file(s)) — edit .deai/review-applied.json to change`)
 if (malformed.length) console.warn(`  ⚠ ${malformed.length} MALFORMED line-scope finding(s) (action but no redline — fix the scanner output):\n    ` + malformed.map(f => `${f.lensId}/${f.id}: "${(f.action || '').slice(0, 50)}"`).join('\n    '))
 if (noopActions.length) console.warn(`  ${noopActions.length} no-op "leave as-is" finding(s) dropped:\n    ` + noopActions.join('\n    '))
 if (suppressedActions.length) console.warn(`  ${suppressedActions.length} structural action(s) folded into concrete edits:\n    ` + suppressedActions.join('\n    '))
