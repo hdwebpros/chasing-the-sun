@@ -57,11 +57,19 @@ if (!review.findings.length) { console.log('review.json has 0 cards — nothing 
 
 // unit id from a card: chapters render "Chapter Sixteen" but units are "ch16"; fall back to
 // the page-keyed unit only if needed. The applied-list keys on the same <unit> collate uses.
-const ROMAN = { One:1,Two:2,Three:3,Four:4,Five:5,Six:6,Seven:7,Eight:8,Nine:9,Ten:10,Eleven:11,Twelve:12,Thirteen:13,Fourteen:14,Fifteen:15,Sixteen:16,Seventeen:17,Eighteen:18,Nineteen:19,Twenty:20 }
+// word ordinals → number, incl. compounds like "Twenty-Four" / "Thirty-One" (chapters run past forty).
+const ONES = { One:1,Two:2,Three:3,Four:4,Five:5,Six:6,Seven:7,Eight:8,Nine:9,Ten:10,Eleven:11,Twelve:12,Thirteen:13,Fourteen:14,Fifteen:15,Sixteen:16,Seventeen:17,Eighteen:18,Nineteen:19 }
+const TENS = { Twenty:20,Thirty:30,Forty:40 }
+const wordToNum = (w) => {
+  const [a, b] = w.split('-')
+  if (b === undefined) return ONES[a] ?? TENS[a] ?? null   // "Seven" | "Thirty"
+  const t = TENS[a], o = ONES[b]                            // "Thirty-One"
+  return (t != null && o != null && o < 10) ? t + o : null
+}
 const unitOf = (c) => {
-  const m = /Chapter\s+(\w+)/.exec(c.chapter || '')
-  if (m && ROMAN[m[1]]) return 'ch' + String(ROMAN[m[1]]).padStart(2, '0')
-  return null
+  const m = /Chapter\s+([\w-]+)/.exec(c.chapter || '')
+  const n = m ? wordToNum(m[1]) : null
+  return n != null ? 'ch' + String(n).padStart(2, '0') : null
 }
 
 const single = [], multi = [], cuts = [], held = [], skipped = []

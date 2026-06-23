@@ -13,27 +13,27 @@ const eggs: EasterEgg[] = [
   {
     id: 1,
     chapter: 'Chapter 2',
-    teaser: 'Why does William read upside down?',
-    detail: "William's adopted sister helps teach him to read. He learns to read upside down while she reads to him. This was influenced by the author, Ryan Boog. His sister Aimee used to teach him to read, and he learned how to read upside-down because of it.",
+    teaser: 'Why does William teach to read upside down?',
+    detail: "William teaches his adopted sister to read. She learns to read upside down while he reads to her. This was influenced by the author, Ryan Boog. His sister Aimee used to teach him to read, and he learned how to read upside-down because of it.",
     flip: true,
   },
   {
     id: 2,
     chapter: 'Chapter 3',
     teaser: '"You\'re adopted."',
-    detail: "Author Ryan Boog's sister Aimee once teased him by telling him he was adopted. This is how William eventually found out that he was.",
+    detail: "Author Ryan Boog's sister Aimee once teased him by telling him he was adopted. This is how William eventually found out about his true parents.",
   },
   {
     id: 3,
     chapter: 'Chapter 5',
     teaser: 'Who was William talking to?',
-    detail: "That's up for interpretation.",
+    detail: "Explained below in the easter egg, 'found ya'.",
   },
   {
     id: 4,
     chapter: 'Many Chapters',
     teaser: '"You can do anything if you put your mind to it."',
-    detail: "This mantra comes from the author's Grandpa Boog and father, Jerry Boog.",
+    detail: "This mantra comes from the author's Grandpa William Boog and father, Jerry Boog.",
   },
   {
     id: 5,
@@ -90,16 +90,10 @@ const eggs: EasterEgg[] = [
     detail: "Samuel Frederickson is a combination of the author's youngest son's first name and step-father's last name.",
   },
   {
-    id: 14,
-    chapter: 'Epilogue',
-    teaser: 'William refuses surgery',
-    detail: "William's refusal of surgery was inspired by his actual death certificate. He had intestinal blockage yet refused surgery.",
-  },
-  {
     id: 15,
     chapter: 'Epilogue',
     teaser: '"Found ya"',
-    detail: "He was looking for someone who could give him inner peace. He believed it would come with building a name from nothing. He thought he may have some sort of spiritual encounter with his biological father or mother. Afterward, he realized the one who carried him and helped him build a name in spite of death and suffering was God Himself. The very thing that pushed William away from Him in a way proved His existence to him.",
+    detail: "Ties into chapter 5's 'I don't think I've found ye.' The way the book is written, it can be one of two things. A loving father-figure that is out there waiting for him, or, his future son who can carry his name.",
   },
 ]
 
