@@ -91,16 +91,17 @@ for (const c of review.findings) {
 
   const find = c.original
   if (!find) { skipped.push(`${c.id}: no original span`); continue }
-  const fN = norm(find), rep = cleanReplace(replace)
-  // idempotent skip: span gone AND replacement already present (applied in a prior run)
-  if (!manN.includes(fN)) {
-    if (manN.includes(norm(rep))) { skipped.push(`${c.id} p${c.page}: already applied — skip`); placedCardIds.add(c.id) }
-    else skipped.push(`${c.id} p${c.page}: span not found in Drive — skip`)
-    continue
+  const fN = norm(find), rep = cleanReplace(replace), repN = norm(rep)
+  // idempotent skip (mirror apply-fixes.mjs): a card is already applied if its span is GONE,
+  // OR if the full replacement is already present. The second case is essential for ADDITIVE
+  // edits — a note that APPENDS a sentence keeps the original as a substring of the
+  // replacement, so the span stays present after applying; re-sending would NEST/duplicate it.
+  if (!manN.includes(fN) || (repN !== fN && manN.includes(repN))) {
+    skipped.push(`${c.id} p${c.page}: already applied — skip`); placedCardIds.add(c.id); continue
   }
   const occ = manN.split(fN).length - 1
   if (occ > 1) { skipped.push(`${c.id} p${c.page}: span occurs ${occ}x — UNSAFE for replace, skip`); continue }
-  if (norm(rep) === fN) { skipped.push(`${c.id} p${c.page}: no-op`); placedCardIds.add(c.id); continue }
+  if (repN === fN) { skipped.push(`${c.id} p${c.page}: no-op`); placedCardIds.add(c.id); continue }
 
   const pair = { find, replace: rep, id: c.id, page: c.page }
   ;(find.includes('\n') ? multi : single).push(pair)
