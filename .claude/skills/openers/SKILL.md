@@ -31,6 +31,25 @@ facts from that lens, baked into this pass:
   fixing. Watch dangling modifiers on participial openers. A fix isn't done when the
   repetition is gone — it's done when an opener **actually varies**.
 
+## Target distribution (author, June 2026)
+
+The whole-book opener mix to steer toward — **bands, not quotas** (over-fitting a target is its
+own monoculture). The book sits at ~60.6% `S` / ~6.8% varied today; these lean it down. Lives in
+`taxonomy.json` `targets`; the `/openers` chapter view shows each chapter's mix against it.
+
+| class | target share | note |
+|---|--:|---|
+| `S` subject-led | **40–55%** | down from 60.6% — keeps clarity and momentum |
+| `F` fragments | 10–20% | 21% is fine; cap to keep punch (`/tic` owns) |
+| `D` dialogue | 10–20% | scene-dependent; strong as-is |
+| **varied (P+G+A+C+J+I)** | **15–30%** | **boost significantly** — prepositional & subordinate shine for setting/immersion, participial for action |
+| `P` prepositional | 6–10% | |
+| `C` subordinate | 5–8% | |
+| `G` participial | 4–7% | |
+| `A` adverbial | 3–5% | |
+| `J` conjunction-led | 3–5% | |
+| `I` inversion | 1–2% | |
+
 ## Pipeline
 
 ```
@@ -59,9 +78,18 @@ sync.sh ─► classify.mjs ─► openers-page-NN.json   (+ openers-summary.jso
    - spawn a subagent: read `judge.md` + `craft/sentence/variety.md`, judge `packet.json`,
      write `{id:{voiceClass,recast?}}` → `judgments.json`
    - `node .claude/skills/openers/judge.mjs --apply judgments.json`
-5. **Author triages** at `http://localhost:3000/openers` — per run: **keep** (most — deliberate
-   subject-led punch), **recast** (use the in-voice suggestion), **edit** (your own). "keep all
-   pending here" clears a chapter of signature runs at once.
+   - **rhythm gate (don't skip):** `node .claude/skills/openers/judge.mjs --check "<chapter>"`
+     — fails (exit 3) if any wall is left running on (6+ `S` in a row, or 4+ of one varied
+     style). Enforces variety.md Rule F's *distribute, don't cluster* line, which prose alone
+     doesn't. Must be green before you present a chapter.
+5. **Author triages** at `http://localhost:3000/openers` — **two views, tabbed:**
+   - **surgical** — run-by-run, one sentence at a time (precise, but slow over 3k+ sentences).
+   - **chapter (bunch)** — the whole prologue / interlude / chapter rendered as continuous
+     prose, every opener colour-coded inline, flagged sentences carrying their recast, with
+     the chapter's live mix shown against the target bands and **accept-all-recasts / keep-all**
+     bulk controls. Built for blowing through a chapter at a time.
+   Per row either way: **keep** (most — deliberate subject-led punch), **recast** (in-voice
+   suggestion), **edit** (your own). Both views share the same decisions (autosave).
 6. **Apply** the queued recasts to Drive (gated, dry-run by default):
    - `node .claude/skills/deai/apply-fixes.mjs --openers <NN|range|--all>` (preview)
    - add `--apply` to write Drive, `--commit` to rebuild the epub + git commit
@@ -93,8 +121,11 @@ in-voice suggestion). Decisions apply via `editText` like `/tic` (keep = reject;
 
 ## Files
 
-- `taxonomy.json` — the closed opener-class set + `onVoice` axis + budgets (with provenance).
-- `classify.mjs` — deterministic classifier + run detector → caches + `openers-summary.json`.
+- `taxonomy.json` — the closed opener-class set + `onVoice` axis + budgets + author `targets`.
+- `classify.mjs` — deterministic classifier + run detector → caches + `openers-summary.json`
+  (carries `targets`) + `openers-chapters.json` (full per-chapter sentence stream w/ codes +
+  flagId, powering the chapter/bunch view).
+- `server/api/deai/openers-chapter.get.ts` — serves one chapter's prose stream for the bunch view.
 - `tally.mjs` — the measurement report (terminal / `--md`).
 - `judge.md` — the in-voice recast rubric (cites `craft/sentence/variety.md`).
 - `judge.mjs` — `--emit <chapter|pNN>` work packet · `--apply <judgments.json>` merge.

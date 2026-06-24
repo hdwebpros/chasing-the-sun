@@ -22,5 +22,18 @@
   "reconcile": {
     "_comment": "Overlap with the /variety pass (same first WORD 3x). Openers owns structural same-TYPE monotony; /variety owns literal same-WORD pile-ups. A run that is BOTH gets annotated alsoVariety=true here — never emitted twice.",
     "variety_word_run_min": 3
+  },
+  "targets": {
+    "_comment": "AUTHOR target distribution (June 2026). Whole-book opener mix to steer the manuscript toward — bands, not exact quotas (over-fitting a target is its own monoculture). The book currently sits ~60.6% S / ~6.8% varied; these bands lean it down to 40–55% S with the varied species 15–30%. The UI reads this to show each chapter's mix vs. target. min/max are fractions of all sentences in scope.",
+    "S": { "min": 0.40, "max": 0.55, "note": "subject-led — down from 60.6%; keeps clarity and momentum." },
+    "F": { "min": 0.10, "max": 0.20, "note": "fragments — 21% is fine; cap it to maintain punch (/tic owns)." },
+    "D": { "min": 0.10, "max": 0.20, "note": "dialogue — depends on the scene; strong as-is." },
+    "varied": { "min": 0.15, "max": 0.30, "note": "P+G+A+C+J+I combined — boost significantly. Prepositional & subordinate shine for setting/immersion; participial for action." },
+    "P": { "min": 0.06, "max": 0.10, "note": "prepositional" },
+    "C": { "min": 0.05, "max": 0.08, "note": "subordinate" },
+    "G": { "min": 0.04, "max": 0.07, "note": "participial" },
+    "A": { "min": 0.03, "max": 0.05, "note": "adverbial" },
+    "J": { "min": 0.03, "max": 0.05, "note": "conjunction-led" },
+    "I": { "min": 0.01, "max": 0.02, "note": "inversion" }
   }
 }

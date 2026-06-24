@@ -1,12 +1,14 @@
 <script setup lang="ts">
-// Opener-variety review — sentence openers are a structural, whole-BOOK pattern, so
-// this view is grouped by CHAPTER and by RUN (a stretch of same-class openers). Each
-// run shows its opener-code strip lit up (S S S S = the bare subject-led monoculture)
-// so you SEE the monotony; you then recast one or two openers to break it. Most rows
-// stay — varying every line is its own tell. Storage is page-partitioned
-// (openers-page-NN.json); decisions autosave through /api/deai/decisions (mode=openers).
+// Opener-variety review — sentence openers are a structural, whole-BOOK pattern. TWO views,
+// tabbed, sharing the same chapter rail and the same decisions (autosave to page-NN docs):
+//   • surgical — run-by-run, one sentence at a time (precise, slow over 3k+ sentences).
+//   • chapter  — the whole prologue/interlude/chapter as continuous prose, every opener
+//                colour-coded inline, flagged sentences carrying their recast, the chapter's
+//                live mix shown against the author's target bands, and accept-all / keep-all
+//                bulk controls. Built for blowing through a chapter "in bunches".
 // Nothing here touches Drive — applying is the gated `apply-fixes.mjs --openers --apply`.
 import { Button } from '~/components/ui/button'
+import { classifyOpener } from '../../shared/openers-core.mjs'   // same classifier the batch pass uses
 
 type Decision = 'pending' | 'accept' | 'reject' | 'edit'
 interface Row {
@@ -17,11 +19,17 @@ interface Row {
 }
 interface Run { runId: string; page: number; chapter: string; code: string; runLen: number; runCodes: string; context: string; rows: Row[] }
 interface ChapterStat { chapter: string; runs: number; flags: number; total: number; pending: number; kept: number; changed: number }
-interface Summary { sentences: number; totals: Record<string, number>; chapters: { chapter: string; total: number; codes: Record<string, number>; pctS: number; overBudget: boolean }[] }
+interface Band { min: number; max: number; note?: string }
+interface Summary { sentences: number; totals: Record<string, number>; targets?: Record<string, Band>; chapters: { chapter: string; total: number; codes: Record<string, number>; pctS: number; overBudget: boolean }[] }
 interface Resp { counts: { total: number; pending: number; kept: number; changed: number }; chapters: ChapterStat[]; runs: Run[]; summary: Summary | null; summaryMtime: string | null }
 
+// chapter ("bunch") view shapes
+interface ChFlag { id: string; decision: Decision; editText?: string; opener?: string; runLen?: number; runCodes?: string; alsoVariety?: boolean; voiceClass?: string | null; recast?: string | null; unique?: boolean; lead?: string; why?: string }
+interface ChSent { t: string; code: string; para: number; page: number; flag: ChFlag | null }
+interface ChResp { chapter: string; sentences: ChSent[]; order: string[] }
+
 const CLASS_LABEL: Record<string, string> = { S: 'subject-led', P: 'prepositional', G: 'participial', A: 'adverbial', C: 'subordinate', J: 'conjunction', I: 'inversion', D: 'dialogue', F: 'fragment' }
-const isVaried = (c: string) => c !== 'S'
+const VARIED = ['P', 'G', 'A', 'C', 'J', 'I']
 const chip = (c?: string) => c === 'S'
   ? 'bg-red-500/20 text-red-300'
   : c === 'D' || c === 'F' ? 'bg-zinc-500/20 text-zinc-300' : 'bg-emerald-500/20 text-emerald-300'
@@ -33,6 +41,7 @@ const savedMsg = ref('')
 const activeChapter = ref<string>('')
 const hideDecided = ref(true)
 const customEditing = reactive(new Set<string>())
+const view = ref<'surgical' | 'chapter'>('surgical')
 
 async function load() {
   loading.value = true
@@ -72,9 +81,9 @@ function preview(r: Row): string {
   const t = r.decision === 'edit' ? (r.editText ?? '') : r.span
   return r.unique === false && r.lead ? `${r.lead} ${t}` : t
 }
-function leadShown(r: Row): string { return r.unique === false && r.lead ? r.lead + ' ' : '' }
+function leadShown(r: { unique?: boolean; lead?: string }): string { return r.unique === false && r.lead ? r.lead + ' ' : '' }
 
-// bulk: keep every still-pending row in the active chapter (the deliberate-punch S-runs)
+// bulk (surgical): keep every still-pending row in the active chapter
 function keepRest() {
   for (const run of runs.value) for (const r of run.rows)
     if ((r.decision ?? 'pending') === 'pending') { r.decision = 'reject'; r.editText = undefined; dirtyPages.add(r.page) }
@@ -99,8 +108,163 @@ async function flush() {
   } finally { saving.value = false }
 }
 
-// the distribution bar is a SNAPSHOT from the last classify.mjs run — it does NOT reflect
-// pending UI decisions. Label it with the summary file's mtime so that's unambiguous.
+// ── chapter ("bunch") view ─────────────────────────────────────────────────────
+const chapterSents = ref<ChSent[]>([])
+const chapterLoading = ref(false)
+const showCodes = ref(false)                              // opener-code superscripts — off by default (clean read)
+const chMode = ref<'optimized' | 'original'>('optimized') // optimized = recasts shown in place
+const highlightEdits = ref(true)                          // subtle markers on changed / pending sentences
+const selectedId = ref<string | null>(null)              // the one flag whose control panel is open
+const chCustom = reactive(new Set<string>())
+
+async function loadChapter() {
+  if (!activeChapter.value) return
+  chapterLoading.value = true
+  try {
+    const r = await $fetch<ChResp>('/api/deai/openers-chapter', { query: { chapter: activeChapter.value } })
+    chapterSents.value = r.sentences
+  } finally { chapterLoading.value = false }
+}
+// fetch chapter prose when the chapter view is active and the chapter changes
+watch([view, activeChapter], () => { if (view.value === 'chapter') loadChapter() })
+// keep the two views in sync: re-pull main payload when returning to surgical
+watch(view, (v, prev) => { if (v === 'surgical' && prev === 'chapter') load() })
+
+// paragraphs (group the stream by paragraph id, preserving order)
+const paragraphs = computed(() => {
+  const out: { para: number; sents: ChSent[] }[] = []
+  for (const s of chapterSents.value) {
+    const last = out[out.length - 1]
+    if (last && last.para === s.para) last.sents.push(s)
+    else out.push({ para: s.para, sents: [s] })
+  }
+  return out
+})
+const chFlags = computed(() => chapterSents.value.filter(s => s.flag).map(s => s.flag!) )
+const chPending = computed(() => chFlags.value.filter(f => (f.decision ?? 'pending') === 'pending').length)
+
+// live mix for THIS chapter (from the rendered stream) vs the author's target bands
+const chMix = computed(() => {
+  const codes: Record<string, number> = {}
+  for (const s of chapterSents.value) codes[s.code] = (codes[s.code] || 0) + 1
+  const tot = chapterSents.value.length || 1
+  const share = (n: number) => n / tot
+  const varied = VARIED.reduce((a, c) => a + (codes[c] || 0), 0)
+  return { tot, codes, share, varied: share(varied), pctS: share(codes.S || 0), pctF: share(codes.F || 0), pctD: share(codes.D || 0) }
+})
+// the text a sentence would carry once optimized — accepted edits + kept originals +
+// any still-pending RECOMMENDED recast applied. Independent of the read mode (optimized
+// vs original), so the "after" stat reflects the realistic result of the current choices.
+function projectedText(s: ChSent): string {
+  const f = s.flag
+  if (!f) return s.t
+  if (f.decision === 'edit') return f.editText || s.t
+  if (f.decision === 'reject') return s.t
+  if (f.voiceClass === 'monotone' && f.recast) return f.recast
+  return s.t
+}
+// AFTER-optimization mix: re-classify each projected opener with the shared core. Updates
+// live as the author accepts / keeps / edits.
+const afterMix = computed(() => {
+  const codes: Record<string, number> = {}
+  for (const s of chapterSents.value) {
+    const txt = projectedText(s)
+    const code = (s.flag && txt !== s.t) ? classifyOpener(txt).code : s.code
+    codes[code] = (codes[code] || 0) + 1
+  }
+  const tot = chapterSents.value.length || 1
+  const share = (n: number) => n / tot
+  const varied = VARIED.reduce((a, c) => a + (codes[c] || 0), 0)
+  return { tot, codes, share, varied: share(varied), pctS: share(codes.S || 0), pctF: share(codes.F || 0), pctD: share(codes.D || 0) }
+})
+const targets = computed(() => data.value?.summary?.targets ?? null)
+function bandState(share: number, band?: Band): 'low' | 'in' | 'high' | null {
+  if (!band) return null
+  if (share < band.min) return 'low'
+  if (share > band.max) return 'high'
+  return 'in'
+}
+const bandClass: Record<string, string> = { low: 'text-amber-400', in: 'text-emerald-400', high: 'text-red-300' }
+function pctStr(n: number) { return (n * 100).toFixed(1) + '%' }
+function bandStr(b?: Band) { return b ? `${Math.round(b.min * 100)}–${Math.round(b.max * 100)}%` : '' }
+
+// per-sentence decision controls (chapter view), mirrors surgical pick()
+function choiceCh(f: ChFlag): 'keep' | 'recast' | 'custom' | null {
+  if (f.decision === 'reject') return 'keep'
+  if (f.decision !== 'edit') return null
+  if (chCustom.has(f.id)) return 'custom'
+  if (f.recast != null && f.editText === f.recast) return 'recast'
+  return 'custom'
+}
+function pickCh(s: ChSent, kind: 'keep' | 'recast' | 'custom') {
+  const f = s.flag; if (!f) return
+  if (kind === 'keep') { f.decision = 'reject'; f.editText = undefined; chCustom.delete(f.id) }
+  else if (kind === 'recast') { f.decision = 'edit'; f.editText = f.recast ?? ''; chCustom.delete(f.id) }
+  else { f.decision = 'edit'; if (!f.editText) f.editText = f.recast ?? s.t; chCustom.add(f.id) }
+  autosaveCh(s.page)
+}
+
+// READING the optimized chapter: what text to SHOW for a sentence. In "optimized" mode the
+// recommended recasts are substituted IN PLACE so the chapter reads as the finished prose;
+// "original" mode shows the manuscript as-is. A committed decision always wins.
+function displayText(s: ChSent): string {
+  const f = s.flag
+  if (!f) return s.t
+  if (f.decision === 'edit') return f.editText || s.t            // accepted recast / custom edit
+  if (f.decision === 'reject') return s.t                         // kept original
+  if (chMode.value === 'optimized' && f.voiceClass === 'monotone' && f.recast) return f.recast  // pending preview
+  return s.t
+}
+function isChanged(s: ChSent): boolean { return !!s.flag && displayText(s) !== s.t }
+// markers are SUBTLE — the point is to read the flow, not to see a wall of widgets.
+function sentClass(s: ChSent): string {
+  if (!s.flag) return ''
+  const sel = selectedId.value === s.flag.id ? ' rounded ring-1 ring-sky-400/70' : ''
+  if (!highlightEdits.value) return 'cursor-pointer' + sel
+  // mark ONLY the actual edits so the chapter still reads as clean prose; keeps stay
+  // unmarked (but every flagged sentence is still clickable to review/keep/edit).
+  if (isChanged(s)) return 'cursor-pointer rounded bg-emerald-500/10 underline decoration-dotted decoration-emerald-400/70 underline-offset-4' + sel
+  return 'cursor-pointer' + sel
+}
+const selectedSent = computed(() => selectedId.value ? chapterSents.value.find(s => s.flag?.id === selectedId.value) ?? null : null)
+function selectSent(s: ChSent) { if (s.flag) selectedId.value = selectedId.value === s.flag.id ? null : s.flag.id }
+// count of recasts currently previewed-but-uncommitted (for the header hint)
+const chPreview = computed(() => chFlags.value.filter(f => (f.decision ?? 'pending') === 'pending' && f.voiceClass === 'monotone' && f.recast).length)
+
+// bulk (chapter): accept every pending recast / keep everything pending
+function acceptAllRecasts() {
+  for (const s of chapterSents.value) {
+    const f = s.flag; if (!f) continue
+    if ((f.decision ?? 'pending') === 'pending' && f.recast) { f.decision = 'edit'; f.editText = f.recast; chCustom.delete(f.id); chDirty.add(s.page) }
+  }
+  if (chTimer) clearTimeout(chTimer); chTimer = setTimeout(flushCh, 300)
+}
+function keepAllChapter() {
+  for (const s of chapterSents.value) {
+    const f = s.flag; if (!f) continue
+    if ((f.decision ?? 'pending') === 'pending') { f.decision = 'reject'; f.editText = undefined; chCustom.delete(f.id); chDirty.add(s.page) }
+  }
+  if (chTimer) clearTimeout(chTimer); chTimer = setTimeout(flushCh, 300)
+}
+
+const chDirty = new Set<number>()
+let chTimer: ReturnType<typeof setTimeout> | null = null
+function autosaveCh(page: number) { savedMsg.value = ''; chDirty.add(page); if (chTimer) clearTimeout(chTimer); chTimer = setTimeout(flushCh, 500) }
+async function flushCh() {
+  if (!chDirty.size) return
+  saving.value = true
+  try {
+    for (const page of [...chDirty]) {
+      const decisions: Record<string, { decision: Decision; editText?: string }> = {}
+      for (const s of chapterSents.value) if (s.page === page && s.flag) decisions[s.flag.id] = { decision: s.flag.decision ?? 'pending', editText: s.flag.editText }
+      await $fetch('/api/deai/decisions', { method: 'POST', body: { page, mode: 'openers', decisions } })
+      chDirty.delete(page)
+    }
+    savedMsg.value = 'saved'
+  } finally { saving.value = false }
+}
+
+// distribution bar snapshot (whole-book; from last classify.mjs run)
 const measured = computed(() => {
   const iso = data.value?.summaryMtime
   if (!iso) return ''
@@ -111,8 +275,6 @@ const measured = computed(() => {
   if (hrs < 24) return `${hrs}h ago`
   return new Date(iso).toLocaleDateString()
 })
-
-// whole-book distribution bar (from the measurement summary)
 const dist = computed(() => {
   const t = data.value?.summary?.totals
   if (!t) return []
@@ -128,12 +290,13 @@ const dist = computed(() => {
       <span class="text-muted-foreground">sentence openers — break the subject-led monoculture</span>
       <NuxtLink to="/tic" class="ml-auto text-xs text-muted-foreground underline">→ tic</NuxtLink>
     </div>
-    <p class="text-xs text-muted-foreground mb-3">
-      A structural, whole-book pattern. <b>keep</b> = leave it (a bare-subject run during action/revelation is deliberate punch) ·
-      <b>use suggestion</b> = accept the in-voice rewrite shown below the sentence · <b>edit</b> = write your own.
-      Suggestions are generated per chapter — a chapter without them shows “no suggestion yet”; ask Claude to run the suggestion pass on it.
-      Vary one or two openers per run — never all of them.
-    </p>
+
+    <!-- view tabs -->
+    <div class="mb-3 flex items-center gap-1 text-xs">
+      <button class="rounded px-3 py-1" :class="view === 'surgical' ? 'bg-foreground text-background' : 'border hover:bg-muted'" @click="view = 'surgical'">surgical · sentence-by-sentence</button>
+      <button class="rounded px-3 py-1" :class="view === 'chapter' ? 'bg-foreground text-background' : 'border hover:bg-muted'" @click="view = 'chapter'">chapter · read in bunches</button>
+      <span class="ml-3 text-muted-foreground">{{ view === 'surgical' ? 'precise, one run at a time' : 'whole chapter as prose — accept/keep in bulk' }}</span>
+    </div>
 
     <!-- whole-book distribution: the measurement headline -->
     <div v-if="dist.length" class="mb-4 rounded-lg border p-3">
@@ -146,7 +309,7 @@ const dist = computed(() => {
         <span v-for="d in dist" :key="d.c"><span class="font-mono" :class="d.c === 'S' ? 'text-red-300' : ''">{{ d.c }}</span> {{ CLASS_LABEL[d.c] }} {{ (d.pct * 100).toFixed(1) }}%</span>
       </div>
       <div class="mt-1.5 flex items-center gap-2 border-t pt-1.5 text-[11px] text-muted-foreground/70">
-        <span>snapshot from last <span class="font-mono">classify.mjs</span><span v-if="measured"> · measured {{ measured }}</span> — does not reflect pending decisions; re-run sync + classify to refresh</span>
+        <span>whole-book snapshot from last <span class="font-mono">classify.mjs</span><span v-if="measured"> · measured {{ measured }}</span> — does not reflect pending decisions; re-run sync + classify to refresh</span>
         <button class="ml-auto rounded border px-2 py-0.5 hover:bg-muted" :disabled="loading" @click="load">{{ loading ? 'refreshing…' : 'refresh' }}</button>
       </div>
     </div>
@@ -154,7 +317,7 @@ const dist = computed(() => {
     <div v-if="loading" class="text-muted-foreground text-sm">loading…</div>
 
     <div v-else-if="data" class="flex gap-4">
-      <!-- chapter rail -->
+      <!-- chapter rail (shared by both views) -->
       <aside class="w-52 shrink-0 text-xs">
         <div class="sticky top-4 max-h-[80vh] overflow-auto pr-1">
           <button v-for="c in chapters" :key="c.chapter"
@@ -168,8 +331,8 @@ const dist = computed(() => {
         </div>
       </aside>
 
-      <!-- runs in the active chapter -->
-      <div class="min-w-0 flex-1">
+      <!-- ── SURGICAL view ── -->
+      <div v-if="view === 'surgical'" class="min-w-0 flex-1">
         <div class="mb-3 flex items-center gap-2 text-xs">
           <h2 class="font-semibold">{{ activeChapter }}</h2>
           <button class="ml-auto rounded border px-2 py-1 text-emerald-400 border-emerald-500/40" @click="keepRest">keep all pending here</button>
@@ -181,7 +344,6 @@ const dist = computed(() => {
         </div>
 
         <div v-for="run in runs" :key="run.runId" class="mb-4 rounded-lg border p-3">
-          <!-- run meta + the opener-code strip (the visual monotony) -->
           <div class="mb-2 flex flex-wrap items-center gap-2 text-xs">
             <span class="rounded bg-red-500/15 px-1.5 py-0.5 font-mono text-red-300">p{{ run.page }} · {{ run.runLen }}×{{ run.code }}</span>
             <span class="text-muted-foreground">{{ run.runLen }} {{ CLASS_LABEL[run.code] }} openers in a row</span>
@@ -190,10 +352,8 @@ const dist = computed(() => {
             </span>
           </div>
 
-          <!-- the run prose, for reading -->
           <p class="mb-3 border-l-2 border-muted pl-2 text-sm leading-relaxed text-muted-foreground/80">{{ run.context }}</p>
 
-          <!-- one actionable row per repeated opener (run position 0 is context only) -->
           <div class="space-y-2">
             <div v-for="r in run.rows" :key="r.id" class="rounded border p-2 text-sm"
                  :class="(r.decision && r.decision !== 'pending') ? 'opacity-70' : ''">
@@ -201,7 +361,7 @@ const dist = computed(() => {
                 <span class="rounded px-1.5 py-0.5 font-mono" :class="chip(r.code)">{{ r.code }}</span>
                 <span class="text-muted-foreground">opens “{{ r.opener }}…”</span>
                 <span v-if="r.alsoVariety" class="rounded bg-amber-500/15 px-1.5 py-0.5 text-amber-300" title="same first WORD repeats too — /variety also owns this">+ variety</span>
-                <span v-if="r.voiceClass === 'signature'" class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-emerald-300" title="deliberate subject-led punch — keep (VOICE.md)">signature</span>
+                <span v-if="r.voiceClass === 'signature'" class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-emerald-300" title="deliberate subject-led punch — keep">signature</span>
                 <span v-else-if="r.voiceClass === 'monotone'" class="rounded bg-red-500/20 px-1.5 py-0.5 text-red-300" title="flat repetition — recast candidate">monotone</span>
                 <span class="ml-auto" :class="choice(r) === 'keep' ? 'text-muted-foreground' : r.decision === 'edit' ? 'text-emerald-400' : 'text-sky-400'">
                   {{ choice(r) === 'keep' ? 'kept' : r.decision === 'edit' ? 'recast' : 'pending' }}
@@ -210,7 +370,6 @@ const dist = computed(() => {
 
               <p class="mb-1.5 leading-relaxed"><span class="font-semibold bg-amber-500/10 rounded px-0.5">{{ r.span }}</span></p>
 
-              <!-- the in-voice SUGGESTION, shown inline so you can read it before deciding -->
               <p v-if="r.alts?.recast && choice(r) !== 'custom'" class="mb-1.5 rounded bg-emerald-500/5 px-2 py-1 text-xs">
                 <span class="text-emerald-500/80">suggested →</span> <span class="text-muted-foreground/60">{{ leadShown(r) }}</span><span class="text-emerald-300">{{ r.alts.recast }}</span>
               </p>
@@ -221,7 +380,6 @@ const dist = computed(() => {
                 no suggestion generated for this chapter yet — keep it, write your own, or ask Claude to run the suggestion pass on this chapter.
               </p>
 
-              <!-- custom edit preview + box -->
               <p v-if="choice(r) === 'custom'" class="mb-1.5 text-xs">
                 <span class="text-muted-foreground">your edit → </span><span class="text-muted-foreground/60">{{ leadShown(r) }}</span><span class="text-emerald-400">{{ r.editText || '(empty)' }}</span>
               </p>
@@ -232,12 +390,83 @@ const dist = computed(() => {
               <div class="flex flex-wrap gap-1">
                 <Button size="sm" :variant="choice(r) === 'keep' ? 'default' : 'outline'" @click="pick(r, 'keep')">keep</Button>
                 <Button size="sm" :variant="choice(r) === 'recast' ? 'default' : 'outline'" @click="pick(r, 'recast')"
-                        :disabled="r.alts?.recast == null" :title="r.alts?.recast == null ? 'no suggestion yet — ask Claude to run the suggestion pass on this chapter' : 'use: ' + r.alts.recast">use suggestion</Button>
+                        :disabled="r.alts?.recast == null" :title="r.alts?.recast == null ? 'no suggestion yet' : 'use: ' + r.alts.recast">use suggestion</Button>
                 <Button size="sm" :variant="choice(r) === 'custom' ? 'default' : 'outline'" @click="pick(r, 'custom')">edit</Button>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- ── CHAPTER ("bunch") view — read the whole chapter as finished prose ── -->
+      <div v-else class="min-w-0 flex-1">
+        <div class="mb-2 flex flex-wrap items-center gap-2 text-xs">
+          <h2 class="font-semibold">{{ activeChapter }}</h2>
+          <span class="text-muted-foreground">{{ chMix.tot }} sentences · {{ chFlags.length }} flagged · {{ chPending }} pending</span>
+          <div class="ml-auto flex items-center gap-0.5 rounded border p-0.5">
+            <button class="rounded px-2 py-0.5" :class="chMode === 'optimized' ? 'bg-foreground text-background' : 'hover:bg-muted'" @click="chMode = 'optimized'" title="recasts substituted in place — the finished read">optimized</button>
+            <button class="rounded px-2 py-0.5" :class="chMode === 'original' ? 'bg-foreground text-background' : 'hover:bg-muted'" @click="chMode = 'original'" title="the manuscript as it stands">original</button>
+          </div>
+          <label class="flex items-center gap-1 text-muted-foreground"><input type="checkbox" v-model="highlightEdits" /> mark edits</label>
+          <label class="flex items-center gap-1 text-muted-foreground"><input type="checkbox" v-model="showCodes" /> codes</label>
+          <button class="rounded border border-emerald-500/40 px-2 py-1 text-emerald-400" @click="acceptAllRecasts">accept all recasts</button>
+          <button class="rounded border px-2 py-1 text-muted-foreground" @click="keepAllChapter">keep all</button>
+        </div>
+
+        <!-- chapter mix vs target bands — measured (now) → after optimization -->
+        <div v-if="targets" class="mb-3 rounded-lg border p-2 text-[11px]">
+          <div class="flex flex-wrap gap-x-4 gap-y-1">
+            <span><span class="font-mono">S</span> <span class="text-muted-foreground/60">{{ pctStr(chMix.pctS) }}</span> → <span :class="bandClass[bandState(afterMix.pctS, targets.S) ?? 'in']">{{ pctStr(afterMix.pctS) }}</span> <span class="text-muted-foreground/50">target {{ bandStr(targets.S) }}</span></span>
+            <span><span class="font-mono text-emerald-300">varied</span> <span class="text-muted-foreground/60">{{ pctStr(chMix.varied) }}</span> → <span :class="bandClass[bandState(afterMix.varied, targets.varied) ?? 'in']">{{ pctStr(afterMix.varied) }}</span> <span class="text-muted-foreground/50">target {{ bandStr(targets.varied) }}</span></span>
+            <span><span class="font-mono">F</span> <span :class="bandClass[bandState(afterMix.pctF, targets.F) ?? 'in']">{{ pctStr(afterMix.pctF) }}</span> <span class="text-muted-foreground/50">{{ bandStr(targets.F) }}</span></span>
+            <span><span class="font-mono">D</span> <span :class="bandClass[bandState(afterMix.pctD, targets.D) ?? 'in']">{{ pctStr(afterMix.pctD) }}</span> <span class="text-muted-foreground/50">{{ bandStr(targets.D) }}</span></span>
+            <span v-for="c in VARIED" :key="c" class="text-muted-foreground"><span class="font-mono">{{ c }}</span> {{ pctStr(afterMix.share(afterMix.codes[c] || 0)) }}</span>
+          </div>
+          <div class="mt-1 text-muted-foreground/60">{{ pctStr(chMix.pctS) }} now → <b>{{ pctStr(afterMix.pctS) }}</b> after applying every recommended/queued recast in this chapter · <span class="text-amber-400">amber</span>=below band · <span class="text-emerald-400">green</span>=in band · <span class="text-red-300">red</span>=over</div>
+        </div>
+
+        <div v-if="chMode === 'optimized' && chPreview" class="mb-3 rounded bg-emerald-500/5 px-2 py-1 text-[11px] text-emerald-300/80">
+          Reading with <b>{{ chPreview }}</b> recommended recast{{ chPreview === 1 ? '' : 's' }} applied in place (shown <span class="underline decoration-dotted decoration-emerald-400/70 underline-offset-4">underlined</span>). Click any marked sentence to keep the original or edit it; <b>accept all recasts</b> commits them.
+        </div>
+
+        <div v-if="chapterLoading" class="text-sm text-muted-foreground">loading chapter…</div>
+        <div v-else-if="!chapterSents.length" class="rounded border border-dashed p-6 text-center text-sm text-muted-foreground">
+          no prose stream — run <span class="font-mono">classify.mjs</span> to (re)generate it.
+        </div>
+
+        <!-- the whole chapter, as continuous prose; recasts substituted in optimized mode -->
+        <article v-else class="font-serif text-[16px] leading-8" :class="selectedSent ? 'pb-44' : ''">
+          <p v-for="(p, pi) in paragraphs" :key="pi" class="mb-3">
+            <template v-for="(s, si) in p.sents" :key="si"><span
+              :class="sentClass(s)"
+              @click="s.flag && selectSent(s)"
+              :title="s.flag ? `${s.flag.voiceClass === 'monotone' ? 'recast candidate' : s.flag.voiceClass === 'signature' ? 'keep — deliberate' : 'flagged'} · ${s.flag.runLen}×${s.code} run` : ''"
+            >{{ displayText(s) }}</span><sup v-if="showCodes" class="ml-0.5 font-mono text-[9px]" :class="s.code === 'S' ? 'text-red-400/70' : VARIED.includes(s.code) ? 'text-emerald-400/70' : 'text-muted-foreground/40'">{{ s.code }}</sup>{{ ' ' }}</template>
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <!-- docked editor: only the ONE selected sentence; prose stays clean -->
+    <div v-if="view === 'chapter' && selectedSent && selectedSent.flag" class="sticky bottom-12 z-20 mx-auto mb-2 max-w-5xl rounded-lg border bg-background/95 p-3 shadow-lg backdrop-blur">
+      <div class="mb-1.5 flex items-center gap-2 text-xs">
+        <span class="rounded px-1.5 py-0.5 font-mono" :class="chip(selectedSent.code)">{{ selectedSent.code }}</span>
+        <span class="text-muted-foreground">opens “{{ selectedSent.flag.opener }}…” · {{ selectedSent.flag.runLen }}×{{ selectedSent.code }} run</span>
+        <span v-if="selectedSent.flag.alsoVariety" class="rounded bg-amber-500/15 px-1.5 py-0.5 text-amber-300">+ variety</span>
+        <span v-if="selectedSent.flag.voiceClass === 'signature'" class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-emerald-300">signature · keep</span>
+        <span v-else-if="selectedSent.flag.voiceClass === 'monotone'" class="rounded bg-red-500/20 px-1.5 py-0.5 text-red-300">monotone · recast</span>
+        <button class="ml-auto text-muted-foreground hover:text-foreground" @click="selectedId = null">close ✕</button>
+      </div>
+      <p class="mb-1 text-sm"><span class="text-muted-foreground">original:</span> {{ selectedSent.t }}</p>
+      <p v-if="selectedSent.flag.recast && choiceCh(selectedSent.flag) !== 'custom'" class="mb-2 text-sm"><span class="text-emerald-500/80">suggested:</span> <span class="text-muted-foreground/60">{{ leadShown(selectedSent.flag) }}</span><span class="text-emerald-300">{{ selectedSent.flag.recast }}</span></p>
+      <p v-else-if="!selectedSent.flag.recast && choiceCh(selectedSent.flag) !== 'custom'" class="mb-2 text-xs italic text-muted-foreground/60">no suggestion — this opener reads as a deliberate beat. Keep it or write your own.</p>
+      <textarea v-if="choiceCh(selectedSent.flag) === 'custom'" v-model="selectedSent.flag.editText" @input="autosaveCh(selectedSent.page)"
+                placeholder="your rewrite — a varied opener for this sentence…" class="mb-2 w-full rounded border bg-background p-2 text-sm" rows="2" />
+      <div class="flex flex-wrap gap-1">
+        <Button size="sm" :variant="choiceCh(selectedSent.flag) === 'recast' ? 'default' : 'outline'" :disabled="selectedSent.flag.recast == null"
+                :title="selectedSent.flag.recast == null ? 'no suggestion' : 'use: ' + selectedSent.flag.recast" @click="pickCh(selectedSent, 'recast')">use suggestion</Button>
+        <Button size="sm" :variant="choiceCh(selectedSent.flag) === 'keep' ? 'default' : 'outline'" @click="pickCh(selectedSent, 'keep')">keep original</Button>
+        <Button size="sm" :variant="choiceCh(selectedSent.flag) === 'custom' ? 'default' : 'outline'" @click="pickCh(selectedSent, 'custom')">edit</Button>
       </div>
     </div>
 

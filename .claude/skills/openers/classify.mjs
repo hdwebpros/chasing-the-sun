@@ -20,6 +20,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { classifyOpener, words, clean } from '../../../shared/openers-core.mjs'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = join(here, '..', '..', '..')
@@ -51,54 +52,12 @@ const pageOf = [], chapOf = []
     if (n >= PAGE_SIZE) { p++; n = 0 }
   } }
 
-// --- opener classification ------------------------------------------------------
-const CONJ = new Set(['and', 'but', 'yet', 'so', 'or', 'nor'])
-const SUBORD = new Set(['when', 'while', 'as', 'because', 'if', 'although', 'though', 'since',
-  'after', 'before', 'until', 'unless', 'whenever', 'wherever', 'where', 'once', 'whereas',
-  'whether', 'lest', 'provided'])
-const PREP = new Set(['in', 'on', 'at', 'by', 'with', 'from', 'into', 'onto', 'over', 'under',
-  'above', 'below', 'beneath', 'beyond', 'behind', 'beside', 'between', 'among', 'amid', 'amidst',
-  'across', 'through', 'throughout', 'toward', 'towards', 'against', 'around', 'near', 'past',
-  'during', 'within', 'without', 'outside', 'inside', 'upon', 'along', 'off', 'of', 'to', 'for'])
-// temporal / sequence adverbs that frequently open a sentence (non -ly)
-const ADV = new Set(['then', 'now', 'soon', 'later', 'suddenly', 'finally', 'again', 'once',
-  'afterward', 'afterwards', 'meanwhile', 'eventually', 'already', 'still', 'today', 'tonight',
-  'tomorrow', 'yesterday', 'someday', 'always', 'never', 'sometimes', 'often', 'instead',
-  'outside', 'inside', 'overhead', 'nearby', 'everywhere', 'somewhere', 'together', 'slowly',
-  'quietly', 'quickly', 'carefully', 'gently'])
-const NEG = new Set(['not', 'just', 'only', 'merely', 'simply', 'no', 'never'])
-
-const words = s => (s.match(/\S+/g) || [])
-const clean = w => (w || '').toLowerCase().replace(/^[“”"‘’'(\[\-—–]+/, '').replace(/[.,!?;:“”"‘’')\]]+$/g, '')
+// --- opener classification (shared core — also used by the /openers page) ---------
+// classify() and its word helpers now live in shared/openers-core.mjs so the live
+// "after optimization" mix in the UI uses the exact same logic (no drift). splitSentences
+// stays local — it's sentence segmentation, not opener classification.
 const splitSentences = p => (p.match(/[^.!?…]+[.!?…]+(?=[\s”’")\]]*\s|[\s”’")\]]*$)|[^.!?…]+$/g) || []).map(s => s.trim()).filter(Boolean)
-
-// crude finite-verb probe: helps tell a fragment (F) from a real subject-led clause (S)
-const VERBISH = /\b(is|are|was|were|be|been|being|am|has|have|had|do|does|did|will|would|can|could|shall|should|may|might|must|went|came|sat|stood|walked|looked|knew|said|felt|took|kept|made|saw|told|held|ran|put|gave|got|set|left|turned|watched|pulled|moved|read|spoke|rose|filled|stirred|bought|pressed|scrubbed|wore|noticed|reached|closed|opened|worked|carried|climbed|swept|burned|drifted|crossed|gripped|appeared|trailed|stayed|hit|struck|tugged|pointed|smiled|softened|paused|exhaled|eased|performed|genuflected|prayed|continued|asked|nodded|shook|spilled|chased|pretended|pelted|trotted|survived|negotiate|shuddered|listened|hearing|thinking|rolling|loading|whitewash)\b/i
-
-function classify(sent) {
-  const ws = words(sent)
-  const first = clean(ws[0])
-  const open = ws.slice(0, 3).join(' ').replace(/[.,]$/, '')
-  // D — dialogue / quoted line (quote at the very start)
-  if (/^[“"]/.test(sent.trim())) return { code: 'D', opener: open }
-  // F — the negation-correction signature beat, or a very short verbless fragment
-  if (NEG.has(first) && ws.length <= 9) return { code: 'F', opener: open }
-  if (ws.length <= 4 && !VERBISH.test(sent)) return { code: 'F', opener: open }
-  // J — coordinating conjunction lead
-  if (CONJ.has(first)) return { code: 'J', opener: open }
-  // I — existential / inversion (There/Here + verb)
-  if ((first === 'there' || first === 'here') && VERBISH.test(ws.slice(1, 4).join(' '))) return { code: 'I', opener: open }
-  // C — subordinate clause (subordinator + a comma before the main clause within reach)
-  if (SUBORD.has(first) && /,/.test(ws.slice(0, 12).join(' '))) return { code: 'C', opener: open }
-  // P — prepositional phrase opener
-  if (PREP.has(first)) return { code: 'P', opener: open }
-  // G — participial / gerund phrase (ing/ed/en first word + a comma before the clause)
-  if (/(?:ing|ed|en)$/.test(first) && /,/.test(ws.slice(0, 8).join(' '))) return { code: 'G', opener: open }
-  // A — adverbial (-ly word or a known temporal/sequence adverb), comma optional
-  if (first.endsWith('ly') || ADV.has(first)) return { code: 'A', opener: open }
-  // S — bare subject-led (the default / the monoculture)
-  return { code: 'S', opener: open }
-}
+const classify = classifyOpener
 
 // --- walk the book: a flat sentence stream carrying page/chapter/line ------------
 const stream = []   // {sent, code, opener, word1, page, chapter, li, paraInitial}
@@ -151,6 +110,7 @@ for (const run of runs) {
     ;(flagsByPage[page] ||= []).push({
       sent: m.sent, code: m.code, opener: m.opener, lead: m.prev, unique: uniq,
       runId: `p${page}-${runId}`, runLen: run.len, runCodes, runText, runPos: idx, alsoVariety, chapter: m.chapter,
+      streamIdx: run.start + idx,   // back-ref so the chapter/bunch view can resolve this sentence's flag id
     })
   })
 }
@@ -186,9 +146,13 @@ for (const page of [...allPages].sort((a, b) => a - b)) {
   const doc = {
     page, chapter,
     pageDetect: null,
-    flags: pflags.map((f, k) => ({
-      id: `p${page}-o${k + 1}`,
+    flags: pflags.map((f, k) => {
+     const id = `p${page}-o${k + 1}`
+     stream[f.streamIdx].flagId = id     // thread the flag id back onto the chapter stream
+     return {
+      id,
       tell: `type-run:${f.code}`,
+      chapter: f.chapter,   // per-SENTENCE chapter (precise at chapter boundaries; a page can straddle two)
       code: f.code,
       opener: f.opener,
       span: f.sent,
@@ -207,7 +171,8 @@ for (const page of [...allPages].sort((a, b) => a - b)) {
       alts: { recast: null },   // in-voice recast suggestion (judge.mjs) — varied opener for THIS sentence
       fix: '',             // placeholder; openers decisions apply via editText (like tic)
       decision: 'pending',
-    })),
+     }
+    }),
   }
 
   if (existsSync(pagePath)) {
@@ -241,9 +206,21 @@ const worstRuns = runs.map(r => {
   return { page: m[0].page, chapter: m[0].chapter, len: r.len, code: r.code, openers: m.map(x => x.opener).join(' / '), text: m.map(x => x.sent).join(' ') }
 }).sort((a, b) => b.len - a.len).slice(0, 40)
 writeFileSync(join(deai, 'openers-summary.json'), JSON.stringify({
-  sentences: stream.length, totals, budgets: tax.budgets,
+  sentences: stream.length, totals, budgets: tax.budgets, targets: tax.targets,
   chapters: chapterRows, runsTotal: runs.length, flagged: Object.values(flagsByPage).flat().length, worstRuns,
 }, null, 2) + '\n')
+
+// --- per-chapter prose stream (powers the /openers CHAPTER / "bunch" view) --------
+// The whole book as ordered sentences, each carrying its opener code, its paragraph id
+// (line index, so the view can reconstruct paragraphs), its page, and the flagId of the
+// flag it belongs to (null if it sits in no monotony run). The view renders a chapter as
+// continuous prose with every opener colour-coded and the flagged ones carrying their
+// recast — so the author can read + bulk-decide a whole prologue/interlude/chapter at once.
+const chapterText = {}
+for (const m of stream)
+  (chapterText[m.chapter] ||= []).push({ t: m.sent, code: m.code, flagId: m.flagId || null, para: m.li, page: m.page })
+writeFileSync(join(deai, 'openers-chapters.json'),
+  JSON.stringify({ chapters: chapterText, order: Object.keys(chapterText) }, null, 2) + '\n')
 
 const flagTotal = Object.values(flagsByPage).flat().length
 console.log(`openers: ${stream.length} sentences · ${runs.length} monotony runs · ${flagTotal} flagged across ${allPages.size} pages`)

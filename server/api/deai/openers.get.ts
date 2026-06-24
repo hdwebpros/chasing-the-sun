@@ -19,7 +19,9 @@ export default defineEventHandler(async () => {
   for (const f of files) {
     let doc: PageDoc & { chapter?: string }
     try { doc = JSON.parse(await readFile(`${dir}/${f}`, 'utf8')) } catch { continue }
-    for (const fl of doc.flags || []) rows.push({ ...fl, page: doc.page, chapter: doc.chapter ?? '' })
+    // per-FLAG chapter is authoritative (a page can straddle two chapters at a heading
+    // boundary); fall back to the page's chapter for older caches without it.
+    for (const fl of doc.flags || []) rows.push({ ...fl, page: doc.page, chapter: (fl as any).chapter ?? doc.chapter ?? '' })
   }
   rows.sort((a, b) => a.page - b.page || a.id.localeCompare(b.id, undefined, { numeric: true }))
 
