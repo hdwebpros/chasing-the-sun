@@ -142,6 +142,12 @@ the schema is `schema.json`. Keep concurrency at the default cap.
 - The research is the only ruler; the author is the veto, at triage. No voiceprint file.
 - Scanning never writes Drive; `apply.mjs --apply` is the sole writer, only for queued cards,
   and the author's NOTE on a card overrides the engine's option (notes are authoritative).
+- IGNORE DRIFTERS. Act only on cards present in the current `review.json`. A decision in
+  `review-decisions.json` whose card id is gone is a *drifter* — its content-hash flipped when the
+  manuscript was edited + re-collated, so it belongs to an already-completed/archived chapter, not
+  outstanding work. `apply.mjs` skips them by construction (it iterates `review.findings` only).
+  Never hand-rescue a drifter — do not probe `review-decisions.json` for orphaned queued/noted
+  decisions and re-apply them; that reopens a settled chapter (archived = done).
 - Archive after placement: apply.mjs verifies each edit landed once, then adds the finished
   unit to `review-applied.json` so /review drops it. Never re-collate a unit live against an
   already-edited manuscript (it orphans decisions) — archive it instead.

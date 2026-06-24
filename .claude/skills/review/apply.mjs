@@ -76,6 +76,14 @@ const single = [], multi = [], cuts = [], held = [], skipped = []
 const placedCardIds = new Set()
 const unitsTouched = new Set()
 
+// DRIFTERS: a decision whose card is no longer in review.json. Its content-hashed id flipped when
+// the manuscript was edited + re-collated, so it belongs to an already-completed/archived chapter,
+// NOT outstanding work. apply only iterates review.findings, so drifters are ignored by construction
+// — NEVER hand-rescue a drifter (re-probing review-decisions.json, re-applying its note text): it
+// reopens a settled chapter. Surfaced in the report so they read as "deliberately skipped".
+const liveIds = new Set(review.findings.map(f => f.id))
+const drifters = Object.entries(decisions).filter(([id, d]) => (d?.decision === 'queued' || d?.decision === 'dismiss') && !liveIds.has(id))
+
 for (const c of review.findings) {
   const d = decisions[c.id]
   if (!d || d.decision !== 'queued') continue
@@ -122,6 +130,7 @@ console.log(`${APPLY ? 'APPLYING' : 'DRY RUN'} — queued cards resolved:`)
 plan('single-paragraph replaces (edit-doc)', single)
 plan('multi-paragraph replaces (range-replace)', multi)
 plan('full-paragraph cuts (delete-paragraph)', cuts)
+if (drifters.length) console.log(`  drifters IGNORED (decided cards no longer in review.json = completed/archived chapters — NEVER hand-rescue): ${drifters.length}`)
 if (held.length) {
   console.log(`  HELD (note is an instruction/conditional — apply by hand, unit NOT archived): ${held.length}`)
   for (const h of held) console.log(`    • ${h.id} p${h.page}: ${JSON.stringify((h.note || '').slice(0, 90))}`)
