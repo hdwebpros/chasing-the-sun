@@ -37,15 +37,37 @@ function flatten(doc) {
   return { text, idx }
 }
 
+// Locate a verbatim span, tolerant of paragraph-mark newline-count differences. The doc's flat
+// text joins consecutive paragraphs with a SINGLE \n, but a find lifted from the synced
+// manuscript separates paragraphs with \n\n (blank line). Exact match is preferred; the fallback
+// collapses runs of \n to one in BOTH the doc text and the find (keeping a char→doc-index map) so
+// the span still resolves to exact doc indices, and still requires a unique match.
+function locate(text, idx, find) {
+  let at = text.indexOf(find)
+  if (at !== -1) {
+    if (text.indexOf(find, at + 1) !== -1) return { ambiguous: true }
+    return { startIndex: idx[at], endIndex: idx[at + find.length - 1] + 1 }
+  }
+  const cchars = [], cidx = []
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === '\n' && cchars[cchars.length - 1] === '\n') continue // collapse \n run
+    cchars.push(text[i]); cidx.push(idx[i])
+  }
+  const ctext = cchars.join(''), cfind = find.replace(/\n+/g, '\n')
+  const cat = ctext.indexOf(cfind)
+  if (cat === -1) return { miss: true }
+  if (ctext.indexOf(cfind, cat + 1) !== -1) return { ambiguous: true }
+  return { startIndex: cidx[cat], endIndex: cidx[cat + cfind.length - 1] + 1 }
+}
+
 let ok = 0, fail = 0
 for (const { find, replace } of pairs) {
   const { data: doc } = await docs.documents.get({ documentId: DOC_ID })
   const { text, idx } = flatten(doc)
-  let at = text.indexOf(find)
-  if (at === -1) { console.error(`MISS: span not found verbatim: ${JSON.stringify(find.slice(0,60))}…`); fail++; continue }
-  if (text.indexOf(find, at + 1) !== -1) { console.error(`AMBIGUOUS (>1x), skip: ${JSON.stringify(find.slice(0,60))}…`); fail++; continue }
-  const startIndex = idx[at]
-  const endIndex = idx[at + find.length - 1] + 1
+  const loc = locate(text, idx, find)
+  if (loc.miss) { console.error(`MISS: span not found verbatim: ${JSON.stringify(find.slice(0,60))}…`); fail++; continue }
+  if (loc.ambiguous) { console.error(`AMBIGUOUS (>1x), skip: ${JSON.stringify(find.slice(0,60))}…`); fail++; continue }
+  const { startIndex, endIndex } = loc
   console.log(`${APPLY ? 'APPLY' : 'DRY'}: [${startIndex},${endIndex}) ${JSON.stringify(find.slice(0,50))}… -> ${JSON.stringify(replace.slice(0,50))}…`)
   if (!APPLY) { ok++; continue }
   await docs.documents.batchUpdate({
