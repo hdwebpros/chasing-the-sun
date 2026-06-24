@@ -3,7 +3,8 @@ import { join } from 'node:path'
 
 // Persist per-finding craft-review triage decisions to .deai/review-decisions.json,
 // keyed by finding id. States: 'pending' | 'queued' (act on it via the finding's route
-// pass) | 'dismiss' (deliberate / not a problem).
+// pass) | 'dismiss' (deliberate / not a problem) | 'applied' (terminal — the edit has been
+// written to Drive; stamped by apply.mjs, shown as done on /review, hidden by default).
 // This pass does NOT write Drive — a queued finding flows to its route pass (deai/
 // variety/manual) where the actual edit happens under THAT pass's gate.
 export default defineEventHandler(async (event) => {

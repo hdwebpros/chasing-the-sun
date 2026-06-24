@@ -24,8 +24,9 @@
 // resolved (all queued cards placed, nothing pending/held) is added to
 // .deai/review-applied.json and the engine re-collates so /review drops them.
 //
-//   node .claude/skills/review/apply.mjs            # DRY RUN — show the plan, touch nothing
-//   node .claude/skills/review/apply.mjs --apply    # write Drive, verify, archive, re-collate
+//   node .claude/skills/review/apply.mjs                # DRY RUN — show the plan, touch nothing
+//   node .claude/skills/review/apply.mjs --apply        # write Drive, verify, mark applied, archive, re-collate
+//   node .claude/skills/review/apply.mjs --mark-applied # stamp already-on-Drive cards 'applied' only (no write/archive)
 import { readFileSync, writeFileSync } from 'node:fs'
 import { spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
@@ -35,6 +36,10 @@ const here = dirname(fileURLToPath(import.meta.url))
 const root = join(here, '..', '..', '..')
 const deai = join(root, '.deai')
 const APPLY = process.argv.includes('--apply')
+// --mark-applied: stamp cards whose edit is ALREADY on Drive as decision:'applied' (a real
+// terminal per-card state the /review page treats as done) WITHOUT writing Drive, re-syncing,
+// or archiving. Backfills cards applied before this stamping existed.
+const MARK_ONLY = process.argv.includes('--mark-applied')
 
 const bin = (name) => join(root, '.claude/skills/book-edit/bin', name)
 const sh = (cmd, args, input) => spawnSync(cmd, args, { input, encoding: 'utf8', cwd: root })
@@ -74,6 +79,9 @@ const unitOf = (c) => {
 
 const single = [], multi = [], cuts = [], held = [], skipped = []
 const placedCardIds = new Set()
+// cards whose edit is ALREADY present in the live manuscript (nothing to write) — the set
+// --mark-applied stamps, and the cards normal --apply counts as done without re-sending.
+const alreadyAppliedIds = new Set()
 const unitsTouched = new Set()
 
 // DRIFTERS: a decision whose card is no longer in review.json. Its content-hashed id flipped when
@@ -93,7 +101,7 @@ for (const c of review.findings) {
   // full cut
   if (d.chosen === '') {
     if (!c.original) { skipped.push(`${c.id}: cut with no original`); continue }
-    if (!manN.includes(norm(c.original))) { skipped.push(`${c.id} p${c.page}: cut span already gone — skip`); placedCardIds.add(c.id); continue }
+    if (!manN.includes(norm(c.original))) { skipped.push(`${c.id} p${c.page}: cut span already gone — skip`); placedCardIds.add(c.id); alreadyAppliedIds.add(c.id); continue }
     cuts.push({ id: c.id, page: c.page, original: c.original }); placedCardIds.add(c.id); continue
   }
 
@@ -113,11 +121,11 @@ for (const c of review.findings) {
   // edits — a note that APPENDS a sentence keeps the original as a substring of the
   // replacement, so the span stays present after applying; re-sending would NEST/duplicate it.
   if (!manN.includes(fN) || (repN !== fN && manN.includes(repN))) {
-    skipped.push(`${c.id} p${c.page}: already applied — skip`); placedCardIds.add(c.id); continue
+    skipped.push(`${c.id} p${c.page}: already applied — skip`); placedCardIds.add(c.id); alreadyAppliedIds.add(c.id); continue
   }
   const occ = manN.split(fN).length - 1
   if (occ > 1) { skipped.push(`${c.id} p${c.page}: span occurs ${occ}x — UNSAFE for replace, skip`); continue }
-  if (repN === fN) { skipped.push(`${c.id} p${c.page}: no-op`); placedCardIds.add(c.id); continue }
+  if (repN === fN) { skipped.push(`${c.id} p${c.page}: no-op`); placedCardIds.add(c.id); alreadyAppliedIds.add(c.id); continue }
 
   const pair = { find, replace: rep, id: c.id, page: c.page }
   ;(find.includes('\n') ? multi : single).push(pair)
@@ -136,6 +144,29 @@ if (held.length) {
   for (const h of held) console.log(`    • ${h.id} p${h.page}: ${JSON.stringify((h.note || '').slice(0, 90))}`)
 }
 if (skipped.length) { console.log(`  skipped: ${skipped.length}`); for (const s of skipped) console.log(`    - ${s}`) }
+
+// Stamp decision:'applied' (a terminal per-card state the /review page hides as done) onto a
+// set of card ids, preserving each card's existing note/chosen/anchor. Returns how many flipped.
+// This is independent of unit archiving — archiving only fires for a whole chapter once it has
+// nothing pending; this closes the loop on INDIVIDUAL cards whose edit is on Drive.
+const stampApplied = (ids) => {
+  const dpath = join(deai, 'review-decisions.json')
+  const dec = readJSON(dpath, {})
+  let n = 0
+  for (const id of ids) {
+    if (dec[id]?.decision === 'applied') continue
+    dec[id] = { ...(dec[id] || {}), decision: 'applied' }
+    n++
+  }
+  if (n) writeFileSync(dpath, JSON.stringify(dec, null, 2))
+  return n
+}
+
+if (MARK_ONLY) {
+  const n = stampApplied(alreadyAppliedIds)
+  console.log(`\n[--mark-applied] ${alreadyAppliedIds.size} card(s) already on Drive; stamped ${n} new as 'applied'. No Drive write, no archive.`)
+  process.exit(0)
+}
 
 if (!APPLY) {
   console.log('\n[DRY RUN] pass --apply to write Drive, verify, and archive resolved units.')
@@ -177,6 +208,11 @@ if (bad.length) {
   process.exit(1)
 }
 console.log(`✓ verified ${single.length + multi.length} replace(s) + ${cuts.length} cut(s) applied exactly once.`)
+
+// Close the loop on every placed card: a terminal 'applied' state so /review shows it as done,
+// independent of whole-chapter archiving (which only fires when the unit has nothing pending).
+const stamped = stampApplied(placedCardIds)
+console.log(`Marked ${stamped} card(s) as 'applied' (terminal done state on /review).`)
 
 // ---- archive fully-resolved units -----------------------------------------
 // A unit is archived only when every one of its queued cards was placed AND it has no

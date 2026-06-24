@@ -115,6 +115,8 @@ const fLens = ref('all'); const fSev = ref('all')
 const fProv = ref('craft') // all | bookfox | craft (craft = anything but de-AI) | deai
 const fIntent = ref('all') // all | fix | enhance
 const hideReviewed = ref(false)
+const showApplied = ref(false) // 'applied' = written to Drive (terminal done state); hidden by default
+const showDismissed = ref(false) // 'dismiss' = deliberately set aside (incl. reconciled orphans); hidden by default
 
 const lensOptions = computed(() => {
   const present = Object.keys(data.value?.lensIdCounts ?? {})
@@ -125,13 +127,74 @@ const matchProv = (c: Card) =>
   fProv.value === 'bookfox' ? hasBookfox(c) :
   fProv.value === 'deai' ? isDeaiOnly(c) :
   /* craft */ !isDeaiOnly(c)
-const cards = computed(() => (data.value?.findings ?? []).filter(c =>
+const filtered = computed(() => (data.value?.findings ?? []).filter(c =>
   matchProv(c) &&
   (fIntent.value === 'all' || (c.intent ?? 'fix') === fIntent.value) &&
   (fLens.value === 'all' || c.lensIds.includes(fLens.value)) &&
   (fSev.value === 'all' || c.severity === fSev.value) &&
-  (!hideReviewed.value || (c.decision ?? 'pending') === 'pending'))
-  .sort((a, b) => (sevRank[a.severity] ?? 9) - (sevRank[b.severity] ?? 9) || (a.page ?? 1e9) - (b.page ?? 1e9)))
+  (showApplied.value || (c.decision ?? 'pending') !== 'applied') &&
+  (showDismissed.value || (c.decision ?? 'pending') !== 'dismiss') &&
+  (!hideReviewed.value || (c.decision ?? 'pending') === 'pending')))
+
+// ---- overlap grouping ------------------------------------------------------
+// Competing edits to the SAME passage must sit together so you choose among them
+// in place. Two cards overlap when one original contains the other or they share
+// a sentence (same test as the apply-collision check in apply.mjs). Clustering
+// runs over ALL findings — including APPLIED cards — and across ADJACENT pages: a
+// sentence on a page boundary gets tagged 116 by one scanner and 117 by another,
+// and an edit already written to Drive must still flag the live cards that target
+// the same (now-stale) text. Visible cards are ordered by page with each cluster
+// kept contiguous; a divider headers any group of 2+, and a card whose cluster
+// contains an applied edit is badged so you don't act on a dead anchor.
+const normSpan = (s = '') => s.replace(/[“”]/g, '"').replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim().toLowerCase()
+const spanSentences = (s = '') =>
+  normSpan(s).split(/(?<=[.?!"'])\s+/).map(x => x.replace(/["']/g, '').trim()).filter(x => x.length > 15)
+const arranged = computed(() => {
+  const all = data.value?.findings ?? []
+  const visibleIds = new Set(filtered.value.map(c => c.id))
+  // union-find over card ids; precompute normalized span + sentence set once
+  const parent = new Map<string, string>()
+  const find = (x: string): string => { while (parent.get(x) !== x) { parent.set(x, parent.get(parent.get(x)!)!); x = parent.get(x)! } return x }
+  const NS = new Map<string, string>(), SS = new Map<string, Set<string>>()
+  for (const c of all) { parent.set(c.id, c.id); NS.set(c.id, normSpan(c.original)); SS.set(c.id, new Set(spanSentences(c.original || ''))) }
+  for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++) {
+    const a = all[i], b = all[j]
+    if (a.page == null || b.page == null || Math.abs(a.page - b.page) > 1) continue   // same or adjacent page only
+    const na = NS.get(a.id)!, nb = NS.get(b.id)!
+    if (!na || !nb) continue
+    let ov = na.includes(nb) || nb.includes(na)
+    if (!ov) { const sa = SS.get(a.id)!; for (const s of SS.get(b.id)!) if (sa.has(s)) { ov = true; break } }
+    if (ov) parent.set(find(a.id), find(b.id))
+  }
+  // aggregates: counts/severity/page over VISIBLE cards; applied-flag over ALL members
+  const vis = new Map<string, number>(), minSev = new Map<string, number>(), minPage = new Map<string, number>()
+  const hasApplied = new Map<string, boolean>(), order = new Map<string, number>()
+  let ord = 0
+  for (const c of all) {
+    const r = find(c.id)
+    if (!order.has(r)) order.set(r, ord++)
+    if ((c.decision ?? 'pending') === 'applied') hasApplied.set(r, true)
+    if (!visibleIds.has(c.id)) continue
+    vis.set(r, (vis.get(r) ?? 0) + 1)
+    minSev.set(r, Math.min(minSev.get(r) ?? 9, sevRank[c.severity] ?? 9))
+    minPage.set(r, Math.min(minPage.get(r) ?? 1e9, c.page ?? 1e9))
+  }
+  const sorted = filtered.value.slice().sort((a, b) => {
+    const ra = find(a.id), rb = find(b.id)
+    const pa = minPage.get(ra)!, pb = minPage.get(rb)!
+    if (pa !== pb) return pa - pb                                              // manuscript order
+    if (ra !== rb) return (minSev.get(ra)! - minSev.get(rb)!) || (order.get(ra)! - order.get(rb)!)
+    return (sevRank[a.severity] ?? 9) - (sevRank[b.severity] ?? 9)             // within a group: worst first
+  })
+  const info = new Map<string, { size: number; first: boolean; applied: boolean }>()
+  let prev = ''
+  for (const c of sorted) { const r = find(c.id); info.set(c.id, { size: vis.get(r) ?? 1, first: r !== prev, applied: !!hasApplied.get(r) }); prev = r }
+  return { sorted, info }
+})
+const cards = computed(() => arranged.value.sorted)
+const groupInfo = computed(() => arranged.value.info)
+const appliedCount = computed(() => (data.value?.findings ?? []).filter(c => (c.decision ?? 'pending') === 'applied').length)
+const dismissedCount = computed(() => (data.value?.findings ?? []).filter(c => (c.decision ?? 'pending') === 'dismiss').length)
 
 const isMulti = (c: Card) => c.kind === 'edit' && (c.options?.length ?? 0) > 1
 const soleEdit = (c: Card) => c.options?.[0]?.edited ?? ''
@@ -201,14 +264,26 @@ async function save() {
           <option value="enhance">✦ enhancements only</option>
         </select>
         <label class="flex items-center gap-1 text-xs text-muted-foreground"><input type="checkbox" v-model="hideReviewed" /> hide reviewed</label>
+        <label class="flex items-center gap-1 text-xs text-muted-foreground" title="cards already written to Drive (done)"><input type="checkbox" v-model="showApplied" /> show applied<span v-if="appliedCount" class="text-emerald-400/80">&nbsp;({{ appliedCount }})</span></label>
+        <label class="flex items-center gap-1 text-xs text-muted-foreground" title="cards set aside — dismissed or reconciled orphans (anchor gone from Drive)"><input type="checkbox" v-model="showDismissed" /> show dismissed<span v-if="dismissedCount" class="text-rose-400/70">&nbsp;({{ dismissedCount }})</span></label>
         <span class="ml-auto text-xs text-muted-foreground">{{ cards.length }} shown · {{ savedMsg }}</span>
       </div>
 
       <div class="space-y-3">
-        <div v-for="c in cards" :key="c.id"
-             class="rounded-lg border p-3 text-sm" :class="[sevBg[c.severity], (c.decision ?? 'pending') !== 'pending' ? 'opacity-60' : '']">
+        <template v-for="c in cards" :key="c.id">
+        <!-- divider: this paragraph is contested by 2+ cards — choose among them here -->
+        <div v-if="groupInfo.get(c.id)?.first && (groupInfo.get(c.id)?.size ?? 1) > 1"
+             class="flex items-center gap-2 pt-1 text-[11px] font-medium text-amber-300/80">
+          <span class="h-px flex-1 bg-amber-500/20" />
+          <span class="shrink-0">⋯ {{ groupInfo.get(c.id)!.size }} cards target the same passage — pick across them</span>
+          <span class="h-px flex-1 bg-amber-500/20" />
+        </div>
+        <div
+             class="rounded-lg border p-3 text-sm" :class="[sevBg[c.severity], (c.decision ?? 'pending') !== 'pending' ? 'opacity-60' : '', (groupInfo.get(c.id)?.size ?? 1) > 1 ? 'border-l-4 border-l-amber-500/30 ml-1' : '']">
           <!-- header -->
           <div class="flex items-center gap-2 mb-2 text-xs">
+            <span v-if="(c.decision ?? 'pending') === 'applied'" class="rounded bg-emerald-500/20 px-1.5 py-0.5 font-semibold text-emerald-300" title="written to Drive — done">✓ applied</span>
+            <span v-else-if="groupInfo.get(c.id)?.applied" class="rounded bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground" title="A neighboring edit in this same passage is already on Drive (turn on “show applied” to see it). This card's own anchor is still live and will apply — just re-read the passage before queueing.">neighbor edited</span>
             <span v-if="c.intent === 'enhance'" class="rounded bg-violet-500/20 px-1.5 py-0.5 font-semibold text-violet-300" title="enhancement opportunity — the prose is fine; a named craft technique would elevate it">✦ enhance</span>
             <span class="font-bold uppercase" :class="sevColor[c.severity]">{{ c.severity }}</span>
             <span class="rounded bg-muted px-1.5 py-0.5 font-medium">{{ isMulti(c) ? c.options!.length + ' options' : labelOf(c) }}</span>
@@ -294,13 +369,19 @@ async function save() {
           <!-- triage row -->
           <div class="flex items-center gap-2">
             <span class="text-[10px] text-muted-foreground/60 mr-auto">{{ c.lensIds.map(lensName).join(' · ') }}</span>
-            <button class="text-[11px] text-muted-foreground/70 hover:text-foreground underline-offset-2 hover:underline" @click="toggleNote(c.id)">
-              {{ c.reviewNote ? '✎ note·' : '✎ note' }}
-            </button>
-            <Button size="sm" :variant="c.decision === 'queued' ? 'default' : 'outline'"
-                    :disabled="isMulti(c) && c.chosen == null" :title="isMulti(c) && c.chosen == null ? 'pick an option first' : ''"
-                    @click="setDecision(c, 'queued')">queue</Button>
-            <Button size="sm" :variant="c.decision === 'dismiss' ? 'default' : 'outline'" @click="setDecision(c, 'dismiss')">dismiss</Button>
+            <template v-if="(c.decision ?? 'pending') === 'applied'">
+              <span class="text-xs font-medium text-emerald-300">✓ applied to Drive</span>
+              <button class="text-[11px] text-muted-foreground/70 hover:text-foreground underline-offset-2 hover:underline" title="re-open this card for further editing" @click="setDecision(c, 'queued')">reopen</button>
+            </template>
+            <template v-else>
+              <button class="text-[11px] text-muted-foreground/70 hover:text-foreground underline-offset-2 hover:underline" @click="toggleNote(c.id)">
+                {{ c.reviewNote ? '✎ note·' : '✎ note' }}
+              </button>
+              <Button size="sm" :variant="c.decision === 'queued' ? 'default' : 'outline'"
+                      :disabled="isMulti(c) && c.chosen == null" :title="isMulti(c) && c.chosen == null ? 'pick an option first' : ''"
+                      @click="setDecision(c, 'queued')">queue</Button>
+              <Button size="sm" :variant="c.decision === 'dismiss' ? 'default' : 'outline'" @click="setDecision(c, 'dismiss')">dismiss</Button>
+            </template>
           </div>
 
           <!-- feedback note: tell me a suggestion is off (e.g. "no one says this") -->
@@ -310,6 +391,7 @@ async function save() {
                       class="w-full rounded border bg-background px-2 py-1 text-xs"></textarea>
           </div>
         </div>
+        </template>
         <div v-if="!cards.length" class="rounded border border-dashed p-6 text-sm text-muted-foreground text-center">no cards match these filters</div>
       </div>
     </template>

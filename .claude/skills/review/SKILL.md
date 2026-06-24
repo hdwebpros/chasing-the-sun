@@ -115,6 +115,16 @@ any miss or duplication), then **archives** each fully-resolved unit (all queued
 nothing pending/held) into `.deai/review-applied.json` and re-collates so `/review` drops it.
 A unit with any pending or held card is left active and reported, never silently hidden.
 
+**Per-card `applied` state (terminal done).** Archiving is whole-chapter and only fires when a
+unit has nothing pending — so a card written to Drive while its chapter still has untriaged
+siblings would otherwise sit on `/review` forever as `queued`. To close that loop, `--apply`
+stamps every placed card `decision:'applied'` in `review-decisions.json` (preserving its
+note/chosen/anchor). The page shows `applied` cards as ✓ done and hides them by default
+(a *show applied (N)* toggle reveals them; *reopen* returns one to `queued`). `applied` is never
+re-applied (the loop only acts on `queued`) and never treated as a drifter. To backfill cards
+applied before this existed, `apply.mjs --mark-applied` stamps every card already on Drive with
+no Drive write, no re-sync, no archive.
+
 ## Orchestration via the Workflow tool (optional, recommended for whole-book)
 The fan-out is a textbook parallel pipeline. For a multi-chapter sweep, a Workflow
 script can `pipeline()` units through [scan-all-lenses → collate], one batch per
