@@ -31,6 +31,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { classify } from './reconcile-core.mjs'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = join(here, '..', '..', '..')
@@ -208,6 +209,17 @@ if (bad.length) {
   process.exit(1)
 }
 console.log(`✓ verified ${single.length + multi.length} replace(s) + ${cuts.length} cut(s) applied exactly once.`)
+
+// Sweep: stamp ANY card whose fix is now on Drive (per the shared classifier), not just the
+// ones we wrote this run. A neighboring edit in a merged passage often lands a sibling card's
+// fix too; those used to linger in the queue as phantom dupes. Catching them here keeps the
+// persisted decisions in step with what the /review page auto-hides at serve time.
+let sweptDone = 0
+for (const c of review.findings) {
+  if (placedCardIds.has(c.id)) continue
+  if (classify(c, decisions[c.id], manN) === 'done') { placedCardIds.add(c.id); sweptDone++ }
+}
+if (sweptDone) console.log(`Also found ${sweptDone} card(s) already on Drive (resolved by neighboring edits) — stamping applied too.`)
 
 // Close the loop on every placed card: a terminal 'applied' state so /review shows it as done,
 // independent of whole-chapter archiving (which only fires when the unit has nothing pending).

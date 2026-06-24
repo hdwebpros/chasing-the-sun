@@ -157,6 +157,13 @@ page prose back to the author; surface only counts ("ch7: 3 high / 6 mid across 
 >   **constructive** mode prefer the additive/strengthening move the lens file names (see
 >   YOUR MODE above). ALWAYS: NEVER introduce a rule-of-three, a staccato stack, an em dash,
 >   or an abstract emotion-label; never invent plot facts. (RYAN-HOUSE-STYLE.md governs fix mechanics.)
+>   SAME-OPENER GUARD (every lens, especially constructive adds): when your `edited` adds or moves
+>   a sentence, RECOUNT the opening word of EVERY sentence across the WHOLE `edited` span, not just
+>   your new one. Hard rule — never ship a fix that starts three sentences IN A ROW on the same word
+>   (He… He… He… / She… / The…); vary one. Softer but real — avoid crowding three of four consecutive
+>   sentences onto the same opener even when one breaks the run. Open the added beat differently (a
+>   name, an object, a time/place phrase — never a dependent clause, which is off-voice). A
+>   constructive add that begins "He …" right after existing "He …" sentences is the classic miss.
 > - `anchor` — a short locator quote (often the same as `original`).
 > - `route` — default **{ROUTE}** for this lens; override to `manual` if no fix pass fits.
 > - `id` — `{LENS_ID}-{UNIT}-K` (K = 1,2,3…). NEVER set `decision` (author-only, later).

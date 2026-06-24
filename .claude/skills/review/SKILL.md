@@ -125,6 +125,26 @@ re-applied (the loop only acts on `queued`) and never treated as a drifter. To b
 applied before this existed, `apply.mjs --mark-applied` stamps every card already on Drive with
 no Drive write, no re-sync, no archive.
 
+**Keeping the queue in step with Drive — automatic (no phantom dupes).** The Doc moves ahead of
+`review.json` as edits land (apply.mjs, a sibling pass, or the author by hand). A card whose fix
+already matches the live manuscript — often because a *neighboring* edit in the same merged
+passage landed it — used to linger on `/review` as a phantom dupe. Three things now keep the
+queue honest, all sharing one classifier (`reconcile-core.mjs`) so what you SEE and what gets
+WRITTEN can never disagree:
+- **Serve-time (the `/review` API):** every page load reclassifies each still-open card against
+  the cached manuscript and hides it if its fix is already on Drive (`done` → shown `applied`,
+  badged `auto`) or its anchor was replaced by a different edit (`orphan` → `dismiss`). In-memory
+  only, never persisted. Stale cache is safe: it can only *under*-hide, never wrongly hide a card
+  whose anchor is genuinely present. Structural/action cards (no redline) are never auto-resolved.
+- **`apply.mjs` post-sync sweep:** after verifying its writes, it also stamps `applied` any card
+  whose fix is now on Drive (including ones it didn't write this run), persisting that truth.
+- **`reconcile.mjs` (backstop, persists):** `sync.sh` → `node reconcile.mjs` (dry run) →
+  `--apply` writes `done → applied` / `orphan → dismiss` into `review-decisions.json`. Run it
+  before a big triage session or to permanently clear dead orphans; the two automatic paths mean
+  you rarely need to. It also REPORTS (never changes) `applied` cards not found on Drive — possible
+  false stamps. Note: reopening an auto-resolved `done` card won't stick while its fix is still
+  verbatim on Drive — by design (it really is done); change the Drive text and it returns.
+
 ## Orchestration via the Workflow tool (optional, recommended for whole-book)
 The fan-out is a textbook parallel pipeline. For a multi-chapter sweep, a Workflow
 script can `pipeline()` units through [scan-all-lenses → collate], one batch per
@@ -137,11 +157,13 @@ the schema is `schema.json`. Keep concurrency at the default cap.
 | `lenses.json` | the lens registry (id → craft file, scope, route) — the run manifest |
 | `lens-scan.md` | the scanner subagent contract (one lens × one unit → JSON) |
 | `schema.json` | the per-lens findings JSON contract |
-| `collate.mjs` | merge `.deai/review/*.json` → `.deai/review.json` (+ counts) |
-| `apply.mjs` | write QUEUED cards to Drive (note overrides option; cut/single/multi routed to the book-edit tools), verify, then archive resolved units to `review-applied.json`. DRY RUN unless `--apply` |
+| `collate.mjs` | merge `.deai/review/*.json` → `.deai/review.json` (+ counts); also annotates any option whose `edited` crowds one word at the sentence start with `openerRun` (`hard`=3+ in a row, else a 3-of-4 cluster) so the page flags it |
+| `apply.mjs` | write QUEUED cards to Drive (note overrides option; cut/single/multi routed to the book-edit tools), verify, sweep+stamp fix-already-on-Drive cards `applied`, then archive resolved units to `review-applied.json`. DRY RUN unless `--apply` |
+| `reconcile-core.mjs` | the shared classifier (`classify`/`norm`/`candidates`): is a card's fix already on Drive (`done`), its anchor superseded (`orphan`), or still actionable (`live`)? Imported by apply.mjs, reconcile.mjs, and the `/review` API so they never drift |
+| `reconcile.mjs` | persist queue↔Drive reconciliation: `done → applied`, `orphan → dismiss` (backstop; the API + apply.mjs do this automatically). DRY RUN unless `--apply` |
 | `render.mjs` | CLI fallback triage view: prints each finding with affected sentence + surrounding sentences (context derived from the manuscript) and the fix. `--lens X`, `--min mid`, `--exclude a,b`, `--out FILE` |
 | `app/pages/review.vue` | the `/review` page — the primary surface (grouped by lens, craft-only toggle, redline + context, queue/dismiss) |
-| `server/api/review/index.get.ts` · `decisions.post.ts` | serves review.json (+ derives context, overlays decisions) · persists triage |
+| `server/api/review/index.get.ts` · `decisions.post.ts` | serves review.json (+ derives context, overlays decisions, **auto-hides cards whose fix is already on Drive via reconcile-core**) · persists triage |
 | `README.md` | the file map + pipeline (this skill's quick reference) |
 | `.deai/review/` | gitignored cache: per-lens scanner outputs + collated `review.json` + `review-decisions.json` |
 | reuses `deai/sync.sh`, `deai/pages.sh` | sync, paginate |

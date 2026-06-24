@@ -93,6 +93,58 @@ const majorityRoute = (rs) => {
 }
 const firstDefined = (fs, k) => fs.find(f => f[k] != null)?.[k] ?? null
 
+// Opener-run guard. A proposed fix must never crowd a short passage with the same opening word
+// (He… She… He… He…). The lens file flags this in the MANUSCRIPT, but each scanner reads only its
+// own lens, so a constructive lens (tension, scene…) can add a sentence that creates a cluster it
+// was never told about. This deterministic check runs on every option regardless of lens so the
+// page can ALWAYS badge it. We count by DENSITY, not strict adjacency: the craft "3 consecutive"
+// test misses the real tell — 3 of the last 4 sentences opening on "He" reads as a pile-up even
+// when one other sentence breaks the run. So: ≥3 sentences sharing an opener within any window of
+// WINDOW consecutive sentences. Rare deliberate anaphora exists (2–3 spots book-wide) — hence a
+// FLAG the author can keep, not a hard block. `introduced` = the fix made it worse than the
+// original (the engine's own damage), vs a cluster already present in the surrounding prose.
+const OPENER_WINDOW = 4
+const SENT_SPLIT = /(?<=[.!?][”’"')\]]?)\s+/
+const openerWord = (s) => {
+  const m = (s || '').replace(/^[“”‘’"'(\[\s—–-]+/, '').match(/^[A-Za-z]+/)
+  return m ? m[0].toLowerCase() : null
+}
+// Two signals, graded. `run` = longest STRICTLY CONSECUTIVE same-opener run (He. He. He.) — the
+// real offense, should never ship. `n` = densest same-opener count within any WINDOW consecutive
+// sentences (He. She. He. He.) — softer, a 3-of-5 cluster broken by another sentence is a heads-up,
+// not a violation. `hard` marks the consecutive case so the page can weight them differently.
+const openerStats = (text) => {
+  const words = (text || '').split(SENT_SPLIT).map(s => s.trim()).filter(Boolean).map(openerWord)
+  let cluster = { word: null, n: 0 }, run = { word: null, n: 0 }, curW = null, curN = 0
+  for (let i = 0; i < words.length; i++) {
+    if (words[i] && words[i] === curW) curN++; else { curW = words[i]; curN = words[i] ? 1 : 0 }
+    if (curN > run.n) run = { word: curW, n: curN }
+    const counts = {}
+    for (let j = i; j < Math.min(words.length, i + OPENER_WINDOW); j++) {
+      const w = words[j]; if (!w) continue
+      counts[w] = (counts[w] || 0) + 1
+      if (counts[w] > cluster.n) cluster = { word: w, n: counts[w] }
+    }
+  }
+  return { cluster, run }
+}
+// returns {} or { openerRun: { word, n, run, hard, introduced } } for an option's edited text
+const openerFlag = (edited, original) => {
+  const e = openerStats(edited)
+  if (e.cluster.n < 3) return {}                      // nothing to flag
+  const o = openerStats(original || '')
+  const hard = e.run.n >= 3                            // 3+ in a row = the real rule
+  return {
+    openerRun: {
+      word: (hard ? e.run.word : e.cluster.word),
+      n: e.cluster.n,
+      run: e.run.n,
+      hard,
+      introduced: hard ? e.run.n > o.run.n : e.cluster.n > o.cluster.n,
+    },
+  }
+}
+
 // Locate a quote's span in the unit text. Handles an ellipsis ("A … B") by
 // spanning from the first fragment's start to the last fragment's end, so an
 // illustration that elides the middle still resolves to the real region it touches.
@@ -170,7 +222,7 @@ for (const comp of components) {
     o.reasons.push(r); o.lensIds.add(f.lensId)
   }
   const options = [...optionMap.values()]
-    .map(o => ({ edited: o.edited, lensIds: [...o.lensIds], reasons: o.reasons }))
+    .map(o => ({ edited: o.edited, lensIds: [...o.lensIds], reasons: o.reasons, ...openerFlag(o.edited, canonical) }))
     .sort((a, b) => b.reasons.length - a.reasons.length)
   const fs = comp.items.map(i => i.f)
   const card = {
@@ -206,7 +258,7 @@ for (const [, fs] of byExact) {
     lensIds: [...new Set(reasons.map(r => r.lensId))],
     severity: mostSevere(reasons), route: majorityRoute(reasons), intent: cardIntent(reasons),
     original: fs[0].original,
-    options: edits.map(e => ({ edited: e, lensIds: fs.filter(f => f.edited === e).map(f => f.lensId), reasons: fs.filter(f => f.edited === e).map(reasonOf) })),
+    options: edits.map(e => ({ edited: e, lensIds: fs.filter(f => f.edited === e).map(f => f.lensId), reasons: fs.filter(f => f.edited === e).map(reasonOf), ...openerFlag(e, fs[0].original) })),
     reasons, unlocated: true,
   })
 }

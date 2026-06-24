@@ -1,5 +1,19 @@
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { pathToFileURL } from 'node:url'
+
+// The serve-time reconcile classifier is shared with reconcile.mjs and apply.mjs (.claude/
+// skills/review/reconcile-core.mjs) so the queue you SEE and the decisions that get WRITTEN
+// can never drift. nitro bundles server code and rewrites static relative imports, so we load
+// it dynamically by absolute file:// URL at request time — rollup leaves that expression alone.
+let _core: { classify: Function; norm: (s?: string | null) => string } | null = null
+async function reconcileCore() {
+  if (!_core) {
+    const p = pathToFileURL(join(process.cwd(), '.claude/skills/review/reconcile-core.mjs')).href
+    _core = await import(/* @vite-ignore */ p)
+  }
+  return _core!
+}
 
 // Serve the collated craft-review dataset (.deai/review.json, produced by the review
 // engine's collate.mjs from the per-lens scanner files). Overlays saved triage
@@ -15,6 +29,7 @@ type Card = {
   action?: string; actions?: string[] | null; illustration?: string | null
   anchor?: string | null; context?: string | null
   decision?: string; reviewNote?: string; chosen?: string | null
+  autoResolved?: 'done' | 'orphan' // hidden by serve-time reconcile, not a hand decision
 }
 
 export default defineEventHandler(async () => {
@@ -37,6 +52,14 @@ export default defineEventHandler(async () => {
   // the note lands without leaving the page.
   let manuscript = ''
   try { manuscript = await readFile(join(dir, 'manuscript.txt'), 'utf8') } catch { /* no cache */ }
+  // Normalized manuscript for serve-time reconcile (curly->straight, whitespace collapsed).
+  // The queue drifts ahead of Drive as edits land; reclassifying each card here means a card
+  // whose fix is ALREADY on Drive (done) or whose anchor was superseded (orphan) is hidden on
+  // every load — no manual reconcile needed. Empty when no cache: then we skip (never hide).
+  // Staleness is safe: a stale cache only UNDER-hides (a not-yet-cached fix reads as still-live),
+  // never wrongly hides a card whose anchor is genuinely present.
+  const { classify, norm: mNorm } = await reconcileCore()
+  const M = manuscript ? mNorm(manuscript) : ''
   const contextFor = (anchor?: string | null): string | null => {
     if (!anchor || !manuscript) return null
     const flat = manuscript.replace(/\s+/g, ' ')
@@ -81,6 +104,14 @@ export default defineEventHandler(async () => {
     if (d?.chosen != null && (f.options || []).some(o => o.edited === d.chosen)) f.chosen = d.chosen
     // structural cards: surface the manuscript passage their anchor points at
     if (f.kind === 'action' && !f.original) f.context = contextFor(f.anchor)
+    // Serve-time reconcile: if this still-open card's fix is already on Drive (done) or its
+    // anchor was replaced by a different edit (orphan), resolve it for display so it drops out
+    // of the queue. In-memory only — never written; reconcile.mjs/apply.mjs persist the truth.
+    if (M && (f.decision === 'pending' || f.decision === 'queued')) {
+      const cls = classify(f, { decision: f.decision, note: d?.note ?? null, chosen: d?.chosen ?? null }, M)
+      if (cls === 'done') { f.decision = 'applied'; f.autoResolved = 'done' }
+      else if (cls === 'orphan') { f.decision = 'dismiss'; f.autoResolved = 'orphan' }
+    }
   }
 
   return { ready: true, ...data }

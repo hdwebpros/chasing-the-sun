@@ -9,7 +9,8 @@
 import { Button } from '~/components/ui/button'
 
 interface Reason { lensId: string; lens: string; principle: string; why: string; source?: string; severity: string; route: string }
-interface Option { edited: string; lensIds: string[]; reasons: Reason[] }
+interface OpenerRun { word: string; n: number; run: number; hard: boolean; introduced: boolean }
+interface Option { edited: string; lensIds: string[]; reasons: Reason[]; openerRun?: OpenerRun }
 interface Card {
   id: string; kind: 'edit' | 'action'; page?: number | null; chapter?: string | null
   lensIds: string[]; severity: string; route: string; reasons: Reason[]
@@ -18,6 +19,7 @@ interface Card {
   anchor?: string | null; context?: string | null
   intent?: 'fix' | 'enhance'
   decision?: string; reviewNote?: string; chosen?: string | null
+  autoResolved?: 'done' | 'orphan' // hidden by serve-time reconcile (fix already on Drive / anchor gone), not a hand decision
 }
 interface Review {
   ready: boolean; units: string[]; totalFindings: number; totalCards: number
@@ -201,6 +203,19 @@ const soleEdit = (c: Card) => c.options?.[0]?.edited ?? ''
 const labelOf = (c: Card) => c.kind === 'edit' ? opLabel[opOf(diff(c.original || '', soleEdit(c)))] : '✎ revise'
 const lensName = (id: string) => LENS_TITLE[id] ?? id
 
+// Opener-run flag (collate.mjs annotates options whose edited text crowds one word at the
+// sentence start). HARD = 3+ in a row (a real rule — vary them); SOFT = a 3-of-window cluster
+// broken by another sentence (a heads-up). Always carries a brief prose instruction to vary.
+function openerWarn(o?: Option | null): { text: string; hard: boolean } | null {
+  const r = o?.openerRun
+  if (!r) return null
+  const W = r.word.charAt(0).toUpperCase() + r.word.slice(1)
+  const text = r.hard
+    ? `Vary the sentence openers — “${W}” begins ${r.run} sentences in a row${r.introduced ? ' (this fix added one)' : ''}.`
+    : `Consider varying the sentence openers — “${W}” begins ${r.n} of these sentences${r.introduced ? ' after this fix' : ''}.`
+  return { text, hard: r.hard }
+}
+
 // ---- triage (queue / dismiss / pick an option / leave a note) -------------
 function setDecision(c: Card, d: string) {
   // chosen == null means "no option picked"; an empty-string chosen is a real pick
@@ -283,6 +298,7 @@ async function save() {
           <!-- header -->
           <div class="flex items-center gap-2 mb-2 text-xs">
             <span v-if="(c.decision ?? 'pending') === 'applied'" class="rounded bg-emerald-500/20 px-1.5 py-0.5 font-semibold text-emerald-300" title="written to Drive — done">✓ applied</span>
+            <span v-if="c.autoResolved" class="rounded bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground" :title="c.autoResolved === 'done' ? 'auto-resolved: this card’s fix is already on Drive (matched the live manuscript), so it was hidden from the queue — not a decision you made. Reopen if you disagree.' : 'auto-resolved: this card’s anchor is gone from Drive (a different edit replaced it), so it can never apply and was set aside. Reopen if you disagree.'">auto</span>
             <span v-else-if="groupInfo.get(c.id)?.applied" class="rounded bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground" title="A neighboring edit in this same passage is already on Drive (turn on “show applied” to see it). This card's own anchor is still live and will apply — just re-read the passage before queueing.">neighbor edited</span>
             <span v-if="c.intent === 'enhance'" class="rounded bg-violet-500/20 px-1.5 py-0.5 font-semibold text-violet-300" title="enhancement opportunity — the prose is fine; a named craft technique would elevate it">✦ enhance</span>
             <span class="font-bold uppercase" :class="sevColor[c.severity]">{{ c.severity }}</span>
@@ -298,6 +314,10 @@ async function save() {
                 :class="seg.t === 'del' ? 'line-through text-red-400/70 decoration-red-500/50'
                       : seg.t === 'ins' ? 'bg-emerald-500/25 text-emerald-200 rounded-sm'
                       : 'text-foreground/90'">{{ seg.v }}</span></template>
+            </div>
+            <div v-if="openerWarn(c.options?.[0])" class="mb-2 rounded px-2 py-1 text-[11px]"
+                 :class="openerWarn(c.options?.[0])!.hard ? 'bg-amber-500/15 text-amber-300 font-medium' : 'bg-muted text-muted-foreground'">
+              {{ openerWarn(c.options?.[0])!.hard ? '⚠ ' : '↻ ' }}{{ openerWarn(c.options?.[0])!.text }}
             </div>
             <ul class="space-y-1 mb-2">
               <li v-for="(r, i) in c.reasons" :key="i" class="text-xs">
@@ -325,6 +345,10 @@ async function save() {
                       :class="seg.t === 'del' ? 'line-through text-red-400/70 decoration-red-500/50'
                             : seg.t === 'ins' ? 'bg-emerald-500/25 text-emerald-200 rounded-sm'
                             : 'text-foreground/90'">{{ seg.v }}</span></template>
+                  </div>
+                  <div v-if="openerWarn(o)" class="mt-1 rounded px-2 py-1 text-[11px]"
+                       :class="openerWarn(o)!.hard ? 'bg-amber-500/15 text-amber-300 font-medium' : 'bg-muted text-muted-foreground'">
+                    {{ openerWarn(o)!.hard ? '⚠ ' : '↻ ' }}{{ openerWarn(o)!.text }}
                   </div>
                   <div v-for="(r, k) in o.reasons" :key="k" class="mt-1 text-xs">
                     <div class="flex items-center gap-1.5 flex-wrap">
