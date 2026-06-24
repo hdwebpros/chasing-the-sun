@@ -38,8 +38,13 @@ const ALL = args.includes('--all')
 // idempotency machinery, separate cache. (Default: the de-AI page-NN.json.)
 const BROGUE = args.includes('--brogue')
 const TIC = args.includes('--tic')
-const PFX = TIC ? 'tic-page-' : BROGUE ? 'brogue-page-' : 'page-'
-const PFX_RE = TIC ? /^tic-page-\d+\.json$/ : BROGUE ? /^brogue-page-\d+\.json$/ : /^page-\d+\.json$/
+// --openers applies the sentence-opener variety pass from openers-page-NN.json. Like
+// tic, decisions apply via editText (a recast opener), idempotency is span-gone only,
+// and when a span is not unique in the book the preceding sentence (lead) is prepended
+// so replaceAllText can't rewrite the wrong copy.
+const OPENERS_PASS = args.includes('--openers')
+const PFX = OPENERS_PASS ? 'openers-page-' : TIC ? 'tic-page-' : BROGUE ? 'brogue-page-' : 'page-'
+const PFX_RE = OPENERS_PASS ? /^openers-page-\d+\.json$/ : TIC ? /^tic-page-\d+\.json$/ : BROGUE ? /^brogue-page-\d+\.json$/ : /^page-\d+\.json$/
 const rangeArg = args.find(a => /^\d+-\d+$/.test(a))   // e.g. 71-100
 const pageArg = args.find(a => /^\d+$/.test(a))
 
@@ -59,10 +64,10 @@ function pagesToProcess() {
 // the REPLACEMENT text so fixes never inject a straight quote / double space into
 // the Doc. (find/span is left verbatim so it still matches the Doc; if the Doc
 // itself holds straight quotes, run book-edit/bin/chicago-normalize.mjs first.)
-const OPENERS = /[\s([{—–\-“‘]/
+const QUOTE_OPENERS = /[\s([{—–\-“‘]/
 const curlify = (s) => (s ?? '')
-  .replace(/"/g, (m, off, str) => (off === 0 || OPENERS.test(str[off - 1])) ? '“' : '”')
-  .replace(/'/g, (m, off, str) => (off === 0 || OPENERS.test(str[off - 1])) ? '‘' : '’')
+  .replace(/"/g, (m, off, str) => (off === 0 || QUOTE_OPENERS.test(str[off - 1])) ? '“' : '”')
+  .replace(/'/g, (m, off, str) => (off === 0 || QUOTE_OPENERS.test(str[off - 1])) ? '‘' : '’')
 // Strip stray leading/trailing newlines from the replacement (a review-UI artifact):
 // an embedded \n in replaceAllText injects a paragraph break, which mid-paragraph
 // fixes never want. Leading/trailing SPACES are preserved (often intentional, e.g.
@@ -82,11 +87,17 @@ for (const file of pagesToProcess()) {
   for (const f of doc.flags || []) {
     const d = f.decision
     if (d !== 'accept' && d !== 'edit') continue
-    const replace = normalize(d === 'edit' ? (f.editText ?? '') : f.fix)
+    let replace = normalize(d === 'edit' ? (f.editText ?? '') : f.fix)
     // tic free-edit (editFull) reshapes the whole unit, landing included, so the find
     // target is span + the trailing landing — not span alone. Everything else (de-AI,
     // brogue, tic cut/vary/merge) targets span. (after is set only on tic flags.)
-    const find = (TIC && f.editFull && f.after) ? `${f.span} ${f.after}` : f.span
+    let find = (TIC && f.editFull && f.after) ? `${f.span} ${f.after}` : f.span
+    // openers: when the span is not unique in the book, prepend the preceding sentence
+    // (lead) to both find and replace so the rewrite lands on the right copy only.
+    if (OPENERS_PASS && f.unique === false && f.lead) {
+      find = `${f.lead} ${f.span}`
+      replace = `${normalize(f.lead)} ${replace}`
+    }
     if (replace === find) continue
     // Skip fixes already in Drive (idempotent re-runs). Two signals:
     //  (a) the full REPLACEMENT is already present — covers ADDITIVE fixes, whose
@@ -97,7 +108,7 @@ for (const file of pagesToProcess()) {
     // substring of the original (a cut = the prior sentence alone), so signal (a) would
     // false-positive and skip a legitimate change. For tic, idempotency is span-gone only.
     const spanGone = manuscriptNorm !== null && !manuscriptNorm.includes(normPresence(find))
-    const dupAdditive = !TIC && manuscriptNorm !== null && manuscriptNorm.includes(normPresence(replace))
+    const dupAdditive = !TIC && !OPENERS_PASS && manuscriptNorm !== null && manuscriptNorm.includes(normPresence(replace))
     if (spanGone || dupAdditive) {
       alreadyApplied++; continue
     }
@@ -129,7 +140,7 @@ if (COMMIT) {
   const build = spawnSync('node', ['scripts/build-epub-from-drive.mjs', '--promote'], { cwd: root, stdio: 'inherit' })
   if (build.status !== 0) { console.error('epub rebuild failed; not committing.'); process.exit(1) }
   spawnSync('git', ['add', 'public/chasing-the-sun-draft.epub'], { cwd: root, stdio: 'inherit' })
-  const tag = TIC ? 'tic' : BROGUE ? 'brogue' : 'deai'
+  const tag = OPENERS_PASS ? 'openers' : TIC ? 'tic' : BROGUE ? 'brogue' : 'deai'
   const msg = `${tag}: apply ${pairs.length} approved fix(es)${pageArg ? ` (page ${pageArg})` : ''}\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
   spawnSync('git', ['commit', '-m', msg], { cwd: root, stdio: 'inherit' })
 }

@@ -11,11 +11,13 @@ export const manuscriptPath = () => join(deaiDir(), 'manuscript.txt')
 
 // Review mode. 'deai' = AI-tell removal (page-NN.json). 'brogue' = Hiberno-English
 // dialogue pass (brogue-page-NN.json). 'tic' = stylistic-tic thinning
-// (tic-page-NN.json). Each is a SEPARATE cache so a decision in one pass can never
-// overwrite a decided page in another.
-export type Mode = 'deai' | 'brogue' | 'tic'
-const MODE_PFX: Record<Mode, string> = { deai: '', brogue: 'brogue-', tic: 'tic-' }
-export const asMode = (m: unknown): Mode => (m === 'brogue' || m === 'tic' ? m : 'deai')
+// (tic-page-NN.json). 'openers' = sentence-opener variety (openers-page-NN.json).
+// Each is a SEPARATE cache so a decision in one pass can never overwrite a decided
+// page in another.
+export type Mode = 'deai' | 'brogue' | 'tic' | 'openers'
+const MODE_PFX: Record<Mode, string> = { deai: '', brogue: 'brogue-', tic: 'tic-', openers: 'openers-' }
+export const asMode = (m: unknown): Mode =>
+  (m === 'brogue' || m === 'tic' || m === 'openers' ? m : 'deai')
 export const pageJsonPath = (n: number, mode: Mode = 'deai') =>
   join(deaiDir(), `${MODE_PFX[mode]}page-${String(n).padStart(2, '0')}.json`)
 
@@ -37,11 +39,23 @@ export interface Flag {
   // tic pass extras (ignored by deai/brogue): grammar-safe rewrite candidates, the
   // dialogue tag (defaults to keep), ±4-page cluster density, the concrete LANDING
   // sentence (display context), and the voice-aware class set by judge.mjs.
-  alts?: { cut?: string | null; merge?: string | null; vary?: string | null }
+  alts?: { cut?: string | null; merge?: string | null; vary?: string | null; recast?: string | null }
   inDialogue?: boolean
   cluster?: number
   after?: string
-  voiceClass?: 'concrete' | 'abstract' | null
+  voiceClass?: 'concrete' | 'abstract' | 'signature' | 'monotone' | null
+  // openers pass only (ignored by deai/brogue/tic): the opener CLASS of this sentence,
+  // its literal opener words, the preceding sentence (prepended at apply time when the
+  // span is not unique in the book), and the run this sentence belongs to.
+  code?: string
+  opener?: string
+  lead?: string
+  unique?: boolean
+  runId?: string
+  runLen?: number
+  runCodes?: string
+  runPos?: number
+  alsoVariety?: boolean
 }
 export interface PageDoc {
   page: number

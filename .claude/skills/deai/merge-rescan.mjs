@@ -23,9 +23,10 @@ const deai = join(here, '..', '..', '..', '.deai')
 const args = process.argv.slice(2)
 const BROGUE = args.includes('--brogue')
 const TIC = args.includes('--tic')
-const PFX = TIC ? 'tic-page-' : BROGUE ? 'brogue-page-' : 'page-'
-const RPFX = TIC ? 'tic-rescan-' : BROGUE ? 'brogue-rescan-' : 'rescan-'
-const RTAG = TIC ? 't' : BROGUE ? 'b' : 'r'   // fresh-flag id suffix: p21-t3 / p21-b3 / p21-r3
+const OPENERS = args.includes('--openers')
+const PFX = OPENERS ? 'openers-page-' : TIC ? 'tic-page-' : BROGUE ? 'brogue-page-' : 'page-'
+const RPFX = OPENERS ? 'openers-rescan-' : TIC ? 'tic-rescan-' : BROGUE ? 'brogue-rescan-' : 'rescan-'
+const RTAG = OPENERS ? 'o' : TIC ? 't' : BROGUE ? 'b' : 'r'   // fresh-flag id suffix: p21-o3 / p21-t3 / p21-b3 / p21-r3
 const N = args.find(a => /^\d+$/.test(a))
 if (!N) { console.error('usage: merge-rescan.mjs [--brogue] <pageNumber>'); process.exit(1) }
 const pad = String(N).padStart(2, '0')

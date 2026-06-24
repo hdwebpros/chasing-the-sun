@@ -6,12 +6,12 @@ source_raw: ../SENTENCE-VARIETY-LESSON.md
 authority: primary  # Bookfox & Matesic on the blog/article record; consolidated with the project's tic methodology
 verified: 2026-06-22
 related: [sentence/sentence-craft, sentence/power, voice/ai-fingerprints, voice/sound-like-yourself, dialogue/worst-lines]
-house_gate: VOICE.md   # the manuscript voiceprint decides signature-vs-tic; where this conflicts, VOICE.md wins
+house_gate: author   # the AUTHOR decides, per sentence — the only gate is "is this the best possible writing here?" No opener style is banned; no hand-authored voiceprint (VOICE.md was retired for canonizing AI patterns)
 ---
 
 # Variety — Diagnosing Sentence Monotony & Sentence-Level Tics
 
-**Why it matters.** This is the *diagnostic* sentence lens: it detects flatness rather than building beauty. Where [[sentence/sentence-craft]] is constructive (how to make one sentence land) and [[sentence/power]] is scored (a rubric of features), this file is the eye that catches a page reading like a metronome — wall-to-wall SVO, every sentence opening on the same word, a pet phrase clustering, a triad climbing to a concept. The trap, though, is that every one of those shapes is *also* a signature when used on purpose. So the whole instrument is built around one judgment: signature or tic. **VOICE.md decides; this lens only helps you see.**
+**Why it matters.** This is the *diagnostic* sentence lens: it detects flatness rather than building beauty. Where [[sentence/sentence-craft]] is constructive (how to make one sentence land) and [[sentence/power]] is scored (a rubric of features), this file is the eye that catches a page reading like a metronome — wall-to-wall SVO, every sentence opening on the same word, a pet phrase clustering, a triad climbing to a concept. The trap, though, is that every one of those shapes is *also* a signature when used on purpose. So the whole instrument is built around one judgment: signature or tic. **The author decides, per sentence; this lens only helps you see.**
 
 > **The governing rule, before any fix.** The shape is not the tic. A fragment, a triad, a same-opener run — most of these are the author's voice. The tic is the **abstract version of the shape**: the run that climbs to a *concept* or *explains its own meaning* instead of landing on a chosen physical thing. So nearly every fix is **subtraction**: cut the abstract beat or the explainer tail, keep (or re-body) the concrete one. The de-AI proof case: *"despair"* became *"their eyes were sunken."* When in doubt, **keep.**
 
@@ -28,7 +28,7 @@ house_gate: VOICE.md   # the manuscript voiceprint decides signature-vs-tic; whe
 
 > After: *He started in town. The first lot sat on the southwest edge of downtown, the streets still being graded. On the corner, he stood for twenty minutes watching foot traffic, pricing it in his head, before he made up his mind.*
 
-The fix uses the one on-voice opener (a place-phrase up front) and folds two SVO beats into one. It does **not** use a dependent-clause opener (*"Having studied the stakes, he…"*) — that is off-voice.
+The fix fronts a place-phrase and folds two SVO beats into one. A dependent-clause or participial opener (*"Having studied the stakes, he…"*) would serve here just as well — **no opener style is off-voice.** Pick whichever is the best writing for the sentence; the only aim is to stop leaning on bare subject-led entrances.
 
 **Failure mode / when.** Diagnose only the runs doing no job — errand prose, stage business, a survey of a low-stakes scene. Leave the peaks: a grief-ritual run of six "He [verb]" sentences after a death is the music, not the mistake. Diagnosis is locating *unrelieved* runs in flat passages, not flagging SVO on sight.
 
@@ -85,7 +85,7 @@ The climb to *"beautiful"* is the tic; one concrete image replaces the adjective
 
 These come from the author's own feedback and override generic "vary your sentences" advice. They are the load-bearing part of this file.
 
-**A. A negation/contrast fragment is often the signature, not a tic.** The test: **concrete lands = keep; abstract dissolves = tic.** *"He did not scream. He ground his teeth."* lands concrete — keep. *"It was not grief. It was not fear. It was the animal awareness of…"* dissolves into a concept — thin. **Judge against VOICE.md first.** Never blanket-thin a shape because it recurs; the count is a signal to *look*, not a quota to cut.
+**A. A negation/contrast fragment is often the signature, not a tic.** The test: **concrete lands = keep; abstract dissolves = tic.** *"He did not scream. He ground his teeth."* lands concrete — keep. *"It was not grief. It was not fear. It was the animal awareness of…"* dissolves into a concept — thin. **Judge by ear, against the best-writing test, first.** Never blanket-thin a shape because it recurs; the count is a signal to *look*, not a quota to cut.
 
 **B. Fixing a "He/She" pile-up must not create a triad.** Collapsing three clipped parallel sentences into one polished `X, Y, and Z` comma list trades one tell for another. Use **two beats or four**, never the matched three. **Recount the parallel beats after every fix.** If a rewrite leaves you with exactly three parallel items, drop the weakest to two or build to four.
 > Before (the self-inflicted wound): *…telling him about Charlotte and the books, the snow, and Alex's questions.* (a matched three-beat list — a triad)
@@ -96,7 +96,11 @@ These come from the author's own feedback and override generic "vary your senten
 
 **D. Never introduce a triad while fixing something else.** This is the most common new damage. A fix that resolves an opener run or a staccato stack but leaves three matched beats has not improved the prose. Practice it in your own editorial prose too: when listing, prefer two or four.
 
-**E. A fix isn't done when the tic is gone — it's done when an opener actually varies.** Cutting "She / She / She" down to one "She" is subtraction; it does not make the prose move. Drop the one on-voice opener (a prepositional or time/place phrase) on the worst beat. Do **not** reach for a dependent-clause opener to do it — that is off-voice. After every fix, check: did at least one sentence now *open* differently, or did I only delete?
+**E. A fix isn't done when the tic is gone — it's done when an opener actually varies.** Cutting "She / She / She" down to one "She" is subtraction; it does not make the prose move. Vary the entrance on the worst beat — a prepositional or time/place phrase, a subordinate clause, a participial, an adverb, a conjunction, an inversion: whichever is the best writing. **Every opener style is fair game.** After every fix, check: did at least one sentence now *open* differently, or did I only delete?
+
+**F. Vary the opener STYLE, and lean on bare subject-led far less.** *(Author rule, June 2026 — this is a positive target, not only a tic hunt.)* The bare subject-led entrance (*[Name]/[The]/[He] [verb]*) is the manuscript's default and is overused; use it **noticeably more sparingly**. The varied styles should be **more prominent** in the mix — prepositional / time-place (**P**), subordinate clause (**C**), conjunction (**J**), adverbial (**A**), participial (**G**), inversion (**I**). None is off-voice; reach for whichever is the best writing for the sentence.
+- **The flag: four sentences in a row opening on the same style** — *any* style, not just subject-led — raise it and vary at least one. (Same-style monoculture in a *varied* style is also a flag; don't trade an S-wall for a P-wall.)
+- **The aim is a richer mix of entrances,** with subject-led as one colour among several rather than the wall-to-wall default — *not* the elimination of subject-led prose. A genuine signature run (a grief cadence, a deliberate withholding build) is still the music; keep it. "Sparingly" governs the **default / errand** prose, where the bare entrance simply piled up because it was never varied.
 
 > **Sequencing.** Per Matesic, this is the *last* pass, not the first: *"making every sentence sparkle is like repainting a car that has no engine."* Run it after structure is sound.
 
@@ -108,7 +112,7 @@ These come from the author's own feedback and override generic "vary your senten
 - Stock phrasing inside spoken lines → [[dialogue/worst-lines]].
 
 ## Provenance
-- **Bookfox SVO-monotony claim & opener fixes** — from *How to Write a Sentence / 16 Ways to Write Sentences that Dazzle* (thejohnfox.com, fetched June 2026). The SVO quote is verbatim from that article. Of his three named fixes, the preposition/time-phrase opener is on-voice, adverb-comma is use-sparingly, and the dependent-clause opener is **off-voice** (banned by VOICE.md) — recorded so the fix list is not handed over wholesale.
+- **Bookfox SVO-monotony claim & opener fixes** — from *How to Write a Sentence / 16 Ways to Write Sentences that Dazzle* (thejohnfox.com, fetched June 2026). The SVO quote is verbatim from that article. His three named fixes (preposition/time-phrase, adverb-comma, dependent-clause openers) are **all sanctioned here.** An earlier draft of this file marked the dependent-clause and participial openers *"off-voice (banned by VOICE.md),"* but that was an unsourced constraint inherited from the retired voiceprint — **not the author's preference, and removed by author direction (June 2026).** The author's rule is the opposite (see Operating Rule F): vary the opener style, lean on bare subject-led less.
 - ❓ **"three He/She openers in a row = amateur"** — UNSOURCED. CRAFT-REVIEW.md attributed this to Bookfox's *12 Mistakes That Make Your Book Look Amateurish* video; the video exists but its transcript could not be retrieved, and the exact phrasing appears in none of his readable blog posts. Treat the *number* as unconfirmed. What Bookfox verifiably says is broader and softer (unrelieved SVO, no count). See `craft/SOURCES.md`.
 - **Matesic pet-phrase, threshold, and stock-gesture claims** — from *8 Mistakes in Writing That Sabotage Your Book* (Mistakes #2 and #6) and her pet-phrase post on X (quoted via search snippet; the X post itself is paywalled). The "13 times in the first few chapters" and "gold-flecked eyes three times on one page" examples are hers. Sequencing quote from her "repainting a car" revision note. ⚠️ X post quoted via snippet, not the original page.
 - **Triad severity tiers, the "two or four, never three" rule, and the concrete-vs-abstract keep test** — the project's own consolidated tic methodology (TRIAD-REVIEW.md head + TIC-REVIEW.md governing rule), grounded in the de-AI work; treated as house craft, not a third-party citation.

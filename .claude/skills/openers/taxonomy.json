@@ -1,0 +1,26 @@
+{
+  "_comment": "Opener-variety taxonomy — the closed set of sentence-opener CLASSES the openers pass measures. One letter per class; classify.mjs tags every sentence with exactly one. The instrument's whole point: distinguish bare subject-led (S — the AI monoculture) from the varied species. Heuristic, not a parser — see classify.mjs. Budgets are per-CHAPTER soft ceilings that gate a chapter into the review queue; they are not targets to hit mechanically (over-varying is its own tell).",
+  "_onVoice_comment": "AUTHOR RULE (June 2026, craft/sentence/variety.md Operating Rule F): NO opener style is off-voice. The bare subject-led entrance (S) is the manuscript's overused default — use it MORE SPARINGLY. The varied styles P/C/J/A/G/I should be MORE PROMINENT in the mix; reach for whichever is the best writing. (An earlier draft banned dependent-clause/participial openers as 'off-voice' — that was an AI-inherited constraint from the retired VOICE.md, removed by author direction.) `prefer:'reduce'` = lean on it less; `prefer:'raise'` = bring it forward; the JUDGE may recast toward any varied style.",
+  "classes": {
+    "S": { "label": "subject-led", "blurb": "bare [subject] [verb] — pronoun/proper-noun/article + verb. The overused default; lean on it noticeably less (still the music in a genuine signature run — keep those).", "varied": false, "prefer": "reduce", "example": "He crossed the yard." },
+    "P": { "label": "prepositional", "blurb": "opens on a prepositional / time-place phrase. Bring forward — great for scene-setting.", "varied": true, "prefer": "raise", "example": "In the shadow of the mill, they waited." },
+    "C": { "label": "subordinate", "blurb": "opens on a dependent clause (When/Because/As/If…). Fully sanctioned — bring forward where it's the best writing.", "varied": true, "prefer": "raise", "example": "When the bell rang, the room stilled." },
+    "J": { "label": "conjunction-led", "blurb": "opens on a coordinating conjunction (And/But/Yet/So). Plain and effective; bring forward.", "varied": true, "prefer": "raise", "example": "But the door held." },
+    "A": { "label": "adverbial", "blurb": "opens on an adverb or temporal/sequence word. Bring forward.", "varied": true, "prefer": "raise", "example": "Slowly, the fog lifted." },
+    "G": { "label": "participial", "blurb": "opens on a participial / gerund phrase. Fully sanctioned — bring forward (watch for dangling modifiers: the participle must attach to the main-clause subject).", "varied": true, "prefer": "raise", "example": "Clutching the letter, she stepped into the fray." },
+    "I": { "label": "inversion", "blurb": "inverted or existential order (There/Here + verb; fronted complement). Bring forward sparingly.", "varied": true, "prefer": "raise", "example": "There stood the gallows." },
+    "D": { "label": "dialogue", "blurb": "spoken line or a question/exclamation. Parked — voice, not narration; brogue's turf.", "varied": true, "prefer": "keep", "example": "“Sit,” she said." },
+    "F": { "label": "fragment", "blurb": "intentional fragment, incl. the negation-correction signature beat. /tic owns these — never double-thin.", "varied": true, "prefer": "keep", "example": "Not defeated. Just thinking." }
+  },
+  "budgets": {
+    "_comment": "Per-chapter soft ceilings. A chapter enters the queue only if it trips one. Tuned from a first whole-book measure pass — adjust in tally.mjs after reading the report.",
+    "_provenance": "typeRun_min=4 is now an AUTHOR rule (craft/sentence/variety.md Operating Rule F): four sentences in a row opening on the SAME style — any style — is a flag to raise. pctS_max is lowered to reflect 'use subject-led more sparingly' (the book currently sits ~60% S; this target leans it down). Both are tunable; the real test stays human (flat/errand → vary; genuine signature run → keep).",
+    "pctS_max": 0.5,
+    "typeRun_min": 4,
+    "_typeRun_note": "4+ sentences in a row sharing ONE code is the flag, applied UNIFORMLY to every narrative style (S, P, C, J, A, G, I) — a P-wall is as much a monoculture as an S-wall. Dialogue (D) and fragment (F) runs are parked (owned by brogue / tic)."
+  },
+  "reconcile": {
+    "_comment": "Overlap with the /variety pass (same first WORD 3x). Openers owns structural same-TYPE monotony; /variety owns literal same-WORD pile-ups. A run that is BOTH gets annotated alsoVariety=true here — never emitted twice.",
+    "variety_word_run_min": 3
+  }
+}
