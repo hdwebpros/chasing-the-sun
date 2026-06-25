@@ -8,7 +8,7 @@
 //                bulk controls. Built for blowing through a chapter "in bunches".
 // Nothing here touches Drive — applying is the gated `apply-fixes.mjs --openers --apply`.
 import { Button } from '~/components/ui/button'
-import { classifyOpener } from '../../shared/openers-core.mjs'   // same classifier the batch pass uses
+import { classifyOpener } from '#shared/openers-core.mjs'   // same classifier the batch pass uses (#shared alias → /shared)
 
 type Decision = 'pending' | 'accept' | 'reject' | 'edit'
 interface Row {
