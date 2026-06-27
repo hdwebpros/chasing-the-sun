@@ -20,6 +20,7 @@ interface Card {
   intent?: 'fix' | 'enhance'
   decision?: string; reviewNote?: string; chosen?: string | null
   autoResolved?: 'done' | 'orphan' // hidden by serve-time reconcile (fix already on Drive / anchor gone), not a hand decision
+  authoredFromAction?: boolean; authoredNote?: string | null; authoredConfidence?: number // a structural-advice card given a concrete redline
 }
 interface Review {
   ready: boolean; units: string[]; totalFindings: number; totalCards: number
@@ -305,6 +306,14 @@ async function save() {
             <span class="rounded bg-muted px-1.5 py-0.5 font-medium">{{ isMulti(c) ? c.options!.length + ' options' : labelOf(c) }}</span>
             <span v-if="c.page" class="text-muted-foreground">p{{ c.page }}</span>
             <span class="ml-auto shrink-0 rounded px-1.5 py-0.5" :class="routeColor[c.route] ?? 'bg-muted'">→ {{ c.route }}</span>
+          </div>
+
+          <!-- authored-from-structural: the craft INTENT behind a redline that began as advice -->
+          <div v-if="c.kind === 'edit' && c.action" class="rounded border border-amber-500/30 bg-amber-500/[0.05] p-2 mb-2 text-amber-200/90 text-xs">
+            <span class="mr-1 select-none text-[10px] uppercase tracking-wide text-amber-300/60">what this edit does</span>
+            {{ c.action }}
+            <div v-if="c.illustration" class="mt-1.5 rounded bg-background/40 p-1.5 text-amber-100/75 italic">{{ c.illustration }}</div>
+            <div v-if="c.authoredNote" class="mt-1.5 text-[11px] text-amber-200/60">↳ {{ c.authoredNote }}</div>
           </div>
 
           <!-- single edit: one tracked-changes redline + the reasons behind it -->
