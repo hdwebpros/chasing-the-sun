@@ -227,6 +227,7 @@ for (const comp of components) {
   const fs = comp.items.map(i => i.f)
   const card = {
     id: 'card-' + hash(comp.unit + ':' + canonical),
+    unit: comp.unit, // the lens-file unit id (e.g. ch09b) — apply.mjs archives by THIS, not the chapter name
     kind: 'edit',
     page: firstDefined(fs, 'page'),
     chapter: firstDefined(fs, 'chapter'),
@@ -254,6 +255,7 @@ for (const [, fs] of byExact) {
   const edits = [...new Set(fs.map(f => f.edited))]
   cards.push({
     id: 'card-' + hash('X:' + (fs[0].original || '')),
+    unit: fs[0].unit ?? null,
     kind: 'edit', page: firstDefined(fs, 'page'), chapter: firstDefined(fs, 'chapter'),
     lensIds: [...new Set(reasons.map(r => r.lensId))],
     severity: mostSevere(reasons), route: majorityRoute(reasons), intent: cardIntent(reasons),
@@ -297,6 +299,7 @@ for (const [, fs] of actionGroups) {
   const acts = [...new Set(fs.map(f => f.action).filter(Boolean))]
   cards.push({
     id: 'card-' + hash('A:' + (fs[0].anchor || fs[0].action || fs[0].id)),
+    unit,
     kind: 'action', page: firstDefined(fs, 'page'), chapter: firstDefined(fs, 'chapter'),
     lensIds: [...new Set(reasons.map(r => r.lensId))],
     severity: mostSevere(reasons), route: majorityRoute(reasons), intent: cardIntent(reasons),

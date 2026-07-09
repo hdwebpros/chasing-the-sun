@@ -60,9 +60,9 @@ export default defineEventHandler(async () => {
   // never wrongly hides a card whose anchor is genuinely present.
   const { classify, norm: mNorm } = await reconcileCore()
   const M = manuscript ? mNorm(manuscript) : ''
+  const flat = manuscript.replace(/\s+/g, ' ')
   const contextFor = (anchor?: string | null): string | null => {
     if (!anchor || !manuscript) return null
-    const flat = manuscript.replace(/\s+/g, ' ')
     const needle = anchor.replace(/\s+/g, ' ').trim()
     let i = flat.indexOf(needle)
     if (i === -1) i = flat.indexOf(needle.slice(0, 30)) // tolerate minor drift
@@ -82,8 +82,14 @@ export default defineEventHandler(async () => {
   // anchor (or chosen option) matches this card's text. A decision binds to at most one
   // card; a card takes at most one decision (id match wins over anchor match).
   const norm = (s?: string | null) => (s || '').replace(/\s+/g, ' ').trim()
+  // Containment alone is not identity: a sentence-level anchor saved by an OLD (often archived)
+  // card is a substring of any NEW paragraph-sized card covering the same text, which would
+  // dress the new card in a drifter's decision (house rule: never rescue drifters). A genuine
+  // rename-survival match is near-equal in size, so also require comparable lengths.
   const anchorMatch = (a: string, b: string) =>
-    !!a && !!b && (a === b || (a.length >= 40 && b.includes(a)) || (b.length >= 40 && a.includes(b)))
+    !!a && !!b && (a === b ||
+      (((a.length >= 40 && b.includes(a)) || (b.length >= 40 && a.includes(b))) &&
+        Math.min(a.length, b.length) / Math.max(a.length, b.length) >= 0.8))
   const used = new Set<string>()
 
   for (const f of (data.findings || []) as Card[]) {
@@ -104,6 +110,8 @@ export default defineEventHandler(async () => {
     if (d?.chosen != null && (f.options || []).some(o => o.edited === d.chosen)) f.chosen = d.chosen
     // structural cards: surface the manuscript passage their anchor points at
     if (f.kind === 'action' && !f.original) f.context = contextFor(f.anchor)
+    // edit cards: the same, around the redline's span, so a fix is judged IN its passage
+    else if (f.kind === 'edit' && f.original) f.context = contextFor(f.original)
     // Serve-time reconcile: if this still-open card's fix is already on Drive (done) or its
     // anchor was replaced by a different edit (orphan), resolve it for display so it drops out
     // of the queue. In-memory only — never written; reconcile.mjs/apply.mjs persist the truth.

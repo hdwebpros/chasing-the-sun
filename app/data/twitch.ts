@@ -761,7 +761,7 @@ export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
     title: 'Chapter Thirty-Four',
     subtitle: 'Anesthesia',
     slideshow: 'ch34',
-    epubHref: 'section-45.xhtml',
+    epubHref: 'section-46.xhtml',
     pulses: [
       { phrase: 'Less strategy. More velocity', pulse: 'LESS STRATEGY. MORE VELOCITY.', style: 'stamp' },
       { phrase: 'Samuel Frederickson', pulse: 'SAMUEL FREDERICKSON', style: 'stamp' },
@@ -779,7 +779,7 @@ export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
     title: 'Chapter Thirty-Five',
     subtitle: 'Twelve by twelve',
     slideshow: 'ch35',
-    epubHref: 'section-46.xhtml',
+    epubHref: 'section-47.xhtml',
     pulses: [
       { phrase: 'the smell of wet plaster', pulse: 'WET PLASTER' },
       { phrase: 'twelve feet by twelve feet on Stephen Street in Dublin', pulse: 'TWELVE BY TWELVE', style: 'stamp' },
@@ -799,7 +799,7 @@ export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
     title: 'Chapter Thirty-Six',
     subtitle: 'Send for her',
     slideshow: 'ch36',
-    epubHref: 'section-47.xhtml',
+    epubHref: 'section-48.xhtml',
     pulses: [
       { phrase: 'Spring, 1907', pulse: 'SPRING 1907', style: 'stamp' },
       { phrase: 'Charlotte. Come to Oregon. I need you to come. Wm', pulse: 'COME TO OREGON', style: 'stamp' },
@@ -820,7 +820,7 @@ export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
     title: 'Chapter Thirty-Seven',
     subtitle: 'The rooms I go to when I close my eyes',
     slideshow: 'ch37',
-    epubHref: 'section-48.xhtml',
+    epubHref: 'section-49.xhtml',
     pulses: [
       { phrase: 'Lottie stayed two weeks', pulse: 'TWO WEEKS', style: 'stamp' },
       { phrase: 'William Boog had never pulled away from her touch', pulse: 'HE FLINCHED FROM HER TOUCH' },
@@ -842,7 +842,7 @@ export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
     title: 'Chapter Thirty-Eight',
     subtitle: 'A door slightly open',
     slideshow: 'ch38',
-    epubHref: 'section-49.xhtml',
+    epubHref: 'section-50.xhtml',
     pulses: [
       { phrase: 'A man. A bench. A valley. An empty seat', pulse: 'A BENCH. A VALLEY. AN EMPTY SEAT.', style: 'stamp' },
       { phrase: 'He watched birds', pulse: 'HE WATCHED BIRDS', style: 'stamp' },
@@ -863,7 +863,7 @@ export const TWITCH_CHAPTERS: Record<string, TwitchChapter> = {
     title: 'Epilogue',
     subtitle: 'The Remainder of the Day',
     slideshow: 'epilogue',
-    epubHref: 'section-50.xhtml',
+    epubHref: 'section-51.xhtml',
     pulses: [
       { phrase: 'Grants Pass, Oregon, 1925', pulse: 'GRANTS PASS — 1925', style: 'stamp' },
       { phrase: 'Hollis has filled seven pages', pulse: 'SEVEN PAGES', style: 'stamp' },

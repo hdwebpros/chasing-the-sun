@@ -73,6 +73,10 @@ const wordToNum = (w) => {
   return (t != null && o != null && o < 10) ? t + o : null
 }
 const unitOf = (c) => {
+  // The card's own unit id (stamped by collate.mjs) is authoritative — second-wave passes use
+  // suffixed unit ids (ch09b) whose chapter NAME still reads "Chapter Nine", and deriving from
+  // the name here once archived the wrong (already-archived) plain id and left the wave live.
+  if (c.unit) return c.unit
   const m = /Chapter\s+([\w-]+)/.exec(c.chapter || '')
   const n = m ? wordToNum(m[1]) : null
   return n != null ? 'ch' + String(n).padStart(2, '0') : null
@@ -129,7 +133,11 @@ for (const c of review.findings) {
   if (repN === fN) { skipped.push(`${c.id} p${c.page}: no-op`); placedCardIds.add(c.id); alreadyAppliedIds.add(c.id); continue }
 
   const pair = { find, replace: rep, id: c.id, page: c.page }
-  ;(find.includes('\n') ? multi : single).push(pair)
+  // route to range-replace when EITHER the anchor OR the replacement spans paragraphs.
+  // edit-doc's replaceAllText cannot create paragraph marks, so a single-paragraph anchor
+  // with a multi-paragraph replacement (additive edits, epistolary inserts) must go multi
+  // or its \n breaks get flattened into one paragraph.
+  ;(find.includes('\n') || rep.includes('\n') ? multi : single).push(pair)
   placedCardIds.add(c.id)
 }
 

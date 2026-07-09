@@ -308,6 +308,12 @@ async function save() {
             <span class="ml-auto shrink-0 rounded px-1.5 py-0.5" :class="routeColor[c.route] ?? 'bg-muted'">→ {{ c.route }}</span>
           </div>
 
+          <!-- where this lands in the manuscript (edit cards: the sentence either side of the span) -->
+          <div v-if="c.context" class="rounded border border-border bg-muted/30 p-2 mb-2 text-xs text-foreground/80 font-serif leading-relaxed">
+            <span class="mr-1 select-none text-[10px] uppercase tracking-wide text-muted-foreground/60">in the manuscript</span>
+            <span class="italic">…{{ c.context }}…</span>
+          </div>
+
           <!-- authored-from-structural: the craft INTENT behind a redline that began as advice -->
           <div v-if="c.kind === 'edit' && c.action" class="rounded border border-amber-500/30 bg-amber-500/[0.05] p-2 mb-2 text-amber-200/90 text-xs">
             <span class="mr-1 select-none text-[10px] uppercase tracking-wide text-amber-300/60">what this edit does</span>
@@ -374,10 +380,6 @@ async function save() {
 
           <!-- structural action -->
           <template v-else>
-            <div v-if="c.context" class="rounded border border-border bg-muted/30 p-2 mb-2 text-xs text-foreground/80 font-serif leading-relaxed">
-              <span class="mr-1 select-none text-[10px] uppercase tracking-wide text-muted-foreground/60">in the manuscript</span>
-              <span class="italic">…{{ c.context }}…</span>
-            </div>
             <div class="rounded border border-amber-500/30 bg-amber-500/[0.05] p-2 mb-2 text-amber-200/90">
               {{ c.action }}
               <ul v-if="c.actions" class="mt-1 list-disc pl-4 text-xs text-amber-200/70">
