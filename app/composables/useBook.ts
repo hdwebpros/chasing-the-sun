@@ -39,18 +39,26 @@ export function useBook() {
     let startX = 0
     let startY = 0
     let startTime = 0
+    let lastX = 0
+    let lastY = 0
 
     doc.addEventListener('touchstart', (e: TouchEvent) => {
       const touch = e.touches[0]
-      startX = touch.clientX
-      startY = touch.clientY
+      startX = lastX = touch.clientX
+      startY = lastY = touch.clientY
       startTime = Date.now()
     }, { passive: true })
 
-    doc.addEventListener('touchend', (e: TouchEvent) => {
-      const touch = e.changedTouches[0]
-      const dx = touch.clientX - startX
-      const dy = touch.clientY - startY
+    // Track the latest position so touchcancel (see below) still knows where
+    // the finger ended up.
+    doc.addEventListener('touchmove', (e: TouchEvent) => {
+      const touch = e.touches[0]
+      if (touch) { lastX = touch.clientX; lastY = touch.clientY }
+    }, { passive: true })
+
+    function evaluate(endX: number, endY: number, allowTap: boolean) {
+      const dx = endX - startX
+      const dy = endY - startY
       const elapsed = Date.now() - startTime
 
       const absDx = Math.abs(dx)
@@ -63,10 +71,22 @@ export function useBook() {
         } else {
           onSwipeRightHandler?.()
         }
-      } else if (absDx < 10 && absDy < 10 && elapsed < 300) {
+      } else if (allowTap && absDx < 10 && absDy < 10 && elapsed < 300) {
         // Tap: minimal movement, quick touch
         onTapHandler?.()
       }
+    }
+
+    doc.addEventListener('touchend', (e: TouchEvent) => {
+      const touch = e.changedTouches[0]
+      evaluate(touch.clientX, touch.clientY, true)
+    }, { passive: true })
+
+    // iOS Safari fires touchcancel (not touchend) when it decides a drag is a
+    // native scroll. Recover the swipe from the last tracked position; never
+    // treat a cancel as a tap.
+    doc.addEventListener('touchcancel', () => {
+      evaluate(lastX, lastY, false)
     }, { passive: true })
   }
 
@@ -110,6 +130,14 @@ export function useBook() {
         html, body, p {
           font-family: "EB Garamond", "Garamond", Georgia, serif !important;
           line-height: 1.8 !important;
+        }
+        html, body {
+          /* Reserve horizontal gestures for our swipe handler. Without this,
+             iOS Safari treats a horizontal drag on the paginated columns as a
+             native pan and fires touchcancel instead of touchend, so the swipe
+             is lost. pan-y still allows any vertical scrolling. */
+          touch-action: pan-y !important;
+          overscroll-behavior: none !important;
         }
         body {
           padding: 0 1rem !important;

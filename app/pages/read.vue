@@ -69,6 +69,45 @@ function toggleUI() {
   }
 }
 
+// Edge-swipe guard (mobile): iOS Safari treats a horizontal drag that starts at
+// the screen bezel as a back/forward navigation, yanking the reader off-screen
+// before the in-iframe swipe handler ever sees it. These thin strips sit over the
+// far left/right edges, swallow the browser gesture (touch-action:none +
+// preventDefault on move), and turn the drag into an ordinary page turn.
+let edgeStartX = 0
+let edgeStartY = 0
+let edgeStartTime = 0
+
+function edgeStart(e: TouchEvent) {
+  const t = e.touches[0]
+  if (!t) return
+  edgeStartX = t.clientX
+  edgeStartY = t.clientY
+  edgeStartTime = Date.now()
+}
+
+function edgeMove(e: TouchEvent) {
+  // Cancel the browser's edge navigation gesture.
+  e.preventDefault()
+}
+
+function edgeEnd(e: TouchEvent) {
+  const t = e.changedTouches[0]
+  if (!t) return
+  const dx = t.clientX - edgeStartX
+  const dy = t.clientY - edgeStartY
+  const elapsed = Date.now() - edgeStartTime
+  const absDx = Math.abs(dx)
+  const absDy = Math.abs(dy)
+  if (absDx > 40 && absDx > absDy && elapsed < 600) {
+    if (dx < 0) next()
+    else prev()
+    resetHideTimer()
+  } else if (absDx < 10 && absDy < 10 && elapsed < 300) {
+    toggleUI()
+  }
+}
+
 function handleKeydown(e: KeyboardEvent) {
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
     next()
@@ -252,8 +291,21 @@ function selectChapter(href: string) {
     </div>
 
     <!-- Reader -->
-    <main class="flex-1 pt-16 pb-12">
+    <main class="relative flex-1 pt-16 pb-12">
       <div ref="readerEl" class="reader-container w-full max-w-3xl mx-auto h-[calc(100dvh-7rem)]" />
+      <!-- Mobile edge-swipe guards: block iOS back-swipe, turn the page instead -->
+      <div
+        class="edge-guard edge-guard-left"
+        @touchstart.passive="edgeStart"
+        @touchmove="edgeMove"
+        @touchend.passive="edgeEnd"
+      />
+      <div
+        class="edge-guard edge-guard-right"
+        @touchstart.passive="edgeStart"
+        @touchmove="edgeMove"
+        @touchend.passive="edgeEnd"
+      />
     </main>
 
     <!-- Bottom Bar -->
@@ -302,4 +354,14 @@ function selectChapter(href: string) {
   border: none !important;
   background: transparent !important;
 }
+.edge-guard {
+  position: absolute;
+  top: 4rem;    /* clear of the fixed header */
+  bottom: 3rem; /* clear of the fixed footer */
+  width: 26px;
+  z-index: 30;  /* above the iframe, below the z-40 chrome bars */
+  touch-action: none;
+}
+.edge-guard-left { left: 0; }
+.edge-guard-right { right: 0; }
 </style>
