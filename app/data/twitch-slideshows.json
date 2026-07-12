@@ -280,16 +280,14 @@
     "ch34_01.webp",
     "ch34_02.webp",
     "ch34_03.webp",
-    "ch34_04.webp"
+    "ch34_04.webp",
+    "ch34_05.webp"
   ],
   "ch35": [
     "ch35_01.webp",
     "ch35_02.webp",
     "ch35_03.webp",
-    "ch35_04.webp",
-    "ch35_05.webp",
-    "ch35_06.webp",
-    "ch35_07.webp"
+    "ch35_04.webp"
   ],
   "ch36": [
     "ch36_01.webp",
@@ -297,7 +295,8 @@
     "ch36_03.webp",
     "ch36_04.webp",
     "ch36_05.webp",
-    "ch36_06.webp"
+    "ch36_06.webp",
+    "ch36_07.webp"
   ],
   "ch37": [
     "ch37_01.webp",
@@ -306,6 +305,23 @@
     "ch37_04.webp",
     "ch37_05.webp",
     "ch37_06.webp"
+  ],
+  "ch38": [
+    "ch38_01.webp",
+    "ch38_02.webp",
+    "ch38_03.webp",
+    "ch38_04.webp",
+    "ch38_05.webp",
+    "ch38_06.webp"
+  ],
+  "ch39": [
+    "ch39_01.webp",
+    "ch39_02.webp",
+    "ch39_03.webp",
+    "ch39_04.webp",
+    "ch39_05.webp",
+    "ch39_06.webp",
+    "ch39_07.webp"
   ],
   "ch7": [
     "act1_ch07_01_00001_.webp",
