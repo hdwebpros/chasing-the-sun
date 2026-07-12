@@ -5,6 +5,7 @@ const route = useRoute()
 const navItems = [
   { label: 'Home', to: '/', icon: 'lucide:home' },
   { label: 'Read the eBook', to: '/read', icon: 'lucide:book-open' },
+  { label: 'Music Video', to: '/music-video', icon: 'lucide:clapperboard' },
   { label: 'About the Author', to: '/about', icon: 'lucide:feather' },
   { label: 'Characters', to: '/characters', icon: 'lucide:users' },
   { label: 'Easter Eggs', to: '/easter-eggs', icon: 'lucide:sparkles' },

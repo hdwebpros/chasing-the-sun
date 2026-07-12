@@ -19,6 +19,15 @@ public/chasing-the-sun-from-drive.epub
 # de-AI local cache (Drive export + per-page flags/decisions)
 .deai/
 
+# Music-video production media (masters, segments, renders, handoff docs).
+# Ignore the heavy production tree, but keep the final video + poster that
+# the /music-video page serves so it deploys on Vercel.
+public/images/characters/william-masters/*
+!public/images/characters/william-masters/music-video/
+public/images/characters/william-masters/music-video/*
+!public/images/characters/william-masters/music-video/where-do-you-set-v1.mp4
+!public/images/characters/william-masters/music-video/poster.jpg
+
 # Misc
 .DS_Store
 .fleet

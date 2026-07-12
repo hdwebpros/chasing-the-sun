@@ -72,6 +72,12 @@ const eggs: EasterEgg[] = [
     detail: 'Edward and Mollie Fitzgerald are the real-life parents of F. Scott Fitzgerald.',
   },
   {
+    id: 14,
+    chapter: 'Chapter 25',
+    teaser: '"Better than I deserve."',
+    detail: "When Lottie asks how William still gets out of bed after burying seven children, he answers that things are \"better than I deserve.\" It's a nod to Dave Ramsey, who gives that exact reply whenever someone asks him how he's doing.",
+  },
+  {
     id: 11,
     chapter: 'Chapter 27',
     teaser: '"Keep you in my pocket"',
