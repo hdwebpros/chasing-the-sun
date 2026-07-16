@@ -28,22 +28,40 @@ Google Doc (canonical) ──► scripts/build-epub-from-drive.mjs --promote ─
 - Typography standard: curly quotes and single spaces, always. Never inject straight quotes into the Doc.
 - Headings in the Doc must be real Heading 1 (PART) / Heading 2 (chapter/interlude) paragraph styles or the build's TOC won't see them.
 
-## Craft knowledge base (`craft/`)
+## Craft knowledge base — Obsidian is the ruler
 
-In Obsidian, we have the distilled writing-craft research (Bookfox, Matesic, primary canon) that all review passes judge against. 
-OLD VERSION: `craft/INDEX.md` local and it's related files; load a lens file (`craft/<lens>/*.md`) only when working that lens. The research is the ruler — there is no hand-authored voiceprint (VOICE.md was retired); the author is the veto. 
-NEW VERSION: Obsidian. Folder is `Writing > Craft Notes`. Use the CLI for that. My writing-craft research lives in an Obsidian vault, folder
-Writing/Craft Notes (~150 notes). Access via Obsidian CLI (IMPORTANT).
-Notes are tagged (topic tags like endings, prose, tension-pacing;
-mode tags like mode/anti-pattern). Each note has a 'Tips' summary
-section first — prefer Tips over full notes for context economy;
-pull full notes only when instructed or when Tips are insufficient.
-When giving craft feedback, ground findings in these notes and cite
-the source note. Separate any opinion not grounded in a note.
+The distilled writing-craft research (Bookfox, Matesic, primary canon; ~152 notes) lives in
+the author's **Obsidian vault** and is the single ruler that all craft feedback and review
+passes judge against.
+
+- **Vault:** `ryanboog`. **Folder:** `Writing/Craft Notes`.
+- **Access ONLY via the `obsidian` CLI** (`~/.local/bin/obsidian`). DO NOT grep a local tree.
+  - Search: `obsidian search query="opener variety" path="Writing/Craft Notes"` (or `search:context` for line context).
+  - Read: `obsidian read path="Writing/Craft Notes/<Note>.md"` (resolves by name too: `obsidian read file="<Note>"`).
+  - List: `obsidian files | grep -i "Craft Notes"`.
+- Each note leads with a **'Tips'** summary — prefer Tips over the full note for context economy;
+  pull the full note only when instructed or when Tips are insufficient.
+- When giving craft feedback, ground findings in these notes and **cite the source note**.
+  Separate any opinion not grounded in a note.
+
+**There is NO hand-authored voiceprint (VOICE.md was retired) and none may be reintroduced.**
+Do not codify the author's prose voice into local rules — reverse-engineering surface features
+of his sentences (short vs long, "subtraction-first," "concrete not metaphor," banned opener
+styles) flattens the prose into primer cadence and is exactly what he does not want. Judge each
+sentence on craft against the Obsidian notes and the surrounding manuscript prose; **the author
+is the veto.**
+
+### Local `craft/` folder — deprecated shadow, mostly retired
+The prose-VOICE doctrine (`craft/sentence/*`, `craft/voice/pro-level.md`,
+`craft/voice/sound-like-yourself.md`) was **deleted July 2026** because it enshrined the
+flattening surface rules above. The only surviving local craft file is
+`craft/voice/ai-fingerprints.md` — kept as the **de-AI flag list** (obvious AI junk: anachronism,
+purple flourishes, explainer tails, unearned triads, closed-door endings, continuity drift). The
+remaining structural lenses (`craft/{character,scene,pacing,tension,setting,dialogue,emotion,device,intimacy}/`)
+still back the `/review` engine (`lenses.json`) pending migration to Obsidian; treat Obsidian as
+the primary source and flag any collision.
 
 The story bible (per-chapter structural summary generated from the Drive text) lives in three derived files at repo root — see "Story bible" below. `sources-raw/` holds raw research transcripts for provenance.
-
-**IMPORTANT** The Craft Notes must be accessed by Obsidian CLI. DO NOT GREP and look local, we have Obsidian CLI. 
 
 ## Story bible
 Three derived files describe the manuscript (never re-derive from
