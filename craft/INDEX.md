@@ -1,28 +1,35 @@
-# Craft Knowledge Base — Index
+# Craft Knowledge Base — Index (DEPRECATED shadow)
 
-The reusable writing-craft brain for *Chasing the Sun*, distilled from ~hundreds of hours of
-research (Bookfox/John Matthew Fox videos, Alyssa Matesic, and the primary craft canon: Sword,
-King, Clark, Christensen, Tufte, Orwell, Strunk & White, Burroway, Le Guin, et al.).
+> **The ruler is the author's Obsidian vault, not this folder.** Vault `ryanboog`, folder
+> `Writing/Craft Notes` (~152 notes). Access via the `obsidian` CLI (`obsidian search` /
+> `obsidian read`) — **DO NOT grep this local tree.** See CLAUDE.md → "Craft knowledge base".
+>
+> **The prose-VOICE doctrine was deleted (July 2026)** — it reverse-engineered surface rules
+> that flattened the prose into primer cadence. Gone: `voice/sound-like-yourself.md`,
+> `voice/pro-level.md`, `sentence/sentence-craft.md`, `sentence/power.md`,
+> `sentence/power-appendix.md`, `sentence/variety.md`. **There is no VOICE.md** and no voiceprint
+> may be reintroduced; the author is the veto.
 
-**How to use this KB**
-- This index is the only file loaded by default. Load a lens file *only* when working that lens.
-- Each lens file = the technique + why it works + 1–3 canonical before/after examples + cited source.
-- **Authority order:** `VOICE.md` / `RYAN-HOUSE-STYLE.md` (the manuscript voiceprint) **first**, then this
-  research, then general model knowledge. Where this KB conflicts with VOICE.md, VOICE.md wins.
+The only surviving local craft files are the **de-AI flag list** (`voice/ai-fingerprints.md`) and
+the **structural lenses** (character/scene/pacing/tension/setting/dialogue/emotion/device/intimacy)
+that still back the `/review` engine pending migration to Obsidian.
+
+**How to use**
+- For any sentence/voice/prose question, query **Obsidian** via the CLI. Cite the source note.
+- Load a structural lens file below *only* when working that lens; treat Obsidian as primary.
 - Every load-bearing third-party claim is verified in [`SOURCES.md`](SOURCES.md). Cite the research, not training.
-- Book-specific findings (line numbers, per-instance verdicts) live in `../reviews/`, NOT here.
 - Raw source transcripts are archived in `../sources-raw/` for provenance.
 
-**Status legend:** ✅ done · ◻ planned (not yet distilled)
+**Status legend:** ✅ live local file · ⛔ RETIRED (deleted; use Obsidian)
 
 | Lens | File | What it covers | From | Status |
 |---|---|---|---|---|
-| voice | [voice/sound-like-yourself.md](voice/sound-like-yourself.md) | 9 steps to put voice on the page; cure for mechanical/AI prose | CRUCIALNOMOREMECHANICALWRITING | ✅ |
-| voice | [voice/pro-level.md](voice/pro-level.md) | 8 named authors' pro tips (burnt tongue, defamiliarization, filter words, purple prose…) | CRUCIALROBOTICTOPROLEVELWRITING | ✅ |
-| voice | [voice/ai-fingerprints.md](voice/ai-fingerprints.md) | AI-prose tells (Part A) + over-correction guardrails (Part B); judgment instrument, not find-and-replace | AI-MISTAKES-TO-AVOID (reusable slice) | ✅ |
-| sentence | [sentence/sentence-craft.md](sentence/sentence-craft.md) | Six-step sentence build: variety, cherry-picked verb, power word, internal arc, figure of speech, cut the fat | bookfoxsentencetips | ✅ |
-| sentence | [sentence/power.md](sentence/power.md) | POWER + SOPHOMORIC scored rubric; computable features + judge scales (heavy data in power-appendix) | SENTENCE-POWER + SOPHOMORIC-RUBRIC | ✅ |
-| sentence | [sentence/variety.md](sentence/variety.md) | SVO-monotony diagnosis, openers, pet phrases, stock gestures, triad overuse + tic-vs-signature method | SENTENCE-VARIETY-LESSON (+TRIAD/TIC reusable slice) | ✅ |
+| voice | ~~voice/sound-like-yourself.md~~ | put voice on the page / mechanical-AI cure | CRUCIALNOMOREMECHANICALWRITING | ⛔ → Obsidian |
+| voice | ~~voice/pro-level.md~~ | 8 authors' pro tips (burnt tongue, defamiliarization…) | CRUCIALROBOTICTOPROLEVELWRITING | ⛔ → Obsidian |
+| voice | [voice/ai-fingerprints.md](voice/ai-fingerprints.md) | AI-prose tells + over-correction guardrails; the de-AI flag list (judgment, not find-and-replace) | AI-MISTAKES-TO-AVOID (reusable slice) | ✅ |
+| sentence | ~~sentence/sentence-craft.md~~ | six-step sentence build | bookfoxsentencetips | ⛔ → Obsidian |
+| sentence | ~~sentence/power.md~~ | POWER/SOPHOMORIC scored rubric | SENTENCE-POWER + SOPHOMORIC-RUBRIC | ⛔ → Obsidian |
+| sentence | ~~sentence/variety.md~~ | SVO-monotony, openers, triad/tic | SENTENCE-VARIETY-LESSON | ⛔ → Obsidian |
 | character | [character/vivify-flat-characters.md](character/vivify-flat-characters.md) | 7-step vivification (exaggerate, contrast, appearance-with-depth, moral attempts, wound, force-field, inversion) | FLATCHARACTERS | ✅ |
 | character | [character/techniques.md](character/techniques.md) | R1–R15 hist-fic techniques + Bookfox-9 rubric; cross-links (not restates) vivify-flat-characters | CHARACTER-REVIEW + BOOKFOX-CHARACTER-GRADES | ✅ |
 | scene | [scene/eight-techniques.md](scene/eight-techniques.md) | Bookfox's 8 scene techniques (tonal shift, trickery, transitions, embodied emotion, one-shot desc, dialogue-through-item, unexpected reaction, 2nd-person) | scenetranscript | ✅ |

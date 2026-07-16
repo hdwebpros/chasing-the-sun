@@ -299,5 +299,5 @@ author sees it.
 - `bin/dedrone-check.mjs` — **the de-drone meter (Stage 3).** Feeds picked lines through the shared
   `/openers` classifier + budgets; prints the opener map and ✓ PASS / ✗ FAIL. Zero LLM, can't be gamed.
 - `DEDRONE-BRIEF.md` — the whole-passage de-drone (re-entry) subagent prompt, run only when the meter FAILs.
-- Ruler: `craft/sentence/sentence-craft.md` (splendor) + `.claude/skills/openers/taxonomy.json` (drone budgets).
+- Ruler: the author's Obsidian craft notes (vault `ryanboog` → `Writing/Craft Notes`; query via the `obsidian` CLI — the old local `craft/sentence/sentence-craft.md` was retired July 2026) + `.claude/skills/openers/taxonomy.json` (drone budgets).
   Writer: `.claude/skills/book-edit/bin/edit-doc.mjs`.

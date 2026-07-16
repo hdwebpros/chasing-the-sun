@@ -13,9 +13,11 @@ anything is rewritten, and nothing touches Drive without an explicit gated step.
 
 ## The ruler
 
-`craft/sentence/variety.md` is canonical (there is **no VOICE.md** — deleted; the craft KB +
-the manuscript's own prose is the ruler, the **author is the veto at triage**). Load-bearing
-facts from that lens, baked into this pass:
+The canonical craft is the author's **Obsidian vault** (`ryanboog` → `Writing/Craft Notes`,
+~152 notes; query via the `obsidian` CLI, never grep). The old local `craft/sentence/variety.md`
+was RETIRED (July 2026, flattened the prose); there is **no VOICE.md**; the manuscript's own
+prose is the ruler and the **author is the veto at triage**. Load-bearing facts, baked into
+this pass:
 
 - **Author Rule F (June 2026):** lean on bare subject-led **far less** — it's the overused
   default. Bring the varied styles **forward**: prepositional (`P`), subordinate clause (`C`),
@@ -75,8 +77,9 @@ sync.sh ─► classify.mjs ─► openers-page-NN.json   (+ openers-summary.jso
    worst runs. `--md` emits the block for `OPENERS-PASS.md`.
 4. **Judge a chapter in-voice** (fills the `recast` suggestions; cache only, no Drive):
    - `node .claude/skills/openers/judge.mjs --emit "Chapter Eleven" > packet.json`
-   - spawn a subagent: read `judge.md` + `craft/sentence/variety.md`, judge `packet.json`,
-     write `{id:{voiceClass,recast?}}` → `judgments.json`
+   - spawn a subagent: read `judge.md` (its rules are inlined; for deeper sentence-variety craft
+     query Obsidian — `obsidian search query="sentence variety" path="Writing/Craft Notes"`), judge
+     `packet.json`, write `{id:{voiceClass,recast?}}` → `judgments.json`
    - `node .claude/skills/openers/judge.mjs --apply judgments.json`
    - **rhythm gate (don't skip):** `node .claude/skills/openers/judge.mjs --check "<chapter>"`
      — fails (exit 3) if any wall is left running on (6+ `S` in a row, or 4+ of one varied

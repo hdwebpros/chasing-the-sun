@@ -5,15 +5,15 @@ source_primary: AI-MISTAKES-TO-AVOID (reverse-engineered from 51 by-hand author 
 source_raw: ../AI-MISTAKES-TO-AVOID.md
 authority: primary  # the record of mistakes caught by hand on this manuscript
 verified: 2026-06-22
-related: [voice/sound-like-yourself, sentence/variety, sentence/power, dialogue/worst-lines, emotion/resonance, device/recurring-device, scene/chapter-hooks]
-house_gate: VOICE.md   # where any "tell" collides with a deliberate authorial shape, VOICE.md wins
+related: [dialogue/worst-lines, emotion/resonance, device/recurring-device, scene/chapter-hooks]
+house_gate: the author's ear + the Obsidian craft notes (vault `ryanboog` → `Writing/Craft Notes`, queried via the `obsidian` CLI). There is no VOICE.md. Where any "tell" collides with a deliberate authorial shape, the author wins.
 ---
 
 # AI Fingerprints
 
-**Why it matters.** AI prose fails in a recognizable set of ways, and it fails *again* while fixing those ways. The through-line of every catch below is one direction of force: the model **adds** (a flourish, an invented specific, a third list item, a named feeling, an explainer tail) and reaches for the **famous / modern / generic**; good prose **subtracts** and reaches for the **true and specific**. The most expensive mistakes here are not the original tells (Part A) but the over-corrections (Part B) — the "fix" that strips a signature or installs a worse tic. This lens is for human judgment, not find-and-replace. Run it as a flag-and-propose instrument, never a blanket pass.
+**Why it matters.** AI prose fails in a recognizable set of ways, and it fails *again* while fixing those ways. Where the model reaches for the **famous / modern / generic**, good prose reaches for the **true and specific** — that is the real through-line, NOT "shorter is better." The most expensive mistakes here are not the original tells (Part A) but the over-corrections (Part B) — the "fix" that strips a signature, flattens a sentence into primer cadence, or installs a worse tic. This lens flags *obvious AI junk*; it is for human judgment, not find-and-replace, and never a blanket subtraction pass. Run it as a flag-and-propose instrument.
 
-> Governing test: when a fix is "add," distrust it. The author removes; the model adds. If your proposed edit is longer than the original, you are probably writing a new fingerprint.
+> Governing test: is the flagged line *actually* an AI tell, or just not short? Length is not the ruler and cutting is not the goal — a fix that leaves a flat, choppy sentence behind has failed. The cure for a tell is the true and specific word, which is sometimes a cut and sometimes not. When unsure, keep.
 
 ---
 
@@ -91,12 +91,12 @@ Lower-stakes but still author-corrected, so catch them in passing: comma splices
 
 ## Part B — The over-correction guardrails (what AI does badly *while fixing*)
 
-> These matter as much as Part A. Most of the wasted effort comes from the model "fixing" something that was fine, or fixing a real tic by installing a worse one. **This whole list is for human judgment, not find-and-replace.** VOICE.md may legitimately use fragments, triads, anaphora, negation, present-tense intrusion — none of these is a defect by shape alone.
+> These matter as much as Part A. Most of the wasted effort comes from the model "fixing" something that was fine, or fixing a real tic by installing a worse one. **This whole list is for human judgment, not find-and-replace.** The author legitimately uses fragments, triads, anaphora, negation, present-tense intrusion — none of these is a defect by shape alone.
 
 ### B1. The shape is usually the signature, not the tic
 
-**Rule.** The fragment, the triad, the anaphora, the negation are mostly the author's *signature*. The tic is the *abstract version* of the shape — the run that climbs to a concept or explains the meaning instead of landing on a chosen physical thing. Judge against VOICE.md first. **When in doubt, keep.**
-**Why it works.** Nearly every legitimate fix here is subtraction: cut the abstract beat or explainer tail, keep or re-body the concrete one. Distinguishing signature from tic is what stops a "cleanup" from sanding off the voice.
+**Rule.** The fragment, the triad, the anaphora, the negation are mostly the author's *signature*. The tic is the *abstract version* of the shape — the run that climbs to a concept or explains the meaning instead of landing on a chosen physical thing. Judge against the author's ear and the surrounding prose. **When in doubt, keep.**
+**Why it works.** The legitimate fix is usually to cut the abstract beat or explainer tail and keep or re-body the concrete one — but that is because the abstraction is the tell, not because cutting is a virtue in itself. Distinguishing signature from tic is what stops a "cleanup" from sanding off the voice.
 **Example.** The negation opener is signature when concrete ("He did not scream. He ground his teeth.") and a tic only when it is a flat behavioral report ("She did not smile. She did not blush…"). Proof from the author's own hand: "despair" → "their eyes were sunken."
 **Failure mode.** Blanket-thinning a shape because it recurs. Recurrence is not the same as a tic; an unrelieved *abstract* run is the tic.
 
@@ -111,11 +111,10 @@ Lower-stakes but still author-corrected, so catch them in passing: comma splices
 **Rule.** Collapsing a He/She opener pile-up into a comma list silently creates a triad. Use **two or four** beats, not three. **Recount after every fix.**
 **Why it works.** The model's reflex toward three is exactly what produces the tic in the first place; the fixing pass is the most common place to install a brand-new one.
 
-### B4. Don't fix opener runs with dependent-clause openers
+### B4. No opener style is off-voice
 
-**Rule.** Thin the "He looked / He stood" density by **folding the look into the object seen** or **varying the subject**, not by bolting on a subordinate clause.
-**Why it works.** Bookfox's general advice for repetitive sentences is to open with prepositions, adverbs, and dependent clauses — but VOICE.md bans dependent-clause openers as off-voice here. The house gate overrides the general technique.
-**Failure mode.** Applying a sound generic rule that this manuscript's voiceprint specifically rejects. Always check VOICE.md before importing a craft default.
+**Rule.** Vary a "He looked / He stood" run by whatever makes the best sentence — fold the look into the object seen, vary the subject, or open on a prepositional phrase, an adverb, a subordinate clause, a participial. **No opener style is banned.**
+**Why it works.** Bookfox's advice for repetitive sentences is exactly to open with prepositions, adverbs, and dependent clauses. An earlier draft here banned dependent-clause/participial openers as "off-voice" — that ban was an AI-invented constraint from the retired VOICE.md, and the author removed it. Reach for the varied entrance; the gate is the best writing, not a forbidden-list.
 
 ### B5. "Reword substantially" ≠ delete the feeling
 
@@ -123,9 +122,9 @@ Lower-stakes but still author-corrected, so catch them in passing: comma splices
 **Why it works.** Matesic's fix swaps a tired gesture for a sharper concrete one ("the air hissed behind her teeth"), not for a feeling-word. And repeated SVO has *music* (Bookfox's word) — the problem is unrelieved monotony, not the SVO sentence.
 **Failure mode.** Hearing "show, don't tell" or "reword" and stripping the concrete down to an abstraction — the opposite of the intended move.
 
-### B6. Fix mechanics — subtraction-first, scalpel-not-blanket
+### B6. Fix mechanics — scalpel-not-blanket
 
-No em dashes in fixes. Check paragraph rhythm before a fragment fix — a fragment may be carrying the beat. Subtraction first: when the fix is "add" (a flourish, an invented specific, a third list item, a named feeling), distrust it. The adverb-comma construction is a sparing scalpel, not a default move.
+No em dashes in fixes. Check paragraph rhythm before a fragment fix — a fragment may be carrying the beat. Distrust a fix that *adds an AI tell* (a manufactured flourish, an invented specific, an unearned third list item, a named feeling) — but adding real, specific, concrete material is not itself suspect; the goal is the best sentence, not the shortest. The adverb-comma construction is a sparing scalpel, not a default move.
 
 ### B7. Flag and propose — never rewrite the source unprompted
 
@@ -143,11 +142,9 @@ The live document is the source of truth. Sync before scanning — a local manus
 
 ## The meta-lesson
 
-Every catch reduces to **subtraction and precision**. The model adds (flourishes, invented specifics, third list items, named feelings, explainer tails); the author removes. The model reaches for the famous / modern / generic; the author reaches for the true and specific. The model forgets what it wrote three chapters ago; the author holds the whole book. The model fixes by reshaping; the author fixes by cutting, and protects the signature. Read VOICE.md first, scan for Part A proactively, obey Part B's guardrails, and flag rather than rewrite.
+The real through-line is **precision, not subtraction**. The model reaches for the famous / modern / generic; the author reaches for the true and specific. The model forgets what it wrote three chapters ago; the author holds the whole book. The model performs; the author lands on the concrete thing. Cutting is often the fix because the tell is usually an added abstraction — but the goal is the *best* sentence, never the shortest one, and a choppy primer-cadence line is itself a failure. Scan for Part A proactively, apply Part B's guardrails, protect the signature, and flag rather than rewrite. The ruler is the author's Obsidian craft notes and the author's own ear — not this file, and not any surface rule.
 
 ## Cross-links
-- The positive of this whole lens — what voiced prose looks like instead → [[voice/sound-like-yourself]].
-- Same-opener runs, SVO monotony, pet phrases, stock gestures (diagnostic) → [[sentence/variety]]; the scored axis → [[sentence/power]].
 - Told-not-shown emotion and the explainer tail in dialogue → [[dialogue/worst-lines]]; the emotion layer those tails mute → [[emotion/resonance]].
 - Repeated motif-buttons and re-explained symbols → [[device/recurring-device]].
 - Soft closed-door endings → [[scene/chapter-hooks]].
@@ -159,4 +156,4 @@ Every catch reduces to **subtraction and precision**. The model adds (flourishes
 - **Bookfox (John Matthew Fox)** — "If you just write SVO sentences… you will put all of your readers to sleep" and "SVO has music." From the Bookfox corpus; primary as a video source. ⚠️ paraphrased, not re-quoted.
 - **Alyssa Matesic** — "reword substantially" / re-body with a fresher physical phrase ("the air hissed behind her teeth"). Attributed to Matesic; flagged ⚠️ for re-confirmation in `SOURCES.md` (Matesic pet-phrase claims marked "re-confirm").
 - **The "three He/She openers in a row = amateur" claim** — attributed to a Bookfox video whose transcript could not be pulled; appears in none of his readable posts. ❓ **unverifiable; explicitly treated as unconfirmed** (per B8 and the SOURCES.md note). Do not cite as fact.
-- All book-specific coordinates, characters, and per-instance verdicts from the source were intentionally abstracted out of this lens (see report). Where a rule could collide with a deliberate authorial shape, **VOICE.md wins** (`house_gate`).
+- All book-specific coordinates, characters, and per-instance verdicts from the source were intentionally abstracted out of this lens (see report). Where a rule could collide with a deliberate authorial shape, **the author wins** (`house_gate`).

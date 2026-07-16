@@ -8,11 +8,14 @@ craft call the machine can't make: for each flagged sentence, decide **keep** or
 
 ## The ruler
 
-Read **`craft/sentence/variety.md`** first — it is the canonical, source-grounded lens
-for this exact problem (SVO-monotony, opener pile-ups, the signature-vs-tic test). There
-is **no VOICE.md** (it was deleted; the craft KB plus the surrounding manuscript prose is
-the ruler, and the author is the final veto at triage). The load-bearing rules below come
-straight from that lens — follow them over any generic "vary your sentences" advice.
+The canonical craft lives in the author's **Obsidian vault** (vault `ryanboog`, folder
+`Writing/Craft Notes`, ~152 notes) — query it with the `obsidian` CLI for sentence-variety /
+opener craft (`obsidian search query="sentence variety" path="Writing/Craft Notes"`, then
+`obsidian read`), never grep a local tree. The old local `craft/sentence/variety.md` was
+RETIRED (July 2026) — it reverse-engineered surface rules that flattened the prose. There is
+**no VOICE.md**; the surrounding manuscript prose is the ruler and the author is the final veto
+at triage. The load-bearing rules below are inlined here — follow them, and lean on Obsidian
+and the neighboring prose over any generic "vary your sentences" advice.
 
 ## What the run actually is (keep vs recast)
 
