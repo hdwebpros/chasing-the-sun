@@ -166,9 +166,9 @@ opens: marys-illness, memorial-bell · closes: old-red
 ### 22 · Chapter Twenty-Two — PART THREE · ms 1411-1493
 Autumn 1887; Mary dies Nov 11 · 2443w / 11sc / rising
 Cast: William, Mary, Mary Margaret, Letitia, Rose
-Mary faces her dying with grace while William rages silently at the God he blames and at the suspicion the deaths follow him. After the Calvary burial he sits alone at the kitchen table and writes the X after MARY, the paper's anchor name since Dublin.
+Opens on Mary's midnight bargain with God — a "Let him live, let him carry the name" litany offering to bless even another woman's son so William may someday stand with a living boy (rewritten as insistence litany, July 2026). She then faces her dying with grace while William rages silently at the God he blames and at the suspicion the deaths follow him. After the Calvary burial he sits alone at the kitchen table and writes the X after MARY, the paper's anchor name since Dublin.
 motifs: paper(central), name(central), doors(present)
-opens: promise-care-children · closes: marys-illness
+opens: marys-bargain, promise-care-children · closes: marys-illness
 
 ### 23 · Chapter Twenty-Three — PART THREE · ms 1494-1577
 Winter 1887–88 → autumn 1889 + interlude · 3092w / 8sc / rising
@@ -250,8 +250,8 @@ opens: ruined-hips · closes: —
 ### 34 · Chapter Thirty-Four — PART FIVE · ms 2380-2409
 Summer 1904, Foundry Street · 864w / 3sc / rising
 Cast: William, Samuel Frederickson
-A second fall takes the good hip, and William sells Grants Pass Painting to Samuel on no-interest terms, a gift dressed as a sale. Handing over the books he confesses what he has never told a soul: the cursed fatherless name, eight children in the ground, and the plan to keep Alex alive from a thousand miles away.
-motifs: paper(absent), name(central), doors(trace)
+A second fall takes the good hip, and William sells Grants Pass Painting to Samuel on no-interest terms, a gift dressed as a sale. Handing over the books he confesses what he has never told a soul — told out of order, in fragments (rewritten July 2026): the cursed fatherless name, eight children in the ground, the plan to keep Alex alive from a thousand miles away — and lays the folded paper on the counter between them, unopened.
+motifs: paper(present), name(central), doors(trace)
 opens: — · closes: painting-career, grants-pass-painting-co
 
 ### 35 · Chapter Thirty-Five — PART FIVE · ms 2410-2430
