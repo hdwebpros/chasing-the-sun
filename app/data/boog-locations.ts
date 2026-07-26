@@ -47,7 +47,7 @@ export interface BoogLocation {
    * Overrides the glyph drawn inside the pin. Without it the pin falls back to
    * its kind: a brush for a shop, a bell for a church, a plain dot otherwise.
    */
-  symbol?: 'brush' | 'train' | 'bell'
+  symbol?: 'brush' | 'train' | 'bell' | 'cross' | 'tombstone'
   /**
    * Whose place this was. Only set where someone actually lived here — the pin
    * wears their portrait instead of a plain dot. Investment lots get no face.
@@ -58,6 +58,7 @@ export interface BoogLocation {
 /** Portraits reused across pins, so a change lands everywhere at once. */
 export const faces = {
   william: { src: '/images/characters/William-Boog-Portrait.jpg', name: 'William Boog' },
+  mary: { src: '/images/characters/Mary-Moran-AI.jpg', name: 'Mary Moran' },
   lottie: { src: '/images/characters/Lottie.jpg', name: 'Charlotte “Lottie” Boog' },
   alex: { src: '/images/characters/alex-boog.jpg', name: 'Alexander Boog' },
   letitia: { src: '/images/characters/Letitia.jpg', name: 'Letitia Boog' },
