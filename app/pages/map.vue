@@ -2,6 +2,7 @@
 import type { Map as LeafletMap, Marker } from 'leaflet'
 import { kindMeta, locations as stPaulLocations, precisionMeta } from '~/data/boog-locations'
 import type { BoogLocation, Kind } from '~/data/boog-locations'
+import { bostonEssay, bostonIntro, bostonLocations } from '~/data/boston-locations'
 import { dublinEssay, dublinIntro, dublinLocations } from '~/data/dublin-locations'
 
 // ---------------------------------------------------------------- the cities
@@ -38,10 +39,9 @@ const cities: City[] = [
     id: 'boston',
     tab: 'Boston',
     title: 'The Boston Map',
-    intro: 'Where the family landed. Five years in the North End between the boat and the '
-      + 'westbound train — the record is still being pulled out of the city directories.',
-    locations: [],
-    comingSoon: true,
+    intro: bostonIntro,
+    locations: bostonLocations,
+    essay: bostonEssay,
   },
   {
     id: 'stpaul',
@@ -85,6 +85,15 @@ const cities: City[] = [
     comingSoon: true,
   },
 ]
+
+// ---------------------------------------------------------------- spoilers
+
+/** The map narrates the whole book — nobody should wander in mid-read. */
+const spoilerOpen = ref(true)
+
+function spoilerBack() {
+  history.back()
+}
 
 const cityId = ref<CityId>('dublin')
 const city = computed(() => cities.find(c => c.id === cityId.value)!)
@@ -358,6 +367,54 @@ function selectFromList(loc: BoogLocation) {
 </script>
 
 <template>
+  <!-- Spoiler gate — client-only: a body teleport open at SSR time can't hydrate -->
+  <ClientOnly>
+    <Teleport to="body">
+    <Transition
+      enter-active-class="transition-opacity duration-300 ease-out"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-active-class="transition-opacity duration-300 ease-in"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <div
+        v-if="spoilerOpen"
+        class="fixed inset-0 z-[200] flex items-center justify-center bg-surface-400/90 backdrop-blur-md px-4"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="spoiler-title"
+      >
+        <div class="w-full max-w-md rounded-2xl border border-gold-500/25 bg-surface-200 p-8 text-center shadow-2xl shadow-black/60">
+          <Icon name="lucide:triangle-alert" class="h-8 w-8 text-gold-400 mx-auto mb-4" />
+          <h2 id="spoiler-title" class="text-2xl font-bold text-gold-400 tracking-tight">
+            Spoilers ahead
+          </h2>
+          <p class="text-sm text-neutral-400 mt-3 leading-relaxed">
+            This map follows the family through the whole book — every address,
+            every grave, every turn of the story. If you haven't finished
+            <em>Chasing the Sun</em>, it will spoil it.
+          </p>
+          <div class="mt-7 flex flex-col sm:flex-row justify-center gap-3">
+            <button
+              class="rounded-full border border-neutral-700 px-5 py-2.5 text-sm text-neutral-300 hover:text-gold-400 hover:border-gold-500/50 transition-colors cursor-pointer"
+              @click="spoilerBack()"
+            >
+              Take me back
+            </button>
+            <button
+              class="rounded-full border border-gold-500/50 bg-gold-500/10 px-5 py-2.5 text-sm font-medium text-gold-400 hover:bg-gold-500/20 transition-colors cursor-pointer"
+              @click="spoilerOpen = false"
+            >
+              I've read it — show the map
+            </button>
+          </div>
+        </div>
+      </div>
+      </Transition>
+    </Teleport>
+  </ClientOnly>
+
   <div class="min-h-dvh px-4 py-16 sm:py-20">
     <div class="max-w-6xl mx-auto">
       <!-- City tabs — the journey, west to west -->
@@ -394,9 +451,7 @@ function selectFromList(loc: BoogLocation) {
         <Icon name="lucide:map-pinned" class="h-8 w-8 text-gold-500/50 mx-auto mb-4" />
         <p class="text-2xl font-bold tracking-[0.2em] text-gold-400/80 uppercase">Coming soon</p>
         <p class="text-sm text-neutral-500 mt-3 max-w-md mx-auto leading-relaxed">
-          {{ cityId === 'grantspass'
-            ? "The Oregon real estate record is a bear. It's being wrestled."
-            : 'The North End years are still coming out of the city directories.' }}
+          The Oregon real estate record is a bear. It's being wrestled.
         </p>
       </div>
 
@@ -478,6 +533,32 @@ function selectFromList(loc: BoogLocation) {
             <span class="flex items-center gap-1.5">
               <span class="h-3 w-3 rounded-full border-[1.5px] border-dashed border-neutral-500" />
               a dashed ring means the coordinate is soft
+            </span>
+          </p>
+          <p v-else-if="cityId === 'boston'" class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-neutral-500">
+            <span class="flex items-center gap-1.5">
+              <img src="/images/characters/William-Boog-Portrait.jpg" alt="" class="h-5 w-5 rounded-full object-cover border border-neutral-700" style="object-position: 50% 22%">
+              William's portrait — where the family lived
+            </span>
+            <span class="flex items-center gap-1.5">
+              <img src="/images/characters/Mary-Moran-AI.jpg" alt="" class="h-5 w-5 rounded-full object-cover border border-neutral-700" style="object-position: 50% 22%">
+              Mary's portrait — the wharf where she ate her apple
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#c98fbf]" v-html="glyphSvg('cross', '#14110b', 12)" />
+              a cross is their church
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#c98fbf]" v-html="glyphSvg('tombstone', '#14110b', 12)" />
+              a stone is the children's ground
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#c98fbf]" v-html="glyphSvg('train', '#14110b', 12)" />
+              a train is the depot they left from
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="h-3 w-3 rounded-full border-[1.5px] border-dashed border-neutral-500" />
+              a dashed ring means the building is gone
             </span>
           </p>
           <p v-else-if="cityId === 'dublin'" class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-neutral-500">
