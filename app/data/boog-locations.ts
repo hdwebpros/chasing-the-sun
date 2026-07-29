@@ -316,7 +316,7 @@ export const locations: BoogLocation[] = [
     lat: 44.95175,
     lng: -93.1679722,
     facts: [
-      'One of two adjacent lots bought for $950 the pair, in Charlotte’s name.',
+      'The lot was bought in November 1891 — one of two adjacent lots taken for $950 the pair, in Charlotte’s name, in the same weeks as the Dayton Avenue purchase.',
       '1910 Census — Charlotte at 1600 Rondo.',
       '1930 Census — Charlotte at 1596 Roblyn.',
       'Charlotte died at 1596 Roblyn Avenue.',
@@ -336,7 +336,7 @@ export const locations: BoogLocation[] = [
     lat: 44.95175,
     lng: -93.1682,
     facts: [
-      'The second of the pair, next door to 1596.',
+      'The second of the pair, next door to 1596 — the two lots were bought together in November 1891 for $950, in Charlotte’s name.',
       '1930 Census — Alexander at 1600 Roblyn, next door to his mother.',
       'Listed as 1600 Rondo in 1910 — the same address under the pre-1913 name.',
       'Destroyed for I-94 with its neighbour. The two houses share one surveyed point; this pin is nudged a lot west so the pair can be told apart on the map.',
@@ -382,18 +382,19 @@ export const locations: BoogLocation[] = [
   {
     id: 'union-depot',
     title: 'Union Depot — 214 East 4th Street',
-    year: 1900,
-    date: 'Spring 1900',
+    year: 1876,
+    date: '1876 or 1877 · spring 1900',
     kind: 'civic',
     precision: 'geocoded',
     symbol: 'train',
     lat: 44.9473029,
     lng: -93.0857476,
     facts: [
+      'Where the St. Paul years begin and end. William came in by rail in 1876 or 1877, and twenty-three years later he left from this same ground.',
       'Where William left. He boards alone for Grants Pass in the spring of 1900, and the family stays behind.',
-      'This is the departure, not the arrival. William reached St. Paul in 1876 or 1877, before Union Depot existed — whatever platform he first stepped onto belonged to some other road, and the record here does not say which.',
       'Three depots, one site. The first opened 1881 and burned in 1884; the rebuild is what William walked through in 1900; it burned again on 3 October 1913. The head house standing today went up between 1917 and 1923 on the same block, between Sibley and Wacouta. The ground has never moved.',
     ],
+    caveat: 'The 1900 departure is the documented event. The arrival is not placed here on evidence — Union Depot did not open until 1881, so whatever platform William first stepped onto in 1876 or 1877 belonged to some other road, and the record does not say which. The pin leads the map because this is where the city begins for him, not because the first train is proven to have stopped on this block.',
   },
   {
     id: 'carroll-1625',

@@ -47,8 +47,8 @@ const cities: City[] = [
     id: 'stpaul',
     tab: 'St. Paul',
     title: 'The St. Paul Map',
-    intro: 'Every address William Boog can be placed at in St. Paul, Minnesota, from the Ramsey '
-      + 'Street rooms in the 1877 city directory to his son Alexander in the 1940 census. Shops, '
+    intro: 'Every address William Boog can be placed at in St. Paul, Minnesota, from the depot he '
+      + 'came in by in 1876 to his son Alexander in the 1940 census. Shops, '
       + 'houses, and the lots he and Charlotte bought and sold — assembled from deed abstracts, '
       + 'city directories, census pages, and Rascher’s Atlas. Five pins belong to his daughter '
       + 'Letitia instead: her parish, the convent she entered, and the schools where Sister M. '
@@ -536,7 +536,7 @@ function selectFromList(loc: BoogLocation) {
             </span>
             <span class="flex items-center gap-1.5">
               <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#c98fbf]" v-html="glyphSvg('train', '#14110b', 12)" />
-              a train is the depot he left from
+              a train is the depot he came in by and left from
             </span>
             <span class="flex items-center gap-1.5">
               <span class="h-3 w-3 rounded-full border-[1.5px] border-[#8fbf7f] bg-[#8fbf7f]" />
