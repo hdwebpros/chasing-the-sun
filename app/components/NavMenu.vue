@@ -9,7 +9,6 @@ const navItems = [
   { label: 'About the Author', to: '/about', icon: 'lucide:feather' },
   { label: 'Characters', to: '/characters', icon: 'lucide:users' },
   { label: 'Easter Eggs', to: '/easter-eggs', icon: 'lucide:sparkles' },
-  { label: 'Research & Timeline', to: '/research', icon: 'lucide:scroll-text' },
   { label: 'World Map', to: '/map', icon: 'lucide:map-pin' },
   { label: 'Contact', to: '/contact', icon: 'lucide:send' },
   { label: 'Send Feedback', to: 'https://docs.google.com/forms/d/e/1FAIpQLSdv3WNVPPugyl8dUrfJJmgsLUPDwFjXrwfRNX6oO667J9WMog/viewform?usp=header', icon: 'lucide:message-square-plus', external: true },
