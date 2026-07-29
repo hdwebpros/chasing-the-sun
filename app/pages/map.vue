@@ -71,9 +71,12 @@ const cities: City[] = [
         + 'was about to expand. Whether he was following his people or buying in front of the '
         + 'streetcar line, the map won’t say. Both are true of the ground he chose.',
         'One daughter runs counter to all of it. William bought westward and upward; Letitia '
-        + 'moved between houses that were never hers and could never be sold. She entered at '
-        + 'Marshall and Western in September 1891, ten weeks before her father bought the Dayton '
-        + 'Avenue lot four hundred feet from the parish she was the first to leave from. By 1900 '
+        + 'signed her one piece of ground away and never held another. She entered at '
+        + 'Marshall and Western in September 1891 and sold the Iglehart lot to her father thirteen '
+        + 'days later — a woman entering the order could not keep property in her name. Ten weeks '
+        + 'after that he bought the Dayton Avenue lot, four hundred feet from the parish she was '
+        + 'the first to leave from; that she left from St. Mark’s at all is how we know the family '
+        + 'was already out here, renting, before a single western deed was signed. By 1900 '
         + 'the census has her downtown at St. Agatha’s, back on Exchange Street among the shop '
         + 'addresses of his working years. Two Boogs on the same few blocks, neither one holding '
         + 'a deed to any of it.',
