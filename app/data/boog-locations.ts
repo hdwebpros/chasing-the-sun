@@ -512,24 +512,9 @@ export const locations: BoogLocation[] = [
     lng: -93.1799486,
     facts: [
       'The St. Paul Province house. Some of Letitia’s paintings are held here.',
-      'Her funeral was next door at Our Lady of the Presentation Chapel, 1880 Randolph.',
+      'She died of pneumonia at St. Mary’s Hospital in Minneapolis on 8 January 1943, in the seventy-fourth year of her age and the fifty-first of her religious life. Her funeral was next door at Our Lady of the Presentation Chapel, 1880 Randolph.',
+      'Between the novitiate and the end she taught twenty-five years at St. John’s Academy in Jamestown, North Dakota, and six at St. James in Grand Forks. Most of her working life was spent well outside this map.',
       'The Carondelet Center at 1890 Randolph, on the same ground, was built in 1912 as the order’s purpose-built novitiate — twenty-one years after she entered.',
-    ],
-  },
-  {
-    id: 'resurrection-cemetery',
-    title: 'Resurrection Cemetery, Mendota Heights',
-    year: 1943,
-    date: '8 Jan 1943',
-    kind: 'civic',
-    precision: 'geocoded',
-    symbol: 'tombstone',
-    lat: 44.876286,
-    lng: -93.1508847,
-    facts: [
-      'Letitia died of pneumonia at St. Mary’s Hospital in Minneapolis on 8 January 1943, in the seventy-fourth year of her age and the fifty-first of her religious life.',
-      'Buried here. Her record card names her parents on the line above: William Boog — Dublin, Ireland; Mary Anne Moran — Dublin, Ireland.',
-      'Between the novitiate and the grave she taught twenty-five years at St. John’s Academy in Jamestown, North Dakota, and six at St. James in Grand Forks. Most of her working life was spent well outside this map.',
     ],
   },
 ]

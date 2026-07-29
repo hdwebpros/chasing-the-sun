@@ -50,9 +50,9 @@ const cities: City[] = [
     intro: 'Every address William Boog can be placed at in St. Paul, Minnesota, from the Ramsey '
       + 'Street rooms in the 1877 city directory to his son Alexander in the 1940 census. Shops, '
       + 'houses, and the lots he and Charlotte bought and sold — assembled from deed abstracts, '
-      + 'city directories, census pages, and Rascher’s Atlas. Six pins belong to his daughter '
-      + 'Letitia instead: the convent, the two art schools, and the grave of Sister M. Berissima, '
-      + 'off her own record card and necrology.',
+      + 'city directories, census pages, and Rascher’s Atlas. Five pins belong to his daughter '
+      + 'Letitia instead: her parish, the convent she entered, and the schools where Sister M. '
+      + 'Berissima taught and painted, off her own record card and necrology.',
     locations: stPaulLocations,
     essay: {
       title: 'What the map says about him',
