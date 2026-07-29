@@ -47,8 +47,8 @@ const cities: City[] = [
     id: 'stpaul',
     tab: 'St. Paul',
     title: 'The St. Paul Map',
-    intro: 'Every address William Boog can be placed at in St. Paul, Minnesota, from the first '
-      + 'newspaper advertisement in December 1878 to his son Alexander in the 1940 census. Shops, '
+    intro: 'Every address William Boog can be placed at in St. Paul, Minnesota, from the Ramsey '
+      + 'Street rooms in the 1877 city directory to his son Alexander in the 1940 census. Shops, '
       + 'houses, and the lots he and Charlotte bought and sold — assembled from deed abstracts, '
       + 'city directories, census pages, and Rascher’s Atlas. Six pins belong to his daughter '
       + 'Letitia instead: the convent, the two art schools, and the grave of Sister M. Berissima, '
