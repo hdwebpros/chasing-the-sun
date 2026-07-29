@@ -410,4 +410,122 @@ export const locations: BoogLocation[] = [
       'The only Carroll Avenue address left in the record now that Curry’s resolves to Iglehart.',
     ],
   },
+
+  // ------------------------------------------------------------------------
+  // The convent record — Letitia Agnes Boog, Sister M. Berissima (1869–1943).
+  //
+  // Sourced from her Sisters of St. Joseph of Carondelet, St. Paul Province
+  // record card and her printed necrology (family copies, July 2026), plus the
+  // 1900 federal census and the "entered the Sisterhoods" newspaper list.
+  // Card dates: entrance 7 Sept 1891 · reception 19 Mar 1892 · first vows
+  // 19 Mar 1894 · final vows 15 Aug 1899 · died 8 Jan 1943.
+  // ------------------------------------------------------------------------
+  {
+    id: 'st-marks',
+    title: 'Church of St. Mark — 2001 Dayton Avenue',
+    year: 1891,
+    date: 'Sept 1891',
+    kind: 'civic',
+    precision: 'geocoded',
+    symbol: 'cross',
+    lat: 44.947341,
+    lng: -93.18493,
+    facts: [
+      'The family’s parish once the Dayton Avenue ground was theirs — 1895 Dayton is four hundred feet west of this corner.',
+      'Letitia was the first member of St. Mark’s Parish to enter the Novitiate of the Sisters of St. Joseph. Her necrology says so outright.',
+      'The parish was founded in 1889. She entered two years later, so the family arrived and its first daughter left almost in the same breath.',
+    ],
+    caveat: 'Nothing standing here today is a building she knew. The parish school went up in 1913 (staffed by the Sisters of St. Joseph) and the English Gothic church in 1918–19, both long after she left. The pin marks the parish, not the buildings.',
+  },
+  {
+    id: 'st-josephs-academy',
+    face: faces.letitia,
+    title: 'St. Joseph’s Academy — 355 Marshall Avenue',
+    year: 1891,
+    date: '7 Sept 1891',
+    kind: 'civic',
+    precision: 'geocoded',
+    symbol: 'cross',
+    lat: 44.9490603,
+    lng: -93.1150951,
+    facts: [
+      'The Sisters of St. Joseph’s house at Marshall and Western — a girls’ academy from 1851 to 1971, and the order’s ground in St. Paul when Letitia entered.',
+      'She entered on 7 September 1891, aged twenty-two, and was received as Sister M. Berissima on 19 March 1892.',
+      'The building is still there. Raised in 1863 with additions in 1871, 1877 and 1888 — the newest wing three years old the autumn she walked in.',
+      'Oldest Catholic school building in Minnesota; on the National Register.',
+      'Christ’s Household of Faith bought the campus in 1976 and runs a school on it now.',
+    ],
+    caveat: 'The address is certain and the order’s presence here is certain; that the novitiate itself sat at this address in September 1891 is inference, not record. The purpose-built novitiate on Randolph is 1912. The CSJ archives could settle it.',
+  },
+  {
+    id: 'st-agathas',
+    face: faces.letitia,
+    title: 'St. Agatha’s Conservatory — 26 East Exchange Street',
+    year: 1900,
+    date: '1900 census',
+    kind: 'civic',
+    precision: 'geocoded',
+    symbol: 'cross',
+    lat: 44.9491623,
+    lng: -93.0972695,
+    facts: [
+      'Minnesota’s first fine-arts school, opened 1884 by the Sisters of St. Joseph — founded by Ellen and Eliza Ireland, the archbishop’s sisters, with Ellen Howard.',
+      'Letitia studied here before she entered, then came back to teach art. Her necrology puts it plainly: she taught "at Saint Agatha’s Conservatory where she had formerly been a student."',
+      'The 1900 census lists her living at this address.',
+      'Oil on canvas and on fired china — the two trades she carried the rest of her life.',
+      'The six-storey Beaux Arts building here now went up in 1908–10 to John H. Wheeler’s design, replacing what stood on the ground before it. The conservatory closed in 1962; the building is the Celeste of St. Paul Hotel + Bar today, and still tells its convent history.',
+    ],
+    caveat: 'The 1908–10 building is not the one she boarded in — but the address is hers, and the census proves the site was in use eight years before the new construction.',
+  },
+  {
+    id: 'derham-hall',
+    face: faces.letitia,
+    title: 'Derham Hall, College of St. Catherine — 2004 Randolph Avenue',
+    year: 1904,
+    date: '1904–1910',
+    kind: 'civic',
+    precision: 'geocoded',
+    symbol: 'cross',
+    lat: 44.926973,
+    lng: -93.185111,
+    facts: [
+      'The Sisters of St. Joseph opened the college in 1905 under Mother Seraphine Ireland. Derham Hall, built 1903–04, was the first building — named for Hugh Derham, who gave the $20,000 that raised it.',
+      'Letitia was in the pioneer group that opened it and ran the art class for nine years. Her record card dates the posting 1904–1910.',
+      'Her painting of St. Catherine hangs near the main entrance. She painted the portrait of Mr. Derham as well.',
+      'The most famous Berissima Boog is in the admissions office today.',
+      'This is where the copyist made an original. Her own letters from Florence call her "a perfectionist and a skilled copyist, and that is the whole of it" — then they hung her work by the front door.',
+    ],
+  },
+  {
+    id: 'carondelet-randolph',
+    title: 'Sisters of St. Joseph of Carondelet — 1884 Randolph Avenue',
+    year: 1943,
+    date: '11 Jan 1943',
+    kind: 'civic',
+    precision: 'geocoded',
+    symbol: 'cross',
+    lat: 44.9269551,
+    lng: -93.1799486,
+    facts: [
+      'The St. Paul Province house. Some of Letitia’s paintings are held here.',
+      'Her funeral was next door at Our Lady of the Presentation Chapel, 1880 Randolph.',
+      'The Carondelet Center at 1890 Randolph, on the same ground, was built in 1912 as the order’s purpose-built novitiate — twenty-one years after she entered.',
+    ],
+  },
+  {
+    id: 'resurrection-cemetery',
+    title: 'Resurrection Cemetery, Mendota Heights',
+    year: 1943,
+    date: '8 Jan 1943',
+    kind: 'civic',
+    precision: 'geocoded',
+    symbol: 'tombstone',
+    lat: 44.876286,
+    lng: -93.1508847,
+    facts: [
+      'Letitia died of pneumonia at St. Mary’s Hospital in Minneapolis on 8 January 1943, in the seventy-fourth year of her age and the fifty-first of her religious life.',
+      'Buried here. Her record card names her parents on the line above: William Boog — Dublin, Ireland; Mary Anne Moran — Dublin, Ireland.',
+      'Between the novitiate and the grave she taught twenty-five years at St. John’s Academy in Jamestown, North Dakota, and six at St. James in Grand Forks. Most of her working life was spent well outside this map.',
+    ],
+  },
 ]

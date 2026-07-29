@@ -201,7 +201,7 @@ opens: dayton-avenue-home, letitia-painting, carroll-avenue-house · closes: eve
 ### 27 · Chapter Twenty-Seven — PART FOUR · ms 1875-1935
 Late summer 1891 → June 1892 · 1575w / 7sc / falling
 Cast: William, Letitia, Rose, Lottie, Charlotte Magdalen
-Letitia takes vows as Sister Berissima and returns the Carroll Avenue deed William bought to keep her close; he lets her go at the convent gate. Lottie gives birth to Charlotte Magdalen, whose name becomes the first entry on the paper's right half.
+Letitia enters the novitiate at St. Joseph's — asking for the name Berissima, which the order will give her at reception in March 1892 — and returns the Carroll Avenue deed William bought to keep her close; he lets her go at the convent gate. Lottie gives birth to Charlotte Magdalen, whose name becomes the first entry on the paper's right half.
 motifs: paper(central), name(central), doors(present)
 opens: charlotte-magdalen · closes: letitia-nun, carroll-avenue-house, memorial-bell
 
@@ -352,7 +352,7 @@ Span = opened→closed chapter (Pro=0, Ep=40). "open" = never closed on the page
 | compass | 18→40 | bargain (18); bequest to Alex (31); returned + regifted to grandson (40) |
 | mm-brooch | 18→28 | |
 | nativist-hostility | 18→open | Summit door rejection |
-| letitia-nun | 19→27 | Sisters' school; vows as Sister Berissima; convent letters |
+| letitia-nun | 19→27 | Sisters' school; enters the novitiate at St. Joseph's, asks for the name Berissima; convent letters |
 | rose | 19→30 | birth; artistic gift (27); Liffey painting (29); Sister Magdalen |
 | williams-and-boog | 19→20 | incl. St. Paul livelihood question |
 | stillborn-boy | 19→open | unnamed; never entered on the paper |

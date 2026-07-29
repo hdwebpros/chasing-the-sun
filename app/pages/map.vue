@@ -50,7 +50,9 @@ const cities: City[] = [
     intro: 'Every address William Boog can be placed at in St. Paul, Minnesota, from the first '
       + 'newspaper advertisement in December 1878 to his son Alexander in the 1940 census. Shops, '
       + 'houses, and the lots he and Charlotte bought and sold — assembled from deed abstracts, '
-      + 'city directories, census pages, and Rascher’s Atlas.',
+      + 'city directories, census pages, and Rascher’s Atlas. Six pins belong to his daughter '
+      + 'Letitia instead: the convent, the two art schools, and the grave of Sister M. Berissima, '
+      + 'off her own record card and necrology.',
     locations: stPaulLocations,
     essay: {
       title: 'What the map says about him',
@@ -68,6 +70,13 @@ const cities: City[] = [
         + 'eventually take. That was where the Irish were settling, and it was also where the city '
         + 'was about to expand. Whether he was following his people or buying in front of the '
         + 'streetcar line, the map won’t say. Both are true of the ground he chose.',
+        'One daughter runs counter to all of it. William bought westward and upward; Letitia '
+        + 'moved between houses that were never hers and could never be sold. She entered at '
+        + 'Marshall and Western in September 1891, ten weeks before her father bought the Dayton '
+        + 'Avenue lot four hundred feet from the parish she was the first to leave from. By 1900 '
+        + 'the census has her downtown at St. Agatha’s, back on Exchange Street among the shop '
+        + 'addresses of his working years. Two Boogs on the same few blocks, neither one holding '
+        + 'a deed to any of it.',
       ],
       coda: 'The freeway took the Rondo end of it — the two Roblyn houses and the Merriam Park lot are '
         + 'under roadway now, addresses and all. But the Evergreen house William built on Linwood is '
