@@ -1,6 +1,6 @@
 ## What this repo is
 Two things in one repo:
-1. **A Nuxt 4 website** (chasingthesun) that serves the novel *Chasing the Sun* as an immersive reading experience (`/read` is an epub.js reader, `/twitch` is a chapter slideshow experience, plus about/characters/music-video pages).
+1. **A Nuxt 4 website** (chasingthesun) that serves the novel *Chasing the Sun* as an immersive reading experience (`/read` is an epub.js reader, plus about/characters/music-video pages). `/twitch`, a chapter slideshow built for live reading sessions, is **RETIRED** as of Sep 2026 — the code still builds and the page still works, but no live reads are happening. Don't gate an epub rebuild on keeping its section references aligned (see below), and ask before building anything new on it.
 2. **A manuscript-revision toolchain** — a set of Claude Code skills (`.claude/skills/`), local review UIs (Nuxt pages backed by `server/api/`), and a distilled writing-craft knowledge base (`craft/`) used to revise the novel.
 
 **The manuscript itself is NOT in this repo.** It lives in a Google Doc; Drive is the single source of truth. The repo only holds the generated epub and local caches.
@@ -27,6 +27,7 @@ Google Doc (canonical) ──► scripts/build-epub-from-drive.mjs --promote ─
 - **Manuscript edits require an explicit instruction.** Exploratory phrasing ("does this work?") never triggers a Drive write. "Approved" ≠ write; wait for the explicit command.
 - Typography standard: curly quotes and single spaces, always. Never inject straight quotes into the Doc.
 - Headings in the Doc must be real Heading 1 (PART) / Heading 2 (chapter/interlude) paragraph styles or the build's TOC won't see them.
+- After a `--promote`, `node scripts/extract-epub-images.mjs` refreshes `app/data/epub-images.json`, which keys off `section-NN.xhtml` filenames. A rebuild can renumber sections. This used to be release-blocking because the retired `/twitch` prompter read those references live; it no longer is. Run it to keep the data honest, but a numbering shift is not an emergency.
 
 ## Craft knowledge base — Obsidian is the ruler
 
