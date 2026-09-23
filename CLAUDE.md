@@ -36,7 +36,7 @@ the author's **Obsidian vault** and is the single ruler that all craft feedback 
 passes judge against.
 
 - **Vault:** `ryanboog`. **Folder:** `Writing/Craft Notes`.
-- **Access ONLY via the `obsidian` CLI** (`~/.local/bin/obsidian`). DO NOT grep a local tree.
+- **Access ONLY via the `obsidian` CLI** (`/usr/bin/obsidian`; needs Settings > General > Advanced > Command line interface turned on). DO NOT grep a local tree.
   - Search: `obsidian search query="opener variety" path="Writing/Craft Notes"` (or `search:context` for line context).
   - Read: `obsidian read path="Writing/Craft Notes/<Note>.md"` (resolves by name too: `obsidian read file="<Note>"`).
   - List: `obsidian files | grep -i "Craft Notes"`.
