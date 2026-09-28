@@ -4,49 +4,49 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 
 ## At a glance
 
-| # | Chapter | Part | Lines | Words | Scenes | Tension | Timeline |
-|---|---------|------|-------|-------|--------|---------|----------|
-| 0 | Prologue | FRAME (opens) | 5-40 | 1041 | 1 | rising | 1925, an autumn afternoon (a fall shower creeps in); Grants Pass, Oregon — attorney Hollis |
-| 1 | Chapter One | PART ONE | 44-78 | 1298 | 3 | rising | 1849, South Dublin (Stephen Street tenements), during the Great Famine |
-| 2 | Chapter Two | PART ONE | 79-123 | 1911 | 4 | falling | Opens November 12, 1841 in Dublin's tenement quarter; jumps eight years to c. 1849 (worst  |
-| 3 | Chapter Three | PART ONE | 124-167 | 1689 | 3 | falling | 1853 (William age 12) through 1859 (age 18); Dublin — Doyle's workshop on Upper Stephen St |
-| 4 | Chapter Four | PART ONE | 168-230 | 2034 | 8 | rising | Dublin (the Liberties: Stephen Street, Michael's Lane, the quays), spanning roughly 1859/6 |
-| 5 | Chapter Five | PART ONE | 231-279 | 1500 | 4 | rising | 1865, Dublin — Aston's Quay on the River Liffey; spans several months from move-in day thr |
-| 6 | Chapter Six | PART ONE | 280-414 | 3640 | 12 | rising | Dublin, Aston's Quay (number seven, then number six), roughly 1866–1869: George's infancy  |
-| 7 | Chapter Seven | PART ONE | 415-545 | 3155 | 9 | rising | 1870–1872, Dublin — 13 Aston's Quay (corner shop at the foot of Carlisle Bridge), a pub of |
-| 8 | Chapter Eight | PART ONE | 546-591 | 1510 | 4 | rising | Dublin through the seasons leading up to April 1873, then pre-dawn departure from Dublin a |
-| 9 | Chapter Nine | PART TWO | 595-624 | 1077 | 7 | rising | Undated in-chapter; shortly after leaving Dublin, spanning a nine-day Atlantic steerage cr |
-| 10 | Chapter Ten | PART TWO | 625-662 | 902 | 2 | rising | Undated; immediately after the Atlantic crossing ("just off the boat"), arrival day at Cas |
-| 11 | Chapter Eleven | PART TWO | 663-725 | 2675 | 5 | flat | 1873, winter/early cold season (the Great Fire "the previous November" = Nov 1872), Boston |
-| 12 | Chapter Twelve | PART TWO | 726-795 | 2808 | 7 | falling | 1873, first week after arrival through October/autumn — Boston (blocks rebuilt after the G |
-| 13 | Chapter Thirteen | PART TWO | 796-834 | 880 | 5 | rising | Undated; Boston, North End tenement, some years after emigration from Dublin — spans from  |
-| 14 | Chapter Fourteen | PART TWO | 835-966 | 3331 | 8 | rising | October through late December 1874 (Austin dies Dec 18, Teresa dies Dec 24, Christmas Eve) |
-| 15 | Chapter Fifteen | PART TWO | 967-1006 | 763 | 4 | falling | Main scenes: winter in Boston, shortly after Austin's death (five children buried, two of  |
-| 16 | Chapter Sixteen | PART TWO | 1007-1058 | 1512 | 4 | rising | Boston, 1876 (dated in-text), spanning forward several years — Mary Margaret is "now about |
-| 17 | Chapter Seventeen | PART TWO | 1059-1113 | 1042 | 4 | falling | Undated; Boston (tenement, then train station), shortly after Joseph's death and with six  |
-| 18 | Chapter Eighteen | PART THREE | 1117-1175 | 1969 | 6 | rising | Circa 1874 (newsboy cries "Custer's scouts reporting from the Black Hills"), likely late s |
-| 19 | Chapter Nineteen | PART THREE | 1176-1270 | 3456 | 11 | rising | St. Paul, Minnesota (Ramsey Street house, West Seventh, Williams & Boog shop) — roughly su |
-| 20 | Chapter Twenty | PART THREE | 1271-1360 | 3186 | 12 | falling | St. Paul, Minnesota, spanning roughly 1878-1885: naturalization intent dated October 1878, |
-| 21 | Chapter Twenty-One | PART THREE | 1361-1410 | 1454 | 4 | rising | Opens December 1886 (St. Paul Globe clipping) on a St. Paul street; jumps "nearly a year o |
-| 22 | Chapter Twenty-Two | PART THREE | 1411-1493 | 2443 | 11 | rising | Autumn 1887, ending November 11, 1887 and its immediate aftermath; St. Paul, Minnesota — t |
-| 23 | Chapter Twenty-Three | PART THREE | 1494-1577 | 3092 | 8 | rising | Winter 1887–88 (the winter after Mary's death, November 1887) through autumn 1889 in St. P |
-| 24 | Chapter Twenty-Four | PART FOUR | 1581-1698 | 3280 | 7 | falling | Spring 1890 (parish social) through October and the following weeks of that autumn — three |
-| 25 | Chapter Twenty-Five | PART FOUR | 1699-1797 | 2594 | 3 | rising | Late summer into early October, St. Paul, Minnesota — Como Park picnic, then the Mississip |
-| 26 | Chapter Twenty-Six | PART FOUR | 1798-1874 | 3019 | 10 | falling | Spring 1891 (wedding) through the following fall and winter; Saint Paul, Minnesota — the d |
-| 27 | Chapter Twenty-Seven | PART FOUR | 1875-1935 | 1575 | 7 | falling | Late summer 1891 through June 1892 (Letitia's vows, then Charlotte's birth); Dayton Avenue |
-| 28 | Chapter Twenty-Eight | PART FOUR | 1936-1998 | 2127 | 7 | rising | Winter 1892 through late April 1893; Dayton Avenue house, St. Paul, Minnesota, plus Dr. Ol |
-| 29 | Chapter Twenty-Nine | PART FOUR | 1999-2041 | 1290 | 3 | rising | June (year unstated), decades after William left Dublin; the Dayton Avenue house, St. Paul |
-| 30 | Chapter Thirty | PART FOUR | 2042-2152 | 2638 | 7 | flat | 1893 to circa 1900 (Panic of 1893; Louise born autumn 1894; Virginia born summer 1896; Ale |
-| 31 | Chapter Thirty-One | PART FOUR | 2153-2279 | 3724 | 4 | rising | St. Paul (Dayton Avenue house), winter/early 1900 through William's departure by train in  |
-| 32 | Chapter Thirty-Two | PART FIVE | 2283-2334 | 1416 | 6 | falling | Spring of 1900 (extending forward through the ad's run, clipping dated 1903), Grants Pass  |
-| 33 | Chapter Thirty-Three | PART FIVE | 2335-2379 | 1364 | 5 | falling | October 1903 ("Three years in the valley") through November and into the new year (early 1 |
-| 34 | Chapter Thirty-Four | PART FIVE | 2380-2409 | 864 | 3 | rising | Summer 1904, Grants Pass, Oregon — "Four years in the valley"; storefront on Foundry Stree |
-| 35 | Chapter Thirty-Five | PART FIVE | 2410-2430 | 805 | 3 | rising | Circa 1905-1907 (buying "by 1907"; William in his sixties), Grants Pass, Oregon — shortly  |
-| 36 | Chapter Thirty-Six | PART FIVE | 2431-2464 | 1196 | 4 | rising | Undated late winter in Oregon, in William's old age — after retirement from four decades o |
-| 37 | Chapter Thirty-Seven | PART FIVE | 2465-2504 | 1020 | 3 | rising | Spring 1907; opens at the kitchen table on Dayton Avenue, St. Paul, then a four-day train  |
-| 38 | Chapter Thirty-Eight | PART FIVE | 2505-2568 | 1832 | 5 | falling | Undated; roughly seven years into William's Oregon exile (Lottie has "held your hand from  |
-| 39 | Chapter Thirty-Nine | PART FIVE | 2569-2609 | 1615 | 5 | falling | Undated late-life span of several years in Grants Pass, Oregon (Rogue Valley, Siskiyous in |
-| 40 | Epilogue | FRAME (closes) | 2610-2736 | 2808 | 1 | falling | 1925, late afternoon into warm evening; Hollis's law office on G Street, Grants Pass, Oreg |
+| # | Chapter | Part | Words | Scenes | Tension | Timeline |
+|---|---------|------|-------|--------|---------|----------|
+| 0 | Prologue | FRAME (opens) | 1041 | 1 | rising | 1925, an autumn afternoon (a fall shower creeps in); Grants Pass, Oregon — attorney Hollis |
+| 1 | Chapter One | PART ONE | 1298 | 3 | rising | 1849, South Dublin (Stephen Street tenements), during the Great Famine |
+| 2 | Chapter Two | PART ONE | 1911 | 4 | falling | Opens November 12, 1841 in Dublin's tenement quarter; jumps eight years to c. 1849 (worst  |
+| 3 | Chapter Three | PART ONE | 1689 | 3 | falling | 1853 (William age 12) through 1859 (age 18); Dublin — Doyle's workshop on Upper Stephen St |
+| 4 | Chapter Four | PART ONE | 2034 | 8 | rising | Dublin (the Liberties: Stephen Street, Michael's Lane, the quays), spanning roughly 1859/6 |
+| 5 | Chapter Five | PART ONE | 1500 | 4 | rising | 1865, Dublin — Aston's Quay on the River Liffey; spans several months from move-in day thr |
+| 6 | Chapter Six | PART ONE | 3640 | 12 | rising | Dublin, Aston's Quay (number seven, then number six), roughly 1866–1869: George's infancy  |
+| 7 | Chapter Seven | PART ONE | 3155 | 9 | rising | 1870–1872, Dublin — 13 Aston's Quay (corner shop at the foot of Carlisle Bridge), a pub of |
+| 8 | Chapter Eight | PART ONE | 1510 | 4 | rising | Dublin through the seasons leading up to April 1873, then pre-dawn departure from Dublin a |
+| 9 | Chapter Nine | PART TWO | 1077 | 7 | rising | Undated in-chapter; shortly after leaving Dublin, spanning a nine-day Atlantic steerage cr |
+| 10 | Chapter Ten | PART TWO | 902 | 2 | rising | Undated; immediately after the Atlantic crossing ("just off the boat"), arrival day at Cas |
+| 11 | Chapter Eleven | PART TWO | 2675 | 5 | flat | 1873, winter/early cold season (the Great Fire "the previous November" = Nov 1872), Boston |
+| 12 | Chapter Twelve | PART TWO | 2808 | 7 | falling | 1873, first week after arrival through October/autumn — Boston (blocks rebuilt after the G |
+| 13 | Chapter Thirteen | PART TWO | 880 | 5 | rising | Undated; Boston, North End tenement, some years after emigration from Dublin — spans from  |
+| 14 | Chapter Fourteen | PART TWO | 3331 | 8 | rising | October through late December 1874 (Austin dies Dec 18, Teresa dies Dec 24, Christmas Eve) |
+| 15 | Chapter Fifteen | PART TWO | 763 | 4 | falling | Main scenes: winter in Boston, shortly after Austin's death (five children buried, two of  |
+| 16 | Chapter Sixteen | PART TWO | 1512 | 4 | rising | Boston, 1876 (dated in-text), spanning forward several years — Mary Margaret is "now about |
+| 17 | Chapter Seventeen | PART TWO | 1042 | 4 | falling | Undated; Boston (tenement, then train station), shortly after Joseph's death and with six  |
+| 18 | Chapter Eighteen | PART THREE | 1969 | 6 | rising | Circa 1874 (newsboy cries "Custer's scouts reporting from the Black Hills"), likely late s |
+| 19 | Chapter Nineteen | PART THREE | 3456 | 11 | rising | St. Paul, Minnesota (Ramsey Street house, West Seventh, Williams & Boog shop) — roughly su |
+| 20 | Chapter Twenty | PART THREE | 3186 | 12 | falling | St. Paul, Minnesota, spanning roughly 1878-1885: naturalization intent dated October 1878, |
+| 21 | Chapter Twenty-One | PART THREE | 1454 | 4 | rising | Opens December 1886 (St. Paul Globe clipping) on a St. Paul street; jumps "nearly a year o |
+| 22 | Chapter Twenty-Two | PART THREE | 2443 | 11 | rising | Autumn 1887, ending November 11, 1887 and its immediate aftermath; St. Paul, Minnesota — t |
+| 23 | Chapter Twenty-Three | PART THREE | 3092 | 8 | rising | Winter 1887–88 (the winter after Mary's death, November 1887) through autumn 1889 in St. P |
+| 24 | Chapter Twenty-Four | PART FOUR | 3280 | 7 | falling | Spring 1890 (parish social) through October and the following weeks of that autumn — three |
+| 25 | Chapter Twenty-Five | PART FOUR | 2594 | 3 | rising | Late summer into early October, St. Paul, Minnesota — Como Park picnic, then the Mississip |
+| 26 | Chapter Twenty-Six | PART FOUR | 3019 | 10 | falling | Spring 1891 (wedding) through the following fall and winter; Saint Paul, Minnesota — the d |
+| 27 | Chapter Twenty-Seven | PART FOUR | 1575 | 7 | falling | Late summer 1891 through June 1892 (Letitia's vows, then Charlotte's birth); Dayton Avenue |
+| 28 | Chapter Twenty-Eight | PART FOUR | 2127 | 7 | rising | Winter 1892 through late April 1893; Dayton Avenue house, St. Paul, Minnesota, plus Dr. Ol |
+| 29 | Chapter Twenty-Nine | PART FOUR | 1290 | 3 | rising | June (year unstated), decades after William left Dublin; the Dayton Avenue house, St. Paul |
+| 30 | Chapter Thirty | PART FOUR | 2638 | 7 | flat | 1893 to circa 1900 (Panic of 1893; Louise born autumn 1894; Virginia born summer 1896; Ale |
+| 31 | Chapter Thirty-One | PART FOUR | 3724 | 4 | rising | St. Paul (Dayton Avenue house), winter/early 1900 through William's departure by train in  |
+| 32 | Chapter Thirty-Two | PART FIVE | 1416 | 6 | falling | Spring of 1900 (extending forward through the ad's run, clipping dated 1903), Grants Pass  |
+| 33 | Chapter Thirty-Three | PART FIVE | 1364 | 5 | falling | October 1903 ("Three years in the valley") through November and into the new year (early 1 |
+| 34 | Chapter Thirty-Four | PART FIVE | 864 | 3 | rising | Summer 1904, Grants Pass, Oregon — "Four years in the valley"; storefront on Foundry Stree |
+| 35 | Chapter Thirty-Five | PART FIVE | 805 | 3 | rising | Circa 1905-1907 (buying "by 1907"; William in his sixties), Grants Pass, Oregon — shortly  |
+| 36 | Chapter Thirty-Six | PART FIVE | 1196 | 4 | rising | Undated late winter in Oregon, in William's old age — after retirement from four decades o |
+| 37 | Chapter Thirty-Seven | PART FIVE | 1020 | 3 | rising | Spring 1907; opens at the kitchen table on Dayton Avenue, St. Paul, then a four-day train  |
+| 38 | Chapter Thirty-Eight | PART FIVE | 1832 | 5 | falling | Undated; roughly seven years into William's Oregon exile (Lottie has "held your hand from  |
+| 39 | Chapter Thirty-Nine | PART FIVE | 1615 | 5 | falling | Undated late-life span of several years in Grants Pass, Oregon (Rogue Valley, Siskiyous in |
+| 40 | Epilogue | FRAME (closes) | 2808 | 1 | falling | 1925, late afternoon into warm evening; Hollis's law office on G Street, Grants Pass, Oreg |
 
 ## Tension arc by third (41 units split 14 / 14 / 13)
 
@@ -235,10 +235,10 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 
 ## Chapter records
 
-### Prologue (FRAME (opens), lines 5-40)
+### Prologue (FRAME (opens))
 
-- **Synopsis:** In 1925 Grants Pass, Oregon, eighty-four-year-old William Boog climbs the stairs to attorney Hollis's office to spend an afternoon drafting his will, a document that is "mostly names." Prompted to explain his unusual surname and origins, William begins recounting his 1841 Dublin tenement birth and his mother's abandonment, until the sound of rain pulls him into a memory of being eight years old with a woman screaming that a curse walks with him.
-- **On stage:** William Boog, Hollis
+- **Synopsis:** In 1925 Grants Pass, Oregon, eighty-four-year-old William Boog climbs the stairs to attorney Hollis Whitcomb's office to spend an afternoon drafting his will, a document that is "mostly names." Prompted to explain his unusual surname and origins, William begins recounting his 1841 Dublin tenement birth and his mother's abandonment, until the sound of rain pulls him into a memory of being eight years old with a woman screaming that a curse walks with him.
+- **On stage:** William Boog, Hollis Whitcomb
 - **Timeline:** 1925, an autumn afternoon (a fall shower creeps in); Grants Pass, Oregon — attorney Hollis's office above a hardware store; frame narrative reaching back to Dublin, November 1841
 - **Words / scenes / tension:** 1041 / 1 / rising
 - **Folded paper:** No explicitly folded document, but the paper motif is seeded twice: William has fought his battle 'with nothing but a stolen sheet of paper and a name no one wanted,' and Hollis 'pulls out a folder with empty forms and paper' for the will.
@@ -247,7 +247,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** William's will drafting; origin of the Boog name; stolen sheet of paper; mother's abandonment in Dublin; the curse accusation; afternoon light running out
 - **Threads closed:** —
 
-### Chapter One (PART ONE, lines 44-78)
+### Chapter One (PART ONE)
 
 - **Synopsis:** In famine-era Dublin, starving young William steals a bite of biscuit and is put out the door, then presses his adoptive father James for the truth of his birth and learns he is the unwanted bastard of a distant-cousin weaver in Perthshire, with the family name changed from Boag to Boog. When James burns the family sketch and tells him the whole island is cursed, William steals a clean sheet, prints WILLIAM BOOG at the top, folds it in his pocket, and swears a private war against fate.
 - **On stage:** William, James, roommate, roommate's wife
@@ -259,7 +259,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** war against fate vow; WILLIAM BOOG ledger paper; Boog family curse belief; weaver birth-father in Perthshire; crossing-the-ocean dream; Boag-to-Boog spelling change
 - **Threads closed:** William's birth-origin question
 
-### Chapter Two (PART ONE, lines 79-123)
+### Chapter Two (PART ONE)
 
 - **Synopsis:** William is born on November 12, 1841 to an unmarried young woman in Dublin's poorest tenements, who names him plainly for safety and hands him to James and Mary Boog to raise as their own secret son. Eight years later, amid the Great Starvation's wreckage, eight-year-old William discovers a furniture-maker at work through a shop window and teaches himself and his little sister to read from a soft-creased scrap of folded newspaper.
 - **On stage:** William, William's birth mother, the midwife, James Boog, Mary Boog, Mary junior, the furniture-maker
@@ -271,7 +271,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** William's hidden illegitimate parentage; Boogs' secret adoption pact; William's woodworking fascination; William's self-taught reading; the folded newspaper scrap; famine-hollowed Dublin survival
 - **Threads closed:** birth mother's relinquishment of William
 
-### Chapter Three (PART ONE, lines 124-167)
+### Chapter Three (PART ONE)
 
 - **Synopsis:** In 1853 Dublin, twelve-year-old William stands in the rain outside Doyle's bootmaker workshop with a crude self-stitched piece of leather until the gruff craftsman takes him on as an unpaid apprentice. Six years of sweeping, watching, and stitching later, eighteen-year-old William opens his own rented stall on Stephen Street and paints BOOG — BOOTS & SHOES in block letters, putting his weightless new name on something permanent at last.
 - **On stage:** William, Doyle, the bread-woman
@@ -283,7 +283,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Boog name meaning quest; folded-paper war in pocket; Perthshire weaver reckoning; machine-made boots trade threat; Boog boots stall
 - **Threads closed:** Doyle apprenticeship quest
 
-### Chapter Four (PART ONE, lines 168-230)
+### Chapter Four (PART ONE)
 
 - **Synopsis:** Eighteen-year-old bootmaker William Boog first sees fifteen-year-old washerwoman Mary Moran through a Dublin wash-house door, and over years of clumsy collisions, a gift of hand-stitched gloves, and sunset walks he confesses his dream to follow the sun west and promises to send for her. In spring 1864 he proposes in her tenement doorway and they marry in a nearly empty Church of St. Michael and John's, ringless and too poor to live together, parting in opposite directions to their separate rooms.
 - **On stage:** William, Mary, Joseph Moran, the priest
@@ -295,7 +295,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** William–Mary courtship; follow-the-sun westward dream; I'll-send-for-you promise; coming second famine warning; Boog name-means-nothing grievance; married but living apart
 - **Threads closed:** William–Mary courtship
 
-### Chapter Five (PART ONE, lines 231-279)
+### Chapter Five (PART ONE)
 
 - **Synopsis:** In 1865 William and Mary Boog leave the Dublin tenements for a filthy, broken-doored shopfront at number seven Aston's Quay, where William overcomes Mary's doubts, fixes the place up, and opens W. BOOG — BOOTMAKER as their first home together. Months of trade prove his craft and his gift for reading people, but at golden hour over the Liffey William confesses to the sunset that he hasn't "found ye just yet" — all of it his, none of it enough.
 - **On stage:** William, Mary
@@ -307,7 +307,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Number Seven bootmaker shop; William's unnamed sunset yearning; first month's rent to absent landlord
 - **Threads closed:** escape from the tenements; broken door repair promise; Mary's doubts about the quay
 
-### Chapter Six (PART ONE, lines 280-414)
+### Chapter Six (PART ONE)
 
 - **Synopsis:** William begins a folded-paper ledger of his family with Mary's and baby George's names, only to watch George die of whooping cough at eleven months and mark a small X beside his son's name after burying him unmarked at Glasnevin. Grief folds into life as the family moves one door down, three more children arrive and are added to the paper, and William talks Mary into an ambitious move to the corner shop at Number 13, while the 1925 Grants Pass interlude has old William tell Hollis the next move was the one that mattered.
 - **On stage:** William, Mary, George, dispensary doctor, neighbor, carriage driver, Austin, Mary Margaret, Letitia, Hollis
@@ -319,7 +319,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** folded paper name ledger; Number 13 corner-shop move; William's self-blame question; growing Boog family (Austin, Mary Margaret, Letitia)
 - **Threads closed:** George's whooping cough and death; life at number seven
 
-### Chapter Seven (PART ONE, lines 415-545)
+### Chapter Seven (PART ONE)
 
 - **Synopsis:** The Boogs move to the corner shop at 13 Aston's Quay in 1870, where William's trade booms, Teresa and William Junior are born (Junior dying at eleven months like George), and a 1872 pub conversation about American wages sets William secretly counting the cost of passage. Mary flatly refuses to put four living children on a ship away from two buried sons, but after walking to the end of the quay and looking past it for the first time in fifteen years, she returns and agrees to go to America.
 - **On stage:** William, Mary, Austin, Mary Margaret, Letitia, Teresa, William Junior, dockworker, wiry laborer, sweeping lad
@@ -331,7 +331,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** America emigration plan; passage money savings; Northampton trash advertisement war; City of Paris ship from Cork; ghosts of buried sons following; Boog sign left behind
 - **Threads closed:** corner unit gamble vindicated; William Junior's brief life; Mary's refusal of America
 
-### Chapter Eight (PART ONE, lines 546-591)
+### Chapter Eight (PART ONE)
 
 - **Synopsis:** After months of relentless saving — William cobbling boots and Mary taking in washing until the tin behind the loose brick finally fills — the Boog family packs up their Dublin life in April 1873 and leaves number thirteen before dawn. At Queenstown they board the steamship City of Paris, with little Letitia and Teresa recorded as the first two names on a manifest of 863 souls, and sail west into the open Atlantic.
 - **On stage:** William, Mary, Austin, Letitia, Teresa, Mary Margaret, manifest clerk, old woman with rosary
@@ -343,7 +343,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Atlantic crossing on City of Paris; Mary's shipboard pregnancy; William unrecorded on manifest; Letitia and Teresa manifest entry; graves left behind in Ireland
 - **Threads closed:** passage-money tin savings; Dublin cobbler shop life; number thirteen home
 
-### Chapter Nine (PART TWO, lines 595-624)
+### Chapter Nine (PART TWO)
 
 - **Synopsis:** The Boog family endures the nine-day steerage crossing from Dublin in a stinking, groaning hold, surviving a fourth-night storm during which William braces his body as a wall around his children. On the ninth morning they crowd the rail as New York harbor appears, and while other passengers weep, William sizes up the skyline and declares this is only the door, not the house.
 - **On stage:** William, Mary, Austin, Mary Margaret, Letitia, Teresa
@@ -355,7 +355,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** westward journey beyond New York; no Boog buried in America vow; Mary's shipboard pregnancy
 - **Threads closed:** Atlantic steerage crossing
 
-### Chapter Ten (PART TWO, lines 625-662)
+### Chapter Ten (PART TWO)
 
 - **Synopsis:** The Boog family is processed through the deafening rotunda of Castle Garden, where a clerk demotes William from bootmaker to "laborer" and converts his pounds into $51.20 of American money. Outside among hustlers, a Cork man warns that America hates the Irish and the dream is dead, but after a silent exchange with Mary, William counts his bills and commits the family to the train for Boston.
 - **On stage:** William, Mary, Letitia, Teresa, Austin, Mary Margaret, the baby, the processing clerk, the Cork man
@@ -367,7 +367,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Boston bootmaker plan; laborer mislabeling of William; dream-is-dead warning; fifty-one dollar savings pressure; Prince Street North End contact; William's contempt for blessings
 - **Threads closed:** Atlantic crossing to America; pounds-to-dollars conversion
 
-### Chapter Eleven (PART TWO, lines 663-725)
+### Chapter Eleven (PART TWO)
 
 - **Synopsis:** Arriving on Prince Street in Boston's Irish North End in 1873, the Boog family settles into a two-room tenement, attends their first mass at St. Stephen's (where William sits a half-beat behind the congregation, there only for Mary), and learns the cold grammar of a new slum with an American accent. Mary quietly wrestles with her slackened faith at the church threshold ("I am still here"), keeps but never opens a gin bottle behind the flour, and reclaims a sliver of self by walking to the harbor and eating an apple alone, while William studies a house painter's technique from the window, his bootmaker's hands flexing.
 - **On stage:** William, Mary, Austin, Teresa, Mary Margaret, Letitia, Cork market vendor
@@ -379,7 +379,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** William's 'temporary' promise; Mary's slack line to God; hidden gin bottle; William's house-painting ambition; Letitia's door-standing echo
 - **Threads closed:** securing Boston lodgings
 
-### Chapter Twelve (PART TWO, lines 726-795)
+### Chapter Twelve (PART TWO)
 
 - **Synopsis:** Industrial Boston refuses William's bootmaking trade at the hide house and the Long Wharf docks reject his soft hands, but Mary reads the truth in the clean basin water and steers him toward the painter she has watched him study, and he grinds his way onto a brownstone crew and into a new livelihood. As the Panic of 1873 thins the work and autumn settles in, a rare warm family supper ends with Mary's silent warning not to tempt fate and her hand pressed flat to her belly.
 - **On stage:** William, Mary, hide-house salesman, Kennedy, painting foreman, older painter, Austin, Mary Margaret, the Boog girls
@@ -391,7 +391,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** William's painting trade; Panic of 1873 squeeze; Mary's hidden new pregnancy; don't-tempt-fate warning; lost bootmaker craft longing
 - **Threads closed:** bootmaker trade in America; William's job search; harbor lie to Mary
 
-### Chapter Thirteen (PART TWO, lines 796-834)
+### Chapter Thirteen (PART TWO)
 
 - **Synopsis:** In their Boston North End tenement Mary delivers her seventh child, Joseph, and the family enjoys a stretch of ordinary life — children's games, a walk where Mary and William confess how differently they carry Ireland — while cloudy pump water and sour vendor milk hint at a threat. Joseph dies at seven months, the first child lost in America, and that night Mary unfolds the ledger paper and draws his X herself, revealing she has kept her own count, while William feels a first cold suspicion that what is crossing out the names may not be the water at all.
 - **On stage:** Mary, William, Austin, Mary Margaret, Letitia, Teresa, Joseph, neighbor woman, milk vendor
@@ -403,7 +403,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** tainted water and milk; suspicion beyond the water; Mary's own private count
 - **Threads closed:** Joseph's infant life; ocean-as-answer belief
 
-### Chapter Fourteen (PART TWO, lines 835-966)
+### Chapter Fourteen (PART TWO)
 
 - **Synopsis:** In the grieving quiet after Joseph's death, William rallies the family with an improvised first Thanksgiving — a goose killed with a board — before diphtheria sweeps the tenement and takes Austin on December 18 and Teresa on Christmas Eve, 1874, with only Mary Margaret surviving. Gin-loosened, Mary names William "the sickness" that keeps killing her children, and he sits alone at the table pressing two more X's onto the folded paper, its right half still blank.
 - **On stage:** William, Mary, Austin, Mary Margaret, Letitia, Teresa, the foreman, the doctor
@@ -415,7 +415,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Boog family Thanksgiving tradition; Mary's gin and blame; William as family curse accusation; male line survival question; foretold loss of another son
 - **Threads closed:** Austin's life (diphtheria death); Teresa's life (diphtheria death); diphtheria outbreak in tenement; Mary Margaret's illness (survives)
 
-### Chapter Fifteen (PART TWO, lines 967-1006)
+### Chapter Fifteen (PART TWO)
 
 - **Synopsis:** In the winter after burying their fifth (soon counted sixth) child, Mary Boog sits hollowed by grief while William takes over the cooking, sweeping, and folding until she slowly rises and returns to the surface of her life, though her singing never comes back. In the 1925 Grants Pass interlude, William flatly confirms to Hollis that six children died, dismisses grief as no excuse from the next morning's work, and reveals that what finally got him out of Boston was "a barn... one I hadn't built yet."
 - **On stage:** Mary, William, Mary Margaret, Letitia, Hollis
@@ -427,7 +427,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** unbuilt barn Boston exit; Mary's singing permanently gone
 - **Threads closed:** Mary's grief paralysis
 
-### Chapter Sixteen (PART TWO, lines 1007-1058)
+### Chapter Sixteen (PART TWO)
 
 - **Synopsis:** Evicted from Prince Street by a rent-raising landlord, William and Mary Boog move to Garden Street Court in Boston's West End, where Mary resumes washing and William throws himself into mastering the painter's trade, keeping a notebook of formulas and building a reputation. In an Irish gathering room, painters Murphy and Flynn tell William of Bishop Ireland selling cheap Minnesota land to Catholic families, and William quietly resolves on the West — and on a barn of his own — while deciding not to tell Mary yet.
 - **On stage:** William, Mary, Mary Margaret, the landlord, Mrs. Flanagan, Murphy, Flynn, priest, paint manufacturer owner
@@ -439,7 +439,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Bishop Ireland Minnesota land prospect; William's barn-and-land dream; westward secret kept from Mary; William's painter notebook mastery; making the Boog name known
 - **Threads closed:** Prince Street landlord rent eviction
 
-### Chapter Seventeen (PART TWO, lines 1059-1113)
+### Chapter Seventeen (PART TWO)
 
 - **Synopsis:** William announces the family will leave Boston for Minnesota, and Mary consents with one condition — she cannot bury another child — before the diminished family of four turns its back on the city and boards a westbound train as the sky opens. In the Grants Pass frame, Hollis thinks he has heard the hard part of the story, but William warns him the will's list of names is a good deal longer than what he has told so far.
 - **On stage:** William, Mary, Letitia, second surviving child (unnamed), neighbor woman, Hollis
@@ -451,7 +451,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Minnesota westward journey; Mary's no-more-buried-children condition; William's own-business ambition; Bishop Ireland Catholic-colony land; will list longer than told
 - **Threads closed:** Boston tenement residence; Boston-as-promised-America hope
 
-### Chapter Eighteen (PART THREE, lines 1117-1175)
+### Chapter Eighteen (PART THREE)
 
 - **Synopsis:** The Boog family rides the train west across the open prairie, Mary visibly loosening for the first time, and arrives at the St. Paul Union Depot, where William buys a map and haggles unsuccessfully for a compass while Mary secretly buys Mary Margaret the brooch William refused. William scouts the city, is viciously rejected as immigrant "scum" when he tries to charm his way into lodgings on Summit Avenue, and after a night sleeping outside the family settles into rooms on Ramsey Street, where William realizes the thing he was running from has followed him west.
 - **On stage:** William, Mary, Mary Margaret, Letitia, compass vendor, brooch seller, Summit Avenue homeowner
@@ -463,7 +463,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** compass sign-painting bargain; search for a paint shop; Mary Margaret's secret brooch; nativist hostility in St. Paul
 - **Threads closed:** train journey to Minnesota; St. Paul housing search
 
-### Chapter Nineteen (PART THREE, lines 1176-1270)
+### Chapter Nineteen (PART THREE)
 
 - **Synopsis:** In their first years in St. Paul, the Boog family puts down roots: Letitia's herb garden transforms the family table before she is sent to board with the Sisters of St. Joseph, the family survives a criminal Minnesota winter, Rosellen is born, and William opens the Williams & Boog painting shop with Mary quietly sharpening his prices. The settling ends in rupture when a tenth pregnancy delivers a stillborn, unnamed boy—the seventh dead child—and William, pen hovering over the folded paper with no name to write, confronts the possibility that his war is built on something deeper than names.
 - **On stage:** William, Mary, Letitia, Mary Margaret, Rose, a nun at the school, the midwife, the Waldmann's bartender
@@ -475,7 +475,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Letitia boarding at Sisters' school; Rose's birth; Williams & Boog painting shop; need for surviving Boog son; unnamed stillborn boy; war deeper than names doubt
 - **Threads closed:** St. Paul livelihood question; Letitia's garden plot
 
-### Chapter Twenty (PART THREE, lines 1271-1360)
+### Chapter Twenty (PART THREE)
 
 - **Synopsis:** Over roughly seven ascending years in St. Paul, William splits from JJ Williams, opens his own paint shop, wins the schoolhouse contract, hires a crew, signs his naturalization papers, and leases a Summit Avenue shop before buying two Evergreen Avenue lots and building his family a house and barn with his own hands. The chapter closes in domestic triumph as Mary calls the new house magical, tells Letitia over pea-shelling that every feared change gave her what standing still never would, and William, now called Old Reliable, drives his new horse Old Red past his own house on his way to bid more work.
 - **On stage:** William, Mary, Letitia, Mary Margaret, the children, JJ Williams, Globe clerk, school board chairman, naturalization clerk, N.L. Bryant
@@ -487,7 +487,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Summit Avenue shop lease; Evergreen Avenue lots purchase; Old Red horse and carriage; Mary's wharf-apple story to Letitia; Old Reliable reputation
 - **Threads closed:** Williams partnership; Ramsey Street rented rooms; William's US naturalization; Mary's fear of change; Dublin doorway line reversal; Evergreen Avenue house built
 
-### Chapter Twenty-One (PART THREE, lines 1361-1410)
+### Chapter Twenty-One (PART THREE)
 
 - **Synopsis:** William's paint horse Old Red is spooked, bolts, and dies in a carriage collision on a St. Paul street; nearly a year later Mary's swelling midsection kindles hope of one last baby, and she asks William to give something grander than paint back to the Bishop when the good comes. The swelling proves to be fluid, not life, and a doctor delivers the verdict at the house on Evergreen Avenue: the cause is untreatable and Mary has perhaps a month to live, leaving William leaning against a wall that suddenly feels like tenement rot.
 - **On stage:** William, Mary, the doctor, policeman
@@ -499,7 +499,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Mary's terminal illness; gift to the Bishop promise; William's hoped-for son; premonition of coming loss
 - **Threads closed:** Old Red the paint horse; Mary's last-baby hope
 
-### Chapter Twenty-Two (PART THREE, lines 1411-1493)
+### Chapter Twenty-Two (PART THREE)
 
 - **Synopsis:** The chapter opens two nights after William's rope's-end confession with Mary awake in the dark, laying a midnight bargain before God: a "Let" litany — *"Let this one be a boy. Let him live. Let him carry the name"* — offering, if this pregnancy is not a boy, to bless even another woman's son so William may someday stand in a room with a living son ("Whatever it costs. He cannot write an X by that name."). She tells him nothing, then faces her dying with grace through a slow decline in the St. Paul house — church hymns, garden moments, and handing duties to her daughters — while William rages silently at the God he blames and at the suspicion that the family's deaths follow him. Mary dies on November 11, 1887; after the Calvary Cemetery burial, William sits alone at the kitchen table and writes the X after MARY, the name that had anchored the folded paper since Dublin. *(Bargain paragraph recast as a Stein-style insistence litany, July 2026.)*
 - **On stage:** William, Mary, Mary Margaret, Letitia, Rose
@@ -511,7 +511,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Mary's bargain with God (a son from wherever God wills — paid off in Lottie and Alex); William's contempt for God; William-as-carrier suspicion; Promise to care for the children; Mary's charge to keep chasing; Mary's horizon reunion hope
 - **Threads closed:** Mary's illness and death; Mary's X on the paper; Where-the-sun-sets question
 
-### Chapter Twenty-Three (PART THREE, lines 1494-1577)
+### Chapter Twenty-Three (PART THREE)
 
 - **Synopsis:** In the years after Mary's death, William buries his grief in relentless work—painting a church nave alone at night, donating a 500-pound brass bell in Mary's name for the new chapel at Victoria and Summit, buying lots he doesn't need, and running the St. Luke's Fair shooting gallery—while her chair and apron stay untouched in the kitchen. In a 1925 interlude in Grants Pass, Hollis confronts him with the pattern of his westward chasing, and William confesses that the "water and the walls" story was cover: he believes he himself was the curse that used Mary up, then teases that three years after her death a woman at a church social introduced him to someone.
 - **On stage:** William, Hollis, Bryant, Archbishop Ireland, Letitia, Mary Margaret, Rose, the pastor, Cunningham, Lilly, and Murphy (fellow bell donors)
@@ -523,9 +523,9 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Mary's memorial bell; William's curse confession; second wife introduction; Mary's apron shrine; Dayton and Western lots
 - **Threads closed:** Mary's memorial bell; Mary's do-something-for-God request; water-and-walls cover story
 
-### Chapter Twenty-Four (PART FOUR, lines 1581-1698)
+### Chapter Twenty-Four (PART FOUR)
 
-- **Synopsis:** Three years after Mary's death, William meets the Kansas-born widow Charlotte "Lottie" Travers at a spring 1890 parish social, and a chance meeting at a paint job leads to a carriage ride, weekly visits, and a warming courtship between two grieving households. After Mary Margaret gives her blessing, Lottie comes to supper at Evergreen Avenue, the blended families plan to meet at Como Park, and William, brushing Mary's untouched apron at the sink, allows himself to hope for a living son.
+- **Synopsis:** Three years after Mary's death, William meets the Kansas-born widow Charlotte "Lottie" Travers at a spring 1890 parish social, and a chance meeting at a paint job leads to a carriage ride, weekly visits, a teasing Sunday walk on St. Clair after church, and a warming courtship between two grieving households. After Mary Margaret gives her blessing, Lottie comes to supper at Evergreen Avenue, the blended families plan to meet at Como Park, and William, brushing Mary's untouched apron at the sink, allows himself to hope for a living son.
 - **On stage:** William, Lottie, Mrs. Daly, homeowner, Mary Margaret, Letitia, Rose
 - **Timeline:** Spring 1890 (parish social) through October and the following weeks of that autumn — three years after Mary's death — in St. Paul, Minnesota (parish lawn, St. Clair Avenue, William's shop, and the Evergreen Avenue house)
 - **Words / scenes / tension:** 3280 / 7 / falling
@@ -535,7 +535,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** William-Lottie courtship; Como Park family gathering plan; William's untold secret about Mary; hope for a living son; Lottie's withheld past with Valentin
 - **Threads closed:** Mary Margaret's blessing on courtship; William's three-year grief isolation
 
-### Chapter Twenty-Five (PART FOUR, lines 1699-1797)
+### Chapter Twenty-Five (PART FOUR)
 
 - **Synopsis:** William and Lottie merge their two broods for a first family picnic at Como Park, where a prayer standoff, a disturbed bee swarm, and a lakeside stampede break the ice, and Mary Margaret confronts Lottie about whether she loves her father before embracing her. Afterward, on a bluff above the Mississippi, William confesses the cost of his life — seven children and their mother — and proposes to Lottie, who says yes.
 - **On stage:** William, Lottie, Mary Margaret, Letitia, Rose, Anetta, William Travers, Edward Fitzgerald, Mollie Fitzgerald, carriage driver
@@ -547,7 +547,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** William–Lottie engagement; ruby jewelry left on bench; blended family of nine children
 - **Threads closed:** William's courtship of Lottie; Mary Margaret's acceptance of Lottie; two families' first meeting
 
-### Chapter Twenty-Six (PART FOUR, lines 1798-1874)
+### Chapter Twenty-Six (PART FOUR)
 
 - **Synopsis:** William marries the widow Lottie in spring 1891 at the downtown Saint Paul cathedral and, the night after, writes CHARLOTTE on the long-blank right half of his folded family paper; the blended household of nine children fractures when someone tears Lottie's chore chart down the middle, until she — refusing to "become Mary" — invents a pairing system that turns the two broods into friends. The family sells Evergreen Avenue and moves to a Queen Anne on Dayton Avenue as William compulsively amasses deeds in family names as a wall against loss, and Letitia, visiting from the Sisters, paints with Rose and reveals a trained hand William never gave her.
 - **On stage:** William, Lottie, Mary Margaret, Letitia, Rose, Joseph, the priest, the Globe advertising clerk
@@ -559,7 +559,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** chore-chart saboteur identity; Charlotte's name on paper; William's compulsive deed-buying; wall of family-named lots; Letitia's hidden painting training; Dayton Avenue family home
 - **Threads closed:** William–Lottie courtship; blank right half of paper; blended-household chore conflict; Evergreen Avenue house sale; Letitia's Carroll house offer
 
-### Chapter Twenty-Seven (PART FOUR, lines 1875-1935)
+### Chapter Twenty-Seven (PART FOUR)
 
 - **Synopsis:** In late summer 1891 Letitia tells William she is taking vows as Sister Berissima and returns the Carroll Avenue deed he bought to keep her close, and he lets her go at the convent gate, later hearing her happiness through her first letter. By 1892 the family renews itself: Lottie gives birth to Charlotte Magdalen, whose name William writes as the first entry on the blank right half of his folded paper, while young Rose reveals an artist's eye that echoes both Letitia and his own craft.
 - **On stage:** William, Letitia, Rose, Lottie, Charlotte Magdalen (newborn)
@@ -571,7 +571,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** right half of paper begins; Charlotte Magdalen's birth; Rose's artistic gift; Letitia's convent letters
 - **Threads closed:** Letitia's religious vocation; Carroll Avenue house deed; Lottie's pregnancy; William's grudge against bells
 
-### Chapter Twenty-Eight (PART FOUR, lines 1936-1998)
+### Chapter Twenty-Eight (PART FOUR)
 
 - **Synopsis:** In the winter of 1892 William senses the old storm-wind of loss returning to the full Dayton Avenue house, and through the spring of 1893 Mary Margaret, who has made herself the household's fierce caretaker and keeper of her mother's Sunday suppers, grows tired, bruised, and pale until Dr. Olson names it leukemia with nothing left to fight. She dies in late April at twenty-four, passing Mary's brooch to Lottie and asking her father to tell her about Ma, and William crosses her name off the family paper beneath her mother's while Lottie stands beside his silent grief.
 - **On stage:** William, Mary Margaret, Lottie, Charlotte (baby), Dr. Olson, the household children, the Sunday neighbors
@@ -583,7 +583,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Mary Margaret's leukemia; returning-storm foreboding
 - **Threads closed:** Mary Margaret's leukemia; Mary Margaret's death; Mary Margaret's caretaker role; Mary's brooch handover; Sunday supper ritual
 
-### Chapter Twenty-Nine (PART FOUR, lines 1999-2041)
+### Chapter Twenty-Nine (PART FOUR)
 
 - **Synopsis:** William repairs a cracked crossbeam under the Dayton Avenue house by hand, then discovers Rose has left a small canvas against the bedroom mirror: the River Liffey at golden hour, complete with his old bootmaker shop, painted entirely from his dinner-table stories though she has never seen Dublin. Moved to tears, he finds her in the kitchen, confirms the sign she couldn't have known ("Wm. Boog. Bootmaker. Number thirteen Aston's Quay"), and blesses her gift with "Don't stop."
 - **On stage:** William, Rose
@@ -595,7 +595,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Rose's painting vocation blessed
 - **Threads closed:** Rose's secret Liffey painting; William's unshared Dublin memory
 
-### Chapter Thirty (PART FOUR, lines 2042-2152)
+### Chapter Thirty (PART FOUR)
 
 - **Synopsis:** Through the 1890s on Dayton Avenue, William and Lottie weather the Panic of 1893 and welcome Louise, Virginia, and at last a son, Alexander Burrell Boog, while Rose leaves to become Sister Magdalen and Lottie hardens herself to foreclose on her own family's unpaid Kansas property. A comic first encounter with the McCarthys' telephone leaves William publicly humbled and privately unsettled, watching the world speed up with wonders that still cannot keep a child breathing till morning.
 - **On stage:** William, Lottie, Rose, Frank McCarthy, Olga McCarthy, Charlotte, Louise, Alex, the doctor, the midwife
@@ -607,7 +607,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** attempt for a son; dread over Alex's health; Lottie's hidden foreclosure cost; William versus the speeding world
 - **Threads closed:** attempt for a son; Rose's convent departure; Kansas family unpaid rent; telephone trial humiliation
 
-### Chapter Thirty-One (PART FOUR, lines 2153-2279)
+### Chapter Thirty-One (PART FOUR)
 
 - **Synopsis:** After a panic attack at a full Sunday dinner table, William confesses to Letitia and then to Lottie that he sees every buried child in his living ones and believes his presence dooms Alex, so he announces he will move alone to Grants Pass, Oregon while Lottie stays behind posing as a widow and managing the properties. In spring 1900 he departs from the St. Paul depot, leaving the compass for Alex, and a 1925 interlude with Hollis ends on William's admission that in Oregon, unlike everywhere else, he finally "stopped."
 - **On stage:** William, Lottie, Letitia, Charlotte, Louise, Virginia, Alex, Hollis
@@ -619,7 +619,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** William's panic attacks; Oregon exile plan; widow fiction for census; compass bequest to Alex; weekly letters promise; Lottie managing the ledger; what happened in Oregon
 - **Threads closed:** leave-or-stay decision; William's St. Paul life
 
-### Chapter Thirty-Two (PART FIVE, lines 2283-2334)
+### Chapter Thirty-Two (PART FIVE)
 
 - **Synopsis:** William arrives in Grants Pass, Oregon in spring 1900, settles into a bare boarding-house room, and hangs the last sign he ever means to paint: GRANTS PASS PAINTING CO. WM. BOOG. He hires a crew, places a bold newspaper advertisement guaranteeing his own invented paint and his word, and prospers through charm and craft, though his letters to Lottie never contain the one thing he means — "I need you" — and the chapter closes on the ominous line "The weather shifted."
 - **On stage:** William, porter, newspaper clerk, young painter applicant, farmer
@@ -631,7 +631,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Grants Pass Painting Co.; last sign ever hung; never-breaks-his-word printed guarantee; unwritten 'I need you' to Lottie; weather-shift foreboding
 - **Threads closed:** westward wandering town-to-town; months of sleeplessness
 
-### Chapter Thirty-Three (PART FIVE, lines 2335-2379)
+### Chapter Thirty-Three (PART FIVE)
 
 - **Synopsis:** In October 1903, sixty-two-year-old William slips on a dew-wet ladder rung while cutting in trim on a Rogue River farmhouse and shatters his hip, and the doctor Cyrus tells him his climbing-and-painting days are over — a Portland surgeon referral he refuses out of lifelong distrust of doctors. Through the winter, letters reveal that his daughter Letitia has sailed east to Florence under a name he did not give her to copy devotional masterworks, and her confession that she is "a perfectionist and a skilled copyist" and not an artist lands as the exact shape of William's own life — a painter, not an artist.
 - **On stage:** William, Cyrus, William's crew
@@ -643,7 +643,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** William's crippled hip; walking stick dependence; Letitia's Florence copyist assignment; painter-not-artist kinship with Letitia; William's unanswered letters to Letitia
 - **Threads closed:** William's climbing painter career; Portland surgeon referral refused
 
-### Chapter Thirty-Four (PART FIVE, lines 2380-2409)
+### Chapter Thirty-Four (PART FIVE)
 
 - **Synopsis:** When his good hip catches a fall off a ladder on Foundry Street, William takes two bad hips as a verdict and that evening sells Grants Pass Painting to his steady bow-tied painter Samuel Frederickson on no-interest terms, a gift dressed as a sale. In handing over the account book and paint formula, William confesses what he has never told a living soul — delivered out of order, in fragments, "the way it lived in him": his cursed, fatherless Dublin name, eight children in the ground, and his plan to keep the boy Alex in St. Paul alive by providing from a thousand miles away and staying out of his sight — and lays the folded paper on the counter between them without opening it. *(Confession paragraph recast from summary into burnt-tongue fragments, July 2026.)*
 - **On stage:** William, Samuel Frederickson
@@ -655,7 +655,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** two-bad-hips verdict; William's cursed-name confession; Alex distance-provision plan; other places for his name; Samuel's open-door invitation
 - **Threads closed:** William's painting career; Grants Pass Painting succession
 
-### Chapter Thirty-Five (PART FIVE, lines 2410-2430)
+### Chapter Thirty-Five (PART FIVE)
 
 - **Synopsis:** With the painting business signed over to Samuel and his hip ruining him for ladder work, William throws himself into buying Oregon real estate, ringing Grants Pass with lots in his family's names while his letters to Lottie thin into mechanical business notes. Lottie's answer about young Alex — a boy who kisses everyone and whom William would know "if you see him" — leaves William standing at the depot fare board, hand on the paper in his breast pocket, choosing distance over the four-day trip home.
 - **On stage:** William, William's painting crew
@@ -667,7 +667,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Grants Pass property ring; injury concealment from Lottie; Lottie's 'if you see him' challenge; Alex the stranger's-son question; thinning letters estrangement
 - **Threads closed:** William's hands-on painting career
 
-### Chapter Thirty-Six (PART FIVE, lines 2431-2464)
+### Chapter Thirty-Six (PART FIVE)
 
 - **Synopsis:** Retired in Oregon with nothing left to occupy his body, William is ambushed by sensory flashbacks to the Dublin tenement of his childhood — wet plaster, crowded aisles, a hungry boy — until the panic follows him home. Alone on a rainy late-winter night, the iron self-control of a lifetime finally gives way and he weeps for every dead child, for Mary, and for the unwanted boy he was, then presses a pen so hard into a clean sheet of paper that the words imprint it.
 - **On stage:** William, the plasterer (workman), mother with four children
@@ -679,7 +679,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** William's tenement flashback attacks; William's imprinted written page
 - **Threads closed:** William's iron stoicism facade
 
-### Chapter Thirty-Seven (PART FIVE, lines 2465-2504)
+### Chapter Thirty-Seven (PART FIVE)
 
 - **Synopsis:** A terse, hard-pressed three-line letter from William summons Lottie from St. Paul to Grants Pass, and she arrives after a four-day train journey to find him white-haired, leaning on a walking stick, his business papers in disarray and whiskey on the shelf. On the bench outside, William confesses that a ladder fall four years ago ruined his hip, that he refuses the Portland surgeon out of dread of doctors, and that without work to outrun it his grief for Mary and the dead children has overtaken him — and Lottie sees him break for the first time and simply holds him.
 - **On stage:** Lottie, William, Charlotte
@@ -691,7 +691,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** William's ruined hip; refused Portland surgery; William's unraveled grief drinking; Lottie's caretaking in Oregon; neglected desk and contracts
 - **Threads closed:** William's summons letter; Lottie-William years-long separation
 
-### Chapter Thirty-Eight (PART FIVE, lines 2505-2568)
+### Chapter Thirty-Eight (PART FIVE)
 
 - **Synopsis:** Lottie spends two weeks in Grants Pass trying to put William's life back in order, and when he tells her that her presence "brings it all back," she finally unloads seven years of carried grief, naming the truth that she has raised his children and run his affairs alone while telling people she is a widow. Unable to move him home — he insists the children will die if he returns and that protecting them from a thousand miles off is his purpose — she packs her bag, leaves him on the porch in the Oregon drizzle, and resumes her life in St. Paul, managing the properties under his name and crying alone in the kitchen where no one notices.
 - **On stage:** William, Lottie, Louise, Virginia, Alex
@@ -703,19 +703,19 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Threads opened:** Lottie's public widow pretense; Lottie signing as Mr. Boog; Alex's questions about William; Charlotte taking over the books; standing invitation to come home
 - **Threads closed:** Lottie's Oregon rescue visit; hope of fixing William in place
 
-### Chapter Thirty-Nine (PART FIVE, lines 2569-2609)
+### Chapter Thirty-Nine (PART FIVE)
 
-- **Synopsis:** In old age in Grants Pass, a lamed and truly alone William slows into stillness on a bench, sketching birds and reckoning with his dead, his bastard-making weaver father in Perthshire, and the realization that he abandoned Alex just as he was abandoned. Over years the stillness turns to peace as he finally stops slamming the door he shut on God since Dublin, stands in the threshold as Mary once did, and begins writing real letters to Alex, waiting in an open door facing Minnesota for a reply that has not yet come.
-- **On stage:** William, Cyrus, younger doctor
+- **Synopsis:** In old age in Grants Pass, a lamed and truly alone William slows into stillness on a bench, sketching birds and reckoning with his dead, his bastard-making weaver father in Perthshire, and the realization that he abandoned Alex just as he was abandoned. Over years the stillness turns to peace as he finally stops slamming the door he shut on God since Dublin, stands in the threshold as Mary once did, and begins writing real letters to Alex that go unanswered. At last he writes that he is making his will and summons Alex to attorney Hollis Whitcomb's G Street office on the first of June to sign for the estate; in May Lottie answers on their son's behalf, pages of weather and grandchildren ending in one line: have the lawyer post the papers to Minnesota. William resigns himself to facing the end alone.
+- **On stage:** William, Cyrus, younger doctor, Lottie (by letter)
 - **Timeline:** Undated late-life span of several years in Grants Pass, Oregon (Rogue Valley, Siskiyous in view); Alex, a thousand miles east in Minnesota, ages from twelve to fifteen across the chapter — decades after Dublin and Boston.
 - **Words / scenes / tension:** 1615 / 5 / falling
 - **Folded paper:** Absent as a folded document per se; the nearest analogues are the bird journal on the empty seat ("He laid the journal there instead, where a child might have sat", "the last page a half-drawn wing") and the letters to Alex ("He wrote Alex real letters now"), neither described as folded.
 - **Name motif:** Dense: the surname's origin and curse — "From that man came the name Boog, the dead end, the one the schoolyard swore would die with William"; the middle-name gamble — "Burrell was a Scottish weaver's cloth... He set it in the middle of the boy's name... Alexander Burrell Boog. The middle name was a gamble... a middle finger pointed sixty years back"; the worth of a name — "If the world decides what a name is worth, he will out-build the world. His cursed last name had to mean something"; plus naming birdsong ("tried to name what was singing") and "A peace he had no name for."
 - **Doors:** The chapter's spine, starting with its subtitle "A door slightly open." God's door: "any time that door crept open he closed it"; "He had not opened that door. Not once in sixty years. How did it keep opening?"; "he stopped slamming the door long enough to feel it give." Remembered doors: Doyle "filled the door frame on Stephen Street... 'In with ye, boy'"; Mary "she'd only stood at the threshold. 'Seems like a good door to stand in.'" Resolution: "he stood in it, as Mary had stood in hers"; "The door had always been open... It had waited in the frame for a boy nobody came for." Ending: "a door being left open was to one facing Minnesota. This one he left wide... William waited in the doorway regardless."
-- **Threads opened:** letters to Alex awaiting reply; open door facing Minnesota; Burrell middle-name gamble payoff
+- **Threads opened:** letters to Alex unanswered; June 1 summons to Hollis's office; Alex refuses through Lottie (post the papers); open door facing Minnesota; Burrell middle-name gamble payoff
 - **Threads closed:** sixty-year war with God; empty bench seat meaning; weaver father abandonment wound; surgery offer declined
 
-### Epilogue (FRAME (closes), lines 2610-2736)
+### Epilogue (FRAME (closes))
 
 - **Synopsis:** In Hollis's Grants Pass law office in 1925, William finishes dictating his will, revealing that his gamble of exile worked—every child left alive stayed alive—and unfolds the worn paper of names and X's before declaring it will go into the ground with him. Alex arrives to sign the property transfer, coolly acknowledges his father, returns the compass (redirected to the grandson named William), and gives a single kiss before leaving, after which William steps into the golden evening and finally "finds" the sun.
 - **On stage:** William, Hollis, Alex
