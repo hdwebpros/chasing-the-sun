@@ -1,6 +1,6 @@
 # Bible Index — *Chasing the Sun*
 
-Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28 (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
+Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04 (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
 
 Motif flags: **central** (carries the chapter) / **present** / **trace** / **absent**.
 Thread slugs: see glossary at bottom for spans and what each slug unifies.
@@ -192,9 +192,9 @@ motifs: paper(absent), name(present), doors(trace)
 opens: ruby-jewelry, blended-family · closes: lottie-courtship, como-park
 
 ### 26 · Chapter Twenty-Six — PART FOUR
-Spring 1891 wedding → following winter · 2976w / 6sc / falling
-Cast: William, Lottie, Mary Margaret, Letitia, Rose, Joseph, priest, Globe clerk
-William marries Lottie and writes CHARLOTTE on the paper's long-blank right half; the household of nine fractures over a torn chore chart until Lottie — refusing to become Mary — pairs the broods into friends. They sell Evergreen for a Dayton Avenue Queen Anne while William amasses deeds in family names as a wall against loss.
+Spring 1891 wedding → following winter · 3418w / 6sc / falling
+Cast: William, Lottie, Mary Margaret, Letitia, Rose, Joseph, Anetta, William Travers, Mary Travers, priest, Globe clerk
+William marries Lottie and writes CHARLOTTE on the paper's long-blank right half; Lottie runs a chaotic school-morning rush (a mitten flipped to teach dividing fractions) while Mary Margaret watches; the household fractures over a torn chore chart until Lottie — refusing to become Mary — pairs the broods into friends. They sell Evergreen for a Dayton Avenue Queen Anne while William amasses deeds in family names as a wall against loss.
 motifs: paper(central), name(central), doors(present)
 opens: dayton-avenue-home, letitia-painting, carroll-avenue-house · closes: evergreen-avenue, blended-family
 
