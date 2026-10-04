@@ -48,7 +48,7 @@ house_gate: VOICE.md   # where this conflicts with the manuscript voiceprint, VO
 **Rule.** When introducing a minor character, do **not** inventory hair + eyes + clothes + demeanor. Pick the single most salient feature and describe only that.
 **Why it works.** One sharp observation is *all the reader needs* to feel they know the person — it separates them from "the unwashed mass of humanity" and makes them a real human. Bonus mechanism: it **relieves the author** of the self-imposed pressure to fully describe every character introduced ("take that weight off you").
 **Example.** *Shantaram* (Gregory David Roberts). A minor character is rendered through his hands alone — huge, so thickly padded they recall a bear. That's the whole visual, and it's enough to make him a specific, knowable person.
-**When / failure mode.** Reserve the full description budget for major characters; one-shot is for the cast you pass through. The chosen feature must be *salient* — a generic detail won't individuate them.
+**When / failure mode.** Reserve the full description budget for major characters; one-shot is for the cast you pass through. Don't apply this to major characters: a full, ordered, emotion-filtered description of a lead is fine (see `voice/ai-fingerprints.md` B10). The chosen feature must be *salient* — a generic detail won't individuate them.
 
 ## 6. The dialogue-through-item
 

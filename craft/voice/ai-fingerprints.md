@@ -138,6 +138,13 @@ Ground craft guidance in what Bookfox, Matesic, King, Sword actually say (fetch 
 
 The live document is the source of truth. Sync before scanning — a local manuscript cache goes stale and gives wrong line numbers. Coordinates in the source file are provenance, not live addresses; re-sync, then re-locate by text.
 
+### B10. A full physical description is not a texture-list
+
+**Rule.** Don't flag a paragraph that describes a character's clothes, hair and accessories just because it reads as a list. A6 is about the reflexive triad of scenery, not about a deliberate portrait. Judge character description by Bookfox's actual test (*9 Description Blunders*): it is **illustrative, not exhaustive** when it (1) is filtered through the POV's emotion or the character's state, (2) lands while plot or conflict is already pulling the reader, and (3) moves in a clear order (bottom to top, near to far, or most important first). The only fixes on a description that passes are scalpel ones: the order, or a single flat catalog verb ("It contained…").
+**Why it works.** Published fiction does full outfit and appearance descriptions all the time, and historical fiction leans on it because clothing carries class and period (*Gone with the Wind* opens on Scarlett's dress and slippers; Wharton gives whole paragraphs to gowns). The "one salient detail" advice (*Stop Making These 9 Character Mistakes*, `craft/scene/eight-techniques.md` §5) is for minor characters. Major characters get the full budget.
+**Example.** The Ch 26 Lottie paragraph (apron, collar button, stockings, knot, fringe) was wrongly flagged as a "head-to-toe block" in Oct 2026. It sits mid-crisis and ends on the limp fringe and loose hairpin, so it carries her mood. The real note was only the order (it jumps down to the stockings, then back up to the hair). The Ch 24 navy walking dress was wrongly flagged the same way. Its only weak spot was the verb "contained."
+**Failure mode.** Calling any multi-item appearance passage "a list" and telling the author to cut it down, when the author is deliberately adding description to make scenes visual.
+
 ---
 
 ## The meta-lesson

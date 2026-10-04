@@ -41,7 +41,7 @@ house_gate: VOICE.md   # where this conflicts with the manuscript voiceprint, VO
 - *Into type* — Jack Reacher (Lee Child), the 6'5", 230 lb ex-military bruiser whose body matches the physical-combat life. (Fox's aside: this is why casting Tom Cruise drew anger; Alan Ritchson fits the type.)
 - *Against type* — Tyrion Lannister (*Game of Thrones*): a dwarf — diminutive — yet a giant of intellect, canny and strategic, his body at odds with his mind.
 - *Both at once* — Beast (X-Men): embodies "beast" (hairy, muscular, blue) while also playing against it (the suit, cultured and refined).
-**Failure mode it prevents.** Meaningless physical description that does no characterization work; late or contradictory appearance that breaks the reader's mental image.
+**Failure mode it prevents.** Meaningless physical description that does no characterization work; late or contradictory appearance that breaks the reader's mental image. Length isn't the failure. A long description of a major character is fine if it's ordered and filtered through emotion (`voice/ai-fingerprints.md` B10).
 
 ### 4. Show moral attempts *and* moral mistakes
 **Rule.** The character needs both. A **moral attempt**: give them agency, make them active, have them trying to solve a problem and do something good — so readers identify with and like them. A **moral mistake**: even a good hero must be fallible and err in a way that hurts.
