@@ -1,6 +1,6 @@
 # Bible Index — *Chasing the Sun*
 
-Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04 (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
+Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
 
 Motif flags: **central** (carries the chapter) / **present** / **trace** / **absent**.
 Thread slugs: see glossary at bottom for spans and what each slug unifies.
@@ -24,7 +24,7 @@ motifs: paper(central), name(central), doors(present)
 opens: war-with-god, weaver-father, chasing-the-sun · closes: —
 
 ### 2 · Chapter Two — PART ONE
-Born Nov 12 1841; jumps to c.1849 Dublin · 1846w / 3sc / falling
+Born Nov 12 1841; jumps to c.1849 Dublin · 1886w / 3sc / falling
 Cast: William, birth mother, midwife, James Boog, Mary Boog, Mary junior, furniture-maker
 William is born to an unmarried woman who names him plainly for safety and hands him to the Boogs to raise as a secret son. At eight, amid the Starvation's wreckage, he teaches himself and his sister to read from a folded newspaper scrap.
 motifs: paper(present), name(central), doors(present)
@@ -38,7 +38,7 @@ motifs: paper(present), name(central), doors(present)
 opens: machine-boots-threat, stephen-street-stall · closes: doyle-apprenticeship
 
 ### 4 · Chapter Four — PART ONE
-c.1859–spring 1864, the Liberties · 2035w / 4sc / rising
+c.1859–spring 1864, the Liberties · 2094w / 4sc / rising
 Cast: William, Mary, Joseph Moran, priest
 Bootmaker William courts washerwoman Mary Moran over years of collisions, hand-stitched gloves, and sunset walks, confessing his dream to follow the sun west. They marry in spring 1864, ringless and too poor to live together.
 motifs: paper(absent), name(present), doors(present)
@@ -59,7 +59,7 @@ motifs: paper(central), name(central), doors(present)
 opens: number-thirteen-shop · closes: george, number-seven-shop
 
 ### 7 · Chapter Seven — PART ONE
-1870–1872, 13 Aston's Quay · 3123w / 8sc / rising
+1870–1872, 13 Aston's Quay · 3212w / 8sc / rising
 Cast: William, Mary, Austin, Mary Margaret, Letitia, Teresa, William Junior, dockworker, laborer, sweeping lad
 Trade booms at the corner shop while Teresa and William Junior arrive and Junior dies at eleven months like George; pub talk of American wages sets William secretly saving for passage. Mary refuses to ship four living children away from two buried sons, then walks to the quay's end and agrees.
 motifs: paper(central), name(central), doors(central)
@@ -164,7 +164,7 @@ motifs: paper(absent), name(trace), doors(central)
 opens: marys-illness, memorial-bell · closes: old-red
 
 ### 22 · Chapter Twenty-Two — PART THREE
-Autumn 1887; Mary dies Nov 11 · 3005w / 7sc / rising
+Autumn 1887; Mary dies Nov 11 · 3064w / 7sc / rising
 Cast: William, Mary, Mary Margaret, Letitia, Rose
 Opens on Mary's midnight bargain with God — a "Let him live, let him carry the name" litany offering to bless even another woman's son so William may someday stand with a living boy (rewritten as insistence litany, July 2026). She then faces her dying with grace while William rages silently at the God he blames and at the suspicion the deaths follow him. After the Calvary burial he sits alone at the kitchen table and writes the X after MARY, the paper's anchor name since Dublin.
 motifs: paper(central), name(central), doors(present)
