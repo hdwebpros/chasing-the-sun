@@ -2,20 +2,24 @@
 // Trim stray whitespace at PARAGRAPH EDGES across the whole Drive Doc:
 //   - leading space(s) at the very start of a paragraph's text
 //   - trailing space(s) sitting immediately before the paragraph's newline
+//   - stray tabs at either edge, and at the start of a soft line (after a \v line break)
 // Mid-paragraph double-spaces are chicago-normalize's job; this only touches
 // the two edges. Deletes are index swaps applied in DESCENDING order so earlier
 // indices stay valid (same pattern as chicago-normalize.mjs).
 //
 //   node trim-para-ws.mjs            # DRY-RUN: counts + sample
 //   node trim-para-ws.mjs --apply    # write via batchUpdate
+//   add --tabs-only to touch only runs that are all tabs (leave spaces alone)
 import { google } from 'googleapis';
 import { getAuthClient, DOC_ID } from './auth.mjs';
 
 const APPLY = process.argv.includes('--apply');
+const TABS_ONLY = process.argv.includes('--tabs-only');
 const auth = await getAuthClient();
 const docs = google.docs({ version: 'v1', auth });
 const res = await docs.documents.get({ documentId: DOC_ID });
 
+const ws = (c) => c === ' ' || c === '\t';
 const dels = []; // {start, end, kind, ctx}
 for (const el of res.data.body?.content || []) {
   if (!el.paragraph) continue;
@@ -27,25 +31,29 @@ for (const el of res.data.body?.content || []) {
   }
   if (!chars.length) continue;
 
-  // leading spaces: run of ' ' from index 0
-  let a = 0;
-  while (a < chars.length && chars[a].c === ' ') a++;
-  if (a > 0) {
-    const after = chars.slice(a, a + 24).map((x) => x.c).join('');
-    dels.push({ start: chars[0].idx, end: chars[a - 1].idx + 1, kind: 'leading', ctx: after });
+  // leading whitespace: at index 0 and right after each soft line break (\v)
+  for (let s = 0; s < chars.length; s++) {
+    if (s > 0 && chars[s - 1].c !== '\v') continue;
+    let a = s;
+    while (a < chars.length && ws(chars[a].c)) a++;
+    if (a > s) {
+      const after = chars.slice(a, a + 24).map((x) => x.c).join('');
+      dels.push({ start: chars[s].idx, end: chars[a - 1].idx + 1, kind: 'leading', ctx: after, tabs: chars.slice(s, a).every((x) => x.c === '\t') });
+    }
   }
 
   // trailing spaces: paragraph text ends with '\n'; find spaces right before it
   let last = chars.length - 1;
   if (chars[last].c === '\n') last--;            // step over the paragraph mark
   let b = last;
-  while (b >= 0 && chars[b].c === ' ') b--;
+  while (b >= 0 && ws(chars[b].c)) b--;
   if (b < last && last >= 0) {
     const before = chars.slice(Math.max(0, b - 23), b + 1).map((x) => x.c).join('');
-    dels.push({ start: chars[b + 1].idx, end: chars[last].idx + 1, kind: 'trailing', ctx: before });
+    dels.push({ start: chars[b + 1].idx, end: chars[last].idx + 1, kind: 'trailing', ctx: before, tabs: chars.slice(b + 1, last + 1).every((x) => x.c === '\t') });
   }
 }
 
+if (TABS_ONLY) dels.splice(0, dels.length, ...dels.filter((d) => d.tabs));
 const lead = dels.filter((d) => d.kind === 'leading');
 const trail = dels.filter((d) => d.kind === 'trailing');
 console.log(`edge-trims: ${lead.length} leading, ${trail.length} trailing  (total ${dels.length})`);
