@@ -27,7 +27,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 | 18 | Chapter Eighteen | PART THREE | 1969 | 6 | rising | Circa 1874 (newsboy cries "Custer's scouts reporting from the Black Hills"), likely late s |
 | 19 | Chapter Nineteen | PART THREE | 3456 | 11 | rising | St. Paul, Minnesota (Ramsey Street house, West Seventh, Williams & Boog shop) — roughly su |
 | 20 | Chapter Twenty | PART THREE | 3186 | 12 | falling | St. Paul, Minnesota, spanning roughly 1878-1885: naturalization intent dated October 1878, |
-| 21 | Chapter Twenty-One | PART THREE | 1454 | 4 | rising | Opens December 1886 (St. Paul Globe clipping) on a St. Paul street; jumps "nearly a year o |
+| 21 | Chapter Twenty-One | PART THREE | 1405 | 4 | rising | Opens December 1886 (St. Paul Globe clipping) on a St. Paul street; jumps to "the following summer" (1887) |
 | 22 | Chapter Twenty-Two | PART THREE | 2443 | 11 | rising | Autumn 1887, ending November 11, 1887 and its immediate aftermath; St. Paul, Minnesota — t |
 | 23 | Chapter Twenty-Three | PART THREE | 3092 | 8 | rising | Winter 1887–88 (the winter after Mary's death, November 1887) through autumn 1889 in St. P |
 | 24 | Chapter Twenty-Four | PART FOUR | 3280 | 7 | falling | Spring 1890 (parish social) through October and the following weeks of that autumn — three |
@@ -489,9 +489,9 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 
 ### Chapter Twenty-One (PART THREE)
 
-- **Synopsis:** William's paint horse Old Red is spooked, bolts, and dies in a carriage collision on a St. Paul street; nearly a year later Mary's swelling midsection kindles hope of one last baby, and she asks William to give something grander than paint back to the Bishop when the good comes. The swelling proves to be fluid, not life, and a doctor delivers the verdict at the house on Evergreen Avenue: the cause is untreatable and Mary has perhaps a month to live, leaving William leaning against a wall that suddenly feels like tenement rot.
+- **Synopsis:** William's paint horse Old Red is spooked, bolts, and dies in a carriage collision on a St. Paul street; the following summer Mary's swelling midsection kindles hope of one last baby, and she asks William to give something grander than paint back to the Bishop when the good comes. The swelling proves to be fluid, not life, and a doctor delivers the verdict at the house on Evergreen Avenue: the cause is untreatable and Mary has perhaps a month to live, leaving William leaning against a wall that suddenly feels like tenement rot.
 - **On stage:** William, Mary, the doctor, policeman
-- **Timeline:** Opens December 1886 (St. Paul Globe clipping) on a St. Paul street; jumps "nearly a year on" (~late 1887) to the house on Evergreen Avenue, then weeks further for Mary's symptoms and the doctor's visit
+- **Timeline:** Opens December 1886 (St. Paul Globe clipping) on a St. Paul street; jumps to "the following summer" (summer 1887) at the house on Evergreen Avenue, then weeks further for Mary's symptoms and the doctor's visit
 - **Words / scenes / tension:** 1454 / 4 / rising
 - **Folded paper:** absent — the only papers are the newspaper ("The horse made the papers... St. Paul Globe - Dec, 1886") and William's open ledger ("a ledger open under the lamp"); nothing folded, carried, or passed
 - **Name motif:** Light touches only: "the clean floor she had named" (Mary's naming of the house's virtue); the doctor formally addresses them "Mrs. Boog" and "Mr. Boog"

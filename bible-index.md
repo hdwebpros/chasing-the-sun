@@ -136,44 +136,45 @@ motifs: paper(trace), name(present), doors(present)
 opens: no-more-buried-children · closes: westward-secret, temporary-promise
 
 ### 18 · Chapter Eighteen — PART THREE
-Train west; St. Paul arrival (Custer-era) · 2035w / 5sc / rising
+Train west; St. Paul arrival (Custer-era) · 2024w / 5sc / rising
 Cast: William, Mary, Mary Margaret, Letitia, compass vendor, brooch seller, Summit homeowner
 The prairie loosens Mary for the first time; in St. Paul William buys a map, haggles unsuccessfully for a compass, and is expelled from a Summit Avenue door as immigrant scum. After a night sleeping outside, the family lands rooms on Ramsey Street — and the thing he ran from has followed.
 motifs: paper(trace), name(trace), doors(central)
 opens: compass, mm-brooch, nativist-hostility · closes: westward-journey
+note: the compass is a deliberate long-fuse plant — four mentions here, then silent until Ch 31 and the Epilogue. Author's intent: a game for the attentive reader, meant to look dropped. Do not flag it as an unfired gun or propose teeing it up.
 
 ### 19 · Chapter Nineteen — PART THREE
-c.1877–1879, St. Paul; Rose born Feb 4 1878 · 3468w / 6sc / rising
+c.1877–1879, St. Paul; Rose born Feb 4 1878 · 3485w / 6sc / rising
 Cast: William, Mary, Letitia, Mary Margaret, Rose, nun, midwife, bartender
-Roots go down: Letitia boards with the Sisters, Rose is born, and Williams & Boog opens with Mary quietly sharpening the prices. A tenth pregnancy delivers an unnamed stillborn boy — the seventh dead child — and William, pen over the paper with no name to write, wonders if his war runs deeper than names.
+Roots go down: Letitia boards with the Sisters, Rose is born, and Williams & Boog opens with Mary quietly sharpening the prices. A tenth pregnancy delivers an unnamed stillborn boy — the seventh dead child; Mary says one word to the plaster and gin puts her under — and William, pen over the paper with no name to write, wonders if his war runs deeper than names.
 motifs: paper(central), name(central), doors(present)
 opens: letitia-nun, rose, williams-and-boog, stillborn-boy · closes: —
 
 ### 20 · Chapter Twenty — PART THREE
-c.1878–1885, St. Paul ascent · 3514w / 6sc / falling
+c.1878–1885, St. Paul ascent · 3544w / 6sc / falling
 Cast: William, Mary, Letitia, Mary Margaret, children, JJ Williams, Globe clerk, school chairman, clerk, Bryant
-Seven ascending years: William splits from Williams, wins the schoolhouse contract, naturalizes, leases a Summit Avenue shop, and builds the Evergreen Avenue house and barn with his own hands. Mary calls the house magical and tells Letitia every feared change gave her what standing still never would.
+Seven ascending years: William splits from Williams, wins the schoolhouse contract, naturalizes, leases a Summit Avenue shop, and builds the Evergreen Avenue house and barn with his own hands. Mary calls the house magical and tells Letitia every feared change gave her what standing still never would. Ends on William hitching Old Red in the dark, the horse leaning its head into him for the bit.
 motifs: paper(present), name(central), doors(present)
 opens: summit-avenue-shop, evergreen-avenue, old-red, wharf-apple-story, old-reliable · closes: williams-and-boog
 
 ### 21 · Chapter Twenty-One — PART THREE
-Dec 1886 → late 1887, Evergreen Avenue · 1526w / 4sc / rising
+Dec 1886 → summer 1887, Evergreen Avenue · 1405w / 4sc / rising
 Cast: William, Mary, doctor, policeman
-Old Red bolts and dies in a carriage collision; nearly a year later Mary's swelling kindles hope of one last baby, and she asks William to give something grander back to the Bishop. The swelling is fluid, not life: untreatable, perhaps a month to live.
+Old Red bolts and dies in a carriage collision; the following summer William's kitchen confession (George arithmetic, the lineage count, "It was never land, Mary," afraid to want the Boog boy that may be coming) is cut to what the paper never said, and Mary's swelling kindles hope of one last baby; she asks William to give something grander back to the Bishop. The swelling is fluid, not life: untreatable, perhaps a month to live.
 motifs: paper(absent), name(trace), doors(central)
 opens: marys-illness, memorial-bell · closes: old-red
 
 ### 22 · Chapter Twenty-Two — PART THREE
-Autumn 1887; Mary dies Nov 11 · 3064w / 7sc / rising
+Autumn 1887; Mary dies Nov 11 · 3016w / 7sc / rising
 Cast: William, Mary, Mary Margaret, Letitia, Rose
-Opens on Mary's midnight bargain with God — a "Let him live, let him carry the name" litany offering to bless even another woman's son so William may someday stand with a living boy (rewritten as insistence litany, July 2026). She then faces her dying with grace while William rages silently at the God he blames and at the suspicion the deaths follow him. After the Calvary burial he sits alone at the kitchen table and writes the X after MARY, the paper's anchor name since Dublin.
+Opens on Mary's midnight bargain with God — a "Let him live, let him carry the name" litany offering to bless even another woman's son so William may someday stand with a living boy (rewritten as insistence litany, July 2026). She then faces her dying with grace while William rages silently at the God he blames and at the suspicion the deaths follow him. After the Calvary burial he sits alone at the kitchen table, writes the X after MARY, the paper's anchor name since Dublin, sings to her empty chair, and lands on the thought that the sickness didn't follow him across the ocean, he carried it.
 motifs: paper(central), name(central), doors(present)
 opens: marys-bargain, promise-care-children · closes: marys-illness
 
 ### 23 · Chapter Twenty-Three — PART THREE
-Winter 1887–88 → autumn 1889 + interlude · 2930w / 4sc / rising
+Winter 1887–88 → autumn 1889 + interlude · 2853w / 4sc / rising
 Cast: William, Hollis, Bryant, Archbishop Ireland, Letitia, Mary Margaret, Rose, pastor, bell donors
-William buries grief in work — painting a nave alone at night, donating a 500-pound bell in Mary's name, buying lots he doesn't need — while her chair and apron stay untouched. In 1925 he confesses the "water and walls" story was cover: he believes he was the curse that used Mary up.
+William buries grief in work — painting a nave alone at night, donating a 500-pound bell in Mary's name, buying lots he doesn't need — while her chair and apron stay untouched; the chapter now ends on him whining about the fair bell to an empty kitchen (the children inventory is cut). In 1925 Hollis sketches the Liberties girl who might have had the simple life, and William confesses the "water and walls" story was cover: he believes he was the curse that used Mary up.
 motifs: paper(trace), name(central), doors(trace)
 opens: grief-isolation, deed-buying, lottie-courtship · closes: —
 
@@ -349,7 +350,7 @@ Span = opened→closed chapter (Pro=0, Ep=40). "open" = never closed on the page
 | bishop-ireland-land | 16→19 | dup open in 17; family settles in city instead |
 | westward-secret | 16→17 | |
 | no-more-buried-children | 17→open | broken in fact at 19 |
-| compass | 18→40 | bargain (18); bequest to Alex (31); returned + regifted to grandson (40) |
+| compass | 18→40 | bargain (18); bequest to Alex (31); returned + regifted to grandson (40). Deliberately silent Ch 19–30: a reader-game plant, not a dropped thread — never flag |
 | mm-brooch | 18→28 | |
 | nativist-hostility | 18→open | Summit door rejection |
 | letitia-nun | 19→27 | Sisters' school; enters the novitiate at St. Joseph's, asks for the name Berissima; convent letters |
