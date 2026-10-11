@@ -1,6 +1,6 @@
 # Bible Index — *Chasing the Sun*
 
-Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
+Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8) (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
 
 Motif flags: **central** (carries the chapter) / **present** / **trace** / **absent**.
 Thread slugs: see glossary at bottom for spans and what each slug unifies.
@@ -24,14 +24,14 @@ motifs: paper(central), name(central), doors(present)
 opens: war-with-god, weaver-father, chasing-the-sun · closes: —
 
 ### 2 · Chapter Two — PART ONE
-Born Nov 12 1841; jumps to c.1849 Dublin · 1886w / 3sc / falling
+Born Nov 12 1841; jumps to c.1849 Dublin · 1897w / 3sc / falling
 Cast: William, birth mother, midwife, James Boog, Mary Boog, Mary junior, furniture-maker
 William is born to an unmarried woman who names him plainly for safety and hands him to the Boogs to raise as a secret son. At eight, amid the Starvation's wreckage, he teaches himself and his sister to read from a folded newspaper scrap.
 motifs: paper(present), name(central), doors(present)
 opens: self-education · closes: birth-mother
 
 ### 3 · Chapter Three — PART ONE
-1853–1859 Dublin, Doyle's workshop then his own stall · 1633w / 3sc / falling
+1853–1859 Dublin, Doyle's workshop then his own stall · 1607w / 3sc / falling
 Cast: William, Doyle, bread-woman
 Twelve-year-old William stands in the rain outside Doyle's workshop until the craftsman takes him on unpaid. Six years later he opens his own stall and paints BOOG — BOOTS & SHOES, his weightless name on something permanent at last.
 motifs: paper(present), name(central), doors(present)
@@ -52,25 +52,25 @@ motifs: paper(absent), name(present), doors(central)
 opens: number-seven-shop · closes: tenement-escape, stephen-street-stall
 
 ### 6 · Chapter Six — PART ONE
-1866–1869, Aston's Quay · 3648w / 8sc / rising
+1866–1869, Aston's Quay · 3599w / 8sc / rising
 Cast: William, Mary, George, doctor, neighbor, carriage driver, Austin, Mary Margaret, Letitia, Hollis
 William starts the folded family ledger with MARY and George, then buries George at eleven months in an unmarked Glasnevin grave and draws the first X. Three more children arrive and are added as the family moves one door down, then gambles on the corner shop at Number 13.
 motifs: paper(central), name(central), doors(present)
 opens: number-thirteen-shop · closes: george, number-seven-shop
 
 ### 7 · Chapter Seven — PART ONE
-1870–1872, 13 Aston's Quay · 3212w / 8sc / rising
+1870–1872, 13 Aston's Quay · 3161w / 8sc / rising
 Cast: William, Mary, Austin, Mary Margaret, Letitia, Teresa, William Junior, dockworker, laborer, sweeping lad
-Trade booms at the corner shop while Teresa and William Junior arrive and Junior dies at eleven months like George; pub talk of American wages sets William secretly saving for passage. Mary refuses to ship four living children away from two buried sons, then walks to the quay's end and agrees.
+Trade booms at the corner shop while Teresa and William Junior arrive and Junior dies at eleven months like George; pub talk of American wages sets William secretly saving for passage. Mary refuses to ship four living children away from two buried sons, then walks to the quay's end and agrees; the chapter ends on her line ("the ghosts of the boys have found me too").
 motifs: paper(central), name(central), doors(central)
-opens: emigration, northampton-ad-war, dublin-signs-left · closes: william-junior
+opens: emigration, northampton-ad-war · closes: william-junior
 
 ### 8 · Chapter Eight — PART ONE
-To April 1873; Queenstown embarkation · 1494w / 4sc / rising
+To April 1873; Queenstown embarkation · 1501w / 4sc / rising
 Cast: William, Mary, Austin, Letitia, Teresa, Mary Margaret, manifest clerk, old woman
-Months of relentless saving fill the tin behind the loose brick, and the family leaves number thirteen before dawn. At Queenstown they board the City of Paris — Letitia and Teresa the first two names on a manifest of 863; William goes unrecorded.
+Months of relentless saving fill the tin behind the loose brick; the landlord wants the signs down before he pays and William buys their staying with a free pair of boots. The family leaves number thirteen before dawn. At Queenstown they board the City of Paris — Letitia and Teresa the first two names on a manifest of 863; William goes unrecorded.
 motifs: paper(absent), name(present), doors(present)
-opens: atlantic-crossing, joseph · closes: emigration, number-thirteen-shop
+opens: dublin-signs-left, atlantic-crossing, joseph · closes: emigration, number-thirteen-shop
 
 ### 9 · Chapter Nine — PART TWO
 Nine-day steerage crossing, 1873 · 1055w / 5sc / rising
@@ -325,7 +325,7 @@ Span = opened→closed chapter (Pro=0, Ep=40). "open" = never closed on the page
 | number-thirteen-shop | 6→8 | corner gamble vindicated (7) |
 | emigration | 7→8 | plan; passage money/tin; City of Paris; Mary's refusal (closed 7); graves left behind |
 | northampton-ad-war | 7→7 | |
-| dublin-signs-left | 7→29 | signs left above the door; closed by Rose's painting |
+| dublin-signs-left | 8→29 | signs left above the door, bought from the landlord with a free pair of boots; closed by Rose's painting |
 | william-junior | 7→7 | |
 | atlantic-crossing | 8→9 | incl. manifest entries; dup close in 10 dropped |
 | joseph | 8→13 | shipboard pregnancy (8/9) + hidden pregnancy (12) = same child |
