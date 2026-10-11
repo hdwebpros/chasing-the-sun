@@ -38,7 +38,7 @@ motifs: paper(present), name(central), doors(present)
 opens: machine-boots-threat, stephen-street-stall · closes: doyle-apprenticeship
 
 ### 4 · Chapter Four — PART ONE
-c.1859–spring 1864, the Liberties · 2094w / 4sc / rising
+c.1859–spring 1864, the Liberties · 2093w / 4sc / rising
 Cast: William, Mary, Joseph Moran, priest
 Bootmaker William courts washerwoman Mary Moran over years of collisions, hand-stitched gloves, and sunset walks, confessing his dream to follow the sun west. They marry in spring 1864, ringless and too poor to live together.
 motifs: paper(absent), name(present), doors(present)
@@ -108,21 +108,21 @@ motifs: paper(central), name(present), doors(present)
 opens: tainted-water, marys-private-count · closes: joseph
 
 ### 14 · Chapter Fourteen — PART TWO
-Oct–Dec 1874, Prince Street · 3367w / 8sc / rising
+Oct–Dec 1874, Prince Street · 3330w / 8sc / rising
 Cast: William, Mary, Austin, Mary Margaret, Letitia, Teresa, foreman, doctor
-William rallies the grieving family with an improvised first Thanksgiving before diphtheria takes Austin on December 18 and Teresa on Christmas Eve; only Mary Margaret survives it. Gin-loosened, Mary names William "the sickness," and he presses two more X's onto the paper.
+William rallies the grieving family with an improvised first Thanksgiving before diphtheria takes Austin on December 18 and Teresa on Christmas Eve; only Mary Margaret survives it. Gin-loosened, Mary names William "the sickness," and he presses two more X's onto the paper. Ends on the scrap Mary finds a week later ("Boogs don't quit") and her eye-roll at the idea of a curse.
 motifs: paper(central), name(present), doors(central)
 opens: thanksgiving-tradition, male-heir · closes: diphtheria-outbreak
 
 ### 15 · Chapter Fifteen — PART TWO
-Winter after the deaths + 1925 interlude · 610w / 2sc / falling
+Winter after the deaths + 1925 interlude · 647w / 3sc / falling
 Cast: Mary, William, Mary Margaret, Letitia, Hollis
-Mary sits hollowed by grief while William cooks, sweeps, and folds until she slowly rises — her singing never comes back. In the interlude William tells Hollis what got him out of Boston: "a barn... one I hadn't built yet."
+Mary sits hollowed by grief while William cooks, sweeps, and folds until she slowly rises — her singing never comes back. A closing flash-forward notes she will bear and lose one more son in the next few years (the sixth death; moved here from the end of Ch 14, Oct 2026). In the interlude William tells Hollis what got him out of Boston: "a barn... one I hadn't built yet."
 motifs: paper(absent), name(absent), doors(trace)
-opens: barn-and-land-dream, marys-singing-gone · closes: marys-grief
+opens: barn-and-land-dream, marys-singing-gone, eighth-son-foretold · closes: marys-grief
 
 ### 16 · Chapter Sixteen — PART TWO
-1876 onward, West End · 1537w / 4sc / rising
+1876 onward, West End · 1524w / 4sc / rising
 Cast: William, Mary, Mary Margaret, landlord, Mrs. Flanagan, Murphy, Flynn, priest, paint owner
 Evicted from Prince Street, the family moves to Garden Street Court while William masters the painter's trade with a notebook of formulas. Painters tell of Bishop Ireland's cheap Minnesota land, and William quietly resolves on the West without telling Mary.
 motifs: paper(trace), name(present), doors(present)
@@ -276,7 +276,7 @@ motifs: paper(present), name(present), doors(absent)
 opens: grief-drinking · closes: i-need-you
 
 ### 38 · Chapter Thirty-Eight — PART FIVE
-~1907, two weeks in Grants Pass, then St. Paul · 1827w / 4sc / falling
+~1907, two weeks in Grants Pass, then St. Paul · 1844w / 4sc / falling
 Cast: William, Lottie, Louise, Virginia, Alex
 Lottie spends two weeks putting William's life in order, then unloads seven years of carried grief when he says her presence "brings it all back." Unable to move him — he insists the children die if he returns — she leaves him on the porch in the drizzle and resumes St. Paul, crying alone where no one notices.
 motifs: paper(trace), name(present), doors(present)
