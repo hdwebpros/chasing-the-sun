@@ -14,10 +14,11 @@ export const manuscriptPath = () => join(deaiDir(), 'manuscript.txt')
 // (tic-page-NN.json). 'openers' = sentence-opener variety (openers-page-NN.json).
 // Each is a SEPARATE cache so a decision in one pass can never overwrite a decided
 // page in another.
-export type Mode = 'deai' | 'brogue' | 'tic' | 'openers'
-const MODE_PFX: Record<Mode, string> = { deai: '', brogue: 'brogue-', tic: 'tic-', openers: 'openers-' }
+// 'word' = leaned-on word thinning (word-page-NN.json, .claude/skills/wordpass).
+export type Mode = 'deai' | 'brogue' | 'tic' | 'openers' | 'word'
+const MODE_PFX: Record<Mode, string> = { deai: '', brogue: 'brogue-', tic: 'tic-', openers: 'openers-', word: 'word-' }
 export const asMode = (m: unknown): Mode =>
-  (m === 'brogue' || m === 'tic' || m === 'openers' ? m : 'deai')
+  (m === 'brogue' || m === 'tic' || m === 'openers' || m === 'word' ? m : 'deai')
 export const pageJsonPath = (n: number, mode: Mode = 'deai') =>
   join(deaiDir(), `${MODE_PFX[mode]}page-${String(n).padStart(2, '0')}.json`)
 
@@ -56,6 +57,9 @@ export interface Flag {
   runCodes?: string
   runPos?: number
   alsoVariety?: boolean
+  // word pass only: the inflected form that matched, and the chapter heading
+  form?: string
+  chapter?: string
 }
 export interface PageDoc {
   page: number

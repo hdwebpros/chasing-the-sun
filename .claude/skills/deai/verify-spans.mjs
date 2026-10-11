@@ -30,8 +30,9 @@ const ALL = args.includes('--all')
 // --brogue / --tic check the sibling caches (brogue-page-NN.json / tic-page-NN.json).
 const BROGUE = args.includes('--brogue')
 const TIC = args.includes('--tic')
-const PFX = TIC ? 'tic-page-' : BROGUE ? 'brogue-page-' : 'page-'
-const PFX_RE = TIC ? /^tic-page-\d+\.json$/ : BROGUE ? /^brogue-page-\d+\.json$/ : /^page-\d+\.json$/
+const WORD = args.includes('--word')
+const PFX = WORD ? 'word-page-' : TIC ? 'tic-page-' : BROGUE ? 'brogue-page-' : 'page-'
+const PFX_RE = WORD ? /^word-page-\d+\.json$/ : TIC ? /^tic-page-\d+\.json$/ : BROGUE ? /^brogue-page-\d+\.json$/ : /^page-\d+\.json$/
 const rangeArg = args.find(a => /^\d+-\d+$/.test(a))
 const pageArg = args.find(a => /^\d+$/.test(a))
 

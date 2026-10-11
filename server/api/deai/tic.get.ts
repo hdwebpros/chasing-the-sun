@@ -9,10 +9,14 @@ import { deaiDir, type PageDoc, type Flag } from '../../utils/deai'
 
 interface Row extends Flag { page: number }
 
-export default defineEventHandler(async () => {
+// ?mode=word serves the word-pass caches (word-page-NN.json) instead, grouped by the
+// word (tell `word-<lemma>`) with dialogue parked, so one UI reviews either pass.
+export default defineEventHandler(async (event) => {
+  const mode = getQuery(event).mode === 'word' ? 'word' : 'tic'
   const dir = deaiDir()
+  const re = mode === 'word' ? /^word-page-\d+\.json$/ : /^tic-page-\d+\.json$/
   let files: string[] = []
-  try { files = (await readdir(dir)).filter(f => /^tic-page-\d+\.json$/.test(f)) } catch {}
+  try { files = (await readdir(dir)).filter(f => re.test(f)) } catch {}
 
   const rows: Row[] = []
   for (const f of files) {
@@ -24,9 +28,10 @@ export default defineEventHandler(async () => {
   rows.sort((a, b) => a.page - b.page || a.id.localeCompare(b.id, undefined, { numeric: true }))
 
   // Sub-shape groups; dialogue is parked into its own group regardless of shape.
-  const groups: Record<string, Row[]> = { single: [], twobeat: [], anaphora: [], dialogue: [] }
+  const groups: Record<string, Row[]> = mode === 'word' ? { dialogue: [] } : { single: [], twobeat: [], anaphora: [], dialogue: [] }
   for (const r of rows) {
     if (r.inDialogue) groups.dialogue.push(r)
+    else if (mode === 'word') (groups[r.tell.replace('word-', '')] ||= []).push(r)
     else if (r.tell === 'neg-twobeat') groups.twobeat.push(r)
     else if (r.tell === 'neg-anaphora') groups.anaphora.push(r)
     else groups.single.push(r)
@@ -39,14 +44,7 @@ export default defineEventHandler(async () => {
     changed: rs.filter(r => r.decision === 'accept' || r.decision === 'edit').length,
   })
 
-  return {
-    counts: {
-      all: tally(rows),
-      single: tally(groups.single),
-      twobeat: tally(groups.twobeat),
-      anaphora: tally(groups.anaphora),
-      dialogue: tally(groups.dialogue),
-    },
-    groups,
-  }
+  const counts: Record<string, ReturnType<typeof tally>> = { all: tally(rows) }
+  for (const k of Object.keys(groups)) counts[k] = tally(groups[k])
+  return { mode, counts, groups }
 })

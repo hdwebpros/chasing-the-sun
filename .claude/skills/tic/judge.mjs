@@ -21,11 +21,13 @@ import { dirname, join } from 'node:path'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const deai = join(here, '..', '..', '..', '.deai')
-const arg = process.argv[2]
+// --word folds into the word-pass caches (word-page-NN.json) and also accepts `recast`.
+const WORD = process.argv.includes('--word')
+const arg = process.argv.slice(2).find(a => !a.startsWith('--'))
 const raw = arg ? readFileSync(arg, 'utf8') : readFileSync(0, 'utf8')
 const judgments = JSON.parse(raw)
 
-const files = readdirSync(deai).filter(f => /^tic-page-\d+\.json$/.test(f))
+const files = readdirSync(deai).filter(f => (WORD ? /^word-page-\d+\.json$/ : /^tic-page-\d+\.json$/).test(f))
 let touched = 0, pages = 0, missing = new Set(Object.keys(judgments))
 for (const file of files) {
   const path = join(deai, file)
@@ -40,6 +42,9 @@ for (const file of files) {
     f.alts ||= {}
     if ('vary' in j) f.alts.vary = j.vary ?? null
     if ('merge' in j) f.alts.merge = j.merge ?? null
+    if ('recast' in j) f.alts.recast = j.recast ?? null
+    if ('cut' in j) f.alts.cut = j.cut ?? null
+    if (j.why) f.why = j.why
     touched++; changed = true
   }
   if (changed) { writeFileSync(path, JSON.stringify(doc, null, 2) + '\n'); pages++ }

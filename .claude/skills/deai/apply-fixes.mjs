@@ -43,8 +43,11 @@ const TIC = args.includes('--tic')
 // and when a span is not unique in the book the preceding sentence (lead) is prepended
 // so replaceAllText can't rewrite the wrong copy.
 const OPENERS_PASS = args.includes('--openers')
-const PFX = OPENERS_PASS ? 'openers-page-' : TIC ? 'tic-page-' : BROGUE ? 'brogue-page-' : 'page-'
-const PFX_RE = OPENERS_PASS ? /^openers-page-\d+\.json$/ : TIC ? /^tic-page-\d+\.json$/ : BROGUE ? /^brogue-page-\d+\.json$/ : /^page-\d+\.json$/
+// --word applies the leaned-on-word pass from word-page-NN.json: tic-style decisions
+// (editText/editFull, span-gone idempotency) plus openers-style lead-prefixing.
+const WORD = args.includes('--word')
+const PFX = WORD ? 'word-page-' : OPENERS_PASS ? 'openers-page-' : TIC ? 'tic-page-' : BROGUE ? 'brogue-page-' : 'page-'
+const PFX_RE = WORD ? /^word-page-\d+\.json$/ : OPENERS_PASS ? /^openers-page-\d+\.json$/ : TIC ? /^tic-page-\d+\.json$/ : BROGUE ? /^brogue-page-\d+\.json$/ : /^page-\d+\.json$/
 const rangeArg = args.find(a => /^\d+-\d+$/.test(a))   // e.g. 71-100
 const pageArg = args.find(a => /^\d+$/.test(a))
 
@@ -91,10 +94,10 @@ for (const file of pagesToProcess()) {
     // tic free-edit (editFull) reshapes the whole unit, landing included, so the find
     // target is span + the trailing landing — not span alone. Everything else (de-AI,
     // brogue, tic cut/vary/merge) targets span. (after is set only on tic flags.)
-    let find = (TIC && f.editFull && f.after) ? `${f.span} ${f.after}` : f.span
+    let find = ((TIC || WORD) && f.editFull && f.after) ? `${f.span} ${f.after}` : f.span
     // openers: when the span is not unique in the book, prepend the preceding sentence
     // (lead) to both find and replace so the rewrite lands on the right copy only.
-    if (OPENERS_PASS && f.unique === false && f.lead) {
+    if ((OPENERS_PASS || WORD) && f.unique === false && f.lead && !f.editFull) {
       find = `${f.lead} ${f.span}`
       replace = `${normalize(f.lead)} ${replace}`
     }
@@ -108,7 +111,7 @@ for (const file of pagesToProcess()) {
     // substring of the original (a cut = the prior sentence alone), so signal (a) would
     // false-positive and skip a legitimate change. For tic, idempotency is span-gone only.
     const spanGone = manuscriptNorm !== null && !manuscriptNorm.includes(normPresence(find))
-    const dupAdditive = !TIC && !OPENERS_PASS && manuscriptNorm !== null && manuscriptNorm.includes(normPresence(replace))
+    const dupAdditive = !TIC && !WORD && !OPENERS_PASS && manuscriptNorm !== null && manuscriptNorm.includes(normPresence(replace))
     if (spanGone || dupAdditive) {
       alreadyApplied++; continue
     }
@@ -140,7 +143,7 @@ if (COMMIT) {
   const build = spawnSync('node', ['scripts/build-epub-from-drive.mjs', '--promote'], { cwd: root, stdio: 'inherit' })
   if (build.status !== 0) { console.error('epub rebuild failed; not committing.'); process.exit(1) }
   spawnSync('git', ['add', 'public/chasing-the-sun-draft.epub'], { cwd: root, stdio: 'inherit' })
-  const tag = OPENERS_PASS ? 'openers' : TIC ? 'tic' : BROGUE ? 'brogue' : 'deai'
-  const msg = `${tag}: apply ${pairs.length} approved fix(es)${pageArg ? ` (page ${pageArg})` : ''}\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
+  const tag = WORD ? 'word' : OPENERS_PASS ? 'openers' : TIC ? 'tic' : BROGUE ? 'brogue' : 'deai'
+  const msg = `${tag}: apply ${pairs.length} approved fix(es)${pageArg ? ` (page ${pageArg})` : ''}\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`
   spawnSync('git', ['commit', '-m', msg], { cwd: root, stdio: 'inherit' })
 }
