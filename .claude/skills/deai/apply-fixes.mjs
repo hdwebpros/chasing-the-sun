@@ -144,6 +144,6 @@ if (COMMIT) {
   if (build.status !== 0) { console.error('epub rebuild failed; not committing.'); process.exit(1) }
   spawnSync('git', ['add', 'public/chasing-the-sun-draft.epub'], { cwd: root, stdio: 'inherit' })
   const tag = WORD ? 'word' : OPENERS_PASS ? 'openers' : TIC ? 'tic' : BROGUE ? 'brogue' : 'deai'
-  const msg = `${tag}: apply ${pairs.length} approved fix(es)${pageArg ? ` (page ${pageArg})` : ''}\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`
+  const msg = `${tag}: apply ${pairs.length} approved fix(es)${pageArg ? ` (page ${pageArg})` : ''}\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`
   spawnSync('git', ['commit', '-m', msg], { cwd: root, stdio: 'inherit' })
 }
