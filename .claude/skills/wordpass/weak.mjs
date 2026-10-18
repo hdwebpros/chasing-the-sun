@@ -18,6 +18,7 @@ const deai = join(here, '..', '..', '..', '.deai')
 const [cmd, dir] = process.argv.slice(2)
 if (!cmd || !dir) { console.error('usage: weak.mjs split <outDir> | merge <judgDir>'); process.exit(2) }
 
+const TELL = process.env.TELL || 'weak' // TELL=proof weak.mjs merge … loads a second tab without touching weak rows
 const PAGE_SIZE = 400
 const raw = readFileSync(join(deai, 'manuscript.txt'), 'utf8')
 const lines = raw.split('\n')
@@ -100,7 +101,7 @@ for (const [pageStr, pf] of Object.entries(byPage)) {
   const page = Number(pageStr), pad = String(page).padStart(2, '0')
   const pagePath = join(deai, `word-page-${pad}.json`)
   const doc = { page, chapter: pf[0].chapter, words: undefined, pageDetect: null, flags: pf.map((f, i) => ({
-    id: `p${page}-weak${i + 1}`, tell: 'word-weak', form: f.form, chapter: f.chapter,
+    id: `p${page}-${TELL}${i + 1}`, tell: `word-${TELL}`, form: f.form, chapter: f.chapter,
     span: f.span, lead: f.lead, unique: f.unique, after: f.after,
     context: f.lead ? `${f.lead}  ❯  ${f.span}` : f.span,
     inDialogue: f.inDialogue, cluster: 1, voiceClass: 'abstract', voice: 0, detect: 5,
@@ -110,8 +111,8 @@ for (const [pageStr, pf] of Object.entries(byPage)) {
   })) }
   if (existsSync(pagePath)) {
     const prev = JSON.parse(readFileSync(pagePath, 'utf8'))
-    if ((prev.flags || []).some(x => x.tell === 'word-weak' && x.decision && x.decision !== 'pending')) { console.log(`skip page ${page}: has decisions`); continue }
-    doc.flags = [...(prev.flags || []).filter(x => x.tell !== 'word-weak'), ...doc.flags]
+    if ((prev.flags || []).some(x => x.tell === `word-${TELL}` && x.decision && x.decision !== 'pending')) { console.log(`skip page ${page}: has decisions`); continue }
+    doc.flags = [...(prev.flags || []).filter(x => x.tell !== `word-${TELL}`), ...doc.flags]
   }
   writeFileSync(pagePath, JSON.stringify(doc, null, 2) + '\n'); wrote++
 }
