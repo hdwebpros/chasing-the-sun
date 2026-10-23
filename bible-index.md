@@ -1,6 +1,6 @@
 # Bible Index — *Chasing the Sun*
 
-Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8) (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
+Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8); Ch 9 refreshed 2026-10-22 after the squall/deckhand rewrite (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
 
 Motif flags: **central** (carries the chapter) / **present** / **trace** / **absent**.
 Thread slugs: see glossary at bottom for spans and what each slug unifies.
@@ -73,10 +73,10 @@ motifs: paper(absent), name(present), doors(present)
 opens: dublin-signs-left, atlantic-crossing, joseph · closes: emigration, number-thirteen-shop
 
 ### 9 · Chapter Nine — PART TWO
-Nine-day steerage crossing, 1873 · 1055w / 5sc / rising
-Cast: William, Mary, Austin, Mary Margaret, Letitia, Teresa
-The family endures nine days in a stinking hold, William bracing his body as a wall around his children through a fourth-night storm. At New York harbor he sizes up the skyline: this is only the door, not the house.
-motifs: paper(present), name(present), doors(present)
+Nine-day steerage crossing, 1873 · 1472w / 5sc / rising
+Cast: William, Mary, Austin, Mary Margaret, Letitia, Teresa, deckhand
+In the stinking hold William daydreams of a Boston shop stocked with French calf and hemlock-tanned leather. On the fourth day a squall hits while Teresa has wandered up on deck; the deckhand seals the hatch, refuses William, knocks him out with one punch, then fetches her himself ("I run this hold, not you"). William braces the family through the storm with his body. At New York harbor he sizes up the skyline: this is only the door, not the house.
+motifs: paper(present), name(present), doors(central)
 opens: westward-journey, no-boog-buried-vow · closes: atlantic-crossing
 
 ### 10 · Chapter Ten — PART TWO
