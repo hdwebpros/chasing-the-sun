@@ -1,6 +1,6 @@
 # Bible Index — *Chasing the Sun*
 
-Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8); Ch 9 refreshed 2026-10-22 after the squall/deckhand rewrite (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
+Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8); Ch 9 refreshed 2026-10-22 after the squall/deckhand rewrite; Ch 15 names John (2026-10-23) (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
 
 Motif flags: **central** (carries the chapter) / **present** / **trace** / **absent**.
 Thread slugs: see glossary at bottom for spans and what each slug unifies.
@@ -117,7 +117,7 @@ opens: thanksgiving-tradition, male-heir · closes: diphtheria-outbreak
 ### 15 · Chapter Fifteen — PART TWO
 Winter after the deaths + 1925 interlude · 647w / 3sc / falling
 Cast: Mary, William, Mary Margaret, Letitia, Hollis
-Mary sits hollowed by grief while William cooks, sweeps, and folds until she slowly rises — her singing never comes back. A closing flash-forward notes she will bear and lose one more son in the next few years (the sixth death; moved here from the end of Ch 14, Oct 2026). In the interlude William tells Hollis what got him out of Boston: "a barn... one I hadn't built yet."
+Mary sits hollowed by grief while William cooks, sweeps, and folds until she slowly rises — her singing never comes back. A closing flash-forward notes she will bear and lose one more son, John, the following year (the sixth death; moved here from the end of Ch 14, Oct 2026). In the interlude William tells Hollis what got him out of Boston: "a barn... one I hadn't built yet."
 motifs: paper(absent), name(absent), doors(trace)
 opens: barn-and-land-dream, marys-singing-gone, eighth-son-foretold · closes: marys-grief
 
