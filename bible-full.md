@@ -27,8 +27,8 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 | 18 | Chapter Eighteen | PART THREE | 1969 | 6 | rising | Circa 1874 (newsboy cries "Custer's scouts reporting from the Black Hills"), likely late s |
 | 19 | Chapter Nineteen | PART THREE | 3456 | 11 | rising | St. Paul, Minnesota (Ramsey Street house, West Seventh, Williams & Boog shop) — roughly su |
 | 20 | Chapter Twenty | PART THREE | 3186 | 12 | falling | St. Paul, Minnesota, spanning roughly 1878-1885: naturalization intent dated October 1878, |
-| 21 | Chapter Twenty-One | PART THREE | 1405 | 4 | rising | Opens December 1886 (St. Paul Globe clipping) on a St. Paul street; jumps to "the following summer" (1887) |
-| 22 | Chapter Twenty-Two | PART THREE | 2443 | 11 | rising | Autumn 1887, ending November 11, 1887 and its immediate aftermath; St. Paul, Minnesota — t |
+| 21 | Chapter Twenty-One | PART THREE | 1215 | 3 | rising | Opens December 1886 (St. Paul Globe clipping) on a St. Paul street; jumps to "the following summer" (1887) |
+| 22 | Chapter Twenty-Two | PART THREE | 2977 | 7 | rising | Autumn 1887, ending November 11, 1887 and its immediate aftermath; St. Paul, Minnesota — t |
 | 23 | Chapter Twenty-Three | PART THREE | 3092 | 8 | rising | Winter 1887–88 (the winter after Mary's death, November 1887) through autumn 1889 in St. P |
 | 24 | Chapter Twenty-Four | PART FOUR | 3280 | 7 | falling | Spring 1890 (parish social) through October and the following weeks of that autumn — three |
 | 25 | Chapter Twenty-Five | PART FOUR | 2594 | 3 | rising | Late summer into early October, St. Paul, Minnesota — Como Park picnic, then the Mississip |
@@ -489,6 +489,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 
 ### Chapter Twenty-One (PART THREE)
 
+- **Note (2026-10-24):** the doctor's verdict scene now sits in Ch 22, after the kick; doctor/doorway beats below belong to Ch 22.
 - **Synopsis:** William's paint horse Old Red is spooked, bolts, and dies in a carriage collision on a St. Paul street; the following summer Mary's swelling midsection kindles hope of one last baby, and she asks William to give something grander than paint back to the Bishop when the good comes. The swelling proves to be fluid, not life, and a doctor delivers the verdict at the house on Evergreen Avenue: the cause is untreatable and Mary has perhaps a month to live, leaving William leaning against a wall that suddenly feels like tenement rot.
 - **On stage:** William, Mary, the doctor, policeman
 - **Timeline:** Opens December 1886 (St. Paul Globe clipping) on a St. Paul street; jumps to "the following summer" (summer 1887) at the house on Evergreen Avenue, then weeks further for Mary's symptoms and the doctor's visit
@@ -501,6 +502,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 
 ### Chapter Twenty-Two (PART THREE)
 
+- **Note (2026-10-24):** now also holds the kick and the doctor's verdict (moved from Ch 21); "MARY X. The first name…" line was cut.
 - **Synopsis:** The chapter opens two nights after William's rope's-end confession with Mary awake in the dark, laying a midnight bargain before God: a "Let" litany — *"Let this one be a boy. Let him live. Let him carry the name"* — offering, if this pregnancy is not a boy, to bless even another woman's son so William may someday stand in a room with a living son ("Whatever it costs. He cannot write an X by that name."). She tells him nothing, then faces her dying with grace through a slow decline in the St. Paul house — church hymns, garden moments, and handing duties to her daughters — while William rages silently at the God he blames and at the suspicion that the family's deaths follow him. Mary dies on November 11, 1887; after the Calvary Cemetery burial, William sits alone at the kitchen table and writes the X after MARY, the name that had anchored the folded paper since Dublin. *(Bargain paragraph recast as a Stein-style insistence litany, July 2026.)*
 - **On stage:** William, Mary, Mary Margaret, Letitia, Rose
 - **Timeline:** Autumn 1887, ending November 11, 1887 and its immediate aftermath; St. Paul, Minnesota — the Evergreen house, a church, and Calvary Cemetery
