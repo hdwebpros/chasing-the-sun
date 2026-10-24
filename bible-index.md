@@ -1,6 +1,6 @@
 # Bible Index — *Chasing the Sun*
 
-Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8); Ch 9 refreshed 2026-10-22 after the squall/deckhand rewrite; Ch 15 names John (2026-10-23) (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
+Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8); Ch 9 refreshed 2026-10-22 after the squall/deckhand rewrite; Ch 15 names John (2026-10-23); Ch 18–20 refreshed 2026-10-24 after the Act 3 timeline fix (naturalization intent moved from Ch 20 into Ch 19) (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
 
 Motif flags: **central** (carries the chapter) / **present** / **trace** / **absent**.
 Thread slugs: see glossary at bottom for spans and what each slug unifies.
@@ -136,7 +136,7 @@ motifs: paper(trace), name(present), doors(present)
 opens: no-more-buried-children · closes: westward-secret, temporary-promise
 
 ### 18 · Chapter Eighteen — PART THREE
-Train west; St. Paul arrival (Custer-era) · 2024w / 5sc / rising
+Train west; St. Paul arrival, spring 1876 (Custer's column on the march) · 2024w / 5sc / rising
 Cast: William, Mary, Mary Margaret, Letitia, compass vendor, brooch seller, Summit homeowner
 The prairie loosens Mary for the first time; in St. Paul William buys a map, haggles unsuccessfully for a compass, and is expelled from a Summit Avenue door as immigrant scum. After a night sleeping outside, the family lands rooms on Ramsey Street — and the thing he ran from has followed.
 motifs: paper(trace), name(trace), doors(central)
@@ -144,16 +144,16 @@ opens: compass, mm-brooch, nativist-hostility · closes: westward-journey
 note: the compass is a deliberate long-fuse plant — four mentions here, then silent until Ch 31 and the Epilogue. Author's intent: a game for the attentive reader, meant to look dropped. Do not flag it as an unfired gun or propose teeing it up.
 
 ### 19 · Chapter Nineteen — PART THREE
-c.1877–1879, St. Paul; Rose born Feb 4 1878 · 3485w / 6sc / rising
+summer 1876–1879, St. Paul; Rose born Feb 4 1878; intent Oct 1878; Williams & Boog Apr 1879 · ~3860w / 7sc / rising
 Cast: William, Mary, Letitia, Mary Margaret, Rose, nun, midwife, bartender
-Roots go down: Letitia boards with the Sisters, Rose is born, and Williams & Boog opens with Mary quietly sharpening the prices. A tenth pregnancy delivers an unnamed stillborn boy — the seventh dead child; Mary says one word to the plaster and gin puts her under — and William, pen over the paper with no name to write, wonders if his war runs deeper than names.
+Roots go down: Letitia boards with the Sisters, Rose is born (Mary's pregnancy shows that spring), William signs his naturalization intent in October 1878 and resolves to put the name on land, and Williams & Boog opens with Mary quietly sharpening the prices. A tenth pregnancy delivers an unnamed stillborn boy — the seventh dead child; Mary says one word to the plaster and gin puts her under — and William, pen over the paper with no name to write, wonders if his war runs deeper than names.
 motifs: paper(central), name(central), doors(present)
-opens: letitia-nun, rose, williams-and-boog, stillborn-boy · closes: —
+opens: letitia-nun, rose, naturalization, williams-and-boog, stillborn-boy · closes: —
 
 ### 20 · Chapter Twenty — PART THREE
-c.1878–1885, St. Paul ascent · 3544w / 6sc / falling
+c.1883–1885, St. Paul ascent · ~3170w / 5sc / falling
 Cast: William, Mary, Letitia, Mary Margaret, children, JJ Williams, Globe clerk, school chairman, clerk, Bryant
-Seven ascending years: William splits from Williams, wins the schoolhouse contract, naturalizes, leases a Summit Avenue shop, and builds the Evergreen Avenue house and barn with his own hands. Mary calls the house magical and tells Letitia every feared change gave her what standing still never would. Ends on William hitching Old Red in the dark, the horse leaning its head into him for the bit.
+William splits from Williams after nearly five years, wins the schoolhouse contract, leases a Summit Avenue shop, and builds the Evergreen Avenue house and barn with his own hands. Mary calls the house magical and tells Letitia every feared change gave her what standing still never would. Ends on William hitching Old Red in the dark, the horse leaning its head into him for the bit.
 motifs: paper(present), name(central), doors(present)
 opens: summit-avenue-shop, evergreen-avenue, old-red, wharf-apple-story, old-reliable · closes: williams-and-boog
 
