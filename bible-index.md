@@ -1,6 +1,6 @@
 # Bible Index — *Chasing the Sun*
 
-Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8); Ch 9 refreshed 2026-10-22 after the squall/deckhand rewrite; Ch 15 names John (2026-10-23); Ch 18–20 refreshed 2026-10-24 after the Act 3 timeline fix (naturalization intent moved from Ch 20 into Ch 19); Ch 19–23 and 38 refreshed 2026-10-24 after the Act 3 proof cuts and the chronology pass (doctor's verdict moved from Ch 21 into Ch 22, after the kick) (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
+Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8); Ch 9 refreshed 2026-10-22 after the squall/deckhand rewrite; Ch 15 names John (2026-10-23); Ch 18–20 refreshed 2026-10-24 after the Act 3 timeline fix (naturalization intent moved from Ch 20 into Ch 19); Ch 19–23 and 38 refreshed 2026-10-24 after the Act 3 proof cuts and the chronology pass (doctor's verdict moved from Ch 21 into Ch 22, after the kick); Ch 24–31 refreshed 2026-10-26 after the Act 4 proof edits (Ch 31 count includes its interlude) (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
 
 Motif flags: **central** (carries the chapter) / **present** / **trace** / **absent**.
 Thread slugs: see glossary at bottom for spans and what each slug unifies.
@@ -179,56 +179,56 @@ motifs: paper(trace), name(central), doors(trace)
 opens: grief-isolation, deed-buying, lottie-courtship · closes: —
 
 ### 24 · Chapter Twenty-Four — PART FOUR
-Spring–autumn 1890, St. Paul · 3352w / 5sc / falling
+Spring–autumn 1890, St. Paul · 3397w / 5sc / falling
 Cast: William, Lottie, Mrs. Daly, homeowner, Mary Margaret, Letitia, Rose
 William meets the Kansas-born widow Charlotte "Lottie" Travers at a parish social, and a chance paint job becomes a carriage ride, a teasing Sunday walk, and a warming courtship between two grieving households. With Mary Margaret's blessing, Lottie comes to supper, and William lets himself hope for a living son.
 motifs: paper(absent), name(central), doors(present)
 opens: como-park, untold-secret-about-mary, valentin-secret · closes: grief-isolation
 
 ### 25 · Chapter Twenty-Five — PART FOUR
-Late summer–early October, Como Park + bluffs · 2591w / 6sc / rising
+Late summer–early October, Como Park + bluffs · 2600w / 6sc / rising
 Cast: William, Lottie, Mary Margaret, Letitia, Rose, Anetta, William Travers, Fitzgeralds, driver
 The two broods merge at a Como Park picnic where a prayer standoff, a bee swarm, and a lakeside stampede break the ice, and Mary Margaret embraces Lottie. On a bluff above the Mississippi William confesses the cost of his life and proposes; she says yes.
 motifs: paper(absent), name(present), doors(trace)
 opens: ruby-jewelry, blended-family · closes: lottie-courtship, como-park
 
 ### 26 · Chapter Twenty-Six — PART FOUR
-Spring 1891 wedding → following winter · 3418w / 6sc / falling
+Spring 1891 wedding → following winter · 3403w / 6sc / falling
 Cast: William, Lottie, Mary Margaret, Letitia, Rose, Joseph, Anetta, William Travers, Mary Travers, priest, Globe clerk
 William marries Lottie and writes CHARLOTTE on the paper's long-blank right half; Lottie runs a chaotic school-morning rush (a mitten flipped to teach dividing fractions) while Mary Margaret watches; the household fractures over a torn chore chart until Lottie — refusing to become Mary — pairs the broods into friends. They sell Evergreen for a Dayton Avenue Queen Anne while William amasses deeds in family names as a wall against loss.
 motifs: paper(central), name(central), doors(present)
 opens: dayton-avenue-home, letitia-painting, carroll-avenue-house · closes: evergreen-avenue, blended-family
 
 ### 27 · Chapter Twenty-Seven — PART FOUR
-Late summer 1891 → June 1892 · 1572w / 6sc / falling
+Late summer 1891 → June 1892 · 1485w / 6sc / falling
 Cast: William, Letitia, Rose, Lottie, Charlotte Magdalen
 Letitia enters the novitiate at St. Joseph's — asking for the name Berissima, which the order will give her at reception in March 1892 — and returns the Carroll Avenue deed William bought to keep her close; he lets her go at the convent gate. Lottie gives birth to Charlotte Magdalen, whose name becomes the first entry on the paper's right half.
 motifs: paper(central), name(central), doors(present)
 opens: charlotte-magdalen · closes: letitia-nun, carroll-avenue-house, memorial-bell
 
 ### 28 · Chapter Twenty-Eight — PART FOUR
-Winter 1892 → late April 1893 · 2100w / 6sc / rising
+Winter 1892 → late April 1893 · 2054w / 6sc / rising
 Cast: William, Mary Margaret, Lottie, baby Charlotte, Dr. Olson, children, neighbors
 Mary Margaret — the household's fierce caretaker and keeper of her mother's Sunday suppers — grows tired, bruised, and pale until Dr. Olson names it leukemia, with nothing left to fight. She dies at twenty-four, passing Mary's brooch to Lottie, and William crosses her name off beneath her mother's.
 motifs: paper(central), name(central), doors(present)
 opens: mm-leukemia, panic-attacks · closes: mm-leukemia, mm-brooch
 
 ### 29 · Chapter Twenty-Nine — PART FOUR
-June, year unstated, Dayton Avenue · 1254w / 3sc / rising
+June, year unstated, Dayton Avenue · 1174w / 3sc / rising
 Cast: William, Rose
-William finds Rose's small canvas against the bedroom mirror: the Liffey at golden hour, his old shop and sign painted entirely from dinner-table stories though she has never seen Dublin. He confirms the sign aloud — "Wm. Boog. Bootmaker... Number thirteen Aston's Quay" — and blesses her gift: "Don't stop."
+William finds Rose's small canvas against the bedroom mirror: the Liffey at golden hour, his old shop and sign painted entirely from dinner-table stories though she has never seen Dublin. He reads the sign aloud — "Wm. Boog. Bootmaker." — and blesses her gift: "Don't stop."
 motifs: paper(absent), name(central), doors(central)
 opens: — · closes: dublin-signs-left
 
 ### 30 · Chapter Thirty — PART FOUR
-1893 → c.1900, Dayton Avenue · 2706w / 6sc / flat
+1893 → c.1900, Dayton Avenue · 2786w / 6sc / flat
 Cast: William, Lottie, Rose, McCarthys, Charlotte, Louise, Alex, doctor, midwife
-Through the Panic of 1893 the house welcomes Louise, Virginia, and at last a son — Alexander Burrell Boog — while Rose leaves to become Sister Magdalen and Lottie hardens herself to foreclose on her own Kansas family. A comic telephone humiliation leaves William watching the world speed past him.
+Through the Panic of 1893 the house welcomes Louise Teresa (middle name for the Teresa lost in Boston) and Virginia; William, in his fifties, calls a son impossible — a deliberate fake-out — before Lottie shows that fall and brings at last a son — Alexander Burrell Boog — while Rose leaves to become Sister Magdalen and Lottie hardens herself to foreclose on her own Kansas family. A comic telephone humiliation leaves William watching the world speed past him.
 motifs: paper(present), name(central), doors(present)
 opens: alex, foreclosure-secret, speeding-world · closes: male-heir, rose
 
 ### 31 · Chapter Thirty-One — PART FOUR
-Winter → spring 1900 departure + interlude · 4202w / 3sc / rising
+Winter → spring 1900 departure + interlude · 4068w / 3sc / rising
 Cast: William, Lottie, Letitia, Charlotte, Louise, Virginia, Alex, Hollis
 After a panic attack at Sunday dinner, William confesses he sees every buried child in his living ones and believes his presence dooms Alex: he will move alone to Grants Pass while Lottie poses as a widow and runs the properties. He departs by train in spring 1900, leaving the compass for Alex.
 motifs: paper(present), name(present), doors(central)
