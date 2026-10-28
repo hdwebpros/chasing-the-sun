@@ -1,6 +1,6 @@
 # Bible Index — *Chasing the Sun*
 
-Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8); Ch 9 refreshed 2026-10-22 after the squall/deckhand rewrite; Ch 15 names John (2026-10-23); Ch 18–20 refreshed 2026-10-24 after the Act 3 timeline fix (naturalization intent moved from Ch 20 into Ch 19); Ch 19–23 and 38 refreshed 2026-10-24 after the Act 3 proof cuts and the chronology pass (doctor's verdict moved from Ch 21 into Ch 22, after the kick); Ch 24–31 refreshed 2026-10-26 after the Act 4 proof edits (Ch 31 count includes its interlude) (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`.
+Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8); Ch 9 refreshed 2026-10-22 after the squall/deckhand rewrite; Ch 15 names John (2026-10-23); Ch 18–20 refreshed 2026-10-24 after the Act 3 timeline fix (naturalization intent moved from Ch 20 into Ch 19); Ch 19–23 and 38 refreshed 2026-10-24 after the Act 3 proof cuts and the chronology pass (doctor's verdict moved from Ch 21 into Ch 22, after the kick); Ch 24–31 refreshed 2026-10-26 after the Act 4 proof edits (Ch 31 count includes its interlude) (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`. Ch 32–39 and Epilogue refreshed 2026-10-28 after the Act 5 proof edits.
 
 Motif flags: **central** (carries the chapter) / **present** / **trace** / **absent**.
 Thread slugs: see glossary at bottom for spans and what each slug unifies.
@@ -235,65 +235,65 @@ motifs: paper(present), name(present), doors(central)
 opens: oregon-exile, widow-fiction, letters-estrangement, lottie-ledger · closes: summit-avenue-shop, dayton-avenue-home
 
 ### 32 · Chapter Thirty-Two — PART FIVE
-Spring 1900 → 1903, Grants Pass · 1415w / 4sc / falling
+Spring 1900 → 1903, Grants Pass · 1353w / 4sc / falling
 Cast: William, porter, newspaper clerk, applicant, farmer
 William hangs the last sign he ever means to paint — GRANTS PASS PAINTING CO. WM. BOOG — and prospers on charm, craft, and a printed guarantee of his word. His letters to Lottie never contain the one thing he means: "I need you." The weather shifts.
 motifs: paper(central), name(present), doors(trace)
 opens: grants-pass-painting-co, i-need-you · closes: —
 
 ### 33 · Chapter Thirty-Three — PART FIVE
-Oct 1903 → early 1904, Rogue Valley · 1329w / 4sc / falling
+Oct 1903 → early 1904, Rogue Valley · 1279w / 4sc / falling
 Cast: William, Cyrus, crew
 A dew-wet ladder rung shatters William's hip; Cyrus rules his climbing days done, and he refuses the Portland surgeon out of lifelong distrust of doctors. Winter letters reveal Letitia in Florence, a copyist under a name not Boog — "a perfectionist and a skilled copyist," not an artist — the exact shape of his own life.
 motifs: paper(trace), name(present), doors(present)
 opens: ruined-hips · closes: —
 
 ### 34 · Chapter Thirty-Four — PART FIVE
-Summer 1904, Foundry Street · 876w / 3sc / rising
+Summer 1904, Foundry Street · 916w / 3sc / rising
 Cast: William, Samuel Frederickson
-A second fall takes the good hip, and William sells Grants Pass Painting to Samuel on no-interest terms, a gift dressed as a sale. Handing over the books he confesses what he has never told a soul — told out of order, in fragments (rewritten July 2026): the cursed fatherless name, eight children in the ground, the plan to keep Alex alive from a thousand miles away — and lays the folded paper on the counter between them, unopened.
+A second fall takes the good hip, and William sells Grants Pass Painting to Samuel on no-interest terms, a gift dressed as a sale. Handing over the books he confesses what he has never told a soul — told out of order, in fragments (rewritten July 2026): the cursed fatherless name, eight children in the ground, the plan to keep Alex alive by providing from a distance — and lays the folded paper on the counter between them, unopened.
 motifs: paper(present), name(central), doors(trace)
 opens: — · closes: painting-career, grants-pass-painting-co
 
 ### 35 · Chapter Thirty-Five — PART FIVE
-c.1905–1907, Grants Pass · 794w / 2sc / rising
+c.1905–1907, Grants Pass · 789w / 2sc / rising
 Cast: William, crew
 William rings Grants Pass with lots in his family's names while his letters to Lottie thin into mechanical business notes. Her answer about Alex — a boy who kisses everyone, whom William would know "if you see him" — leaves him at the depot fare board choosing distance over the trip home.
 motifs: paper(present), name(present), doors(trace)
 opens: — (beats of deed-buying, alex, ruined-hips, letters-estrangement) · closes: —
 
 ### 36 · Chapter Thirty-Six — PART FIVE
-Undated late winter, old age · 1102w / 3sc / rising
+Undated late winter, old age · 1054w / 3sc / rising
 Cast: William, plasterer, mother with children
 Retired and idle, William is ambushed by sensory flashbacks to the famine tenement until the panic follows him home. Alone on a rainy night the iron control of a lifetime gives way; he weeps for every dead child, for Mary, and for the unwanted boy he was, then presses a pen into a clean sheet so hard the words imprint.
 motifs: paper(trace), name(present), doors(trace)
 opens: — (beats of panic-attacks, i-need-you) · closes: —
 
 ### 37 · Chapter Thirty-Seven — PART FIVE
-Spring 1907; St. Paul → Grants Pass · 998w / 3sc / rising
+Spring 1907; St. Paul → Grants Pass · 955w / 3sc / rising
 Cast: Lottie, William, Charlotte
 A three-line letter — "Charlotte. Come to Oregon." — summons Lottie four days by train to find William white-haired, on a walking stick, whiskey on the shelf, papers in disarray. On the bench outside he confesses the hip, the dread of doctors, and the grief that has overtaken him, and breaks in front of her for the first time.
 motifs: paper(present), name(present), doors(absent)
 opens: grief-drinking · closes: i-need-you
 
 ### 38 · Chapter Thirty-Eight — PART FIVE
-~1907, two weeks in Grants Pass, then St. Paul · 1718w / 5sc / falling
+~1907, two weeks in Grants Pass, then St. Paul · 1685w / 5sc / falling
 Cast: William, Lottie, Louise, Virginia, Alex
 Lottie spends two weeks putting William's life in order, then unloads seven years of carried grief when he says her presence "brings it all back." Unable to move him — he insists the children die if he returns — she leaves him on the porch in the drizzle and resumes St. Paul, crying alone where no one notices, then quietly runs the properties herself, signing a tenant's receipt made out to Mr. Boog.
 motifs: paper(trace), name(present), doors(present)
 opens: door-left-open · closes: grief-drinking
 
 ### 39 · Chapter Thirty-Nine — PART FIVE
-Undated late-life years, Grants Pass · 1746w / 3sc / falling
+Undated late-life years, Grants Pass · 1708w / 3sc / falling
 Cast: William, Cyrus, younger doctor, Hollis (offstage), Lottie (by letter)
 Lamed and truly alone, William slows into stillness, sketching birds and reckoning that he abandoned Alex just as his weaver father abandoned him. Over years the stillness turns to peace: he stops slamming the door he shut on God, stands in the threshold as Mary once did, and slides into the empty bench seat he kept for a child — naming the father-sized hole and hearing Doyle's "In with ye, boy" as a Father holding the door. He writes Alex real letters that go unanswered, then a last one summoning him to Hollis Whitcomb's office on the first of June to sign for the estate; in May Lottie answers for their son: have the lawyer post the papers to Minnesota.
 motifs: paper(absent), name(central), doors(central)
 opens: — · closes: war-with-god, weaver-father, ruined-hips, panic-attacks
 
 ### 40 · Epilogue — FRAME closes
-1925, late afternoon → warm evening, G Street · 2174w / 4sc / falling
+1925, late afternoon → warm evening, G Street · 2061w / 4sc / falling
 Cast: William, Hollis, Alex
-William finishes the will — the exile gamble worked; every child left alive stayed alive — and declares the worn paper of names will go into the ground with him. Sure Alex isn't coming, he angles to sign the property transfer for him; a horse stops outside, and Alex arrives, signs the property transfer, returns the compass (redirected to the grandson named William), gives one kiss and a pointed "Thank you, William," and William steps into the golden evening and finally finds the sun.
+William finishes the will — the exile gamble worked; every child left alive stayed alive — and declares the worn paper of names will go into the ground with him. Sure Alex isn't coming, he angles to sign the property transfer for him; a horse stops outside, and Alex arrives, signs the property transfer, hears that William himself told Lottie to pose as a widow, returns the compass (redirected to the grandson named William), gives one kiss and a pointed "Thank you, William," and William steps into the golden evening and finally finds the sun. Bank assets split 60/10/10/20: Alex, grandsons Stewart and William, all other grandchildren.
 motifs: paper(central), name(central), doors(central)
 opens: — · closes: will-drafting, curse, names-paper, name-meaning, chasing-the-sun, compass, deed-buying, alex, widow-fiction, oregon-exile, door-left-open
 
