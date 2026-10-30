@@ -7,6 +7,13 @@ Thread slugs: see glossary at bottom for spans and what each slug unifies.
 
 Tension arc by third: T1 (Pro→13) rising 10 / falling 3 / flat 1 (Ch11) · T2 (14→27) rising 8 / falling 6 · T3 (28→Ep) rising 7 / falling 5 / flat 1 (Ch30).
 
+
+## Family canon (author-supplied 2026-10-30)
+
+William and Mary's ten pregnancies, birthdates:
+George Jul 15 1866 (d. at 11 months, Dublin) · Austin Nov 1 1867 (d. Dec 22 1874, Boston; buried Christmas Eve) · Mary Margaret 1868, month unknown (d. Apr 30 1893, Ch 28; records conflict: 1880 census says 12, death certificate says 22 at death, and neither fits between Austin and Letitia's dates; the book only shows years, so the manuscript is deliberately left as is with 1868 and "twenty-four") · Letitia Feb 10 1869 (Sister Berissima; survives) · Teresa Oct 20 1870 (d. Dec 31 1874, Boston) · William Jr. Dec 18 1871 (d. at 11 months, Dublin) · Joseph Dec 14 1873 (d. Boston, Ch 13) · John May 22 1875 (d. in infancy, Boston; one sentence only) · Rose (Rosellen) Feb 4 1878 (survives) · stillborn boy Oct 11 1879 (St. Paul; never named, never on the paper).
+Eight dead, six of them sons. The paper: left half MARY + nine children (no stillborn); right half CHARLOTTE + Charlotte, Louise, Virginia, Alex. By Ch 31: fifteen names, eight crosses (seven children plus Mary; the stillborn has neither a name nor a cross).
+
 ---
 
 ### 0 · Prologue — FRAME opens
