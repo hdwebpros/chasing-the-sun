@@ -110,7 +110,7 @@ opens: tainted-water, marys-private-count · closes: joseph
 ### 14 · Chapter Fourteen — PART TWO
 Oct–Dec 1874, Prince Street · 3330w / 8sc / rising
 Cast: William, Mary, Austin, Mary Margaret, Letitia, Teresa, foreman, doctor
-William rallies the grieving family with an improvised first Thanksgiving before diphtheria takes Austin on December 18 and Teresa on Christmas Eve; only Mary Margaret survives it. Gin-loosened, Mary names William "the sickness," and he presses two more X's onto the paper. Ends on the scrap Mary finds a week later ("Boogs don't quit") and her eye-roll at the idea of a curse.
+William rallies the grieving family with an improvised first Thanksgiving before diphtheria takes Austin on December 22 and Teresa on New Year’s Eve; only Mary Margaret survives it. Gin-loosened, Mary names William "the sickness," and he presses two more X's onto the paper. Ends on the scrap Mary finds a week later ("Boogs don't quit") and her eye-roll at the idea of a curse.
 motifs: paper(central), name(present), doors(central)
 opens: thanksgiving-tradition, male-heir · closes: diphtheria-outbreak
 
