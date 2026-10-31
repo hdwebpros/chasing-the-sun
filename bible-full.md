@@ -221,7 +221,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 | Chapter Twenty-Seven | right half of paper begins; Charlotte Magdalen's birth; Rose's artistic gift; Letitia's convent letters | Letitia's religious vocation; Carroll Avenue house deed; Lottie's pregnancy; William's grudge against bells |
 | Chapter Twenty-Eight | Mary Margaret's leukemia; returning-storm foreboding | Mary Margaret's leukemia; Mary Margaret's death; Mary Margaret's caretaker role; Mary's brooch handover; Sunday supper ritual |
 | Chapter Twenty-Nine | Rose's painting vocation blessed | Rose's secret Liffey painting; William's unshared Dublin memory |
-| Chapter Thirty | attempt for a son; dread over Alex's health; Lottie's hidden foreclosure cost; William versus the speeding world | attempt for a son; Rose's convent departure; Kansas family unpaid rent; telephone trial humiliation |
+| Chapter Thirty | attempt for a son; dread over Alex's health; Lottie's hidden foreclosure cost; William versus the speeding world | attempt for a son; Rose's convent departure; Kansas family unpaid mortgage; telephone trial humiliation |
 | Chapter Thirty-One | William's panic attacks; Oregon exile plan; widow fiction for census; compass bequest to Alex; weekly letters promise; Lottie managing the ledger; what happened in Oregon | leave-or-stay decision; William's St. Paul life |
 | Chapter Thirty-Two | Grants Pass Painting Co.; last sign ever hung; never-breaks-his-word printed guarantee; unwritten 'I need you' to Lottie; weather-shift foreboding | westward wandering town-to-town; months of sleeplessness |
 | Chapter Thirty-Three | William's crippled hip; walking stick dependence; Letitia's Florence copyist assignment; painter-not-artist kinship with Letitia; William's unanswered letters to Letitia | William's climbing painter career; Portland surgeon referral refused |
@@ -607,7 +607,7 @@ Compiled 2026-07-15 from 41 per-chapter extraction agents (one agent per chapter
 - **Name motif:** Heavy. Alex's full naming: "Alexander Burrell Boog. A son." The paper's names: "Four names, and not one X." Rose's renaming: "'Sister Magdalen,' she said. 'That's the name I've chosen.'" and "First it had been the baby's middle name. Now it was the name that would bury Rose and raise Sister Magdalen." Mortgage names: "My name is on the mortgage. Your name is on the mortgage." Lottie's phone self-naming: "This is Charlotte Boog." William's closing line: "at least they know the name Boog."
 - **Doors:** Several meaningful thresholds: William waits in the hallway until "The doctor opened the bedroom door and nodded and William went in"; Rose "stood in the doorway of his study with her hands clasped" to announce the convent; "Lottie leaned against the doorframe" having already decided about the telephone; "In the doorway, Charlotte and Louise were pressing their hands over their mouths" during the phone call.
 - **Threads opened:** attempt for a son; dread over Alex's health; Lottie's hidden foreclosure cost; William versus the speeding world
-- **Threads closed:** attempt for a son; Rose's convent departure; Kansas family unpaid rent; telephone trial humiliation
+- **Threads closed:** attempt for a son; Rose's convent departure; Kansas family unpaid mortgage; telephone trial humiliation
 
 ### Chapter Thirty-One (PART FOUR)
 
