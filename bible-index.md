@@ -1,6 +1,6 @@
 # Bible Index — *Chasing the Sun*
 
-Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8); Ch 9 refreshed 2026-10-22 after the squall/deckhand rewrite; Ch 15 names John (2026-10-23); Ch 18–20 refreshed 2026-10-24 after the Act 3 timeline fix (naturalization intent moved from Ch 20 into Ch 19); Ch 19–23 and 38 refreshed 2026-10-24 after the Act 3 proof cuts and the chronology pass (doctor's verdict moved from Ch 21 into Ch 22, after the kick); Ch 24–31 refreshed 2026-10-26 after the Act 4 proof edits (Ch 31 count includes its interlude) (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`. Ch 32–39 and Epilogue refreshed 2026-10-28 after the Act 5 proof edits.
+Lean per-chapter records, derived 2026-07-15 from `bible-full.md`; word/scene counts and the Prologue, Ch 24 and Ch 39 entries refreshed 2026-09-28; Ch 26 refreshed 2026-10-04; Ch 2, 4, 7, 22 word counts refreshed 2026-10-04 after description additions; Ch 2, 3, 6, 7, 8 refreshed 2026-10-11 after the Part One ledger edits (sign-left-behind beat moved from Ch 7 to Ch 8); Ch 9 refreshed 2026-10-22 after the squall/deckhand rewrite; Ch 15 names John (2026-10-23); Ch 18–20 refreshed 2026-10-24 after the Act 3 timeline fix (naturalization intent moved from Ch 20 into Ch 19); Ch 19–23 and 38 refreshed 2026-10-24 after the Act 3 proof cuts and the chronology pass (doctor's verdict moved from Ch 21 into Ch 22, after the kick); Ch 24–31 refreshed 2026-10-26 after the Act 4 proof edits (Ch 31 count includes its interlude) (never re-derive from chapters unless told). Motif prose lives in `motif-ledger.md`; verbose originals in `bible-full.md` (section lookups only). No line numbers on purpose: the manuscript keeps changing, so find a chapter by its heading in `.deai/manuscript.txt`. Ch 32–39 and Epilogue refreshed 2026-10-28 after the Act 5 proof edits. Ch 5, 8, 18, 27 refreshed 2026-10-30 after the date audit and proof round 14 (other round 12–14 fixes were sentence-level and touch no record).
 
 Motif flags: **central** (carries the chapter) / **present** / **trace** / **absent**.
 Thread slugs: see glossary at bottom for spans and what each slug unifies.
@@ -52,7 +52,7 @@ motifs: paper(absent), name(present), doors(present)
 opens: william-mary-courtship, send-for-you-promise, second-famine-warning, tenement-escape · closes: william-mary-courtship
 
 ### 5 · Chapter Five — PART ONE
-1865, 7 Aston's Quay · 1492w / 4sc / rising
+Spring 1866, 7 Aston's Quay · 1492w / 4sc / rising
 Cast: William, Mary
 The Boogs leave the tenements for a broken-doored shopfront at number seven Aston's Quay, which William fixes and opens as W. BOOG — BOOTMAKER, their first home together. Trade proves his craft, but at golden hour he tells the sunset he hasn't "found ye just yet."
 motifs: paper(absent), name(present), doors(central)
@@ -73,7 +73,7 @@ motifs: paper(central), name(central), doors(central)
 opens: emigration, northampton-ad-war · closes: william-junior
 
 ### 8 · Chapter Eight — PART ONE
-To April 1873; Queenstown embarkation · 1501w / 4sc / rising
+To March 1873; Queenstown embarkation · 1501w / 4sc / rising
 Cast: William, Mary, Austin, Letitia, Teresa, Mary Margaret, manifest clerk, old woman
 Months of relentless saving fill the tin behind the loose brick; the landlord wants the signs down before he pays and William buys their staying with a free pair of boots. The family leaves number thirteen before dawn. At Queenstown they board the City of Paris — Letitia and Teresa the first two names on a manifest of 863; William goes unrecorded.
 motifs: paper(absent), name(present), doors(present)
@@ -143,7 +143,7 @@ motifs: paper(trace), name(present), doors(present)
 opens: no-more-buried-children · closes: westward-secret, temporary-promise
 
 ### 18 · Chapter Eighteen — PART THREE
-Train west; St. Paul arrival, spring 1876 (Custer's column on the march) · 2024w / 5sc / rising
+Train west; St. Paul arrival, summer 1876 (Custer's column on the march) · 2024w / 5sc / rising
 Cast: William, Mary, Mary Margaret, Letitia, compass vendor, brooch seller, Summit homeowner
 The prairie loosens Mary for the first time; in St. Paul William buys a map, haggles unsuccessfully for a compass, and is expelled from a Summit Avenue door as immigrant scum. After a night sleeping outside, the family lands rooms on Ramsey Street — and the thing he ran from has followed.
 motifs: paper(trace), name(trace), doors(central)
@@ -207,7 +207,7 @@ motifs: paper(central), name(central), doors(present)
 opens: dayton-avenue-home, letitia-painting, carroll-avenue-house · closes: evergreen-avenue, blended-family
 
 ### 27 · Chapter Twenty-Seven — PART FOUR
-Late summer 1891 → June 1892 · 1485w / 6sc / falling
+Late summer 1891 (Evergreen Avenue) → June 1892 (Dayton Avenue) · 1485w / 6sc / falling
 Cast: William, Letitia, Rose, Lottie, Charlotte Magdalen
 Letitia enters the novitiate at St. Joseph's — asking for the name Berissima, which the order will give her at reception in March 1892 — and returns the Carroll Avenue deed William bought to keep her close; he lets her go at the convent gate. Lottie gives birth to Charlotte Magdalen, whose name becomes the first entry on the paper's right half.
 motifs: paper(central), name(central), doors(present)
